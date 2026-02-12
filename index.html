@@ -132,14 +132,19 @@ td { padding:10px; text-align:center; border-bottom:1px solid #f1f5f9; font-size
 <!-- مودال الفاتورة -->
 <div id="invModal" class="modal">
 <div class="invoice-box" id="printableInvoice">
-<div class="inv-header">    
-    <div>
-        <h1 style="margin:0; color:var(--brand); font-size:24px;">أعمال ميوزتك التجارية</h1>
-        <p style="margin:2px; font-size:11px;">MUSTECH TRADING - 130009077201 :الرقم الضريبي</p>
-        <p style="margin:2px; font-size:11px;">هاتف: 0917029008 - 0912949561</p>
-    </div>
+<div class="inv-header">
+<div>
+<h1 style="margin:0; color:var(--brand); font-size:24px;">أعمال ميوزتك التجارية</h1>
+<p style="margin:2px; font-size:11px;">MUSTECH TRADING - الرقم الضريبي: 130009077201</p>
+<p style="margin:2px; font-size:11px;">هاتف: 0917029008 - 0912949561</p>
 </div>
-  <div style="margin:15px 0; font-size:13px;">
+<div style="text-align:left;">
+<h3 style="margin:0;">INVOICE</h3>
+<p id="invDateDisplay" style="font-size:11px;"></p>
+</div>
+</div>
+<div id="invTag" class="normal-badge">فاتورة مبيعات</div>
+<div style="margin:15px 0; font-size:13px;">
 <strong>العميل:</strong> <span id="viewC"></span> | <strong>الهاتف:</strong> <span id="viewP"></span>
 </div>
 <table>
@@ -398,5 +403,3 @@ function editCustomer(idx){
 </script>
 </body>
 </html>
-
-
