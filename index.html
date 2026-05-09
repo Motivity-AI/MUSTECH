@@ -1,405 +1,534 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>أعمال ميوزتك التجارية - ERP كامل 2026</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- مكتبات -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
-<style>
-:root { --brand:#1e3a8a; --accent:#2563eb; --ok:#059669; --bad:#dc2626; --warn:#f59e0b; --bg:#f8fafc; }
-body { margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:var(--bg); color:#1e293b; padding-bottom:70px; }
-header { background:var(--brand); color:#fff; padding:15px; text-align:center; font-weight:bold; position:sticky; top:0; z-index:1000; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
-.logout-btn { background: rgba(255,255,255,0.2); padding:5px 12px; border-radius:8px; cursor:pointer; font-size:13px; }
-nav { display:flex; background:#fff; border-top:1px solid #e2e8f0; position:fixed; bottom:0; width:100%; height:65px; z-index:1000; justify-content:space-around; align-items:center; }
-nav button { border:none; background:none; color:#64748b; font-size:11px; font-weight:bold; cursor:pointer; flex:1; transition:0.3s; }
-nav button.active { color:var(--brand); border-top:3px solid var(--brand); height:100%; }
-.page { display:none; padding:15px; max-width:1000px; margin:auto; animation:fadeIn 0.3s; }
-@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
-.page.active { display:block; }
-.card { background:#fff; padding:18px; border-radius:15px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); border:1px solid #e2e8f0; margin-bottom:15px; }
-input, select { width:100%; padding:12px; margin:8px 0; border-radius:10px; border:1px solid #cbd5e1; font-size:15px; box-sizing:border-box; }
-input:focus { border-color:var(--brand); outline:none; box-shadow:0 0 0 3px rgba(30,58,138,0.1); }
-.btn-main { background:var(--brand); color:#fff; width:100%; padding:14px; border-radius:10px; border:none; font-weight:bold; cursor:pointer; }
-.btn-ok { background:var(--ok); color:#fff; width:100%; padding:14px; border-radius:10px; border:none; font-weight:bold; cursor:pointer; }
-table { width:100%; border-collapse:collapse; margin-top:10px; }
-th { background:#f1f5f9; padding:10px; font-size:13px; color:var(--brand); border-bottom:2px solid #e2e8f0; }
-td { padding:10px; text-align:center; border-bottom:1px solid #f1f5f9; font-size:13px; }
-.low-stock { background:#fee2e2; }
-.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:2000; overflow-y:auto; padding:10px; box-sizing:border-box; }
-.invoice-box { background:#fff; width:100%; max-width:210mm; margin:auto; padding:15mm; min-height:250mm; box-sizing:border-box; position:relative; }
-.inv-header { display:flex; justify-content:space-between; border-bottom:3px solid var(--brand); padding-bottom:10px; }
-.tax-badge { background:var(--ok); color:#fff; padding:10px; text-align:center; font-size:18px; font-weight:bold; border-radius:5px; margin:15px 0; }
-.normal-badge { background:var(--brand); color:#fff; padding:10px; text-align:center; font-size:18px; font-weight:bold; border-radius:5px; margin:15px 0; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MUSTECH ERP PRO | 2026</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; }
+        .page { display: none; }
+        .page.active { display: block; animation: fadeIn 0.2s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        #sidebar { transition: transform 0.3s ease; z-index: 50; }
+        @media (max-width: 768px) {
+            #sidebar { position: fixed; transform: translateX(100%); height: 100%; }
+            #sidebar.open { transform: translateX(0); }
+        }
+        .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:2000; padding:15px; overflow-y:auto; backdrop-filter: blur(5px); }
+        .active-tab { background-color: #1e40af !important; color: white !important; box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.3); }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .no-print { @media print { display: none; } }
+    </style>
 </head>
-<body>
-<header>
-<span>أعمال ميوزتك التجارية 🎵</span>
-<div class="logout-btn" onclick="location.reload()">🔒 خروج</div>
-</header>
-<!-- تسجيل الدخول -->
-<div id="loginView" style="padding-top:100px; text-align:center;">
-<div class="card" style="max-width:350px; margin:auto;">
-<h2 style="color:var(--brand);">تسجيل الدخول</h2>
-<input type="password" id="entryPass" placeholder="كلمة المرور">
-<button class="btn-main" onclick="auth()">دخول</button>
-</div>
-</div>
-<div id="appView" style="display:none;">
-<!-- صفحة البيع -->
-<div id="posPage" class="page active">
-<div class="card">
-<h3>📑 فاتورة جديدة</h3>
-<div style="display:flex; gap:10px;">
-<input id="cName" placeholder="اسم العميل">
-<input id="cPhone" placeholder="رقم الهاتف">
-</div>
-<select id="itemSelect" onchange="updatePriceLabel()"></select>
-<div style="display:flex; gap:10px;">
-<div style="flex:1">
-<small id="minPriceLbl" style="color:var(--bad); font-size:10px;"></small>
-<input type="number" id="sPrice" placeholder="سعر البيع">
-</div>
-<input type="number" id="sQty" value="1" style="flex:1" placeholder="الكمية">
-</div>
-<button class="btn-ok" onclick="addToCart()">إضافة للقائمة +</button>
-<table id="cartTbl">
-<thead><tr><th>الصنف</th><th>السعر</th><th>الكمية</th><th>حذف</th></tr></thead>
-<tbody></tbody>
-</table>
-<div id="cartTotalDisplay" style="text-align:center; font-size:28px; font-weight:bold; margin:15px; color:var(--brand);">0 SDG</div>
-<div style="background:#fff8e1; padding:10px; border-radius:10px; border:1px solid #ffca28; margin-bottom:10px; display:flex; align-items:center;">
-<input type="checkbox" id="taxToggle" style="width:20px; height:20px;" onchange="renderCart()">
-<label style="font-weight:bold; margin-right:10px;">فاتورة ضريبية (17%)</label>
-</div>
-<input type="number" id="paidAmt" placeholder="المبلغ المستلم">
-<button class="btn-main" onclick="openPreview()">👁️ معاينة الفاتورة</button>
-</div>
-</div>
-<!-- صفحة المخزن -->
-<div id="stockPage" class="page">
-<div class="card">
-<h3>📦 إدارة المخزن</h3>
-<div style="display:flex; gap:10px;">
-<input id="pBrand" placeholder="الماركة">
-<input id="pModel" placeholder="المنتج">
-<input id="pSpec" placeholder="المواصفة">
-<input type="number" id="pCost" placeholder="سعر التكلفة">
-<input type="number" id="pPrice" placeholder="سعر البيع">
-<input type="number" id="pQty" placeholder="الكمية">
-</div>
-<button class="btn-ok" onclick="addProduct()">إضافة منتج</button>
-<table>
-<thead><tr><th>الماركة</th><th>المنتج</th><th>المواصفة</th><th>سعر التكلفة</th><th>سعر البيع</th><th>الكمية</th><th>تعديل</th></tr></thead>
-<tbody id="stockBody"></tbody>
-</table>
-</div>
-</div>
-<!-- صفحة العملاء -->
-<div id="custPage" class="page">
-<div class="card">
-<h3>👥 العملاء</h3>
-<table>
-<thead><tr><th>الاسم</th><th>الهاتف</th><th>الرصيد</th><th>تعديل</th></tr></thead>
-<tbody id="custBody"></tbody>
-</table>
-</div>
-</div>
-<!-- صفحة التقارير -->
-<div id="reportsPage" class="page">
-<div class="card">
-<h3>📊 التقارير</h3>
-<table>
-<thead><tr><th>التاريخ</th><th>المجموع</th><th>الضريبة</th><th>المبلغ المدفوع</th></tr></thead>
-<tbody id="salesBody"></tbody>
-</table>
-</div>
-</div>
-<!-- صفحة الإدارة -->
-<div id="adminPage" class="page">
-<div class="card">
-<h3>⚙️ إعدادات النظام</h3>
-<input id="setCompany" placeholder="اسم الشركة">
-<input id="setAdminPass" placeholder="كلمة مرور المدير">
-<input id="setStaffPass" placeholder="كلمة مرور الموظف">
-<button class="btn-ok" onclick="saveSettings()">حفظ الإعدادات</button>
-</div>
-</div>
-<!-- مودال الفاتورة -->
-<div id="invModal" class="modal">
-<div class="invoice-box" id="printableInvoice">
-<div class="inv-header">
-<div>
-<h1 style="margin:0; color:var(--brand); font-size:24px;">أعمال ميوزتك التجارية</h1>
-<p style="margin:2px; font-size:11px;">MUSTECH TRADING - الرقم الضريبي: 130009077201</p>
-<p style="margin:2px; font-size:11px;">هاتف: 0917029008 - 0912949561</p>
-</div>
-<div style="text-align:left;">
-<h3 style="margin:0;">INVOICE</h3>
-<p id="invDateDisplay" style="font-size:11px;"></p>
-</div>
-</div>
-<div id="invTag" class="normal-badge">فاتورة مبيعات</div>
-<div style="margin:15px 0; font-size:13px;">
-<strong>العميل:</strong> <span id="viewC"></span> | <strong>الهاتف:</strong> <span id="viewP"></span>
-</div>
-<table>
-<thead style="background:var(--brand); color:#fff;">
-<tr><th>#</th><th>البيان</th><th>الكمية</th><th>السعر</th><th>الإجمالي</th></tr>
-</thead>
-<tbody id="viewItems"></tbody>
-</table>
-<div style="display:flex; justify-content:space-between; margin-top:20px; align-items:flex-end;">
-<div id="qrcode"></div>
-<div style="width:200px;" id="viewSummary"></div>
-</div>
-<div style="margin-top:40px; text-align:center; font-size:10px; border-top:1px solid #eee; padding-top:10px;">
-بضاعة لا ترد ولا تستبدل بعد 3 أيام - شكراً لثقتكم بنا
-</div>
-</div>
-<div style="text-align:center; padding:20px;" class="no-print">
-<button class="btn-ok" style="width:150px; margin-bottom:5px;" onclick="processSale()">حفظ وبيع ✅</button>
-<button class="btn-main" style="width:150px; margin-bottom:5px;" onclick="downloadPDF()">تحميل PDF 📥</button>
-<button onclick="invModal.style.display='none'" style="background:#94a3b8; color:#fff; padding:10px; border-radius:10px; border:none; width:150px;">إغلاق</button>
-</div>
-</div>
-<nav id="navBar" style="display:none;">
-<button onclick="nav('posPage', this)" class="active">🏠 البيع</button>
-<button onclick="nav('stockPage', this)">📦 المخزن</button>
-<button onclick="nav('reportsPage', this)">📊 التقارير</button>
-<button onclick="nav('custPage', this)">👥 العملاء</button>
-<button onclick="nav('adminPage', this)">⚙️ الإدارة</button>
-</nav>
-<script>
-// Firebase
-const firebaseConfig = { apiKey:"AIzaSyABUumECfr2cnT0a3Btjf6aNhCwmlW732U", authDomain:"mustech-erp.firebaseapp.com", databaseURL:"https://mustech-erp-default-rtdb.asia-southeast1.firebasedatabase.app", projectId:"mustech-erp", storageBucket:"mustech-erp.firebasestorage.app", messagingSenderId:"961861724364", appId:"1:961861724364:web:a381a37add3569c613ba69" };
-firebase.initializeApp(firebaseConfig);
-const rdb = firebase.database();
+<body class="flex flex-col md:flex-row h-screen overflow-hidden text-slate-800">
 
-let db = { items:[], sales:[], customers:[], settings:{company:"أعمال ميوزتك التجارية", currency:"SDG", note:""}, config:{admin:"7878", staff:"0909"} };
-let userRole=""; 
-let cart=[];
+    <!-- شاشة تسجيل الدخول -->
+    <div id="loginView" class="fixed inset-0 bg-slate-900 flex items-center justify-center z-[3000] p-4">
+        <div class="bg-white p-8 rounded-[2rem] shadow-2xl w-full max-w-sm text-center border-t-8 border-blue-600">
+            <h1 class="text-2xl font-black text-blue-900 mb-2">MUSTECH ERP</h1>
+            <p class="text-xs text-slate-400 mb-8 font-bold">نظام الإدارة المتكامل 2026</p>
+            <input type="password" id="entryPass" placeholder="كلمة المرور" class="w-full border-2 p-4 rounded-2xl mb-4 text-center text-2xl outline-none bg-slate-50 focus:border-blue-600 transition-all">
+            <button onclick="auth()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-bold shadow-lg transition-transform active:scale-95">دخول للنظام</button>
+        </div>
+    </div>
 
-// مزامنة مع Firebase فورياً
-rdb.ref('mustech_cloud_v4').on('value', snap => { 
-  if(snap.val()){ 
-    db = snap.val(); 
-    renderAll(); 
-  } 
-});
+    <!-- القائمة الجانبية -->
+    <aside id="sidebar" class="w-72 bg-slate-900 text-slate-300 flex flex-col shrink-0 shadow-2xl no-print">
+        <div class="p-8 text-center border-b border-slate-800">
+            <div class="w-14 h-14 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-2xl mx-auto mb-3 flex items-center justify-center text-white font-black text-2xl cursor-pointer shadow-lg active:scale-90 transition-transform" onclick="handleLogoClick()">M</div>
+            <h2 class="font-bold text-white text-sm tracking-widest uppercase">Mustech Trading</h2>
+        </div>
+        <nav class="flex-1 px-4 mt-6 space-y-2 overflow-y-auto">
+            <div onclick="switchTab('dashboard', this)" class="sidebar-item p-4 rounded-xl active-tab cursor-pointer flex items-center gap-3"><span>📊</span> لوحة التحكم</div>
+            <div onclick="switchTab('pos', this)" class="sidebar-item p-4 rounded-xl cursor-pointer flex items-center gap-3 text-green-400"><span>🛒</span> نقطة البيع</div>
+            <div onclick="switchTab('stock', this)" class="sidebar-item p-4 rounded-xl cursor-pointer flex items-center gap-3 text-orange-400"><span>📦</span> إدارة المخزن</div>
+            <div onclick="switchTab('debts', this)" class="sidebar-item p-4 rounded-xl cursor-pointer flex items-center gap-3 text-red-400"><span>📓</span> سجل الديون</div>
+            <div onclick="switchTab('reports', this)" class="sidebar-item p-4 rounded-xl cursor-pointer flex items-center gap-3 text-yellow-500"><span>📉</span> السجلات والتقارير</div>
+        </nav>
+    </aside>
 
-function save(){ 
-  rdb.ref('mustech_cloud_v4').set(db); 
-  renderAll(); 
-}
+    <main id="mainContent" class="flex-1 flex flex-col overflow-hidden hidden">
+        <header class="h-16 bg-white border-b flex items-center justify-between px-6 shadow-sm no-print">
+            <button onclick="toggleMenu()" class="md:hidden text-2xl text-slate-600">☰</button>
+            <h2 id="tabTitle" class="font-black text-blue-900">لوحة التحكم</h2>
+            <button onclick="location.reload()" class="bg-red-50 px-4 py-2 rounded-xl text-red-600 text-xs font-black border border-red-100">خروج آمن</button>
+        </header>
 
-// تسجيل الدخول مع الصلاحيات
-function auth(){ 
-  let p = entryPass.value; 
-  if(p === db.config.admin) userRole = "admin"; 
-  else if(p === db.config.staff) userRole = "staff"; 
-  else return alert("خطأ في كلمة المرور!"); 
+        <div class="flex-1 overflow-y-auto p-4 md:p-8">
+            
+            <!-- لوحة التحكم -->
+            <section id="page-dashboard" class="page active grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border-r-[12px] border-blue-600 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-slate-400 font-black mb-1 text-right">إجمالي المبيعات</p>
+                        <p id="stat-sales" class="text-3xl font-black text-slate-800">0 SDG</p>
+                    </div>
+                    <span class="text-4xl">💰</span>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border-r-[12px] border-green-600 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-slate-400 font-black mb-1 text-right">صافي الأرباح</p>
+                        <p id="stat-profit" class="text-3xl font-black text-green-600">0 SDG</p>
+                    </div>
+                    <span class="text-4xl">📈</span>
+                </div>
+            </section>
 
-  loginView.style.display="none"; 
-  appView.style.display="block"; 
-  navBar.style.display="flex"; 
+            <!-- نقطة البيع -->
+            <section id="page-pos" class="page">
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <div class="flex-1 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
+                            <input type="text" id="custName" placeholder="اسم العميل" class="p-4 bg-slate-50 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
+                            <input type="tel" id="custPhone" placeholder="رقم الهاتف" class="p-4 bg-slate-50 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
+                        </div>
+                        <input type="text" id="posSearch" placeholder="🔍 ابحث عن منتج..." class="w-full p-5 rounded-3xl shadow-sm border-none focus:ring-4 focus:ring-blue-100 outline-none font-bold" oninput="renderPosItems()">
+                        <div id="posItemsList" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-[2.5rem] shadow-2xl lg:w-96 h-fit sticky bottom-4 border-t-8 border-blue-900">
+                        <h3 class="font-black text-slate-800 border-b pb-4 mb-4 flex justify-between">السلة <span>🛒</span></h3>
+                        <div id="cartList" class="space-y-3 mb-6 max-h-60 overflow-y-auto pr-2 text-right"></div>
+                        <div class="bg-blue-50 p-4 rounded-2xl mb-4 border border-blue-100">
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <span class="text-sm font-black text-blue-900">تفعيل ضريبة (17%)</span>
+                                <input type="checkbox" id="taxCheck" onchange="updateCartUI()" class="w-6 h-6 rounded-lg accent-blue-600">
+                            </label>
+                        </div>
+                        <div class="space-y-2 border-t pt-4">
+                            <div class="flex justify-between text-slate-400 font-bold text-sm"><span>المجموع:</span><span id="subTotal">0 SDG</span></div>
+                            <div class="flex justify-between text-2xl font-black text-blue-900"><span>الإجمالي:</span><span id="cartTotal">0</span></div>
+                            <button onclick="openInvoice()" class="w-full bg-blue-900 hover:bg-black text-white py-5 rounded-2xl font-black mt-4 shadow-xl transition-all">إصدار الفاتورة ⚡</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  // تقييد الصلاحيات
-  if(userRole === "staff"){
-    document.querySelectorAll("#stockPage .btn-ok").forEach(b=>b.style.display="none");
-    document.querySelectorAll("#adminPage input, #adminPage .btn-ok").forEach(e=>e.disabled=true);
-  }
+            <!-- المخزن -->
+            <section id="page-stock" class="page space-y-4">
+                <div id="adminPanel" class="hidden bg-white p-6 rounded-[2rem] shadow-md border-2 border-dashed border-blue-200 grid grid-cols-2 md:grid-cols-5 gap-3">
+                    <input id="pBrand" placeholder="الماركة" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
+                    <input id="pModel" placeholder="الموديل" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
+                    <input id="pPrice" type="number" placeholder="سعر البيع" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
+                    <input id="pCost" type="number" placeholder="التكلفة" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
+                    <input id="pQty" type="number" placeholder="الكمية" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
+                    <button onclick="addNewProduct()" class="bg-blue-600 text-white p-3 rounded-xl font-black md:col-span-5 hover:bg-blue-700 transition-colors">إضافة صنف جديد للمخزن +</button>
+                </div>
+                <div class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-slate-100">
+                    <table class="w-full text-right">
+                        <thead class="bg-slate-50 text-slate-400 text-xs font-black tracking-widest uppercase">
+                            <tr><th class="p-5">المنتج</th><th class="p-5 text-center">السعر</th><th class="p-5 text-center">المخزون</th><th class="p-5 text-center">الإجراء</th></tr>
+                        </thead>
+                        <tbody id="stockTable" class="text-sm font-bold"></tbody>
+                    </table>
+                </div>
+            </section>
 
-  renderAll(); 
-}
+            <!-- سجل الديون -->
+            <section id="page-debts" class="page space-y-4">
+                <div class="bg-white p-6 rounded-[2rem] shadow-md border-r-8 border-red-500">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-right">
+                        <input id="debtName" placeholder="اسم العميل" class="border p-4 rounded-xl font-bold bg-slate-50">
+                        <input id="debtAmount" type="number" placeholder="المبلغ المستحق" class="border p-4 rounded-xl font-bold bg-slate-50">
+                        <input id="debtNote" placeholder="ملاحظات" class="border p-4 rounded-xl font-bold bg-slate-50">
+                        <button onclick="addDebt()" class="bg-red-600 text-white p-4 rounded-xl font-black hover:bg-red-700">تسجيل مديونية +</button>
+                    </div>
+                </div>
+                <div id="debtsList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+            </section>
 
-function nav(id, btn){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active'); 
-  btn.classList.add('active'); 
-}
+            <!-- السجلات -->
+            <section id="page-reports" class="page space-y-4">
+                <div id="reportLock" class="bg-white p-12 rounded-[3rem] shadow-2xl text-center max-w-md mx-auto mt-10 border-b-8 border-yellow-500">
+                    <span class="text-6xl block mb-6">🔐</span>
+                    <h3 class="font-black text-xl mb-2 text-slate-800">سجل العمليات الآمن</h3>
+                    <p class="text-slate-400 text-sm mb-6">يرجى إدخال رمز الوصول للمتابعة</p>
+                    <input type="password" id="reportPass" placeholder="رمز الأمان" class="w-full p-5 border-2 rounded-2xl text-center mb-4 text-2xl outline-none focus:border-yellow-500 bg-slate-50">
+                    <button onclick="unlockReports()" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-black shadow-lg">فتح السجلات</button>
+                </div>
+                <div id="reportArea" class="hidden space-y-4">
+                    <div class="flex gap-4 items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+                        <input type="text" id="searchLog" placeholder="🔍 ابحث في الفواتير..." class="flex-1 p-3 outline-none font-bold" oninput="renderSalesLog()">
+                        <div class="text-xs font-black text-slate-400 px-4 border-r">الفواتير: <span id="logCount" class="text-blue-600">0</span></div>
+                    </div>
+                    <div id="logList" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right"></div>
+                </div>
+            </section>
+        </div>
+    </main>
 
-// التحديثات العامة
-function renderAll(){
-  itemSelect.innerHTML=db.items.map((it,i)=>`<option value="${i}">${it.brand} ${it.name} ${it.spec} (${it.qty})</option>`).join('');
-  updatePriceLabel();
-  renderStock();
-  renderCust();
-  renderSales();
-}
+    <!-- مودال تعديل المنتج -->
+    <div id="editModal" class="modal">
+        <div class="bg-white w-full max-w-md mx-auto rounded-[2rem] p-8 mt-20 text-right shadow-2xl">
+            <h3 class="font-black text-xl mb-6 text-blue-900 border-b pb-4">تعديل بيانات المنتج</h3>
+            <input id="editIdx" type="hidden">
+            <div class="space-y-4">
+                <label class="block text-xs font-black text-slate-400 mr-2">الماركة / الشركة</label>
+                <input id="editBrand" class="w-full border p-4 rounded-2xl font-bold bg-slate-50">
+                <label class="block text-xs font-black text-slate-400 mr-2">الموديل / الاسم</label>
+                <input id="editModel" class="w-full border p-4 rounded-2xl font-bold bg-slate-50">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-black text-slate-400 mr-2">سعر البيع</label>
+                        <input id="editPrice" type="number" class="w-full border p-4 rounded-2xl font-bold bg-slate-50 text-blue-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-slate-400 mr-2">التكلفة</label>
+                        <input id="editCost" type="number" class="w-full border p-4 rounded-2xl font-bold bg-slate-50 text-red-600">
+                    </div>
+                </div>
+                <label class="block text-xs font-black text-slate-400 mr-2">الكمية في المخزن</label>
+                <input id="editQty" type="number" class="w-full border p-4 rounded-2xl font-bold bg-slate-50">
+            </div>
+            <div class="flex gap-3 mt-8">
+                <button onclick="saveProductEdit()" class="flex-1 bg-blue-600 text-white py-4 rounded-xl font-black shadow-lg">حفظ التغييرات</button>
+                <button onclick="editModal.style.display='none'" class="flex-1 bg-slate-100 py-4 rounded-xl font-bold">إلغاء</button>
+            </div>
+        </div>
+    </div>
 
-function updatePriceLabel(){ 
-  if(!db.items[itemSelect.value]) return; 
-  let it=db.items[itemSelect.value]; 
-  let min=it.cost?it.cost*1.45:0; 
-  minPriceLbl.innerText=it.cost?`أدنى سعر: ${Math.ceil(min)}`:""; 
-  sPrice.value=it.price||Math.ceil(min); 
-}
+    <!-- مودال الفاتورة -->
+    <div id="invModal" class="modal no-print">
+        <div class="bg-white w-full max-w-sm mx-auto rounded-[2.5rem] p-8 shadow-2xl overflow-hidden relative" id="printableInvoice">
+            <div class="text-center border-b border-dashed pb-6 mb-6">
+                <h1 class="text-2xl font-black text-blue-900 mb-1">أعمال ميوزتك التجارية</h1>
+                <p class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Mustech Trading Systems</p>
+            </div>
+            <div id="invMeta" class="text-[11px] mb-6 space-y-2 bg-slate-50 p-4 rounded-2xl border border-slate-100 font-bold text-right"></div>
+            <div id="invItems" class="space-y-3 mb-8 text-xs font-bold text-slate-700 text-right"></div>
+            <div class="flex justify-between items-end border-t border-dashed pt-6">
+                <div id="qrcode" class="p-2 border rounded-xl bg-white"></div>
+                <div class="text-left">
+                    <p class="text-[10px] text-slate-400 font-black uppercase">المبلغ الإجمالي</p>
+                    <div id="invSummary" class="text-2xl font-black text-blue-900"></div>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-[9px] text-slate-300 font-bold italic">موثق بنظام MUSTECH السحابي 2026</div>
+        </div>
+        <div class="flex flex-col gap-3 max-w-sm mx-auto mt-6 px-4">
+            <button id="btnFinalize" onclick="finalizeSale()" class="bg-green-600 text-white py-5 rounded-[1.5rem] font-black shadow-xl">تأكيد وحفظ العملية ✅</button>
+            <button id="btnPrintOnly" onclick="window.print()" class="hidden bg-blue-600 text-white py-5 rounded-[1.5rem] font-black shadow-xl">طباعة الفاتورة 🖨️</button>
+            <button onclick="invModal.style.display='none'" class="bg-white/10 text-white py-3 rounded-xl font-bold">إغلاق</button>
+        </div>
+    </div>
 
-// إضافة منتج (مدير فقط)
-function addProduct(){ 
-  if(userRole!=="admin") return alert("🚫 صلاحيات المدير فقط"); 
-  let brand=pBrand.value.trim(), name=pModel.value.trim(), spec=pSpec.value.trim(),
-      cost=+pCost.value, price=+pPrice.value, qty=+pQty.value;
-  if(!brand || !name || !spec || !cost || !price || !qty) return alert("املأ جميع الحقول!");
-  db.items.push({ brand,name,spec,cost,price,qty });
-  pBrand.value=pModel.value=pSpec.value=pCost.value=pPrice.value=pQty.value="";
-  save(); 
-}
+    <script>
+        const firebaseConfig = { 
+            apiKey:"AIzaSyABUumECfr2cnT0a3Btjf6aNhCwmlW732U", 
+            authDomain:"mustech-erp.firebaseapp.com", 
+            databaseURL:"https://mustech-erp-default-rtdb.asia-southeast1.firebasedatabase.app", 
+            projectId:"mustech-erp", 
+            storageBucket:"mustech-erp.firebasestorage.app", 
+            messagingSenderId:"961861724364", 
+            appId:"1:961861724364:web:a381a37add3569c613ba69" 
+        };
+        firebase.initializeApp(firebaseConfig);
+        const rdb = firebase.database();
 
-// عرض المخزن
-function renderStock(){
-  stockBody.innerHTML=db.items.map(it=>`<tr class="${it.qty<3?'low-stock':''}">
-  <td>${it.brand}</td><td>${it.name}</td><td>${it.spec}</td><td>${it.cost}</td><td>${it.price}</td><td>${it.qty}</td>
-  ${userRole==="admin"?`<td><button onclick="editItem(${db.items.indexOf(it)})">✏️ تعديل</button></td>`:""}
-  </tr>`).join('');
-}
+        let db = { items:[], sales:[], debts:[], config:{admin:"7878", staff:"0909", mPass:"9999", reportLock: "1988"} };
+        let cart = [];
+        let currentUserRole = "";
 
-// عرض العملاء
-function renderCust(){
-  custBody.innerHTML=db.customers.map(c=>`<tr>
-  <td>${c.name}</td><td>${c.phone}</td><td>${c.balance||0}</td>
-  ${userRole==="admin"?`<td><button onclick="editCustomer(${db.customers.indexOf(c)})">✏️ تعديل</button></td>`:""}
-  </tr>`).join('');
-}
+        rdb.ref('mustech_cloud_v4').on('value', snap => {
+            const data = snap.val();
+            if(data) {
+                db.items = data.items || [];
+                db.sales = data.sales || [];
+                db.debts = data.debts || [];
+                db.config = data.config || db.config;
+                updateAllUI();
+            }
+        });
 
-// عرض المبيعات
-function renderSales(){
-  salesBody.innerHTML=db.sales.map(s=>`<tr>
-  <td>${new Date(s.date).toLocaleString()}</td><td>${s.total}</td><td>${s.tax||0}</td><td>${s.paid||s.total}</td>
-  </tr>`).join('');
-}
+        function save() { rdb.ref('mustech_cloud_v4').set(db); }
 
-// سلة البيع
-function addToCart(){ 
-  let it=db.items[itemSelect.value]; 
-  let p=+sPrice.value; 
-  let q=+sQty.value; 
-  if(it.cost && p<it.cost*1.45) return alert("السعر أقل من الربح المسموح!"); 
-  if(q>it.qty) return alert("الكمية غير كافية!"); 
-  if(it.qty<3) alert(`⚠️ كمية المنتج "${it.name}" منخفضة!`); 
-  cart.push({...it, selP:p, selQ:q, idx:itemSelect.value}); 
-  renderCart(); 
-}
+        function auth() {
+            const pass = document.getElementById('entryPass').value;
+            if(pass === db.config.admin || pass === db.config.staff) {
+                currentUserRole = (pass === db.config.admin) ? "admin" : "staff";
+                document.getElementById('loginView').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                if(currentUserRole === "admin") document.getElementById('adminPanel').classList.remove('hidden');
+            } else alert("عذراً، كلمة المرور غير صحيحة!");
+        }
 
-function renderCart(){ 
-  let h='', sub=0; 
-  cart.forEach((c,i)=>{ h+=`<tr><td>${c.brand} ${c.name} ${c.spec}</td><td>${c.selP}</td><td>${c.selQ}</td><td onclick="cart.splice(${i},1);renderCart()">❌</td></tr>`; sub+=c.selP*c.selQ; }); 
-  document.querySelector('#cartTbl tbody').innerHTML=h; 
-  let total=taxToggle.checked?sub*1.17:sub; 
-  cartTotalDisplay.innerText=Math.ceil(total)+" "+db.settings.currency; 
-}
+        function switchTab(id, btn) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + id).classList.add('active');
+            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active-tab'));
+            btn.classList.add('active-tab');
+            document.getElementById('tabTitle').innerText = btn.innerText.replace(/[📊🛒📦📉📓]/g, '').trim();
 
-// معاينة الفاتورة
-function openPreview(){
-  if(!cart.length) return alert("السلة فارغة!");
-  let sub=cart.reduce((a,b)=>a+b.selP*b.selQ,0);
-  let taxVal=taxToggle.checked?sub*0.17:0;
-  let total=sub+taxVal;
-  viewC.innerText=cName.value||"عميل نقدي";
-  viewP.innerText=cPhone.value||"---";
-  invDateDisplay.innerText=new Date().toLocaleString();
-  invTag.className=taxToggle.checked?"tax-badge":"normal-badge";
-  invTag.innerText=taxToggle.checked?"فاتورة ضريبية":"فاتورة مبيعات";
-  viewItems.innerHTML=cart.map((c,i)=>`<tr><td>${i+1}</td><td>${c.brand} ${c.name} ${c.spec}</td><td>${c.selQ}</td><td>${c.selP}</td><td>${c.selP*c.selQ}</td></tr>`).join('');
+            if(id === 'reports' && currentUserRole === 'admin') {
+                document.getElementById('reportLock').classList.add('hidden');
+                document.getElementById('reportArea').classList.remove('hidden');
+            }
+            if(window.innerWidth < 768) toggleMenu();
+        }
 
-  viewSummary.innerHTML = `<table style="width:100%; font-size:12px;">
-  <tr><td>المجموع:</td><td style="text-align:left;">${sub}</td></tr>
-  ${taxToggle.checked?`<tr><td>الضريبة 17%:</td><td style="text-align:left;">${Math.ceil(taxVal)}</td></tr>`:""}
-  <tr style="font-weight:bold; color:var(--brand); font-size:14px; border-top:1px solid #000;">
-  <td>الإجمالي:</td><td style="text-align:left;">${Math.ceil(total)} ${db.settings.currency}</td></tr>
-  </table>`;
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
 
-  qrcode.innerHTML = "";
-  new QRCode(qrcode, { text: "MUSTECH-" + Math.ceil(total), width: 70, height: 70 });
+        function updateAllUI() {
+            renderDashboard();
+            renderStock();
+            renderPosItems();
+            renderSalesLog();
+            renderDebts();
+        }
 
-  invModal.style.display = "block";
-}
+        function renderDashboard() {
+            const total = db.sales.reduce((a, b) => a + (Number(b.total) || 0), 0);
+            const profit = db.sales.reduce((a, b) => a + (Number(b.profit) || 0), 0);
+            document.getElementById('stat-sales').innerText = total.toLocaleString() + " SDG";
+            document.getElementById('stat-profit').innerText = profit.toLocaleString() + " SDG";
+        }
 
-// حفظ وبيع الفاتورة
-function processSale(){
-  if(!cart.length) return alert("السلة فارغة!");
-  let sub = cart.reduce((a,b)=>a+b.selP*b.selQ,0);
-  let taxVal = taxToggle.checked? sub*0.17 : 0;
-  let total = sub + taxVal;
-  let paid = paidAmt.value === "" ? total : parseFloat(paidAmt.value);
+        function renderStock() {
+            document.getElementById('stockTable').innerHTML = db.items.map((it, i) => `
+                <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                    <td class="p-5 font-black text-slate-700">${it.brand} ${it.name}</td>
+                    <td class="p-5 text-center text-blue-600 font-black">${it.price.toLocaleString()}</td>
+                    <td class="p-5 text-center ${it.qty < 5 ? 'text-red-500 animate-pulse' : 'text-slate-800'}">${it.qty}</td>
+                    <td class="p-5 text-center">${currentUserRole === 'admin' ? `<button onclick="editItem(${i})" class="bg-blue-50 px-4 py-2 rounded-xl text-blue-600 text-xs font-black">تعديل</button>` : '---'}</td>
+                </tr>
+            `).join('');
+        }
 
-  cart.forEach(c => { db.items[c.idx].qty -= c.selQ; });
+        function editItem(i) {
+            const it = db.items[i];
+            document.getElementById('editIdx').value = i;
+            document.getElementById('editBrand').value = it.brand;
+            document.getElementById('editModel').value = it.name;
+            document.getElementById('editPrice').value = it.price;
+            document.getElementById('editCost').value = it.cost;
+            document.getElementById('editQty').value = it.qty;
+            document.getElementById('editModal').style.display = 'block';
+        }
 
-  if(cName.value && paid < total){
-    if(!db.customers) db.customers=[];
-    let existing = db.customers.find(cust => cust.phone === cPhone.value);
-    let debt = total - paid;
-    if(existing){ existing.balance += debt; }
-    else{ db.customers.push({ name: cName.value, phone: cPhone.value, balance: debt }); }
-  }
+        function saveProductEdit() {
+            const i = document.getElementById('editIdx').value;
+            db.items[i] = {
+                brand: document.getElementById('editBrand').value,
+                name: document.getElementById('editModel').value,
+                price: +document.getElementById('editPrice').value,
+                cost: +document.getElementById('editCost').value,
+                qty: +document.getElementById('editQty').value
+            };
+            save();
+            document.getElementById('editModal').style.display = 'none';
+        }
 
-  if(!db.sales) db.sales=[];
-  db.sales.push({ date: Date.now(), total: sub, tax: taxVal, paid: paid });
+        function renderPosItems() {
+            const q = document.getElementById('posSearch').value.toLowerCase();
+            document.getElementById('posItemsList').innerHTML = db.items
+                .filter(it => (it.brand + " " + it.name).toLowerCase().includes(q))
+                .map((it, i) => {
+                    const idx = db.items.indexOf(it);
+                    return `<div onclick="addToCart(${idx})" class="bg-white p-4 rounded-[1.5rem] shadow-sm border border-slate-100 active:scale-95 cursor-pointer text-right">
+                        <p class="text-[9px] text-slate-400 font-black uppercase mb-1">${it.brand}</p>
+                        <p class="font-bold text-slate-700 text-xs h-8 truncate">${it.name}</p>
+                        <p class="text-blue-900 font-black text-sm mt-2">${it.price.toLocaleString()} SDG</p>
+                    </div>`;
+                }).join('');
+        }
 
-  save();
-  alert("تمت العملية بنجاح!");
-  cart = [];
-  invModal.style.display = "none";
-  renderCart();
-  renderCust();
-}
+        function addToCart(idx) {
+            const it = db.items[idx];
+            if(it.qty <= 0) return alert("الكمية غير كافية!");
+            const exist = cart.find(c => c.dbIdx === idx);
+            if(exist) exist.q++; else cart.push({...it, q:1, dbIdx: idx});
+            updateCartUI();
+        }
 
-// تحميل PDF للفاتورة
-function downloadPDF(){
-  const opt = {
-    margin: 0,
-    filename: 'Mustech_Invoice.pdf',
-    image: { type:'jpeg', quality:0.98 },
-    html2canvas: { scale:2 },
-    jsPDF: { unit:'mm', format:'a4', orientation:'portrait' }
-  };
-  html2pdf().set(opt).from(document.getElementById('printableInvoice')).save();
-}
+        function updateCartUI() {
+            let sub = cart.reduce((a, b) => a + (b.price * b.q), 0);
+            const isTaxed = document.getElementById('taxCheck').checked;
+            let final = isTaxed ? Math.ceil(sub * 1.17) : sub;
+            document.getElementById('cartList').innerHTML = cart.map((c, i) => `
+                <div class="flex justify-between items-center bg-slate-50 p-3 rounded-2xl text-xs border border-slate-100 mb-2">
+                    <button onclick="cart.splice(${i},1);updateCartUI()" class="text-red-500 bg-white w-6 h-6 rounded-full shadow-sm">✕</button>
+                    <span class="font-bold">${c.name} (x${c.q})</span>
+                </div>
+            `).join('');
+            document.getElementById('subTotal').innerText = sub.toLocaleString() + " SDG";
+            document.getElementById('cartTotal').innerText = final.toLocaleString() + " SDG";
+        }
 
-// حفظ الإعدادات
-function saveSettings(){
-  if(userRole!=="admin") return alert("🚫 صلاحيات المدير فقط"); 
-  db.settings.company = setCompany.value.trim() || db.settings.company;
-  if(setAdminPass.value) db.config.admin = setAdminPass.value.trim();
-  if(setStaffPass.value) db.config.staff = setStaffPass.value.trim();
-  save();
-  alert("تم حفظ الإعدادات وكلمات المرور!");
-}
+        function openInvoice() {
+            if(!cart.length) return alert("السلة فارغة!");
+            const isTaxed = document.getElementById('taxCheck').checked;
+            const sub = cart.reduce((a, b) => a + (b.price * b.q), 0);
+            const final = isTaxed ? Math.ceil(sub * 1.17) : sub;
+            showInvoiceData({
+                id: Date.now(),
+                buyer: document.getElementById('custName').value || "عميل نقدي",
+                phone: document.getElementById('custPhone').value || "---",
+                date: Date.now(),
+                items: cart,
+                total: final
+            });
+            document.getElementById('btnFinalize').classList.remove('hidden');
+            document.getElementById('btnPrintOnly').classList.add('hidden');
+            document.getElementById('invModal').style.display = "block";
+        }
 
-// تعديل المنتجات (مدير فقط)
-function editItem(idx){
-  if(userRole!=="admin") return;
-  let it = db.items[idx];
-  let brand = prompt("الماركة:", it.brand);
-  let name = prompt("المنتج:", it.name);
-  let spec = prompt("المواصفة:", it.spec);
-  let cost = prompt("سعر التكلفة:", it.cost);
-  let price = prompt("سعر البيع:", it.price);
-  let qty = prompt("الكمية:", it.qty);
-  if(brand && name && spec && cost && price && qty){
-    db.items[idx] = { brand,name,spec,cost:+cost,price:+price,qty:+qty };
-    save();
-  }
-}
+        function showInvoiceData(data) {
+            document.getElementById('invMeta').innerHTML = `
+                <div class="flex justify-between"><span>العميل:</span><span>${data.buyer}</span></div>
+                <div class="flex justify-between"><span>التاريخ:</span><span>${new Date(data.date).toLocaleString('ar-EG')}</span></div>
+                <div class="text-[8px] text-slate-300 mt-2 text-center">MT-REF: ${data.id}</div>
+            `;
+            document.getElementById('invItems').innerHTML = data.items.map(c => `
+                <div class="flex justify-between border-b border-dashed border-slate-100 pb-2">
+                    <span>${c.brand} ${c.name} (x${c.q})</span>
+                    <span class="text-blue-900 font-bold">${(c.price * c.q).toLocaleString()}</span>
+                </div>
+            `).join('');
+            document.getElementById('invSummary').innerText = Number(data.total).toLocaleString() + " SDG";
+            document.getElementById('qrcode').innerHTML = "";
+            new QRCode(document.getElementById('qrcode'), { text: "MT-INV-"+data.id, width: 70, height: 70 });
+        }
 
-// تعديل العملاء (مدير فقط)
-function editCustomer(idx){
-  if(userRole!=="admin") return;
-  let c = db.customers[idx];
-  let name = prompt("الاسم:", c.name);
-  let phone = prompt("الهاتف:", c.phone);
-  let balance = prompt("الرصيد:", c.balance);
-  if(name && phone && balance!=null){
-    db.customers[idx] = { name, phone, balance:+balance };
-    save();
-  }
-}
-</script>
+        function finalizeSale() {
+            const isTaxed = document.getElementById('taxCheck').checked;
+            const sub = cart.reduce((a, b) => a + (b.price * b.q), 0);
+            const cost = cart.reduce((a, b) => a + (b.cost * b.q), 0);
+            const final = isTaxed ? Math.ceil(sub * 1.17) : sub;
+            cart.forEach(c => { if(db.items[c.dbIdx]) db.items[c.dbIdx].qty -= c.q; });
+            db.sales.push({
+                id: Date.now(), date: Date.now(),
+                buyer: document.getElementById('custName').value || "عميل نقدي",
+                phone: document.getElementById('custPhone').value || "---",
+                total: final, profit: sub - cost, items: [...cart]
+            });
+            save();
+            alert("تم الحفظ بنجاح ✅");
+            cart = []; updateCartUI();
+            document.getElementById('custName').value = "";
+            document.getElementById('invModal').style.display = 'none';
+        }
+
+        // منطق الديون
+        function addDebt() {
+            const name = document.getElementById('debtName').value;
+            const amount = +document.getElementById('debtAmount').value;
+            if(name && amount) {
+                db.debts.push({ id: Date.now(), name, amount, note: document.getElementById('debtNote').value, date: Date.now() });
+                save();
+                document.getElementById('debtName').value = ''; document.getElementById('debtAmount').value = '';
+            } else alert("أكمل البيانات!");
+        }
+
+        function renderDebts() {
+            const list = document.getElementById('debtsList');
+            if(!list) return;
+            list.innerHTML = db.debts.map((d, i) => `
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border-r-8 border-red-500 text-right">
+                    <div class="flex justify-between items-start mb-2">
+                        <p class="font-black text-slate-800">${d.name}</p>
+                        <p class="text-red-600 font-black">${d.amount.toLocaleString()} SDG</p>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mb-4">${d.note || 'لا ملاحظات'} | ${new Date(d.date).toLocaleDateString('ar-EG')}</p>
+                    <div class="flex gap-2">
+                        <button onclick="payDebt(${i})" class="flex-1 bg-green-50 text-green-600 py-2 rounded-xl text-xs font-black">تحصيل سداد ✅</button>
+                        <button onclick="if(confirm('حذف؟')){db.debts.splice(${i},1);save()}" class="bg-slate-50 text-slate-300 p-2 rounded-xl">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function payDebt(i) {
+            if(confirm("هل تم سداد المبلغ؟ سيتم تسجيله كعملية بيع.")) {
+                const d = db.debts[i];
+                db.sales.push({
+                    id: Date.now(), date: Date.now(),
+                    buyer: d.name + " (سداد دين)", phone: "---",
+                    total: d.amount, profit: d.amount,
+                    items: [{brand: "سداد", name: "دين سابق", q: 1, price: d.amount}]
+                });
+                db.debts.splice(i, 1);
+                save();
+            }
+        }
+
+        function unlockReports() {
+            const p = document.getElementById('reportPass').value;
+            if(p === db.config.mPass || p === db.config.reportLock) {
+                document.getElementById('reportLock').classList.add('hidden');
+                document.getElementById('reportArea').classList.remove('hidden');
+            } else alert("رمز خطأ!");
+        }
+
+        function renderSalesLog() {
+            const q = document.getElementById('searchLog').value.toLowerCase();
+            const filtered = db.sales.slice().reverse().filter(s => s.buyer.toLowerCase().includes(q));
+            document.getElementById('logCount').innerText = filtered.length;
+            document.getElementById('logList').innerHTML = filtered.map(s => `
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border-r-8 border-yellow-500 mb-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <p class="font-black text-blue-900 text-xl">${s.total.toLocaleString()} SDG</p>
+                        <div>
+                            <p class="font-black text-slate-800">${s.buyer}</p>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase">${new Date(s.date).toLocaleString('ar-EG')}</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="retrieveInvoice(${s.id})" class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl text-xs font-black">📄 معاينة</button>
+                        <button onclick="returnInvoice(${s.id})" class="flex-1 bg-orange-50 text-orange-600 py-3 rounded-xl text-xs font-black">↩️ إرجاع</button>
+                        ${currentUserRole === 'admin' ? `<button onclick="if(confirm('حذف؟')){db.sales=db.sales.filter(x=>x.id!==${s.id});save()}" class="bg-red-50 text-red-500 p-3 rounded-xl">🗑️</button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function retrieveInvoice(saleId) {
+            const sale = db.sales.find(s => s.id === saleId);
+            if(!sale) return;
+            showInvoiceData(sale);
+            document.getElementById('btnFinalize').classList.add('hidden');
+            document.getElementById('btnPrintOnly').classList.remove('hidden');
+            document.getElementById('invModal').style.display = "block";
+        }
+
+        function returnInvoice(saleId) {
+            if(!confirm("إرجاع العملية للمخزن؟")) return;
+            const idx = db.sales.findIndex(s => s.id === saleId);
+            const sale = db.sales[idx];
+            sale.items.forEach(sold => {
+                const stock = db.items.find(it => it.name === sold.name);
+                if(stock) stock.qty += sold.q;
+            });
+            db.sales.splice(idx, 1);
+            save();
+        }
+
+        function addNewProduct() {
+            const brand = document.getElementById('pBrand').value;
+            const name = document.getElementById('pModel').value;
+            const price = +document.getElementById('pPrice').value;
+            const cost = +document.getElementById('pCost').value;
+            const qty = +document.getElementById('pQty').value;
+            if(name && price) {
+                db.items.push({brand, name, price, cost, qty});
+                save();
+                ['pBrand','pModel','pPrice','pCost','pQty'].forEach(id => document.getElementById(id).value = '');
+            }
+        }
+
+        let logoClicks = 0;
+        function handleLogoClick() {
+            logoClicks++;
+            if(logoClicks === 5) {
+                alert("الوضع المتقدم:\nرمز السجلات: " + db.config.reportLock);
+                logoClicks = 0;
+            }
+        }
+    </script>
 </body>
 </html>
