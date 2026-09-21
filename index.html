@@ -1,534 +1,2568 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MUSTECH ERP PRO | 2026</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body { font-family: 'Tajawal', sans-serif; background-color: #f8fafc; }
-        .page { display: none; }
-        .page.active { display: block; animation: fadeIn 0.2s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        #sidebar { transition: transform 0.3s ease; z-index: 50; }
-        @media (max-width: 768px) {
-            #sidebar { position: fixed; transform: translateX(100%); height: 100%; }
-            #sidebar.open { transform: translateX(0); }
-        }
-        .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:2000; padding:15px; overflow-y:auto; backdrop-filter: blur(5px); }
-        .active-tab { background-color: #1e40af !important; color: white !important; box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.3); }
-        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-        .no-print { @media print { display: none; } }
-    </style>
+<title>Motivity | The Power Of Sound</title>
+<meta name="description" content="Motivity Sudan - Professional Audio Systems. سماعات، Line Array، Subwoofers، Amplifiers وأنظمة صوت احترافية.">
+<meta name="theme-color" content="#070707">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --red:#e60012;
+    --red2:#ff1c2e;
+    --dark:#050505;
+    --dark2:#0b0b0d;
+    --dark3:#111114;
+    --card:#121216;
+    --line:rgba(255,255,255,.09);
+    --white:#fff;
+    --muted:#a5a5ad;
+    --gold:#d8b46a;
+    --shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 80% 0%,rgba(230,0,18,.10),transparent 30%),
+        radial-gradient(circle at 0% 60%,rgba(230,0,18,.06),transparent 30%),
+        var(--dark);
+    color:#fff;
+    font-family:"Cairo",sans-serif;
+    overflow-x:hidden;
+}
+
+body.modal-open{
+    overflow:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+/* ================================
+   LOADER
+================================ */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#030303;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .7s,visibility .7s;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-box{
+    text-align:center;
+}
+
+.loader-logo{
+    font-family:Orbitron,sans-serif;
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:5px;
+}
+
+.loader-logo span{
+    color:var(--red);
+}
+
+.loader-line{
+    width:190px;
+    height:2px;
+    background:#222;
+    margin:22px auto;
+    overflow:hidden;
+}
+
+.loader-line div{
+    height:100%;
+    width:40%;
+    background:var(--red);
+    animation:load 1s infinite;
+}
+
+@keyframes load{
+    0%{transform:translateX(-150%)}
+    100%{transform:translateX(350%)}
+}
+
+/* ================================
+   NAVBAR
+================================ */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    background:rgba(5,5,5,.55);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid transparent;
+    transition:.3s;
+}
+
+.navbar.scrolled{
+    background:rgba(5,5,5,.94);
+    border-bottom-color:var(--line);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.brand-mark{
+    width:43px;
+    height:43px;
+    border:2px solid var(--red);
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.brand-mark:before,
+.brand-mark:after{
+    content:"";
+    position:absolute;
+    width:5px;
+    background:var(--red);
+    border-radius:10px;
+}
+
+.brand-mark:before{
+    height:22px;
+    transform:rotate(38deg);
+}
+
+.brand-mark:after{
+    height:30px;
+    transform:rotate(-38deg);
+}
+
+.brand-text{
+    font-family:Orbitron,sans-serif;
+    font-size:19px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.brand-text span{
+    color:var(--red);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav-links a{
+    color:#ccc;
+    font-size:14px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.nav-contact{
+    background:var(--red);
+    padding:11px 19px;
+    border-radius:9px;
+    color:#fff !important;
+    font-weight:800;
+    box-shadow:0 0 25px rgba(230,0,18,.25);
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:130px 7% 80px;
+    overflow:hidden;
+}
+
+.hero-grid{
+    position:absolute;
+    inset:0;
+    opacity:.18;
+    background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.hero-glow{
+    position:absolute;
+    width:600px;
+    height:600px;
+    border-radius:50%;
+    background:var(--red);
+    filter:blur(180px);
+    opacity:.12;
+    left:-200px;
+    top:15%;
+}
+
+.sound-wave{
+    position:absolute;
+    left:5%;
+    right:5%;
+    bottom:9%;
+    height:100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    opacity:.18;
+}
+
+.sound-wave span{
+    width:3px;
+    background:var(--red);
+    border-radius:10px;
+    animation:wave .9s ease-in-out infinite alternate;
+}
+
+@keyframes wave{
+    from{height:10px}
+    to{height:var(--h)}
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:#ddd;
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:25px;
+}
+
+.eyebrow i{
+    width:35px;
+    height:2px;
+    background:var(--red);
+}
+
+.hero h1{
+    font-size:clamp(50px,8vw,105px);
+    line-height:.95;
+    font-weight:900;
+    letter-spacing:-4px;
+}
+
+.hero h1 span{
+    color:var(--red);
+}
+
+.hero h2{
+    margin-top:25px;
+    font-size:clamp(19px,2.5vw,30px);
+    color:#ddd;
+    font-weight:500;
+}
+
+.hero p{
+    margin-top:18px;
+    max-width:650px;
+    color:#999;
+    line-height:2;
+    font-size:15px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:13px;
+    margin-top:34px;
+}
+
+.btn{
+    border:0;
+    cursor:pointer;
+    padding:14px 25px;
+    border-radius:10px;
+    font-weight:800;
+    font-size:14px;
+    transition:.3s;
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+}
+
+.btn-primary{
+    color:#fff;
+    background:var(--red);
+    box-shadow:0 12px 35px rgba(230,0,18,.24);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 45px rgba(230,0,18,.38);
+}
+
+.btn-outline{
+    color:#fff;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.btn-outline:hover{
+    background:#fff;
+    color:#000;
+}
+
+/* floating speaker */
+
+.hero-speaker{
+    position:absolute;
+    left:5%;
+    bottom:12%;
+    width:330px;
+    height:480px;
+    opacity:.85;
+    transform:rotate(-5deg);
+    filter:drop-shadow(0 30px 50px rgba(0,0,0,.7));
+}
+
+.speaker-body{
+    position:absolute;
+    inset:0;
+    border-radius:22px;
+    background:
+        linear-gradient(110deg,#17171a,#050505 50%,#161619);
+    border:1px solid #29292d;
+    box-shadow:
+        inset 0 0 40px rgba(255,255,255,.025),
+        0 30px 70px rgba(0,0,0,.8);
+}
+
+.speaker-front{
+    position:absolute;
+    inset:12px;
+    border-radius:16px;
+    background:
+        radial-gradient(circle at 50% 68%,#222 0 17%,#070707 18% 24%,transparent 25%),
+        radial-gradient(circle at 50% 34%,#222 0 10%,#060606 11% 15%,transparent 16%),
+        repeating-radial-gradient(circle at 50% 68%,#111 0 3px,#090909 4px 5px);
+    border:1px solid #222;
+}
+
+.speaker-logo{
+    position:absolute;
+    top:27px;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:Orbitron,sans-serif;
+    font-weight:900;
+    font-size:18px;
+    letter-spacing:3px;
+}
+
+.speaker-logo span{
+    color:var(--red);
+}
+
+.speaker-led{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--red);
+    box-shadow:0 0 20px var(--red);
+    left:50%;
+    transform:translateX(-50%);
+    top:57px;
+}
+
+/* ================================
+   STATS
+================================ */
+
+.stats{
+    position:relative;
+    z-index:5;
+    margin:-20px 7% 0;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    background:rgba(20,20,23,.75);
+    border:1px solid var(--line);
+    border-radius:18px;
+    backdrop-filter:blur(15px);
+    overflow:hidden;
+}
+
+.stat{
+    padding:25px;
+    text-align:center;
+    border-left:1px solid var(--line);
+}
+
+.stat:last-child{
+    border-left:0;
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+    color:#fff;
+}
+
+.stat span{
+    color:#888;
+    font-size:12px;
+}
+
+/* ================================
+   SECTION
+================================ */
+
+.section{
+    padding:110px 7%;
+    position:relative;
+}
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:30px;
+    margin-bottom:45px;
+}
+
+.section-title{
+    font-size:clamp(30px,4vw,50px);
+    font-weight:900;
+    line-height:1.15;
+}
+
+.section-title span{
+    color:var(--red);
+}
+
+.section-desc{
+    max-width:500px;
+    color:#888;
+    line-height:1.9;
+    font-size:14px;
+}
+
+/* ================================
+   CATEGORIES
+================================ */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.category{
+    position:relative;
+    min-height:190px;
+    padding:25px;
+    border-radius:18px;
+    background:linear-gradient(145deg,#151518,#0c0c0f);
+    border:1px solid var(--line);
+    overflow:hidden;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.category:after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:var(--red);
+    filter:blur(70px);
+    opacity:0;
+    left:-40px;
+    bottom:-50px;
+    transition:.4s;
+}
+
+.category:hover{
+    transform:translateY(-7px);
+    border-color:rgba(230,0,18,.4);
+}
+
+.category:hover:after{
+    opacity:.22;
+}
+
+.category-icon{
+    width:48px;
+    height:48px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    background:rgba(230,0,18,.10);
+    color:var(--red);
+    font-size:22px;
+    margin-bottom:28px;
+}
+
+.category h3{
+    font-size:18px;
+}
+
+.category p{
+    color:#777;
+    font-size:12px;
+    margin-top:6px;
+}
+
+/* ================================
+   PRODUCTS
+================================ */
+
+.product-tools{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:28px;
+}
+
+.search{
+    flex:1;
+    min-width:240px;
+    position:relative;
+}
+
+.search input{
+    width:100%;
+    height:48px;
+    background:#101013;
+    color:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:0 18px;
+    outline:none;
+}
+
+.search input:focus{
+    border-color:var(--red);
+}
+
+.filter-btn{
+    padding:0 18px;
+    height:48px;
+    background:#101013;
+    color:#aaa;
+    border:1px solid var(--line);
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:var(--red);
+    color:#fff;
+    border-color:var(--red);
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.product-card{
+    position:relative;
+    border:1px solid var(--line);
+    background:
+        radial-gradient(circle at 50% 0%,rgba(230,0,18,.08),transparent 45%),
+        #101013;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.product-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(230,0,18,.4);
+    box-shadow:var(--shadow);
+}
+
+.product-image{
+    height:245px;
+    position:relative;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at center,rgba(255,255,255,.06),transparent 55%),
+        linear-gradient(145deg,#151518,#080809);
+}
+
+.product-image img{
+    width:80%;
+    height:90%;
+    object-fit:contain;
+    filter:drop-shadow(0 25px 25px rgba(0,0,0,.7));
+    transition:.5s;
+}
+
+.product-card:hover .product-image img{
+    transform:scale(1.06);
+}
+
+.product-placeholder{
+    width:145px;
+    height:190px;
+    border-radius:13px;
+    background:linear-gradient(135deg,#202024,#070708);
+    border:1px solid #29292e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 25px 40px rgba(0,0,0,.6);
+}
+
+.product-placeholder:before{
+    content:"";
+    width:90px;
+    height:150px;
+    border-radius:10px;
+    background:
+        radial-gradient(circle at 50% 72%,#080808 0 20px,#202024 21px 29px,#080808 30px 40px,transparent 41px),
+        radial-gradient(circle at 50% 31%,#111 0 17px,#222 18px 22px,#080808 23px);
+    border:1px solid #333;
+}
+
+.product-tag{
+    position:absolute;
+    top:13px;
+    right:13px;
+    padding:5px 9px;
+    background:var(--red);
+    border-radius:7px;
+    font-size:10px;
+    font-weight:800;
+}
+
+.product-body{
+    padding:20px;
+}
+
+.product-category{
+    color:var(--red);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.product-name{
+    font-family:Orbitron,"Cairo",sans-serif;
+    font-size:20px;
+    margin-top:8px;
+}
+
+.product-desc{
+    color:#777;
+    font-size:12px;
+    line-height:1.8;
+    margin-top:7px;
+    min-height:42px;
+}
+
+.specs{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin:16px 0;
+}
+
+.spec{
+    padding:5px 8px;
+    background:#19191d;
+    color:#aaa;
+    border-radius:6px;
+    font-size:10px;
+}
+
+.product-actions{
+    display:flex;
+    gap:8px;
+}
+
+.details-btn{
+    flex:1;
+    background:#fff;
+    color:#000;
+    border:0;
+    border-radius:8px;
+    padding:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.contact-product{
+    width:43px;
+    background:var(--red);
+    color:#fff;
+    border:0;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* ================================
+   EXPERIENCE
+================================ */
+
+.experience{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.experience-visual{
+    position:relative;
+    min-height:500px;
+    display:grid;
+    place-items:center;
+}
+
+.big-circle{
+    width:370px;
+    height:370px;
+    border-radius:50%;
+    border:1px solid rgba(230,0,18,.3);
+    position:relative;
+    display:grid;
+    place-items:center;
+}
+
+.big-circle:before,
+.big-circle:after{
+    content:"";
+    position:absolute;
+    border:1px solid rgba(230,0,18,.18);
+    border-radius:50%;
+}
+
+.big-circle:before{
+    inset:30px;
+}
+
+.big-circle:after{
+    inset:65px;
+}
+
+.center-logo{
+    font-family:Orbitron,sans-serif;
+    font-weight:900;
+    font-size:30px;
+    letter-spacing:3px;
+    z-index:2;
+}
+
+.center-logo span{
+    color:var(--red);
+}
+
+.orbit{
+    position:absolute;
+    inset:-30px;
+    border:1px dashed rgba(255,255,255,.1);
+    border-radius:50%;
+    animation:spin 18s linear infinite;
+}
+
+.orbit-dot{
+    position:absolute;
+    top:-5px;
+    left:50%;
+    width:10px;
+    height:10px;
+    background:var(--red);
+    border-radius:50%;
+    box-shadow:0 0 25px var(--red);
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.feature-list{
+    margin-top:35px;
+    display:grid;
+    gap:17px;
+}
+
+.feature{
+    display:flex;
+    gap:15px;
+    align-items:flex-start;
+}
+
+.feature-icon{
+    min-width:40px;
+    height:40px;
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    background:rgba(230,0,18,.10);
+    color:var(--red);
+}
+
+.feature h4{
+    font-size:15px;
+}
+
+.feature p{
+    color:#777;
+    font-size:12px;
+    margin-top:3px;
+    line-height:1.8;
+}
+
+/* ================================
+   APPLICATIONS
+================================ */
+
+.applications{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.application{
+    min-height:220px;
+    border:1px solid var(--line);
+    border-radius:17px;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    background:#0d0d10;
+}
+
+.application-number{
+    position:absolute;
+    top:12px;
+    left:20px;
+    font-family:Orbitron,sans-serif;
+    font-size:42px;
+    font-weight:900;
+    color:rgba(255,255,255,.035);
+}
+
+.application h3{
+    margin-top:80px;
+    font-size:19px;
+}
+
+.application p{
+    color:#777;
+    font-size:12px;
+    line-height:1.9;
+    margin-top:8px;
+}
+
+/* ================================
+   CTA
+================================ */
+
+.cta{
+    margin:20px 7% 100px;
+    min-height:360px;
+    border-radius:28px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    padding:55px 7%;
+    background:
+        radial-gradient(circle at 10% 50%,rgba(230,0,18,.28),transparent 40%),
+        linear-gradient(120deg,#17171b,#09090b);
+    border:1px solid rgba(255,255,255,.09);
+}
+
+.cta:before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:50%;
+    left:-150px;
+}
+
+.cta-content{
+    position:relative;
+    z-index:2;
+}
+
+.cta h2{
+    font-size:clamp(30px,5vw,58px);
+    line-height:1.15;
+}
+
+.cta h2 span{
+    color:var(--red);
+}
+
+.cta p{
+    color:#888;
+    margin-top:15px;
+}
+
+.phone-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:25px;
+}
+
+.phone{
+    padding:12px 17px;
+    background:#111114;
+    border:1px solid var(--line);
+    border-radius:9px;
+    font-family:Orbitron,sans-serif;
+    font-size:12px;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:45px 7% 25px;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:flex-start;
+}
+
+.footer-brand p{
+    color:#666;
+    font-size:12px;
+    margin-top:10px;
+    max-width:400px;
+    line-height:1.8;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+    color:#777;
+    font-size:12px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+.copyright{
+    border-top:1px solid var(--line);
+    margin-top:35px;
+    padding-top:20px;
+    color:#555;
+    font-size:11px;
+    text-align:center;
+}
+
+/* ================================
+   MODAL
+================================ */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(15px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(900px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#111114;
+    border:1px solid var(--line);
+    border-radius:20px;
+    box-shadow:0 40px 100px #000;
+    position:relative;
+}
+
+.modal-close{
+    position:absolute;
+    top:15px;
+    left:15px;
+    z-index:3;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:#080808;
+    color:#fff;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.modal-content{
+    display:grid;
+    grid-template-columns:42% 58%;
+}
+
+.modal-image{
+    min-height:450px;
+    display:grid;
+    place-items:center;
+    background:#09090b;
+    padding:35px;
+}
+
+.modal-image img{
+    max-width:100%;
+    max-height:380px;
+    object-fit:contain;
+}
+
+.modal-info{
+    padding:45px;
+}
+
+.modal-info .product-category{
+    font-size:12px;
+}
+
+.modal-info h2{
+    font-family:Orbitron,sans-serif;
+    font-size:34px;
+    margin:8px 0 15px;
+}
+
+.modal-info>p{
+    color:#888;
+    line-height:1.9;
+    font-size:13px;
+}
+
+.spec-table{
+    width:100%;
+    margin-top:25px;
+    border-collapse:collapse;
+}
+
+.spec-table td{
+    padding:11px 7px;
+    border-bottom:1px solid var(--line);
+    font-size:12px;
+}
+
+.spec-table td:first-child{
+    color:#777;
+}
+
+.spec-table td:last-child{
+    text-align:left;
+    font-family:Orbitron,sans-serif;
+    font-size:11px;
+}
+
+/* ================================
+   FLOATING CONTACT
+================================ */
+
+.floating-contact{
+    position:fixed;
+    bottom:22px;
+    left:22px;
+    z-index:900;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.float-btn{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-size:19px;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    transition:.3s;
+}
+
+.float-btn:hover{
+    transform:scale(1.1);
+}
+
+.float-call{
+    background:var(--red);
+}
+
+.float-whatsapp{
+    background:#16a34a;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media(max-width:1100px){
+
+    .products-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero-speaker{
+        opacity:.22;
+        left:-30px;
+    }
+}
+
+@media(max-width:800px){
+
+    .navbar{
+        height:70px;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        right:0;
+        left:0;
+        padding:20px;
+        background:#090909;
+        border-bottom:1px solid var(--line);
+        flex-direction:column;
+        display:none;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-contact{
+        width:100%;
+        text-align:center;
+    }
+
+    .hero{
+        padding:120px 6% 70px;
+        min-height:850px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero-speaker{
+        width:230px;
+        height:340px;
+        opacity:.15;
+        left:50%;
+        transform:translateX(-50%) rotate(-5deg);
+        bottom:25px;
+    }
+
+    .stats{
+        margin:0 5%;
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat{
+        border-bottom:1px solid var(--line);
+    }
+
+    .stat:nth-child(2){
+        border-left:0;
+    }
+
+    .section{
+        padding:80px 5%;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-desc{
+        margin-top:15px;
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .experience{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .experience-visual{
+        min-height:380px;
+        order:2;
+    }
+
+    .big-circle{
+        width:290px;
+        height:290px;
+    }
+
+    .applications{
+        grid-template-columns:1fr;
+    }
+
+    .cta{
+        margin:10px 5% 70px;
+    }
+
+    .footer-top{
+        flex-direction:column;
+    }
+
+    .modal-content{
+        grid-template-columns:1fr;
+    }
+
+    .modal-image{
+        min-height:270px;
+    }
+
+    .modal-info{
+        padding:30px;
+    }
+}
+
+@media(max-width:500px){
+
+    .brand-text{
+        font-size:15px;
+    }
+
+    .brand-mark{
+        width:37px;
+        height:37px;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .hero h2{
+        font-size:18px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        justify-content:center;
+    }
+
+    .categories{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .category{
+        min-height:160px;
+        padding:18px;
+    }
+
+    .products-grid{
+        grid-template-columns:1fr;
+    }
+
+    .product-image{
+        height:270px;
+    }
+
+    .phone-row{
+        flex-direction:column;
+    }
+
+    .phone{
+        text-align:center;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+    }
+}
+</style>
 </head>
-<body class="flex flex-col md:flex-row h-screen overflow-hidden text-slate-800">
 
-    <!-- شاشة تسجيل الدخول -->
-    <div id="loginView" class="fixed inset-0 bg-slate-900 flex items-center justify-center z-[3000] p-4">
-        <div class="bg-white p-8 rounded-[2rem] shadow-2xl w-full max-w-sm text-center border-t-8 border-blue-600">
-            <h1 class="text-2xl font-black text-blue-900 mb-2">MUSTECH ERP</h1>
-            <p class="text-xs text-slate-400 mb-8 font-bold">نظام الإدارة المتكامل 2026</p>
-            <input type="password" id="entryPass" placeholder="كلمة المرور" class="w-full border-2 p-4 rounded-2xl mb-4 text-center text-2xl outline-none bg-slate-50 focus:border-blue-600 transition-all">
-            <button onclick="auth()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-bold shadow-lg transition-transform active:scale-95">دخول للنظام</button>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+    <div class="loader-box">
+        <div class="loader-logo">MOTI<span>V</span>ITY</div>
+        <div class="loader-line"><div></div></div>
+        <small style="color:#555;letter-spacing:3px">THE POWER OF SOUND</small>
+    </div>
+</div>
+
+<!-- NAV -->
+<header class="navbar" id="navbar">
+
+    <a href="#home" class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-text">MOTI<span>V</span>ITY</div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="#home">الرئيسية</a>
+        <a href="#products">المنتجات</a>
+        <a href="#technology">التقنية</a>
+        <a href="#applications">الاستخدامات</a>
+        <a href="#contact" class="nav-contact">تواصل معنا</a>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            <i></i>
+            PROFESSIONAL AUDIO SYSTEMS
         </div>
+
+        <h1>
+            THE POWER<br>
+            OF <span>SOUND</span>
+        </h1>
+
+        <h2>
+            موتيفيتي — عندما يصبح الصوت تجربة.
+        </h2>
+
+        <p>
+            أنظمة صوت احترافية صُممت لتمنحك القوة، الوضوح،
+            الأداء والثبات في كل مشروع — من القاعات والمسارح
+            إلى الحفلات والتركيبات الثابتة.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#products" class="btn btn-primary">
+                استكشف المنتجات
+                <span>←</span>
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+                تحدث مع فريقنا
+            </a>
+        </div>
+
     </div>
 
-    <!-- القائمة الجانبية -->
-    <aside id="sidebar" class="w-72 bg-slate-900 text-slate-300 flex flex-col shrink-0 shadow-2xl no-print">
-        <div class="p-8 text-center border-b border-slate-800">
-            <div class="w-14 h-14 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-2xl mx-auto mb-3 flex items-center justify-center text-white font-black text-2xl cursor-pointer shadow-lg active:scale-90 transition-transform" onclick="handleLogoClick()">M</div>
-            <h2 class="font-bold text-white text-sm tracking-widest uppercase">Mustech Trading</h2>
-        </div>
-        <nav class="flex-1 px-4 mt-6 space-y-2 overflow-y-auto">
-            <div onclick="switchTab('dashboard', this)" class="sidebar-item p-4 rounded-xl active-tab cursor-pointer flex items-center gap-3"><span>📊</span> لوحة التحكم</div>
-            <div onclick="switchTab('pos', this)" class="sidebar-item p-4 rounded-xl cursor-pointer flex items-center gap-3 text-green-400"><span>🛒</span> نقطة البيع</div>
-            <div onclick="switchTab('stock', this)" class="sidebar-item p-4 rounded-xl cursor-pointer flex items-center gap-3 text-orange-400"><span>📦</span> إدارة المخزن</div>
-            <div onclick="switchTab('debts', this)" class="sidebar-item p-4 rounded-xl cursor-pointer flex items-center gap-3 text-red-400"><span>📓</span> سجل الديون</div>
-            <div onclick="switchTab('reports', this)" class="sidebar-item p-4 rounded-xl cursor-pointer flex items-center gap-3 text-yellow-500"><span>📉</span> السجلات والتقارير</div>
-        </nav>
-    </aside>
-
-    <main id="mainContent" class="flex-1 flex flex-col overflow-hidden hidden">
-        <header class="h-16 bg-white border-b flex items-center justify-between px-6 shadow-sm no-print">
-            <button onclick="toggleMenu()" class="md:hidden text-2xl text-slate-600">☰</button>
-            <h2 id="tabTitle" class="font-black text-blue-900">لوحة التحكم</h2>
-            <button onclick="location.reload()" class="bg-red-50 px-4 py-2 rounded-xl text-red-600 text-xs font-black border border-red-100">خروج آمن</button>
-        </header>
-
-        <div class="flex-1 overflow-y-auto p-4 md:p-8">
-            
-            <!-- لوحة التحكم -->
-            <section id="page-dashboard" class="page active grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border-r-[12px] border-blue-600 flex justify-between items-center">
-                    <div>
-                        <p class="text-xs text-slate-400 font-black mb-1 text-right">إجمالي المبيعات</p>
-                        <p id="stat-sales" class="text-3xl font-black text-slate-800">0 SDG</p>
-                    </div>
-                    <span class="text-4xl">💰</span>
-                </div>
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border-r-[12px] border-green-600 flex justify-between items-center">
-                    <div>
-                        <p class="text-xs text-slate-400 font-black mb-1 text-right">صافي الأرباح</p>
-                        <p id="stat-profit" class="text-3xl font-black text-green-600">0 SDG</p>
-                    </div>
-                    <span class="text-4xl">📈</span>
-                </div>
-            </section>
-
-            <!-- نقطة البيع -->
-            <section id="page-pos" class="page">
-                <div class="flex flex-col lg:flex-row gap-6">
-                    <div class="flex-1 space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
-                            <input type="text" id="custName" placeholder="اسم العميل" class="p-4 bg-slate-50 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
-                            <input type="tel" id="custPhone" placeholder="رقم الهاتف" class="p-4 bg-slate-50 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
-                        </div>
-                        <input type="text" id="posSearch" placeholder="🔍 ابحث عن منتج..." class="w-full p-5 rounded-3xl shadow-sm border-none focus:ring-4 focus:ring-blue-100 outline-none font-bold" oninput="renderPosItems()">
-                        <div id="posItemsList" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
-                    </div>
-                    <div class="bg-white p-6 rounded-[2.5rem] shadow-2xl lg:w-96 h-fit sticky bottom-4 border-t-8 border-blue-900">
-                        <h3 class="font-black text-slate-800 border-b pb-4 mb-4 flex justify-between">السلة <span>🛒</span></h3>
-                        <div id="cartList" class="space-y-3 mb-6 max-h-60 overflow-y-auto pr-2 text-right"></div>
-                        <div class="bg-blue-50 p-4 rounded-2xl mb-4 border border-blue-100">
-                            <label class="flex items-center justify-between cursor-pointer">
-                                <span class="text-sm font-black text-blue-900">تفعيل ضريبة (17%)</span>
-                                <input type="checkbox" id="taxCheck" onchange="updateCartUI()" class="w-6 h-6 rounded-lg accent-blue-600">
-                            </label>
-                        </div>
-                        <div class="space-y-2 border-t pt-4">
-                            <div class="flex justify-between text-slate-400 font-bold text-sm"><span>المجموع:</span><span id="subTotal">0 SDG</span></div>
-                            <div class="flex justify-between text-2xl font-black text-blue-900"><span>الإجمالي:</span><span id="cartTotal">0</span></div>
-                            <button onclick="openInvoice()" class="w-full bg-blue-900 hover:bg-black text-white py-5 rounded-2xl font-black mt-4 shadow-xl transition-all">إصدار الفاتورة ⚡</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- المخزن -->
-            <section id="page-stock" class="page space-y-4">
-                <div id="adminPanel" class="hidden bg-white p-6 rounded-[2rem] shadow-md border-2 border-dashed border-blue-200 grid grid-cols-2 md:grid-cols-5 gap-3">
-                    <input id="pBrand" placeholder="الماركة" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
-                    <input id="pModel" placeholder="الموديل" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
-                    <input id="pPrice" type="number" placeholder="سعر البيع" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
-                    <input id="pCost" type="number" placeholder="التكلفة" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
-                    <input id="pQty" type="number" placeholder="الكمية" class="border p-3 rounded-xl text-sm font-bold bg-slate-50">
-                    <button onclick="addNewProduct()" class="bg-blue-600 text-white p-3 rounded-xl font-black md:col-span-5 hover:bg-blue-700 transition-colors">إضافة صنف جديد للمخزن +</button>
-                </div>
-                <div class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-slate-100">
-                    <table class="w-full text-right">
-                        <thead class="bg-slate-50 text-slate-400 text-xs font-black tracking-widest uppercase">
-                            <tr><th class="p-5">المنتج</th><th class="p-5 text-center">السعر</th><th class="p-5 text-center">المخزون</th><th class="p-5 text-center">الإجراء</th></tr>
-                        </thead>
-                        <tbody id="stockTable" class="text-sm font-bold"></tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- سجل الديون -->
-            <section id="page-debts" class="page space-y-4">
-                <div class="bg-white p-6 rounded-[2rem] shadow-md border-r-8 border-red-500">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-right">
-                        <input id="debtName" placeholder="اسم العميل" class="border p-4 rounded-xl font-bold bg-slate-50">
-                        <input id="debtAmount" type="number" placeholder="المبلغ المستحق" class="border p-4 rounded-xl font-bold bg-slate-50">
-                        <input id="debtNote" placeholder="ملاحظات" class="border p-4 rounded-xl font-bold bg-slate-50">
-                        <button onclick="addDebt()" class="bg-red-600 text-white p-4 rounded-xl font-black hover:bg-red-700">تسجيل مديونية +</button>
-                    </div>
-                </div>
-                <div id="debtsList" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-            </section>
-
-            <!-- السجلات -->
-            <section id="page-reports" class="page space-y-4">
-                <div id="reportLock" class="bg-white p-12 rounded-[3rem] shadow-2xl text-center max-w-md mx-auto mt-10 border-b-8 border-yellow-500">
-                    <span class="text-6xl block mb-6">🔐</span>
-                    <h3 class="font-black text-xl mb-2 text-slate-800">سجل العمليات الآمن</h3>
-                    <p class="text-slate-400 text-sm mb-6">يرجى إدخال رمز الوصول للمتابعة</p>
-                    <input type="password" id="reportPass" placeholder="رمز الأمان" class="w-full p-5 border-2 rounded-2xl text-center mb-4 text-2xl outline-none focus:border-yellow-500 bg-slate-50">
-                    <button onclick="unlockReports()" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-black shadow-lg">فتح السجلات</button>
-                </div>
-                <div id="reportArea" class="hidden space-y-4">
-                    <div class="flex gap-4 items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
-                        <input type="text" id="searchLog" placeholder="🔍 ابحث في الفواتير..." class="flex-1 p-3 outline-none font-bold" oninput="renderSalesLog()">
-                        <div class="text-xs font-black text-slate-400 px-4 border-r">الفواتير: <span id="logCount" class="text-blue-600">0</span></div>
-                    </div>
-                    <div id="logList" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right"></div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- مودال تعديل المنتج -->
-    <div id="editModal" class="modal">
-        <div class="bg-white w-full max-w-md mx-auto rounded-[2rem] p-8 mt-20 text-right shadow-2xl">
-            <h3 class="font-black text-xl mb-6 text-blue-900 border-b pb-4">تعديل بيانات المنتج</h3>
-            <input id="editIdx" type="hidden">
-            <div class="space-y-4">
-                <label class="block text-xs font-black text-slate-400 mr-2">الماركة / الشركة</label>
-                <input id="editBrand" class="w-full border p-4 rounded-2xl font-bold bg-slate-50">
-                <label class="block text-xs font-black text-slate-400 mr-2">الموديل / الاسم</label>
-                <input id="editModel" class="w-full border p-4 rounded-2xl font-bold bg-slate-50">
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-black text-slate-400 mr-2">سعر البيع</label>
-                        <input id="editPrice" type="number" class="w-full border p-4 rounded-2xl font-bold bg-slate-50 text-blue-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-black text-slate-400 mr-2">التكلفة</label>
-                        <input id="editCost" type="number" class="w-full border p-4 rounded-2xl font-bold bg-slate-50 text-red-600">
-                    </div>
-                </div>
-                <label class="block text-xs font-black text-slate-400 mr-2">الكمية في المخزن</label>
-                <input id="editQty" type="number" class="w-full border p-4 rounded-2xl font-bold bg-slate-50">
-            </div>
-            <div class="flex gap-3 mt-8">
-                <button onclick="saveProductEdit()" class="flex-1 bg-blue-600 text-white py-4 rounded-xl font-black shadow-lg">حفظ التغييرات</button>
-                <button onclick="editModal.style.display='none'" class="flex-1 bg-slate-100 py-4 rounded-xl font-bold">إلغاء</button>
-            </div>
-        </div>
+    <div class="hero-speaker">
+        <div class="speaker-body"></div>
+        <div class="speaker-front"></div>
+        <div class="speaker-logo">MOTI<span>V</span>ITY</div>
+        <div class="speaker-led"></div>
     </div>
 
-    <!-- مودال الفاتورة -->
-    <div id="invModal" class="modal no-print">
-        <div class="bg-white w-full max-w-sm mx-auto rounded-[2.5rem] p-8 shadow-2xl overflow-hidden relative" id="printableInvoice">
-            <div class="text-center border-b border-dashed pb-6 mb-6">
-                <h1 class="text-2xl font-black text-blue-900 mb-1">أعمال ميوزتك التجارية</h1>
-                <p class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Mustech Trading Systems</p>
-            </div>
-            <div id="invMeta" class="text-[11px] mb-6 space-y-2 bg-slate-50 p-4 rounded-2xl border border-slate-100 font-bold text-right"></div>
-            <div id="invItems" class="space-y-3 mb-8 text-xs font-bold text-slate-700 text-right"></div>
-            <div class="flex justify-between items-end border-t border-dashed pt-6">
-                <div id="qrcode" class="p-2 border rounded-xl bg-white"></div>
-                <div class="text-left">
-                    <p class="text-[10px] text-slate-400 font-black uppercase">المبلغ الإجمالي</p>
-                    <div id="invSummary" class="text-2xl font-black text-blue-900"></div>
-                </div>
-            </div>
-            <div class="mt-8 text-center text-[9px] text-slate-300 font-bold italic">موثق بنظام MUSTECH السحابي 2026</div>
-        </div>
-        <div class="flex flex-col gap-3 max-w-sm mx-auto mt-6 px-4">
-            <button id="btnFinalize" onclick="finalizeSale()" class="bg-green-600 text-white py-5 rounded-[1.5rem] font-black shadow-xl">تأكيد وحفظ العملية ✅</button>
-            <button id="btnPrintOnly" onclick="window.print()" class="hidden bg-blue-600 text-white py-5 rounded-[1.5rem] font-black shadow-xl">طباعة الفاتورة 🖨️</button>
-            <button onclick="invModal.style.display='none'" class="bg-white/10 text-white py-3 rounded-xl font-bold">إغلاق</button>
-        </div>
+    <div class="sound-wave" id="soundWave"></div>
+
+</section>
+
+<!-- STATS -->
+<div class="stats">
+
+    <div class="stat">
+        <strong>20+</strong>
+        <span>Years Experience</span>
     </div>
 
-    <script>
-        const firebaseConfig = { 
-            apiKey:"AIzaSyABUumECfr2cnT0a3Btjf6aNhCwmlW732U", 
-            authDomain:"mustech-erp.firebaseapp.com", 
-            databaseURL:"https://mustech-erp-default-rtdb.asia-southeast1.firebasedatabase.app", 
-            projectId:"mustech-erp", 
-            storageBucket:"mustech-erp.firebasestorage.app", 
-            messagingSenderId:"961861724364", 
-            appId:"1:961861724364:web:a381a37add3569c613ba69" 
-        };
-        firebase.initializeApp(firebaseConfig);
-        const rdb = firebase.database();
+    <div class="stat">
+        <strong>100+</strong>
+        <span>Products</span>
+    </div>
 
-        let db = { items:[], sales:[], debts:[], config:{admin:"7878", staff:"0909", mPass:"9999", reportLock: "1988"} };
-        let cart = [];
-        let currentUserRole = "";
+    <div class="stat">
+        <strong>25+</strong>
+        <span>Team Members</span>
+    </div>
 
-        rdb.ref('mustech_cloud_v4').on('value', snap => {
-            const data = snap.val();
-            if(data) {
-                db.items = data.items || [];
-                db.sales = data.sales || [];
-                db.debts = data.debts || [];
-                db.config = data.config || db.config;
-                updateAllUI();
-            }
+    <div class="stat">
+        <strong>Global</strong>
+        <span>Audio Solutions</span>
+    </div>
+
+</div>
+
+<!-- CATEGORIES -->
+<section class="section">
+
+    <div class="section-head">
+        <div>
+            <div class="eyebrow">
+                <i></i>
+                MOTIVITY COLLECTION
+            </div>
+
+            <h2 class="section-title">
+                منظومة صوتية<br>
+                <span>لكل مشروع.</span>
+            </h2>
+        </div>
+
+        <p class="section-desc">
+            من الأنظمة الصغيرة للتركيبات الثابتة إلى أنظمة Line Array
+            والحفلات الكبيرة. اختر الفئة التي تناسب احتياجك.
+        </p>
+    </div>
+
+    <div class="categories">
+
+        <div class="category" onclick="filterProducts('Active')">
+            <div class="category-icon">◉</div>
+            <h3>Active Speakers</h3>
+            <p>سماعات نشطة جاهزة للأداء</p>
+        </div>
+
+        <div class="category" onclick="filterProducts('Passive')">
+            <div class="category-icon">◈</div>
+            <h3>Passive Speakers</h3>
+            <p>حلول احترافية مع Amplifiers</p>
+        </div>
+
+        <div class="category" onclick="filterProducts('Line Array')">
+            <div class="category-icon">≋</div>
+            <h3>Line Array</h3>
+            <p>تغطية احترافية للمساحات الكبيرة</p>
+        </div>
+
+        <div class="category" onclick="filterProducts('Subwoofer')">
+            <div class="category-icon">●</div>
+            <h3>Subwoofers</h3>
+            <p>عمق وقوة الترددات المنخفضة</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+
+    <div class="section-head">
+
+        <div>
+            <div class="eyebrow">
+                <i></i>
+                OUR PRODUCTS
+            </div>
+
+            <h2 class="section-title">
+                اختر <span>سلاحك الصوتي.</span>
+            </h2>
+        </div>
+
+        <p class="section-desc">
+            مجموعة مختارة من منتجات Motivity الحالية.
+            اضغط على أي منتج لمعرفة المواصفات الأساسية.
+        </p>
+
+    </div>
+
+    <div class="product-tools">
+
+        <div class="search">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="ابحث عن موديل... مثل DB25 أو QX-218"
+            >
+        </div>
+
+        <button class="filter-btn active" data-filter="All">
+            الكل
+        </button>
+
+        <button class="filter-btn" data-filter="Active">
+            Active
+        </button>
+
+        <button class="filter-btn" data-filter="Passive">
+            Passive
+        </button>
+
+        <button class="filter-btn" data-filter="Line Array">
+            Line Array
+        </button>
+
+        <button class="filter-btn" data-filter="Subwoofer">
+            Subwoofer
+        </button>
+
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="section" id="technology">
+
+    <div class="experience">
+
+        <div class="experience-visual">
+
+            <div class="big-circle">
+
+                <div class="orbit">
+                    <div class="orbit-dot"></div>
+                </div>
+
+                <div class="center-logo">
+                    MOTI<span>V</span>ITY
+                </div>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="eyebrow">
+                <i></i>
+                WHY MOTIVITY
+            </div>
+
+            <h2 class="section-title">
+                الصوت ليس مجرد<br>
+                <span>صوت.</span>
+            </h2>
+
+            <p class="section-desc" style="margin-top:20px">
+                Motivity تطور حلولاً صوتية تجمع بين الهندسة،
+                جودة المكونات، التصميم العملي والأداء الاحترافي.
+                الموقع الرسمي يذكر خبرة تتجاوز 20 عاماً وأكثر من
+                100 منتج وحلولاً مستخدمة في أسواق متعددة.
+            </p>
+
+            <div class="feature-list">
+
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <div>
+                        <h4>Professional Engineering</h4>
+                        <p>تصميمات موجهة للأداء الصوتي الاحترافي.</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">◆</div>
+                    <div>
+                        <h4>Quality Components</h4>
+                        <p>اختيار دقيق للمكونات الأساسية للسماعات والأنظمة.</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">∞</div>
+                    <div>
+                        <h4>Complete Solutions</h4>
+                        <p>من السماعة الصغيرة حتى أنظمة Line Array وSubwoofer.</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">+</div>
+                    <div>
+                        <h4>After Sales Support</h4>
+                        <p>خدمات ما بعد البيع وقطع الغيار والدعم الفني.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- APPLICATIONS -->
+<section class="section" id="applications">
+
+    <div class="section-head">
+
+        <div>
+            <div class="eyebrow">
+                <i></i>
+                APPLICATIONS
+            </div>
+
+            <h2 class="section-title">
+                صُممت <span>لتخدمك.</span>
+            </h2>
+        </div>
+
+        <p class="section-desc">
+            اختر النظام المناسب لطبيعة المكان وحجم الجمهور
+            ومستوى الأداء المطلوب.
+        </p>
+
+    </div>
+
+    <div class="applications">
+
+        <div class="application">
+            <div class="application-number">01</div>
+            <h3>Concerts & Events</h3>
+            <p>
+                أنظمة صوت للحفلات والفعاليات والمناسبات
+                التي تحتاج إلى SPL وتغطية واسعة.
+            </p>
+        </div>
+
+        <div class="application">
+            <div class="application-number">02</div>
+            <h3>Auditoriums</h3>
+            <p>
+                حلول للمسارح والقاعات والمدرجات مع خيارات
+                Line Array وSubwoofer.
+            </p>
+        </div>
+
+        <div class="application">
+            <div class="application-number">03</div>
+            <h3>Hotels & Halls</h3>
+            <p>
+                أنظمة للتركيبات الثابتة والقاعات متعددة الاستخدامات.
+            </p>
+        </div>
+
+        <div class="application">
+            <div class="application-number">04</div>
+            <h3>Conference Rooms</h3>
+            <p>
+                سماعات مدمجة مناسبة لقاعات الاجتماعات
+                والمؤتمرات والتركيبات الداخلية.
+            </p>
+        </div>
+
+        <div class="application">
+            <div class="application-number">05</div>
+            <h3>Entertainment</h3>
+            <p>
+                KTV والمطاعم والنوادي والأماكن التي تحتاج
+                إلى صوت قوي وحيوي.
+            </p>
+        </div>
+
+        <div class="application">
+            <div class="application-number">06</div>
+            <h3>Fixed Installation</h3>
+            <p>
+                حلول صوتية مصممة للتركيب الدائم مع
+                مجموعة واسعة من الموديلات.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+
+    <div class="cta-content">
+
+        <div class="eyebrow">
+            <i></i>
+            MOTIVITY SUDAN
+        </div>
+
+        <h2>
+            لديك مشروع؟<br>
+            دعنا نبني <span>الصوت.</span>
+        </h2>
+
+        <p>
+            تواصل معنا للاستفسار عن المنتجات والمواصفات
+            والحلول الصوتية المناسبة لمشروعك.
+        </p>
+
+        <div class="phone-row">
+
+            <a class="phone" href="tel:0917029008">
+                0917029008
+            </a>
+
+            <a class="phone" href="tel:0912153389">
+                0912153389
+            </a>
+
+            <a class="phone" href="tel:0912625037">
+                0912625037
+            </a>
+
+        </div>
+
+        <div class="hero-buttons">
+
+            <a
+                class="btn btn-primary"
+                href="https://wa.me/249917029008"
+                target="_blank"
+            >
+                WhatsApp
+            </a>
+
+            <a
+                class="btn btn-outline"
+                href="https://motivitymiddleeast.com/"
+                target="_blank"
+            >
+                Motivity Middle East
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <div class="brand">
+                <div class="brand-mark"></div>
+                <div class="brand-text">
+                    MOTI<span>V</span>ITY
+                </div>
+            </div>
+
+            <p>
+                Professional Audio Systems.<br>
+                The Power Of Sound.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#products">المنتجات</a>
+            <a href="#technology">التقنية</a>
+            <a href="#contact">تواصل</a>
+            <a
+                href="https://motivitymiddleeast.com/"
+                target="_blank"
+            >
+                الموقع الرسمي
+            </a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Motivity Sudan — All Rights Reserved.
+    </div>
+
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div class="modal" id="productModal">
+
+    <div class="modal-box">
+
+        <button class="modal-close" onclick="closeModal()">×</button>
+
+        <div class="modal-content">
+
+            <div class="modal-image" id="modalImage"></div>
+
+            <div class="modal-info">
+
+                <div class="product-category" id="modalCategory"></div>
+
+                <h2 id="modalName"></h2>
+
+                <p id="modalDescription"></p>
+
+                <table class="spec-table" id="modalSpecs"></table>
+
+                <div class="hero-buttons">
+
+                    <a
+                        class="btn btn-primary"
+                        href="tel:0917029008"
+                    >
+                        اتصل الآن
+                    </a>
+
+                    <a
+                        class="btn btn-outline"
+                        href="https://wa.me/249917029008"
+                        target="_blank"
+                    >
+                        WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FLOATING CONTACT -->
+<div class="floating-contact">
+
+    <a
+        href="https://wa.me/249917029008"
+        target="_blank"
+        class="float-btn float-whatsapp"
+        title="WhatsApp"
+    >
+        ✆
+    </a>
+
+    <a
+        href="tel:0917029008"
+        class="float-btn float-call"
+        title="Call"
+    >
+        ☎
+    </a>
+
+</div>
+
+<script>
+
+/* =========================================
+   PRODUCT DATABASE
+   Based on Motivity Middle East catalogue
+========================================= */
+
+const products = [
+
+    {
+        name:"QX-218",
+        category:"Subwoofer",
+        type:"Passive",
+        desc:"Dual 18-inch subwoofer designed for powerful low-frequency performance.",
+        specs:[
+            ["Rated Power","1400 W"],
+            ["Maximum Power","2800 W"],
+            ["Peak Power","5600 W"],
+            ["Impedance","4 Ω"],
+            ["Sensitivity","104 dB"],
+            ["Max SPL","135 dB"],
+            ["Frequency","35Hz – 300Hz"]
+        ]
+    },
+
+    {
+        name:"DB25-3G",
+        category:"3G Series",
+        type:"Passive",
+        desc:"High-output 3-way professional system for halls, events and fixed installations.",
+        specs:[
+            ["Rated Power","1000 W"],
+            ["Maximum Power","2000 W"],
+            ["Impedance","4 Ω"],
+            ["Sensitivity","100 dB"],
+            ["Max SPL","130 dB"],
+            ["Coverage","100° × 60°"],
+            ["Frequency","45Hz – 18kHz"]
+        ]
+    },
+
+    {
+        name:"DB218-3G",
+        category:"3G Series",
+        type:"Subwoofer",
+        desc:"Dual 18-inch bass reflex system for deep and powerful low frequencies.",
+        specs:[
+            ["Rated Power","1400 W"],
+            ["Maximum Power","2800 W"],
+            ["Impedance","4 Ω"],
+            ["Sensitivity","102 dB"],
+            ["Max SPL","133 dB"],
+            ["Frequency","37Hz – 300Hz"],
+            ["Weight","69.8 kg"]
+        ]
+    },
+
+    {
+        name:"DB15M-3G",
+        category:"Monitor",
+        type:"Passive",
+        desc:"15-inch professional stage monitor designed for demanding applications.",
+        specs:[
+            ["Rated Power","500 W"],
+            ["Maximum Power","1000 W"],
+            ["Impedance","8 Ω"],
+            ["Sensitivity","97 dB"],
+            ["Max SPL","124 dB"],
+            ["Frequency","45Hz – 18kHz"]
+        ]
+    },
+
+    {
+        name:"CS-08",
+        category:"CS Series",
+        type:"Passive",
+        desc:"Compact 8-inch professional speaker suitable for meetings and fixed installation.",
+        specs:[
+            ["Rated Power","150 W"],
+            ["Maximum Power","300 W"],
+            ["Peak Power","600 W"],
+            ["Impedance","8 Ω"],
+            ["Sensitivity","97 dB"],
+            ["Coverage","80° × 80°"],
+            ["Frequency","70Hz – 20kHz"]
+        ]
+    },
+
+    {
+        name:"CS-06",
+        category:"CS Series",
+        type:"Passive",
+        desc:"Compact 6.5-inch speaker for meeting rooms and fixed installations.",
+        specs:[
+            ["Rated Power","100 W"],
+            ["Maximum Power","200 W"],
+            ["Peak Power","400 W"],
+            ["Impedance","8 Ω"],
+            ["Sensitivity","96 dB"],
+            ["Coverage","80° × 80°"],
+            ["Frequency","85Hz – 20kHz"]
+        ]
+    },
+
+    {
+        name:"AT-06",
+        category:"AT Series",
+        type:"Passive",
+        desc:"Compact 2-way 5-inch speaker for distributed and installation applications.",
+        specs:[
+            ["Rated Power","100 W"],
+            ["Maximum Power","200 W"],
+            ["Peak Power","400 W"],
+            ["Impedance","8 Ω"],
+            ["Sensitivity","96 dB"],
+            ["Max SPL","116 dB"],
+            ["Frequency","80Hz – 20kHz"]
+        ]
+    },
+
+    {
+        name:"AT-12",
+        category:"AT Series",
+        type:"Passive",
+        desc:"12-inch professional 2-way speaker with high output capability.",
+        specs:[
+            ["Rated Power","450 W"],
+            ["Maximum Power","900 W"],
+            ["Peak Power","1800 W"],
+            ["Impedance","8 Ω"],
+            ["Sensitivity","97 dB"],
+            ["Max SPL","124 dB"],
+            ["Frequency","58Hz – 20kHz"]
+        ]
+    },
+
+    {
+        name:"M-10",
+        category:"Line Array",
+        type:"Line Array",
+        desc:"Professional line-array element delivering high output and controlled coverage.",
+        specs:[
+            ["Rated Power","700 W"],
+            ["Maximum Power","1400 W"],
+            ["Peak Power","2800 W"],
+            ["Impedance","4 Ω / 16 Ω"],
+            ["Sensitivity","107 dB"],
+            ["Max SPL","135 dB"],
+            ["Frequency","65Hz – 18kHz"]
+        ]
+    },
+
+    {
+        name:"M-12",
+        category:"Line Array",
+        type:"Line Array",
+        desc:"Professional 12-inch multi-way line-array system.",
+        specs:[
+            ["Rated Power","HF 100W / MF 200W / LF 350W"],
+            ["Maximum Power","1000 W"],
+            ["HF Sensitivity","106 dB"],
+            ["MF Sensitivity","101 dB"],
+            ["LF Sensitivity","100 dB"],
+            ["Frequency","80Hz – 18kHz"]
+        ]
+    },
+
+    {
+        name:"M-25",
+        category:"Subwoofer",
+        type:"Subwoofer",
+        desc:"Dual 15-inch band-pass subwoofer for high-output applications.",
+        specs:[
+            ["Rated Power","1000 W"],
+            ["Maximum Power","2000 W"],
+            ["Peak Power","4000 W"],
+            ["Impedance","4 Ω"],
+            ["Sensitivity","102 dB"],
+            ["Max SPL","132 dB"],
+            ["Frequency","30Hz – 200Hz"]
+        ]
+    },
+
+    {
+        name:"QX-115",
+        category:"QX Series",
+        type:"Passive",
+        desc:"15-inch professional 2-way speaker for halls and fixed installations.",
+        specs:[
+            ["Rated Power","450 W"],
+            ["Maximum Power","900 W"],
+            ["Peak Power","1800 W"],
+            ["Impedance","8 Ω"],
+            ["Sensitivity","99 dB"],
+            ["Max SPL","126 dB"],
+            ["Frequency","48Hz – 20kHz"]
+        ]
+    },
+
+    {
+        name:"QX-118",
+        category:"QX Series",
+        type:"Subwoofer",
+        desc:"18-inch professional subwoofer for multi-function halls and entertainment venues.",
+        specs:[
+            ["Rated Power","700 W"],
+            ["Maximum Power","1400 W"],
+            ["Peak Power","2800 W"],
+            ["Impedance","8 Ω"],
+            ["Sensitivity","102 dB"],
+            ["Max SPL","130 dB"],
+            ["Frequency","35Hz – 300Hz"]
+        ]
+    },
+
+    {
+        name:"M-08",
+        category:"Line Array",
+        type:"Line Array",
+        desc:"Compact line-array element for controlled professional coverage.",
+        specs:[
+            ["Rated Power","300 W"],
+            ["Maximum Power","600 W"],
+            ["Peak Power","1200 W"],
+            ["Impedance","4 Ω / 16 Ω"],
+            ["Sensitivity","106 dB"],
+            ["Max SPL","131 dB"],
+            ["Frequency","80Hz – 18.5kHz"]
+        ]
+    },
+
+    {
+        name:"HD315",
+        category:"HD Series",
+        type:"Active",
+        desc:"High-performance active speaker designed for professional sound reinforcement.",
+        specs:[
+            ["System","Active"],
+            ["Woofer","15 inch"],
+            ["Application","Professional Audio"],
+            ["Series","HD"]
+        ]
+    },
+
+    {
+        name:"HD312",
+        category:"HD Series",
+        type:"Active",
+        desc:"12-inch active professional speaker for portable and installed applications.",
+        specs:[
+            ["System","Active"],
+            ["Woofer","12 inch"],
+            ["Application","Professional Audio"],
+            ["Series","HD"]
+        ]
+    },
+
+    {
+        name:"PS Series",
+        category:"PS Series",
+        type:"Active",
+        desc:"Active professional speakers for portable sound reinforcement.",
+        specs:[
+            ["System","Active"],
+            ["Application","Events"],
+            ["Type","Professional Powered Speaker"],
+            ["Series","PS"]
+        ]
+    }
+
+];
+
+
+/* =========================================
+   RENDER PRODUCTS
+========================================= */
+
+const grid = document.getElementById("productsGrid");
+const searchInput = document.getElementById("searchInput");
+
+let currentFilter = "All";
+
+function createPlaceholder(name){
+
+    return `
+        <div class="product-placeholder"
+             title="${name}">
+        </div>
+    `;
+}
+
+function renderProducts(){
+
+    const query = searchInput.value.toLowerCase().trim();
+
+    const filtered = products.filter(product => {
+
+        const matchesFilter =
+            currentFilter === "All" ||
+            product.type === currentFilter;
+
+        const matchesSearch =
+            product.name.toLowerCase().includes(query) ||
+            product.category.toLowerCase().includes(query) ||
+            product.desc.toLowerCase().includes(query);
+
+        return matchesFilter && matchesSearch;
+    });
+
+    grid.innerHTML = "";
+
+    if(!filtered.length){
+
+        grid.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:60px;
+                color:#666;
+                border:1px solid var(--line);
+                border-radius:15px;
+            ">
+                لا توجد منتجات مطابقة للبحث.
+            </div>
+        `;
+
+        return;
+    }
+
+    filtered.forEach((product,index)=>{
+
+        const card = document.createElement("article");
+
+        card.className = "product-card";
+
+        card.innerHTML = `
+
+            <div class="product-image">
+
+                <div class="product-tag">
+                    MOTIVITY
+                </div>
+
+                ${createPlaceholder(product.name)}
+
+            </div>
+
+            <div class="product-body">
+
+                <div class="product-category">
+                    ${product.category}
+                </div>
+
+                <div class="product-name">
+                    ${product.name}
+                </div>
+
+                <div class="product-desc">
+                    ${product.desc}
+                </div>
+
+                <div class="specs">
+
+                    ${product.specs.slice(0,3).map(spec => `
+                        <span class="spec">
+                            ${spec[0]}: ${spec[1]}
+                        </span>
+                    `).join("")}
+
+                </div>
+
+                <div class="product-actions">
+
+                    <button
+                        class="details-btn"
+                        onclick="openModal('${product.name}')"
+                    >
+                        التفاصيل
+                    </button>
+
+                    <a
+                        class="contact-product"
+                        href="https://wa.me/249917029008?text=${encodeURIComponent("أرغب في الاستفسار عن منتج Motivity " + product.name)}"
+                        target="_blank"
+                    >
+                        ↗
+                    </a>
+
+                </div>
+
+            </div>
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+renderProducts();
+
+searchInput.addEventListener("input",renderProducts);
+
+
+/* =========================================
+   FILTERS
+========================================= */
+
+document.querySelectorAll(".filter-btn").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        document.querySelectorAll(".filter-btn")
+            .forEach(btn=>btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        currentFilter = button.dataset.filter;
+
+        renderProducts();
+
+    });
+
+});
+
+function filterProducts(filter){
+
+    currentFilter = filter;
+
+    document.querySelectorAll(".filter-btn")
+        .forEach(btn=>{
+
+            btn.classList.toggle(
+                "active",
+                btn.dataset.filter === filter
+            );
+
         });
 
-        function save() { rdb.ref('mustech_cloud_v4').set(db); }
+    searchInput.value = "";
 
-        function auth() {
-            const pass = document.getElementById('entryPass').value;
-            if(pass === db.config.admin || pass === db.config.staff) {
-                currentUserRole = (pass === db.config.admin) ? "admin" : "staff";
-                document.getElementById('loginView').classList.add('hidden');
-                document.getElementById('mainContent').classList.remove('hidden');
-                if(currentUserRole === "admin") document.getElementById('adminPanel').classList.remove('hidden');
-            } else alert("عذراً، كلمة المرور غير صحيحة!");
-        }
+    renderProducts();
 
-        function switchTab(id, btn) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-' + id).classList.add('active');
-            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active-tab'));
-            btn.classList.add('active-tab');
-            document.getElementById('tabTitle').innerText = btn.innerText.replace(/[📊🛒📦📉📓]/g, '').trim();
+    document.getElementById("products")
+        .scrollIntoView({behavior:"smooth"});
 
-            if(id === 'reports' && currentUserRole === 'admin') {
-                document.getElementById('reportLock').classList.add('hidden');
-                document.getElementById('reportArea').classList.remove('hidden');
-            }
-            if(window.innerWidth < 768) toggleMenu();
-        }
+}
 
-        function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
 
-        function updateAllUI() {
-            renderDashboard();
-            renderStock();
-            renderPosItems();
-            renderSalesLog();
-            renderDebts();
-        }
+/* =========================================
+   MODAL
+========================================= */
 
-        function renderDashboard() {
-            const total = db.sales.reduce((a, b) => a + (Number(b.total) || 0), 0);
-            const profit = db.sales.reduce((a, b) => a + (Number(b.profit) || 0), 0);
-            document.getElementById('stat-sales').innerText = total.toLocaleString() + " SDG";
-            document.getElementById('stat-profit').innerText = profit.toLocaleString() + " SDG";
-        }
+function openModal(name){
 
-        function renderStock() {
-            document.getElementById('stockTable').innerHTML = db.items.map((it, i) => `
-                <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
-                    <td class="p-5 font-black text-slate-700">${it.brand} ${it.name}</td>
-                    <td class="p-5 text-center text-blue-600 font-black">${it.price.toLocaleString()}</td>
-                    <td class="p-5 text-center ${it.qty < 5 ? 'text-red-500 animate-pulse' : 'text-slate-800'}">${it.qty}</td>
-                    <td class="p-5 text-center">${currentUserRole === 'admin' ? `<button onclick="editItem(${i})" class="bg-blue-50 px-4 py-2 rounded-xl text-blue-600 text-xs font-black">تعديل</button>` : '---'}</td>
-                </tr>
-            `).join('');
-        }
+    const product =
+        products.find(item=>item.name === name);
 
-        function editItem(i) {
-            const it = db.items[i];
-            document.getElementById('editIdx').value = i;
-            document.getElementById('editBrand').value = it.brand;
-            document.getElementById('editModel').value = it.name;
-            document.getElementById('editPrice').value = it.price;
-            document.getElementById('editCost').value = it.cost;
-            document.getElementById('editQty').value = it.qty;
-            document.getElementById('editModal').style.display = 'block';
-        }
+    if(!product) return;
 
-        function saveProductEdit() {
-            const i = document.getElementById('editIdx').value;
-            db.items[i] = {
-                brand: document.getElementById('editBrand').value,
-                name: document.getElementById('editModel').value,
-                price: +document.getElementById('editPrice').value,
-                cost: +document.getElementById('editCost').value,
-                qty: +document.getElementById('editQty').value
-            };
-            save();
-            document.getElementById('editModal').style.display = 'none';
-        }
+    document.getElementById("modalCategory")
+        .textContent = product.category;
 
-        function renderPosItems() {
-            const q = document.getElementById('posSearch').value.toLowerCase();
-            document.getElementById('posItemsList').innerHTML = db.items
-                .filter(it => (it.brand + " " + it.name).toLowerCase().includes(q))
-                .map((it, i) => {
-                    const idx = db.items.indexOf(it);
-                    return `<div onclick="addToCart(${idx})" class="bg-white p-4 rounded-[1.5rem] shadow-sm border border-slate-100 active:scale-95 cursor-pointer text-right">
-                        <p class="text-[9px] text-slate-400 font-black uppercase mb-1">${it.brand}</p>
-                        <p class="font-bold text-slate-700 text-xs h-8 truncate">${it.name}</p>
-                        <p class="text-blue-900 font-black text-sm mt-2">${it.price.toLocaleString()} SDG</p>
-                    </div>`;
-                }).join('');
-        }
+    document.getElementById("modalName")
+        .textContent = product.name;
 
-        function addToCart(idx) {
-            const it = db.items[idx];
-            if(it.qty <= 0) return alert("الكمية غير كافية!");
-            const exist = cart.find(c => c.dbIdx === idx);
-            if(exist) exist.q++; else cart.push({...it, q:1, dbIdx: idx});
-            updateCartUI();
-        }
+    document.getElementById("modalDescription")
+        .textContent = product.desc;
 
-        function updateCartUI() {
-            let sub = cart.reduce((a, b) => a + (b.price * b.q), 0);
-            const isTaxed = document.getElementById('taxCheck').checked;
-            let final = isTaxed ? Math.ceil(sub * 1.17) : sub;
-            document.getElementById('cartList').innerHTML = cart.map((c, i) => `
-                <div class="flex justify-between items-center bg-slate-50 p-3 rounded-2xl text-xs border border-slate-100 mb-2">
-                    <button onclick="cart.splice(${i},1);updateCartUI()" class="text-red-500 bg-white w-6 h-6 rounded-full shadow-sm">✕</button>
-                    <span class="font-bold">${c.name} (x${c.q})</span>
-                </div>
-            `).join('');
-            document.getElementById('subTotal').innerText = sub.toLocaleString() + " SDG";
-            document.getElementById('cartTotal').innerText = final.toLocaleString() + " SDG";
-        }
+    document.getElementById("modalImage").innerHTML =
+        createPlaceholder(product.name);
 
-        function openInvoice() {
-            if(!cart.length) return alert("السلة فارغة!");
-            const isTaxed = document.getElementById('taxCheck').checked;
-            const sub = cart.reduce((a, b) => a + (b.price * b.q), 0);
-            const final = isTaxed ? Math.ceil(sub * 1.17) : sub;
-            showInvoiceData({
-                id: Date.now(),
-                buyer: document.getElementById('custName').value || "عميل نقدي",
-                phone: document.getElementById('custPhone').value || "---",
-                date: Date.now(),
-                items: cart,
-                total: final
+    document.getElementById("modalSpecs").innerHTML =
+        product.specs.map(spec=>`
+            <tr>
+                <td>${spec[0]}</td>
+                <td>${spec[1]}</td>
+            </tr>
+        `).join("");
+
+    document.getElementById("productModal")
+        .classList.add("show");
+
+    document.body.classList.add("modal-open");
+
+}
+
+function closeModal(){
+
+    document.getElementById("productModal")
+        .classList.remove("show");
+
+    document.body.classList.remove("modal-open");
+
+}
+
+document.getElementById("productModal")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+        closeModal();
+    }
+
+});
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape"){
+        closeModal();
+    }
+
+});
+
+
+/* =========================================
+   NAV MOBILE
+========================================= */
+
+document.getElementById("menuBtn")
+.addEventListener("click",()=>{
+
+    document.getElementById("navLinks")
+        .classList.toggle("open");
+
+});
+
+document.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        document.getElementById("navLinks")
+            .classList.remove("open");
+
+    });
+
+});
+
+
+/* =========================================
+   NAVBAR SCROLL
+========================================= */
+
+window.addEventListener("scroll",()=>{
+
+    document.getElementById("navbar")
+        .classList.toggle(
+            "scrolled",
+            window.scrollY > 50
+        );
+
+});
+
+
+/* =========================================
+   SOUND WAVE
+========================================= */
+
+const wave =
+    document.getElementById("soundWave");
+
+for(let i=0;i<100;i++){
+
+    const bar = document.createElement("span");
+
+    bar.style.setProperty(
+        "--h",
+        `${10 + Math.random()*90}px`
+    );
+
+    bar.style.animationDelay =
+        `${Math.random()*.8}s`;
+
+    wave.appendChild(bar);
+
+}
+
+
+/* =========================================
+   LOADER
+========================================= */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("loader")
+            .classList.add("hide");
+
+    },700);
+
+});
+
+
+/* =========================================
+   SIMPLE REVEAL ANIMATION
+========================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.style.opacity="1";
+                    entry.target.style.transform="translateY(0)";
+
+                }
+
             });
-            document.getElementById('btnFinalize').classList.remove('hidden');
-            document.getElementById('btnPrintOnly').classList.add('hidden');
-            document.getElementById('invModal').style.display = "block";
-        }
 
-        function showInvoiceData(data) {
-            document.getElementById('invMeta').innerHTML = `
-                <div class="flex justify-between"><span>العميل:</span><span>${data.buyer}</span></div>
-                <div class="flex justify-between"><span>التاريخ:</span><span>${new Date(data.date).toLocaleString('ar-EG')}</span></div>
-                <div class="text-[8px] text-slate-300 mt-2 text-center">MT-REF: ${data.id}</div>
-            `;
-            document.getElementById('invItems').innerHTML = data.items.map(c => `
-                <div class="flex justify-between border-b border-dashed border-slate-100 pb-2">
-                    <span>${c.brand} ${c.name} (x${c.q})</span>
-                    <span class="text-blue-900 font-bold">${(c.price * c.q).toLocaleString()}</span>
-                </div>
-            `).join('');
-            document.getElementById('invSummary').innerText = Number(data.total).toLocaleString() + " SDG";
-            document.getElementById('qrcode').innerHTML = "";
-            new QRCode(document.getElementById('qrcode'), { text: "MT-INV-"+data.id, width: 70, height: 70 });
-        }
+        },
+        {threshold:.08}
+    );
 
-        function finalizeSale() {
-            const isTaxed = document.getElementById('taxCheck').checked;
-            const sub = cart.reduce((a, b) => a + (b.price * b.q), 0);
-            const cost = cart.reduce((a, b) => a + (b.cost * b.q), 0);
-            const final = isTaxed ? Math.ceil(sub * 1.17) : sub;
-            cart.forEach(c => { if(db.items[c.dbIdx]) db.items[c.dbIdx].qty -= c.q; });
-            db.sales.push({
-                id: Date.now(), date: Date.now(),
-                buyer: document.getElementById('custName').value || "عميل نقدي",
-                phone: document.getElementById('custPhone').value || "---",
-                total: final, profit: sub - cost, items: [...cart]
-            });
-            save();
-            alert("تم الحفظ بنجاح ✅");
-            cart = []; updateCartUI();
-            document.getElementById('custName').value = "";
-            document.getElementById('invModal').style.display = 'none';
-        }
+document
+    .querySelectorAll(
+        ".category,.product-card,.application,.feature"
+    )
+    .forEach(el=>{
 
-        // منطق الديون
-        function addDebt() {
-            const name = document.getElementById('debtName').value;
-            const amount = +document.getElementById('debtAmount').value;
-            if(name && amount) {
-                db.debts.push({ id: Date.now(), name, amount, note: document.getElementById('debtNote').value, date: Date.now() });
-                save();
-                document.getElementById('debtName').value = ''; document.getElementById('debtAmount').value = '';
-            } else alert("أكمل البيانات!");
-        }
+        el.style.opacity="0";
+        el.style.transform="translateY(25px)";
+        el.style.transition="opacity .7s,transform .7s";
 
-        function renderDebts() {
-            const list = document.getElementById('debtsList');
-            if(!list) return;
-            list.innerHTML = db.debts.map((d, i) => `
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border-r-8 border-red-500 text-right">
-                    <div class="flex justify-between items-start mb-2">
-                        <p class="font-black text-slate-800">${d.name}</p>
-                        <p class="text-red-600 font-black">${d.amount.toLocaleString()} SDG</p>
-                    </div>
-                    <p class="text-[10px] text-slate-400 mb-4">${d.note || 'لا ملاحظات'} | ${new Date(d.date).toLocaleDateString('ar-EG')}</p>
-                    <div class="flex gap-2">
-                        <button onclick="payDebt(${i})" class="flex-1 bg-green-50 text-green-600 py-2 rounded-xl text-xs font-black">تحصيل سداد ✅</button>
-                        <button onclick="if(confirm('حذف؟')){db.debts.splice(${i},1);save()}" class="bg-slate-50 text-slate-300 p-2 rounded-xl">🗑️</button>
-                    </div>
-                </div>
-            `).join('');
-        }
+        revealObserver.observe(el);
 
-        function payDebt(i) {
-            if(confirm("هل تم سداد المبلغ؟ سيتم تسجيله كعملية بيع.")) {
-                const d = db.debts[i];
-                db.sales.push({
-                    id: Date.now(), date: Date.now(),
-                    buyer: d.name + " (سداد دين)", phone: "---",
-                    total: d.amount, profit: d.amount,
-                    items: [{brand: "سداد", name: "دين سابق", q: 1, price: d.amount}]
-                });
-                db.debts.splice(i, 1);
-                save();
-            }
-        }
+    });
 
-        function unlockReports() {
-            const p = document.getElementById('reportPass').value;
-            if(p === db.config.mPass || p === db.config.reportLock) {
-                document.getElementById('reportLock').classList.add('hidden');
-                document.getElementById('reportArea').classList.remove('hidden');
-            } else alert("رمز خطأ!");
-        }
+</script>
 
-        function renderSalesLog() {
-            const q = document.getElementById('searchLog').value.toLowerCase();
-            const filtered = db.sales.slice().reverse().filter(s => s.buyer.toLowerCase().includes(q));
-            document.getElementById('logCount').innerText = filtered.length;
-            document.getElementById('logList').innerHTML = filtered.map(s => `
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border-r-8 border-yellow-500 mb-4">
-                    <div class="flex justify-between items-center mb-4">
-                        <p class="font-black text-blue-900 text-xl">${s.total.toLocaleString()} SDG</p>
-                        <div>
-                            <p class="font-black text-slate-800">${s.buyer}</p>
-                            <p class="text-[10px] text-slate-400 font-bold uppercase">${new Date(s.date).toLocaleString('ar-EG')}</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="retrieveInvoice(${s.id})" class="flex-1 bg-blue-50 text-blue-600 py-3 rounded-xl text-xs font-black">📄 معاينة</button>
-                        <button onclick="returnInvoice(${s.id})" class="flex-1 bg-orange-50 text-orange-600 py-3 rounded-xl text-xs font-black">↩️ إرجاع</button>
-                        ${currentUserRole === 'admin' ? `<button onclick="if(confirm('حذف؟')){db.sales=db.sales.filter(x=>x.id!==${s.id});save()}" class="bg-red-50 text-red-500 p-3 rounded-xl">🗑️</button>` : ''}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function retrieveInvoice(saleId) {
-            const sale = db.sales.find(s => s.id === saleId);
-            if(!sale) return;
-            showInvoiceData(sale);
-            document.getElementById('btnFinalize').classList.add('hidden');
-            document.getElementById('btnPrintOnly').classList.remove('hidden');
-            document.getElementById('invModal').style.display = "block";
-        }
-
-        function returnInvoice(saleId) {
-            if(!confirm("إرجاع العملية للمخزن؟")) return;
-            const idx = db.sales.findIndex(s => s.id === saleId);
-            const sale = db.sales[idx];
-            sale.items.forEach(sold => {
-                const stock = db.items.find(it => it.name === sold.name);
-                if(stock) stock.qty += sold.q;
-            });
-            db.sales.splice(idx, 1);
-            save();
-        }
-
-        function addNewProduct() {
-            const brand = document.getElementById('pBrand').value;
-            const name = document.getElementById('pModel').value;
-            const price = +document.getElementById('pPrice').value;
-            const cost = +document.getElementById('pCost').value;
-            const qty = +document.getElementById('pQty').value;
-            if(name && price) {
-                db.items.push({brand, name, price, cost, qty});
-                save();
-                ['pBrand','pModel','pPrice','pCost','pQty'].forEach(id => document.getElementById(id).value = '');
-            }
-        }
-
-        let logoClicks = 0;
-        function handleLogoClick() {
-            logoClicks++;
-            if(logoClicks === 5) {
-                alert("الوضع المتقدم:\nرمز السجلات: " + db.config.reportLock);
-                logoClicks = 0;
-            }
-        }
-    </script>
 </body>
 </html>
