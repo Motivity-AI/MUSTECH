@@ -4,52 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOTIVITY | THE POWER OF SOUND</title>
+<title>MOTIVITY | Professional Audio Catalog</title>
 
 <meta name="description"
-      content="MOTIVITY Professional Audio Systems — Digital Product Catalog">
+content="MOTIVITY Professional Audio Catalog — Professional speakers, subwoofers, active systems and installation solutions.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   MOTIVITY DIGITAL PRODUCT CATALOG
-   Independent Presentation Website
-========================================================= */
-
 :root{
-
     --red:#e60012;
-    --red-light:#ff1b32;
-
-    --black:#030303;
-    --black2:#070707;
-    --panel:#0d0d10;
-    --panel2:#111116;
-
-    --white:#f7f7f8;
-    --gray:#a0a0aa;
-    --gray2:#6e6e77;
-
-    --border:rgba(255,255,255,.09);
-
+    --red2:#ff1830;
     --cyan:#38bdf8;
-
-    --radius:24px;
-
-    --shadow:
-        0 30px 80px rgba(0,0,0,.45);
+    --blue:#0ea5e9;
+    --bg:#050609;
+    --bg2:#080a0f;
+    --panel:#0d1017;
+    --panel2:#11151e;
+    --border:rgba(255,255,255,.08);
+    --text:#f5f7fa;
+    --muted:#8d96a6;
+    --green:#22c55e;
+    --gold:#f5b942;
+    --shadow:0 25px 70px rgba(0,0,0,.45);
 }
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -57,126 +43,136 @@ html{
 }
 
 body{
-
     background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(230,0,18,.12),
-            transparent 35%
-        ),
-        #030303;
-
-    color:var(--white);
-
+        radial-gradient(circle at 10% 10%,rgba(230,0,18,.09),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(56,189,248,.06),transparent 30%),
+        var(--bg);
+    color:var(--text);
     font-family:Cairo,Arial,sans-serif;
-
     overflow-x:hidden;
 }
 
-body.english{
-    direction:ltr;
-    font-family:Inter,Arial,sans-serif;
+body.light{
+    --bg:#f5f7fa;
+    --bg2:#ffffff;
+    --panel:#ffffff;
+    --panel2:#f2f4f8;
+    --border:rgba(0,0,0,.09);
+    --text:#111827;
+    --muted:#687386;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
-}
+/* =========================
+   GLOBAL
+========================= */
 
 button,
-input{
-    font-family:inherit;
+input,
+select{
+    font:inherit;
 }
 
 button{
     cursor:pointer;
 }
 
-img{
-    max-width:100%;
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
-/* =========================================================
-   NOISE
-========================================================= */
-
-.noise{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:999;
-
-    opacity:.025;
-
-    background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+.container{
+    width:min(1420px,92%);
+    margin:auto;
 }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+.hidden{
+    display:none!important;
+}
+
+/* =========================
+   NAV
+========================= */
 
 .nav{
-
     position:fixed;
-
     top:0;
     left:0;
     right:0;
-
     height:76px;
+    z-index:1000;
+    background:rgba(5,6,9,.78);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+}
 
-    z-index:100;
-
+.nav-inner{
+    height:100%;
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
-    padding:
-        0 5vw;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.92),
-            rgba(0,0,0,.25),
-            transparent
-        );
-
-    backdrop-filter:blur(12px);
+    gap:25px;
 }
 
-.logo{
-
-    font-size:23px;
-
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
     font-weight:900;
-
-    letter-spacing:.14em;
+    letter-spacing:.5px;
 }
 
-.logo span{
-    color:var(--red);
+.brand-mark{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:
+        linear-gradient(145deg,#ff2038,#b4000e);
+    display:grid;
+    place-items:center;
+    box-shadow:0 10px 30px rgba(230,0,18,.35);
+    position:relative;
+    overflow:hidden;
+}
+
+.brand-mark::after{
+    content:"";
+    width:18px;
+    height:18px;
+    border:3px solid white;
+    border-left-color:transparent;
+    border-radius:50%;
+    transform:rotate(-35deg);
+}
+
+.brand-text{
+    line-height:1;
+}
+
+.brand-text strong{
+    display:block;
+    font-size:19px;
+    letter-spacing:2px;
+}
+
+.brand-text span{
+    display:block;
+    color:var(--muted);
+    font-family:Inter,sans-serif;
+    font-size:9px;
+    letter-spacing:2.5px;
+    margin-top:5px;
 }
 
 .nav-links{
-
     display:flex;
-
-    gap:28px;
-
-    color:#aaa;
-
-    font-size:13px;
+    align-items:center;
+    gap:25px;
 }
 
 .nav-links a{
+    color:var(--muted);
+    font-size:13px;
     transition:.25s;
 }
 
@@ -184,1174 +180,779 @@ img{
     color:#fff;
 }
 
-.nav-right{
-
+.nav-actions{
     display:flex;
-
-    gap:8px;
-
     align-items:center;
+    gap:8px;
 }
 
-.nav-btn{
-
-    border:
-        1px solid var(--border);
-
-    background:
-        rgba(15,15,18,.8);
-
-    color:#ddd;
-
-    padding:
-        9px 14px;
-
-    border-radius:999px;
+.icon-btn{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.03);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    transition:.25s;
 }
 
-/* =========================================================
+.icon-btn:hover{
+    border-color:rgba(230,0,18,.5);
+    background:rgba(230,0,18,.1);
+}
+
+.lang-btn{
+    padding:9px 13px;
+    border-radius:11px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.03);
+    color:#fff;
+}
+
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
-
-    min-height:100vh;
-
+    min-height:760px;
+    padding-top:76px;
     position:relative;
-
-    display:grid;
-
-    place-items:center;
-
+    display:flex;
+    align-items:center;
     overflow:hidden;
-
-    background:
-
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(230,0,18,.16),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 80% 75%,
-            rgba(56,189,248,.06),
-            transparent 25%
-        );
 }
 
-.hero-ring{
-
+.hero::before{
+    content:"";
     position:absolute;
-
-    width:70vw;
-    height:70vw;
-
-    border:
-        1px solid
-        rgba(230,0,18,.10);
-
+    width:750px;
+    height:750px;
     border-radius:50%;
-
-    animation:
-        rotateRing
-        30s
-        linear
-        infinite;
+    background:radial-gradient(circle,rgba(230,0,18,.18),transparent 65%);
+    right:-250px;
+    top:-170px;
 }
 
-.hero-ring.second{
-
-    width:46vw;
-    height:46vw;
-
-    border-color:
-        rgba(255,255,255,.06);
-
-    animation-direction:reverse;
-
-    animation-duration:20s;
+.hero::after{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(56,189,248,.09),transparent 65%);
+    left:-300px;
+    bottom:-200px;
 }
 
-@keyframes rotateRing{
-
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.hero-content{
-
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:60px;
+    align-items:center;
     position:relative;
-
     z-index:2;
+}
 
-    text-align:center;
-
-    padding:
-        100px 20px 50px;
+.hero-copy{
+    max-width:750px;
 }
 
 .eyebrow{
-
-    color:#999;
-
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:7px 13px;
+    border-radius:999px;
+    border:1px solid rgba(230,0,18,.28);
+    background:rgba(230,0,18,.07);
+    color:#ff6b78;
     font-size:11px;
-
-    letter-spacing:.45em;
-
-    margin-bottom:20px;
+    font-weight:800;
+    letter-spacing:1px;
+    margin-bottom:22px;
 }
 
-.hero-title{
+.eyebrow i{
+    width:7px;
+    height:7px;
+    background:var(--red);
+    border-radius:50%;
+    box-shadow:0 0 15px var(--red);
+}
 
-    font-size:
-        clamp(
-            65px,
-            14vw,
-            190px
-        );
-
-    line-height:.82;
-
+.hero h1{
+    font-size:clamp(48px,7vw,92px);
+    line-height:.96;
     font-weight:900;
-
-    letter-spacing:-.07em;
+    letter-spacing:-3px;
+    margin-bottom:25px;
 }
 
-.hero-title span{
+.hero h1 span{
+    display:block;
     color:var(--red);
 }
 
-.hero-subtitle{
-
-    color:#aaa;
-
-    max-width:700px;
-
-    margin:
-        35px auto;
-
-    line-height:2;
-
+.hero-description{
+    color:var(--muted);
     font-size:16px;
+    line-height:2;
+    max-width:680px;
 }
 
 .hero-buttons{
-
     display:flex;
-
-    justify-content:center;
-
+    gap:12px;
+    margin-top:30px;
     flex-wrap:wrap;
-
-    gap:10px;
 }
 
 .btn{
-
     border:0;
-
-    padding:
-        14px 24px;
-
-    border-radius:999px;
-
+    border-radius:13px;
+    padding:13px 21px;
     font-weight:800;
-
+    font-size:13px;
     transition:.25s;
 }
 
-.btn-red{
-
-    background:var(--red);
-
+.btn-primary{
     color:#fff;
-
-    box-shadow:
-        0 0 50px
-        rgba(230,0,18,.18);
+    background:linear-gradient(135deg,var(--red),#a90010);
+    box-shadow:0 12px 35px rgba(230,0,18,.25);
 }
 
-.btn-red:hover{
-
-    background:var(--red-light);
-
-    transform:
-        translateY(-3px);
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 40px rgba(230,0,18,.38);
 }
 
-.btn-dark{
-
-    background:#101014;
-
+.btn-secondary{
     color:#fff;
-
-    border:
-        1px solid
-        var(--border);
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
 }
 
-.btn-dark:hover{
-    border-color:#555;
+.btn-secondary:hover{
+    background:rgba(255,255,255,.08);
 }
 
-.wave{
-
-    position:absolute;
-
-    bottom:0;
-
-    left:0;
-    right:0;
-
-    height:140px;
-
-    display:flex;
-
-    align-items:flex-end;
-
-    justify-content:center;
-
-    gap:5px;
-
-    opacity:.45;
-}
-
-.wave span{
-
-    width:3px;
-
-    height:30px;
-
-    background:
-        linear-gradient(
-            to top,
-            var(--red),
-            transparent
-        );
-
-    animation:
-        soundWave
-        1s
-        ease-in-out
-        infinite alternate;
-}
-
-@keyframes soundWave{
-
-    from{
-        height:15px;
-    }
-
-    to{
-        height:var(--height);
-    }
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-section{
-    padding:
-        110px 5vw;
-}
-
-.section-header{
-
-    display:flex;
-
-    align-items:flex-end;
-
-    justify-content:space-between;
-
-    gap:30px;
-
-    margin-bottom:40px;
-}
-
-.section-header h2{
-
-    font-size:
-        clamp(
-            34px,
-            6vw,
-            75px
-        );
-
-    line-height:.95;
-
-    font-weight:900;
-}
-
-.section-header p{
-
-    max-width:530px;
-
-    color:var(--gray);
-
-    line-height:2;
-
-    font-size:14px;
-}
-
-.red-line{
-
-    width:65px;
-
-    height:4px;
-
-    background:var(--red);
-
-    margin-top:18px;
-}
-
-/* =========================================================
-   PHILOSOPHY
-========================================================= */
-
-.philosophy{
-
-    min-height:65vh;
-
+.hero-showcase{
+    position:relative;
+    min-height:490px;
     display:grid;
-
     place-items:center;
-
-    text-align:center;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(230,0,18,.035),
-            transparent
-        );
 }
 
-.philosophy-inner{
-    max-width:1000px;
-}
-
-.philosophy h2{
-
-    font-size:
-        clamp(
-            42px,
-            8vw,
-            110px
-        );
-
-    line-height:1;
-
-    font-weight:900;
-}
-
-.philosophy h2 span{
-    color:var(--red);
-}
-
-.philosophy p{
-
-    color:#999;
-
-    max-width:720px;
-
-    margin:30px auto;
-
-    line-height:2;
-}
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-.catalog-tools{
-
+.hero-ring{
+    width:min(470px,85vw);
+    height:min(470px,85vw);
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.09);
+    position:relative;
     display:grid;
+    place-items:center;
+    box-shadow:
+        0 0 0 35px rgba(255,255,255,.012),
+        0 0 0 70px rgba(255,255,255,.008);
+}
 
-    grid-template-columns:
-        1fr
-        auto;
+.hero-ring::before{
+    content:"";
+    position:absolute;
+    inset:12%;
+    border-radius:50%;
+    border:1px dashed rgba(56,189,248,.22);
+    animation:spin 22s linear infinite;
+}
 
-    gap:12px;
+.hero-ring::after{
+    content:"";
+    position:absolute;
+    inset:25%;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(230,0,18,.2),transparent 65%);
+    filter:blur(20px);
+}
 
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.sound-wave{
+    position:absolute;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    z-index:3;
+}
+
+.sound-wave span{
+    display:block;
+    width:5px;
+    border-radius:10px;
+    background:linear-gradient(to top,var(--red),var(--cyan));
+    animation:wave 1.1s ease-in-out infinite;
+}
+
+.sound-wave span:nth-child(1){height:35px;animation-delay:.1s}
+.sound-wave span:nth-child(2){height:65px;animation-delay:.2s}
+.sound-wave span:nth-child(3){height:105px;animation-delay:.3s}
+.sound-wave span:nth-child(4){height:145px;animation-delay:.4s}
+.sound-wave span:nth-child(5){height:110px;animation-delay:.5s}
+.sound-wave span:nth-child(6){height:72px;animation-delay:.6s}
+.sound-wave span:nth-child(7){height:42px;animation-delay:.7s}
+
+@keyframes wave{
+    50%{transform:scaleY(.35)}
+}
+
+.floating-tag{
+    position:absolute;
+    padding:10px 15px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:rgba(13,16,23,.8);
+    backdrop-filter:blur(15px);
+    font-size:11px;
+    color:#dce2eb;
+    box-shadow:var(--shadow);
+}
+
+.tag1{top:13%;right:5%}
+.tag2{bottom:15%;left:4%}
+.tag3{bottom:28%;right:0}
+
+.hero-product-name{
+    position:absolute;
+    bottom:3%;
+    text-align:center;
+    z-index:4;
+}
+
+.hero-product-name strong{
+    display:block;
+    font-size:25px;
+    letter-spacing:2px;
+}
+
+.hero-product-name span{
+    color:var(--muted);
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    padding:25px 0 80px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--border);
+    border-radius:22px;
+    overflow:hidden;
+    background:rgba(255,255,255,.018);
+}
+
+.stat{
+    padding:25px;
+    text-align:center;
+    border-left:1px solid var(--border);
+}
+
+.stat:last-child{
+    border-left:0;
+}
+
+.stat strong{
+    display:block;
+    font-family:Inter,sans-serif;
+    font-size:32px;
+    color:#fff;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding:90px 0;
+}
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:30px;
+    margin-bottom:35px;
+}
+
+.section-title small{
+    color:var(--red);
+    font-family:Inter,sans-serif;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.section-title h2{
+    font-size:42px;
+    line-height:1.1;
+    margin-top:7px;
+}
+
+.section-title p{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:10px;
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+}
+
+.category-card{
+    min-height:150px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.01));
+    padding:22px;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.category-card::after{
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:rgba(230,0,18,.08);
+    right:-35px;
+    bottom:-40px;
+}
+
+.category-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(230,0,18,.35);
+}
+
+.category-icon{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    background:rgba(230,0,18,.1);
+    border:1px solid rgba(230,0,18,.15);
+    display:grid;
+    place-items:center;
+    color:#ff5360;
     margin-bottom:18px;
 }
 
-.search{
+.category-card h3{
+    font-size:16px;
+}
 
+.category-card p{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
+}
+
+/* =========================
+   CATALOG TOOLBAR
+========================= */
+
+.catalog-shell{
+    border-top:1px solid var(--border);
+    padding-top:30px;
+}
+
+.toolbar{
+    display:grid;
+    grid-template-columns:1fr auto auto auto;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.search-box{
     position:relative;
 }
 
-.search input{
-
+.search-box input{
     width:100%;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:#0a0a0d;
-
+    height:50px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.035);
     color:#fff;
-
-    padding:
-        15px 18px;
-
-    border-radius:15px;
-
+    padding:0 45px 0 16px;
     outline:none;
 }
 
-.search input:focus{
-    border-color:#555;
+.search-box input:focus{
+    border-color:rgba(230,0,18,.45);
 }
 
-.categories{
-
-    display:flex;
-
-    gap:8px;
-
-    overflow:auto;
-
-    padding-bottom:15px;
-
-    scrollbar-width:none;
+.search-box span{
+    position:absolute;
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+    color:var(--muted);
 }
 
-.category{
-
-    white-space:nowrap;
-
-    background:#0b0b0e;
-
-    color:#999;
-
-    border:
-        1px solid
-        var(--border);
-
-    padding:
-        10px 16px;
-
-    border-radius:999px;
-
-    transition:.25s;
-}
-
-.category:hover,
-.category.active{
-
+.filter{
+    height:50px;
+    min-width:150px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.035);
     color:#fff;
-
-    border-color:
-        var(--red);
-
-    background:
-        rgba(230,0,18,.08);
+    padding:0 15px;
+    outline:none;
 }
 
-/* =========================================================
+.filter option{
+    background:#0b0d12;
+}
+
+.view-toggle{
+    display:flex;
+    gap:5px;
+    padding:5px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.025);
+}
+
+.view-toggle button{
+    width:40px;
+    border:0;
+    border-radius:9px;
+    color:var(--muted);
+    background:transparent;
+}
+
+.view-toggle button.active{
+    background:rgba(230,0,18,.13);
+    color:#fff;
+}
+
+/* =========================
    PRODUCT GRID
-========================================================= */
+========================= */
 
 .product-grid{
-
     display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
 
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
+.product-grid.list{
+    grid-template-columns:1fr;
 }
 
 .product-card{
-
     position:relative;
-
+    border:1px solid var(--border);
+    border-radius:21px;
     overflow:hidden;
-
     background:
-        linear-gradient(
-            145deg,
-            #111115,
-            #08080a
-        );
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        var(--radius);
-
+        linear-gradient(150deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
     transition:.35s;
+    cursor:pointer;
 }
 
 .product-card:hover{
-
-    transform:
-        translateY(-7px);
-
-    border-color:
-        rgba(230,0,18,.55);
-
-    box-shadow:
-        var(--shadow);
+    transform:translateY(-5px);
+    border-color:rgba(230,0,18,.4);
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
 }
 
 .product-image{
-
-    height:350px;
-
-    display:grid;
-
-    place-items:center;
-
+    height:260px;
     position:relative;
-
-    overflow:hidden;
-
+    display:grid;
+    place-items:center;
     background:
-
-        radial-gradient(
-            circle at center,
-            #242428,
-            #09090b 65%
-        );
+        radial-gradient(circle at 50% 45%,rgba(255,255,255,.07),transparent 50%),
+        #080a0f;
+    overflow:hidden;
 }
 
 .product-image img{
-
     width:90%;
     height:90%;
-
     object-fit:contain;
-
-    filter:
-        drop-shadow(
-            0 30px 30px
-            rgba(0,0,0,.7)
-        );
-
-    transition:.5s;
+    transition:.45s;
+    filter:drop-shadow(0 25px 25px rgba(0,0,0,.5));
 }
 
-.product-card:hover
-.product-image img{
-
-    transform:
-        scale(1.07);
+.product-card:hover .product-image img{
+    transform:scale(1.07);
 }
 
-.product-placeholder{
-
-    font-size:45px;
-
-    font-weight:900;
-
-    color:#25252a;
-}
-
-.product-badge{
-
+.product-image.loading::before{
+    content:"";
+    width:70px;
+    height:70px;
+    border:2px solid rgba(255,255,255,.08);
+    border-top-color:var(--red);
+    border-radius:50%;
+    animation:spin 1s linear infinite;
     position:absolute;
+}
 
-    top:15px;
-    right:15px;
-
-    padding:
-        6px 10px;
-
-    border-radius:999px;
-
-    font-size:10px;
-
+.image-fallback{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
     background:
-        rgba(230,0,18,.9);
+        radial-gradient(circle,rgba(230,0,18,.12),transparent 45%);
+}
+
+.fallback-speaker{
+    width:110px;
+    height:150px;
+    border-radius:14px;
+    border:2px solid rgba(255,255,255,.15);
+    background:
+        radial-gradient(circle at 50% 35%,#191d27 0 15px,transparent 16px),
+        radial-gradient(circle at 50% 70%,#161a22 0 39px,transparent 40px),
+        #0b0d12;
+    box-shadow:0 25px 50px rgba(0,0,0,.6);
+    position:relative;
+}
+
+.fallback-speaker::after{
+    content:"MOTIVITY";
+    position:absolute;
+    bottom:13px;
+    left:0;
+    right:0;
+    text-align:center;
+    color:#e8e8e8;
+    font-size:8px;
+    letter-spacing:1px;
+}
+
+.product-type{
+    position:absolute;
+    top:13px;
+    right:13px;
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:9px;
+    font-weight:800;
+    background:rgba(5,6,9,.75);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
+}
+
+.product-type.passive{
+    color:#38bdf8;
+}
+
+.product-type.active{
+    color:#ff6975;
 }
 
 .product-info{
-    padding:20px;
+    padding:18px;
 }
 
 .product-series{
-
     color:var(--red);
-
-    font-size:10px;
-
-    letter-spacing:.14em;
-
+    font-size:9px;
+    font-family:Inter,sans-serif;
+    font-weight:800;
+    letter-spacing:1.4px;
     text-transform:uppercase;
 }
 
 .product-name{
-
-    font-size:27px;
-
-    margin:
-        7px 0;
+    font-size:19px;
+    font-weight:800;
+    margin:4px 0 9px;
 }
 
-.product-description{
-
-    color:#888;
-
-    font-size:12px;
-
-    line-height:1.8;
-
-    min-height:45px;
+.product-summary{
+    color:var(--muted);
+    font-size:10px;
+    min-height:20px;
 }
 
-.mini-specs{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+.product-spec-mini{
+    display:flex;
     gap:6px;
-
-    margin-top:17px;
+    flex-wrap:wrap;
+    margin-top:14px;
 }
 
-.mini-spec{
-
-    background:#09090c;
-
-    border:
-        1px solid
-        var(--border);
-
-    padding:
-        9px 5px;
-
-    border-radius:10px;
-
-    text-align:center;
-
-    font-size:10px;
-
-    color:#777;
+.spec-pill{
+    padding:5px 8px;
+    border-radius:8px;
+    background:rgba(255,255,255,.045);
+    color:#c8cfda;
+    font-family:Inter,sans-serif;
+    font-size:9px;
 }
 
-.mini-spec strong{
-
-    display:block;
-
-    color:#fff;
-
-    font-size:13px;
-}
-
-.product-actions{
-
-    display:flex;
-
-    gap:8px;
-
+.product-open{
     margin-top:15px;
-}
-
-.product-actions button{
-
-    flex:1;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:#111115;
-
-    color:#fff;
-
-    padding:11px;
-
+    width:100%;
+    height:39px;
     border-radius:11px;
-}
-
-.product-actions .view{
-
-    background:#fff;
-
-    color:#000;
-
-    border-color:#fff;
-
-    font-weight:800;
-}
-
-/* =========================================================
-   FEATURE SYSTEM
-========================================================= */
-
-.system{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:40px;
-
-    align-items:center;
-}
-
-.system-visual{
-
-    height:620px;
-
-    border-radius:30px;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(230,0,18,.16),
-            transparent 35%
-        ),
-
-        #0b0b0e;
-
-    display:grid;
-
-    place-items:center;
-
-    overflow:hidden;
-}
-
-.system-visual img{
-
-    width:92%;
-    height:92%;
-
-    object-fit:contain;
-
-    filter:
-        drop-shadow(
-            0 30px 40px
-            rgba(0,0,0,.8)
-        );
-}
-
-.system-info h3{
-
-    font-size:
-        clamp(
-            45px,
-            7vw,
-            90px
-        );
-
-    line-height:.9;
-
-    margin-bottom:25px;
-}
-
-.system-info h3 span{
-    color:var(--red);
-}
-
-.system-info p{
-
-    color:#999;
-
-    line-height:2;
-}
-
-.system-stats{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:8px;
-
-    margin-top:30px;
-}
-
-.system-stat{
-
-    background:#0c0c10;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:14px;
-
-    padding:15px;
-}
-
-.system-stat strong{
-
-    display:block;
-
-    font-size:21px;
-}
-
-.system-stat span{
-
-    color:#777;
-
-    font-size:10px;
-}
-
-/* =========================================================
-   APPLICATIONS
-========================================================= */
-
-.applications{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:12px;
-}
-
-.application{
-
-    min-height:230px;
-
-    padding:25px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #111115,
-            #08080a
-        );
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:flex-end;
-
-    transition:.3s;
-}
-
-.application:hover{
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(230,0,18,.4);
-}
-
-.application-number{
-
-    color:var(--red);
-
-    font-size:11px;
-
-    margin-bottom:auto;
-}
-
-.application h3{
-    font-size:25px;
-}
-
-.application p{
-
-    color:#777;
-
-    font-size:11px;
-
-    line-height:1.7;
-
-    margin-top:7px;
-}
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact{
-
-    text-align:center;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            rgba(230,0,18,.12),
-            transparent 40%
-        );
-
-    border-top:
-        1px solid
-        var(--border);
-
-    border-bottom:
-        1px solid
-        var(--border);
-}
-
-.contact h2{
-
-    font-size:
-        clamp(
-            45px,
-            8vw,
-            105px
-        );
-
-    line-height:.9;
-}
-
-.contact h2 span{
-    color:var(--red);
-}
-
-.contact p{
-
-    color:#888;
-
-    margin:
-        25px auto;
-
-    max-width:600px;
-}
-
-.contact-buttons{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-}
-
-.contact-buttons a{
-
-    padding:
-        13px 22px;
-
-    border-radius:999px;
-
-    background:#fff;
-
-    color:#000;
-
-    font-weight:800;
-}
-
-.contact-buttons a.red{
-
-    background:var(--red);
-
+    border:1px solid var(--border);
     color:#fff;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-
-    padding:
-        40px 5vw;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-    color:#555;
-
+    background:rgba(255,255,255,.025);
     font-size:11px;
+    font-weight:800;
 }
 
-/* =========================================================
+.product-open:hover{
+    background:rgba(230,0,18,.1);
+    border-color:rgba(230,0,18,.35);
+}
+
+/* =========================
+   LIST VIEW
+========================= */
+
+.product-grid.list .product-card{
+    display:grid;
+    grid-template-columns:280px 1fr;
+}
+
+.product-grid.list .product-image{
+    height:230px;
+}
+
+.product-grid.list .product-info{
+    padding:30px;
+}
+
+/* =========================
    MODAL
-========================================================= */
+========================= */
 
 .modal{
-
     position:fixed;
-
     inset:0;
-
-    z-index:200;
-
+    z-index:2000;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(15px);
     display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
 
-    padding:25px;
+.modal.show{
+    display:flex;
+}
 
-    background:
-        rgba(0,0,0,.86);
-
-    backdrop-filter:
-        blur(15px);
-
+.modal-box{
+    width:min(1120px,96vw);
+    max-height:92vh;
     overflow:auto;
+    border:1px solid var(--border);
+    border-radius:27px;
+    background:#090b10;
+    box-shadow:0 40px 100px rgba(0,0,0,.7);
+    position:relative;
 }
 
-.modal.open{
-    display:block;
-}
-
-.modal-window{
-
-    max-width:1250px;
-
-    margin:
-        40px auto;
-
-    background:#0c0c10;
-
-    border:
-        1px solid
-        #29292f;
-
-    border-radius:28px;
-
-    overflow:hidden;
-}
-
-.close{
-
-    position:fixed;
-
-    top:20px;
-    left:20px;
-
-    z-index:210;
-
-    width:45px;
-    height:45px;
-
-    border:
-        1px solid
-        #444;
-
-    border-radius:50%;
-
-    background:#111;
-
+.modal-close{
+    position:absolute;
+    top:15px;
+    left:15px;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:rgba(0,0,0,.55);
     color:#fff;
-
-    font-size:20px;
+    z-index:5;
 }
 
-.modal-product{
-
+.modal-content{
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns:1fr 1fr;
 }
 
 .modal-image{
-
-    min-height:600px;
-
+    min-height:570px;
     display:grid;
-
     place-items:center;
-
     background:
-
-        radial-gradient(
-            circle,
-            #242428,
-            #08080a 65%
-        );
+        radial-gradient(circle at center,rgba(230,0,18,.1),transparent 50%),
+        #06080c;
+    padding:35px;
 }
 
 .modal-image img{
-
-    width:92%;
-    height:92%;
-
+    max-width:100%;
+    max-height:500px;
     object-fit:contain;
-
-    filter:
-        drop-shadow(
-            0 30px 40px
-            #000
-        );
 }
 
 .modal-details{
-    padding:45px;
+    padding:50px 40px;
+}
+
+.modal-details .series{
+    color:var(--red);
+    font-family:Inter,sans-serif;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2px;
 }
 
 .modal-details h2{
-
-    font-size:
-        clamp(
-            40px,
-            6vw,
-            70px
-        );
-
-    line-height:.9;
-
-    margin:
-        8px 0 18px;
+    font-size:42px;
+    margin:7px 0;
 }
 
-.modal-details p{
-
-    color:#999;
-
-    line-height:2;
+.modal-details .type{
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:25px;
 }
 
 .spec-table{
-
-    margin-top:25px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:15px;
-
+    border:1px solid var(--border);
+    border-radius:17px;
     overflow:hidden;
 }
 
 .spec-row{
-
     display:grid;
-
-    grid-template-columns:
-        1fr 1.4fr;
-
-    border-bottom:
-        1px solid
-        var(--border);
+    grid-template-columns:40% 60%;
+    border-bottom:1px solid var(--border);
 }
 
 .spec-row:last-child{
@@ -1359,1597 +960,2121 @@ footer{
 }
 
 .spec-row div{
-
-    padding:
-        12px 14px;
-
-    font-size:11px;
+    padding:11px 13px;
+    font-size:10px;
 }
 
 .spec-row div:first-child{
-
-    color:#777;
-
-    background:#09090c;
+    color:var(--muted);
+    background:rgba(255,255,255,.02);
 }
 
 .spec-row div:last-child{
-    font-weight:700;
+    color:#e5e7eb;
+    font-family:Inter,Cairo,sans-serif;
 }
 
-.modal-actions{
-
-    display:flex;
-
-    gap:8px;
-
-    margin-top:18px;
-}
-
-.modal-actions button,
-.modal-actions a{
-
-    flex:1;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:#111115;
-
-    color:#fff;
-
-    padding:12px;
-
-    border-radius:11px;
-
-    text-align:center;
-}
-
-.modal-actions .red{
-    background:var(--red);
-    border-color:var(--red);
-}
-
-/* =========================================================
-   COMPARISON
-========================================================= */
+/* =========================
+   COMPARE
+========================= */
 
 .compare-bar{
-
     position:fixed;
-
     bottom:20px;
-
     left:50%;
-
-    transform:
-        translate(-50%,150px);
-
-    z-index:150;
-
-    background:#111116;
-
-    border:
-        1px solid
-        #333;
-
+    transform:translateX(-50%) translateY(150%);
+    z-index:1200;
+    width:min(850px,92%);
+    padding:12px;
     border-radius:18px;
-
-    padding:10px;
-
+    border:1px solid rgba(230,0,18,.3);
+    background:rgba(10,12,17,.92);
+    backdrop-filter:blur(20px);
     display:flex;
-
     align-items:center;
-
-    gap:10px;
-
-    box-shadow:
-        0 20px 70px
-        #000;
-
+    justify-content:space-between;
+    gap:15px;
     transition:.35s;
+    box-shadow:var(--shadow);
 }
 
 .compare-bar.show{
-
-    transform:
-        translate(-50%,0);
+    transform:translateX(-50%) translateY(0);
 }
 
 .compare-items{
-
     display:flex;
-
-    gap:5px;
+    gap:7px;
+    overflow:auto;
 }
 
 .compare-item{
-
-    background:#1d1d23;
-
-    border-radius:8px;
-
-    padding:
-        8px 10px;
-
-    font-size:10px;
+    min-width:100px;
+    padding:7px 10px;
+    border-radius:10px;
+    background:rgba(255,255,255,.05);
+    font-size:9px;
 }
 
-.compare-open{
+.compare-actions{
+    display:flex;
+    gap:7px;
+}
 
-    border:0;
-
-    background:#fff;
-
-    color:#000;
-
-    border-radius:9px;
-
-    padding:
-        9px 14px;
-
+.compare-btn{
+    padding:9px 13px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.05);
+    color:#fff;
+    font-size:10px;
     font-weight:800;
 }
 
-.compare-clear{
+/* =========================
+   APPLICATIONS
+========================= */
 
-    border:
-        1px solid
-        #444;
-
-    background:#111;
-
-    color:#fff;
-
-    border-radius:9px;
-
-    padding:
-        7px 10px;
-}
-
-.compare-grid{
-
+.application-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:10px;
-
-    padding:30px;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
 }
 
-.compare-column{
-
-    background:#09090c;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:17px;
-
-    padding:18px;
-}
-
-.compare-column h3{
-    margin-bottom:18px;
-}
-
-.compare-row{
-
+.application{
+    min-height:150px;
+    padding:23px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:linear-gradient(145deg,rgba(255,255,255,.035),transparent);
     display:flex;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-    padding:
-        10px 0;
-
-    border-bottom:
-        1px solid
-        var(--border);
-
-    font-size:10px;
-}
-
-.compare-row span{
-    color:#777;
-}
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-
-    position:fixed;
-
-    top:90px;
-
-    left:50%;
-
-    transform:
-        translate(-50%,-30px);
-
-    z-index:500;
-
-    background:#fff;
-
-    color:#000;
-
-    padding:
-        10px 18px;
-
-    border-radius:999px;
-
-    opacity:0;
-
-    pointer-events:none;
-
+    flex-direction:column;
+    justify-content:end;
     transition:.3s;
 }
 
-.toast.show{
-
-    opacity:1;
-
-    transform:
-        translate(-50%,0);
+.application:hover{
+    border-color:rgba(56,189,248,.3);
+    transform:translateY(-4px);
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+.application .num{
+    color:var(--red);
+    font-family:Inter,sans-serif;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:auto;
+}
 
-@media(max-width:1000px){
+.application h3{
+    font-size:15px;
+}
+
+.application p{
+    color:var(--muted);
+    font-size:10px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    padding:110px 0;
+    position:relative;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.about-visual{
+    min-height:450px;
+    border-radius:30px;
+    border:1px solid var(--border);
+    background:
+        linear-gradient(145deg,rgba(230,0,18,.1),transparent 45%),
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,.018) 0,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px,
+            transparent 14px
+        );
+    display:grid;
+    place-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.about-visual::before{
+    content:"MOTIVITY";
+    position:absolute;
+    font-family:Inter,sans-serif;
+    font-size:80px;
+    font-weight:900;
+    letter-spacing:8px;
+    color:rgba(255,255,255,.025);
+    transform:rotate(-12deg);
+}
+
+.about-circle{
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    border:1px solid rgba(230,0,18,.4);
+    display:grid;
+    place-items:center;
+    position:relative;
+    z-index:2;
+    box-shadow:0 0 100px rgba(230,0,18,.12);
+}
+
+.about-circle strong{
+    font-family:Inter,sans-serif;
+    font-size:30px;
+    letter-spacing:3px;
+}
+
+.about-copy h2{
+    font-size:46px;
+    line-height:1.1;
+    margin:8px 0 20px;
+}
+
+.about-copy p{
+    color:var(--muted);
+    line-height:2;
+    font-size:14px;
+}
+
+.feature-list{
+    margin-top:25px;
+    display:grid;
+    gap:10px;
+}
+
+.feature{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-size:12px;
+}
+
+.feature i{
+    width:25px;
+    height:25px;
+    border-radius:8px;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    background:rgba(230,0,18,.12);
+    border:1px solid rgba(230,0,18,.2);
+    font-style:normal;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:35px 0;
+}
+
+.footer-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.footer-inner p{
+    color:var(--muted);
+    font-size:10px;
+}
+
+.footer-brand{
+    font-family:Inter,sans-serif;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    grid-column:1/-1;
+    min-height:250px;
+    display:grid;
+    place-items:center;
+    border:1px dashed var(--border);
+    border-radius:20px;
+    color:var(--muted);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero-copy{
+        text-align:center;
+        margin:auto;
+    }
+
+    .hero-description{
+        margin:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
 
     .product-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(3,1fr);
     }
 
-    .applications{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .system{
-        grid-template-columns:1fr;
-    }
-
-    .modal-product{
-        grid-template-columns:1fr;
-    }
-
-    .modal-image{
-        min-height:400px;
+    .application-grid{
+        grid-template-columns:repeat(3,1fr);
     }
 }
 
-@media(max-width:650px){
-
+@media(max-width:800px){
     .nav-links{
         display:none;
     }
 
-    section{
-        padding:
-            75px 5vw;
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .section-header{
-        flex-direction:column;
-        align-items:flex-start;
+    .stat{
+        border-bottom:1px solid var(--border);
     }
 
-    .catalog-tools{
-        grid-template-columns:1fr;
-    }
-
+    .category-grid,
     .product-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .toolbar{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .search-box{
+        grid-column:1/-1;
+    }
+
+    .application-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about-grid,
+    .modal-content{
         grid-template-columns:1fr;
     }
 
-    .applications{
-        grid-template-columns:1fr;
-    }
-
-    .system-stats{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .modal{
-        padding:10px;
+    .modal-image{
+        min-height:350px;
     }
 
     .modal-details{
-        padding:25px;
+        padding:30px 22px;
     }
 
-    .compare-grid{
-        grid-template-columns:1fr;
-    }
-
-    .compare-bar{
-        max-width:
-            calc(100vw - 20px);
-
-        width:max-content;
-    }
-
-    .compare-items{
-        max-width:45vw;
-
-        overflow:hidden;
+    .modal-details h2{
+        font-size:32px;
     }
 }
 
+@media(max-width:520px){
+    .container{
+        width:94%;
+    }
+
+    .brand-text span{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:49px;
+    }
+
+    .hero-showcase{
+        min-height:370px;
+    }
+
+    .hero-ring{
+        width:330px;
+        height:330px;
+    }
+
+    .stats-grid,
+    .category-grid,
+    .product-grid,
+    .application-grid{
+        grid-template-columns:1fr;
+    }
+
+    .toolbar{
+        grid-template-columns:1fr;
+    }
+
+    .filter{
+        width:100%;
+    }
+
+    .view-toggle{
+        display:none;
+    }
+
+    .product-grid.list .product-card{
+        display:block;
+    }
+
+    .product-grid.list .product-image{
+        height:260px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .section-head{
+        align-items:start;
+        flex-direction:column;
+    }
+
+    .about-copy h2{
+        font-size:35px;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<div class="noise"></div>
+<!-- =========================================================
+     NAV
+========================================================= -->
 
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
+<header class="nav">
+<div class="container nav-inner">
 
-<nav class="nav">
-
-    <a href="#home" class="logo">
-        MOTI<span>VITY</span>
-    </a>
-
-    <div class="nav-links">
-
-        <a href="#products"
-           data-ar="المنتجات"
-           data-en="Products">
-           المنتجات
-        </a>
-
-        <a href="#systems"
-           data-ar="الأنظمة"
-           data-en="Systems">
-           الأنظمة
-        </a>
-
-        <a href="#applications"
-           data-ar="التطبيقات"
-           data-en="Applications">
-           التطبيقات
-        </a>
-
-        <a href="#contact"
-           data-ar="تواصل"
-           data-en="Contact">
-           تواصل
-        </a>
-
+    <div class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-text">
+            <strong>MOTIVITY</strong>
+            <span>PROFESSIONAL AUDIO</span>
+        </div>
     </div>
 
-    <div class="nav-right">
+    <nav class="nav-links">
+        <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <a href="#catalog" data-ar="الكتالوج" data-en="Catalog">الكتالوج</a>
+        <a href="#applications" data-ar="الاستخدامات" data-en="Applications">الاستخدامات</a>
+        <a href="#about" data-ar="عن MOTIVITY" data-en="About">عن MOTIVITY</a>
+    </nav>
 
-        <button
-            class="nav-btn"
-            id="languageButton">
-            EN
-        </button>
-
-        <a
-            href="#products"
-            class="nav-btn"
-            data-ar="استكشف"
-            data-en="Explore">
-            استكشف
-        </a>
-
+    <div class="nav-actions">
+        <button class="lang-btn" id="langBtn">EN</button>
+        <button class="icon-btn" id="themeBtn" title="Theme">☼</button>
     </div>
 
-</nav>
+</div>
+</header>
 
-<!-- =====================================================
+
+<!-- =========================================================
      HERO
-===================================================== -->
+========================================================= -->
 
-<header class="hero" id="home">
+<section class="hero" id="home">
 
-    <div class="hero-ring"></div>
+<div class="container hero-grid">
 
-    <div class="hero-ring second"></div>
-
-    <div class="hero-content">
+    <div class="hero-copy">
 
         <div class="eyebrow">
-            PROFESSIONAL AUDIO SYSTEMS
+            <i></i>
+            <span data-ar="كتالوج الصوت الاحترافي"
+                  data-en="PROFESSIONAL AUDIO CATALOG">
+                كتالوج الصوت الاحترافي
+            </span>
         </div>
 
-        <h1 class="hero-title">
-            MOTI<span>VITY</span>
+        <h1>
+            <span>MOTIVITY</span>
+            <div data-ar="قوة الصوت"
+                 data-en="THE POWER OF SOUND">
+                قوة الصوت
+            </div>
         </h1>
 
-        <p
-            class="hero-subtitle"
-            data-ar="
-            الصوت ليس مجرد مستوى مرتفع.
-            إنه تفاصيل، حضور، وضوح وطاقة.
-            اكتشف منظومة MOTIVITY في تجربة رقمية
-            مصممة حول المنتج نفسه.
-            "
-            data-en="
-            Sound is more than loudness.
-            It is detail, presence, clarity and energy.
-            Explore MOTIVITY through a digital experience
-            built around the product itself.
-            ">
+        <p class="hero-description"
+           data-ar="كتالوج رقمي احترافي لاستكشاف أنظمة الصوت، السماعات السلبية، السماعات النشطة، السب ووفر، أنظمة الـLine Array وحلول التركيب الصوتي من MOTIVITY."
+           data-en="A professional digital catalog for exploring passive speakers, active systems, subwoofers, line arrays and professional audio solutions by MOTIVITY.">
+           كتالوج رقمي احترافي لاستكشاف أنظمة الصوت، السماعات السلبية، السماعات النشطة، السب ووفر، أنظمة الـLine Array وحلول التركيب الصوتي من MOTIVITY.
         </p>
 
         <div class="hero-buttons">
 
-            <a
-                href="#products"
-                class="btn btn-red"
-                data-ar="استكشف المنتجات"
-                data-en="EXPLORE PRODUCTS">
-                استكشف المنتجات
-            </a>
+            <button class="btn btn-primary"
+                    onclick="scrollToCatalog()"
+                    data-ar="استكشف الكتالوج"
+                    data-en="Explore Catalog">
+                استكشف الكتالوج
+            </button>
 
-            <a
-                href="#systems"
-                class="btn btn-dark"
-                data-ar="استكشف الأنظمة"
-                data-en="EXPLORE SYSTEMS">
-                استكشف الأنظمة
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="wave" id="wave"></div>
-
-</header>
-
-<!-- =====================================================
-     PHILOSOPHY
-===================================================== -->
-
-<section class="philosophy">
-
-    <div class="philosophy-inner">
-
-        <div class="eyebrow">
-            THE MOTIVITY PHILOSOPHY
-        </div>
-
-        <h2
-            data-ar="
-                هندسة الصوت
-                <span>بلا حدود.</span>
-            "
-            data-en="
-                ENGINEERED
-                <span>WITHOUT LIMITS.</span>
-            ">
-        </h2>
-
-        <p
-            data-ar="
-            هذه ليست صفحة متجر.
-            هذه مساحة تعريفية رقمية لمنتجات MOTIVITY:
-            الصورة، الهوية، التقنية، والاستخدام.
-            "
-            data-en="
-            This is not a store.
-            It is a digital presentation space for MOTIVITY:
-            imagery, identity, technology and applications.
-            ">
-        </p>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     PRODUCTS
-===================================================== -->
-
-<section id="products">
-
-    <div class="section-header">
-
-        <div>
-
-            <div class="eyebrow">
-                PRODUCT CATALOG
-            </div>
-
-            <h2
-                data-ar="
-                    كل منتج.<br>
-                    قصة مختلفة.
-                "
-                data-en="
-                    EVERY PRODUCT.<br>
-                    A DIFFERENT STORY.
-                ">
-            </h2>
-
-            <div class="red-line"></div>
-
-        </div>
-
-        <p
-            data-ar="
-            استكشف المنتجات حسب السلسلة والفئة،
-            وابحث عن المنتج، ثم افتحه للحصول على
-            عرض بصري ومواصفات تقنية مفصلة.
-            "
-            data-en="
-            Explore products by family and category,
-            search for a model, then open it for a
-            visual presentation and technical details.
-            ">
-        </p>
-
-    </div>
-
-    <div class="catalog-tools">
-
-        <div class="search">
-
-            <input
-                id="searchInput"
-                type="search"
-                placeholder="ابحث باسم المنتج..."
-                data-ar-placeholder="ابحث باسم المنتج..."
-                data-en-placeholder="Search product name...">
-
-        </div>
-
-        <button
-            class="nav-btn"
-            id="resetButton">
-            Reset
-        </button>
-
-    </div>
-
-    <div
-        class="categories"
-        id="categories">
-    </div>
-
-    <div
-        class="product-grid"
-        id="productGrid">
-
-        <div
-            style="
-            grid-column:1/-1;
-            padding:100px;
-            text-align:center;
-            color:#777;
-            ">
-            Loading MOTIVITY...
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     SYSTEM
-===================================================== -->
-
-<section id="systems">
-
-    <div class="section-header">
-
-        <div>
-
-            <div class="eyebrow">
-                SIGNATURE SYSTEM
-            </div>
-
-            <h2
-                data-ar="
-                    حين تصبح<br>
-                    <span style='color:var(--red)'>
-                    السماعات نظاماً.
-                    </span>
-                "
-                data-en="
-                    WHEN SPEAKERS<br>
-                    <span style='color:var(--red)'>
-                    BECOME A SYSTEM.
-                    </span>
-                ">
-            </h2>
-
-        </div>
-
-    </div>
-
-    <div class="system">
-
-        <div class="system-visual">
-
-            <img
-                id="systemImage"
-                alt="MOTIVITY M-12">
-
-        </div>
-
-        <div class="system-info">
-
-            <div class="eyebrow">
-                LINE ARRAY
-            </div>
-
-            <h3>
-                M-12<br>
-                <span>SYSTEM</span>
-            </h3>
-
-            <p
-                data-ar="
-                منظومة احترافية موجهة للتطبيقات التي تحتاج
-                إلى أداء منظم وتغطية صوتية متماسكة.
-                "
-                data-en="
-                A professional system designed for applications
-                requiring controlled performance and coherent coverage.
-                ">
-            </p>
-
-            <div class="system-stats">
-
-                <div class="system-stat">
-                    <strong>1000W</strong>
-                    <span>Maximum</span>
-                </div>
-
-                <div class="system-stat">
-                    <strong>80Hz</strong>
-                    <span>Low Frequency</span>
-                </div>
-
-                <div class="system-stat">
-                    <strong>18kHz</strong>
-                    <span>High Frequency</span>
-                </div>
-
-                <div class="system-stat">
-                    <strong>30kg</strong>
-                    <span>Weight</span>
-                </div>
-
-            </div>
-
-            <button
-                class="btn btn-red"
-                style="margin-top:20px"
-                id="systemButton">
-                VIEW PRODUCT
+            <button class="btn btn-secondary"
+                    onclick="document.getElementById('applications').scrollIntoView()"
+                    data-ar="الاستخدامات"
+                    data-en="Applications">
+                الاستخدامات
             </button>
 
         </div>
 
     </div>
 
-</section>
 
-<!-- =====================================================
-     APPLICATIONS
-===================================================== -->
+    <div class="hero-showcase">
 
-<section id="applications">
+        <div class="hero-ring">
 
-    <div class="section-header">
-
-        <div>
-
-            <div class="eyebrow">
-                APPLICATIONS
+            <div class="sound-wave">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-
-            <h2
-                data-ar="
-                    صوت لكل<br>
-                    مساحة.
-                "
-                data-en="
-                    SOUND FOR<br>
-                    EVERY SPACE.
-                ">
-            </h2>
 
         </div>
 
-        <p
-            data-ar="
-            اختر الفئة التي تصف مشروعك،
-            ثم استخدم الكتالوج للوصول إلى المنتجات
-            المناسبة للدراسة والتجهيز.
-            "
-            data-en="
-            Choose the environment that describes your project,
-            then use the catalog to explore products for
-            system planning and specification.
-            ">
+        <div class="floating-tag tag1">
+            PROFESSIONAL
+        </div>
+
+        <div class="floating-tag tag2">
+            ACTIVE / PASSIVE
+        </div>
+
+        <div class="floating-tag tag3">
+            SYSTEM ENGINEERING
+        </div>
+
+        <div class="hero-product-name">
+            <strong>45+</strong>
+            <span>PRODUCT SYSTEMS</span>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- =========================================================
+     STATS
+========================================================= -->
+
+<section class="stats">
+<div class="container">
+
+<div class="stats-grid">
+
+    <div class="stat">
+        <strong id="totalProducts">45+</strong>
+        <span data-ar="منتج في الكتالوج"
+              data-en="Products in catalog">
+            منتج في الكتالوج
+        </span>
+    </div>
+
+    <div class="stat">
+        <strong id="passiveCount">29</strong>
+        <span data-ar="Passive Speakers"
+              data-en="Passive Speakers">
+            Passive Speakers
+        </span>
+    </div>
+
+    <div class="stat">
+        <strong id="activeCount">16</strong>
+        <span data-ar="Active Speakers"
+              data-en="Active Speakers">
+            Active Speakers
+        </span>
+    </div>
+
+    <div class="stat">
+        <strong>PRO</strong>
+        <span data-ar="Professional Audio"
+              data-en="Professional Audio">
+            Professional Audio
+        </span>
+    </div>
+
+</div>
+</div>
+</section>
+
+
+<!-- =========================================================
+     CATEGORIES
+========================================================= -->
+
+<section class="section" id="categories">
+<div class="container">
+
+<div class="section-head">
+    <div class="section-title">
+        <small>CATEGORIES</small>
+        <h2 data-ar="تصفح حسب السلسلة"
+            data-en="Browse by Series">
+            تصفح حسب السلسلة
+        </h2>
+        <p data-ar="اختر السلسلة للوصول إلى المنتجات المرتبطة بها."
+           data-en="Choose a series to explore its products.">
+           اختر السلسلة للوصول إلى المنتجات المرتبطة بها.
         </p>
-
     </div>
+</div>
 
-    <div class="applications">
+<div class="category-grid" id="categoryGrid"></div>
 
-        <div class="application">
-
-            <div class="application-number">
-                01
-            </div>
-
-            <h3
-                data-ar="مسارح"
-                data-en="Stages">
-                مسارح
-            </h3>
-
-            <p
-                data-ar="أنظمة Main / Sub / Monitor للمسارح والعروض."
-                data-en="Main / Sub / Monitor systems for stages and live shows.">
-            </p>
-
-        </div>
-
-        <div class="application">
-
-            <div class="application-number">
-                02
-            </div>
-
-            <h3
-                data-ar="قاعات"
-                data-en="Halls">
-                قاعات
-            </h3>
-
-            <p
-                data-ar="حلول صوتية للفعاليات والاجتماعات والمساحات الداخلية."
-                data-en="Audio solutions for events, meetings and indoor spaces.">
-            </p>
-
-        </div>
-
-        <div class="application">
-
-            <div class="application-number">
-                03
-            </div>
-
-            <h3
-                data-ar="مساجد"
-                data-en="Mosques">
-                مساجد
-            </h3>
-
-            <p
-                data-ar="منتجات مناسبة لأنظمة التوزيع الصوتي والتركيب."
-                data-en="Products suitable for distributed and installed audio systems.">
-            </p>
-
-        </div>
-
-        <div class="application">
-
-            <div class="application-number">
-                04
-            </div>
-
-            <h3
-                data-ar="Outdoor"
-                data-en="Outdoor">
-                Outdoor
-            </h3>
-
-            <p
-                data-ar="حلول للفعاليات الخارجية والأنظمة عالية الأداء."
-                data-en="Solutions for outdoor events and high-output systems.">
-            </p>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
-<!-- =====================================================
-     CONTACT
-===================================================== -->
 
-<section class="contact" id="contact">
+<!-- =========================================================
+     CATALOG
+========================================================= -->
 
-    <div class="eyebrow">
+<section class="section" id="catalog">
+<div class="container">
+
+<div class="section-head">
+
+    <div class="section-title">
+        <small>PRODUCT CATALOG</small>
+
+        <h2 data-ar="كتالوج MOTIVITY"
+            data-en="MOTIVITY Catalog">
+            كتالوج MOTIVITY
+        </h2>
+
+        <p data-ar="استكشف المنتجات والمواصفات التقنية بالتفصيل."
+           data-en="Explore products and detailed technical specifications.">
+           استكشف المنتجات والمواصفات التقنية بالتفصيل.
+        </p>
+    </div>
+
+</div>
+
+
+<div class="catalog-shell">
+
+<div class="toolbar">
+
+    <div class="search-box">
+        <span>⌕</span>
+        <input id="searchInput"
+               type="search"
+               data-ar-placeholder="ابحث عن المنتج أو الموديل..."
+               data-en-placeholder="Search product or model..."
+               placeholder="ابحث عن المنتج أو الموديل...">
+    </div>
+
+    <select class="filter" id="typeFilter">
+        <option value="all">كل الأنواع</option>
+        <option value="passive">Passive</option>
+        <option value="active">Active</option>
+    </select>
+
+    <select class="filter" id="seriesFilter">
+        <option value="all">كل السلاسل</option>
+    </select>
+
+    <div class="view-toggle">
+        <button class="active" id="gridBtn">▦</button>
+        <button id="listBtn">☰</button>
+    </div>
+
+</div>
+
+<div class="product-grid" id="productGrid"></div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- =========================================================
+     APPLICATIONS
+========================================================= -->
+
+<section class="section" id="applications">
+<div class="container">
+
+<div class="section-head">
+    <div class="section-title">
+        <small>APPLICATIONS</small>
+
+        <h2 data-ar="صوت مصمم للمكان"
+            data-en="Sound Designed for the Space">
+            صوت مصمم للمكان
+        </h2>
+
+        <p data-ar="حلول مختلفة لمجالات متعددة."
+           data-en="Solutions for a wide range of professional applications.">
+           حلول مختلفة لمجالات متعددة.
+        </p>
+    </div>
+</div>
+
+<div class="application-grid">
+
+    <div class="application">
+        <div class="num">01</div>
+        <h3 data-ar="الحفلات والمناسبات"
+            data-en="Events & Concerts">
+            الحفلات والمناسبات
+        </h3>
+        <p data-ar="أنظمة Front of House وSubwoofer"
+           data-en="FOH and subwoofer systems">
+           أنظمة Front of House وSubwoofer
+        </p>
+    </div>
+
+    <div class="application">
+        <div class="num">02</div>
+        <h3 data-ar="القاعات"
+            data-en="Auditoriums">
+            القاعات
+        </h3>
+        <p data-ar="تغطية صوتية احترافية ومتوازنة"
+           data-en="Balanced professional coverage">
+           تغطية صوتية احترافية ومتوازنة
+        </p>
+    </div>
+
+    <div class="application">
+        <div class="num">03</div>
+        <h3 data-ar="المساجد"
+            data-en="Mosques">
+            المساجد
+        </h3>
+        <p data-ar="وضوح الكلام والتغطية المتجانسة"
+           data-en="Speech intelligibility and even coverage">
+           وضوح الكلام والتغطية المتجانسة
+        </p>
+    </div>
+
+    <div class="application">
+        <div class="num">04</div>
+        <h3 data-ar="المؤتمرات"
+            data-en="Conferences">
+            المؤتمرات
+        </h3>
+        <p data-ar="حلول الصوت للكلام والعروض"
+           data-en="Speech and presentation systems">
+           حلول الصوت للكلام والعروض
+        </p>
+    </div>
+
+    <div class="application">
+        <div class="num">05</div>
+        <h3 data-ar="التركيب الثابت"
+            data-en="Fixed Installation">
+            التركيب الثابت
+        </h3>
+        <p data-ar="أنظمة مصممة للتركيب الدائم"
+           data-en="Systems for permanent installations">
+           أنظمة مصممة للتركيب الدائم
+        </p>
+    </div>
+
+</div>
+</div>
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="about" id="about">
+<div class="container about-grid">
+
+<div class="about-visual">
+
+    <div class="about-circle">
+        <strong>M</strong>
+    </div>
+
+</div>
+
+<div class="about-copy">
+
+    <div class="section-title">
+        <small>MOTIVITY AUDIO</small>
+
+        <h2 data-ar="هندسة الصوت تبدأ من التفاصيل."
+            data-en="Audio Engineering Starts with Detail.">
+            هندسة الصوت تبدأ من التفاصيل.
+        </h2>
+    </div>
+
+    <p
+    data-ar="تم تصميم هذا الكتالوج ليكون واجهة احترافية لاستعراض منتجات MOTIVITY ومقارنتها وفهم خصائصها التقنية بطريقة واضحة وسريعة."
+    data-en="This catalog is designed as a professional interface for exploring, comparing and understanding MOTIVITY products and their technical characteristics.">
+    تم تصميم هذا الكتالوج ليكون واجهة احترافية لاستعراض منتجات MOTIVITY ومقارنتها وفهم خصائصها التقنية بطريقة واضحة وسريعة.
+    </p>
+
+    <div class="feature-list">
+
+        <div class="feature">
+            <i>✓</i>
+            <span data-ar="مواصفات تقنية تفصيلية"
+                  data-en="Detailed technical specifications">
+                مواصفات تقنية تفصيلية
+            </span>
+        </div>
+
+        <div class="feature">
+            <i>✓</i>
+            <span data-ar="بحث وفلترة فورية"
+                  data-en="Instant search and filtering">
+                بحث وفلترة فورية
+            </span>
+        </div>
+
+        <div class="feature">
+            <i>✓</i>
+            <span data-ar="مقارنة المنتجات"
+                  data-en="Product comparison">
+                مقارنة المنتجات
+            </span>
+        </div>
+
+        <div class="feature">
+            <i>✓</i>
+            <span data-ar="تصميم متجاوب لجميع الشاشات"
+                  data-en="Fully responsive design">
+                تصميم متجاوب لجميع الشاشات
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+<div class="container footer-inner">
+
+    <div class="footer-brand">
         MOTIVITY
     </div>
 
-    <h2
-        data-ar="
-            جاهزون لرفع<br>
-            <span>مستوى الصوت.</span>
-        "
-        data-en="
-            READY TO RAISE<br>
-            <span>THE BAR.</span>
-        ">
-    </h2>
-
-    <p
-        data-ar="
-        للاستفسارات عن المنتجات والأنظمة الصوتية
-        والتجهيزات والمشاريع.
-        "
-        data-en="
-        For product, system, equipment and project enquiries.
-        ">
+    <p data-ar="كتالوج صوت احترافي — جميع المعلومات التقنية منظمة لأغراض التعريف."
+       data-en="Professional audio catalog — technical information organized for product reference.">
+       كتالوج صوت احترافي — جميع المعلومات التقنية منظمة لأغراض التعريف.
     </p>
 
-    <div class="contact-buttons">
-
-        <a
-            class="red"
-            href="https://wa.me/249917025008"
-            target="_blank">
-            WhatsApp
-        </a>
-
-        <a href="tel:+249917025008">
-            0917 025 008
-        </a>
-
-        <a href="tel:+249912153389">
-            0912 153 389
-        </a>
-
-        <a href="tel:+24917029008">
-            0917 029 008
-        </a>
-
-    </div>
-
-</section>
-
-<footer>
-
-    <div>
-        © 2026 MOTIVITY
-    </div>
-
-    <div>
-        THE POWER OF SOUND
-    </div>
-
+</div>
 </footer>
 
-<!-- =====================================================
-     COMPARISON BAR
-===================================================== -->
 
-<div
-    class="compare-bar"
-    id="compareBar">
-
-    <div
-        class="compare-items"
-        id="compareItems">
-    </div>
-
-    <button
-        class="compare-open"
-        id="compareOpen">
-        COMPARE
-    </button>
-
-    <button
-        class="compare-clear"
-        id="compareClear">
-        ×
-    </button>
-
-</div>
-
-<!-- =====================================================
+<!-- =========================================================
      PRODUCT MODAL
-===================================================== -->
+========================================================= -->
 
-<div
-    class="modal"
-    id="productModal">
+<div class="modal" id="productModal">
 
-    <button
-        class="close"
-        id="closeProduct">
-        ×
-    </button>
+<div class="modal-box">
 
-    <div class="modal-window">
+<button class="modal-close" onclick="closeModal()">×</button>
 
-        <div class="modal-product">
+<div class="modal-content">
 
-            <div class="modal-image">
+    <div class="modal-image" id="modalImage"></div>
 
-                <img
-                    id="modalImage"
-                    alt="MOTIVITY Product">
+    <div class="modal-details">
 
-            </div>
+        <div class="series" id="modalSeries"></div>
 
-            <div class="modal-details">
+        <h2 id="modalName"></h2>
 
-                <div
-                    class="product-series"
-                    id="modalSeries">
-                </div>
+        <div class="type" id="modalType"></div>
 
-                <h2
-                    id="modalName">
-                </h2>
-
-                <p
-                    id="modalDescription">
-                </p>
-
-                <div
-                    class="spec-table"
-                    id="modalSpecs">
-                </div>
-
-                <div class="modal-actions">
-
-                    <a
-                        id="whatsappProduct"
-                        class="red"
-                        target="_blank">
-                        WhatsApp
-                    </a>
-
-                    <button
-                        id="modalCompare">
-                        + Compare
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
+        <div class="spec-table" id="modalSpecs"></div>
 
     </div>
 
 </div>
 
-<!-- =====================================================
+</div>
+</div>
+
+
+<!-- =========================================================
+     COMPARE BAR
+========================================================= -->
+
+<div class="compare-bar" id="compareBar">
+
+    <div class="compare-items" id="compareItems"></div>
+
+    <div class="compare-actions">
+        <button class="compare-btn" onclick="openCompare()">
+            مقارنة
+        </button>
+
+        <button class="compare-btn" onclick="clearCompare()">
+            ×
+        </button>
+    </div>
+
+</div>
+
+
+<!-- =========================================================
      COMPARE MODAL
-===================================================== -->
+========================================================= -->
 
-<div
-    class="modal"
-    id="compareModal">
+<div class="modal" id="compareModal">
 
-    <button
-        class="close"
-        id="closeCompare">
-        ×
-    </button>
+<div class="modal-box">
 
-    <div class="modal-window">
+<button class="modal-close" onclick="closeCompare()">×</button>
 
-        <div
-            style="
-            padding:35px 35px 0;
-            ">
+<div style="padding:35px">
 
-            <div class="eyebrow">
-                PRODUCT COMPARISON
-            </div>
+<h2 style="font-size:30px;margin-bottom:25px">
+    مقارنة المنتجات
+</h2>
 
-            <h2>
-                MOTIVITY / COMPARE
-            </h2>
-
-        </div>
-
-        <div
-            class="compare-grid"
-            id="compareGrid">
-        </div>
-
-    </div>
+<div id="compareContent"></div>
 
 </div>
 
-<div
-    class="toast"
-    id="toast">
 </div>
+</div>
+
 
 <script>
 
 /* =========================================================
-   CONFIGURATION
+   PRODUCT DATABASE
 ========================================================= */
 
-const MOTIVITY_API =
-"https://motivitymiddleeast.com/wp-json/wc/store/v1/products?per_page=100&orderby=menu_order&order=asc";
+const products = [
 
-/*
-    مهم:
-    الموقع نفسه مستقل.
-    الرابط أعلاه يستخدم فقط كمصدر بيانات وصور عند توفره.
-    تستطيع لاحقاً استبداله بملف JSON خاص بك.
-*/
-
-const WHATSAPP =
-"249917025008";
-
-/* =========================================================
-   FALLBACK PRODUCT DATABASE
-========================================================= */
-
-const FALLBACK_PRODUCTS = [
+/* =======================
+   PASSIVE — 3G
+======================= */
 
 {
+    id:"db25-3g",
     name:"DB25-3G",
-    category:"3G Series",
-
-    description:
-    "Professional 3-way full-range loudspeaker.",
-
+    type:"passive",
+    series:"3G Series",
+    power:"1000 W",
+    impedance:"4 Ω",
+    frequency:"45 Hz – 18 kHz",
+    spl:"130 / 133 dB",
+    coverage:"100° × 60°",
+    drivers:'2 × 15" + 2 × 6.5" + 3" HF',
+    weight:"71.3 kg",
     specs:{
-        "Rated Power":"1000W",
-        "Maximum Power":"2000W",
+        "Rated Power":"1000 W",
+        "Maximum Power":"2000 W",
         "Impedance":"4 Ω",
-        "Sensitivity":"100dB",
-        "SPL":"130 / 133dB",
-        "Frequency":"45Hz – 18kHz",
-        "Coverage":"100°H × 60°V",
-        "Drivers":"2 × 15\" LF + 2 × 6.5\" MF + 3\" HF",
-        "Weight":"71.3kg"
+        "Sensitivity":"100 dB",
+        "Max SPL":"130 dB @1000W / 133 dB @2000W",
+        "Coverage":"100° H × 60° V",
+        "Frequency":"45 Hz – 18 kHz",
+        "Drivers":'2 × 15" LF + 2 × 6.5" MF + 3" HF',
+        "Cabinet":"18 mm plywood",
+        "Weight":"71.3 kg"
     }
 },
 
 {
+    id:"db218-3g",
     name:"DB218-3G",
-    category:"3G Series",
-
-    description:
-    "High-output dual 18-inch subwoofer.",
-
+    type:"passive",
+    series:"3G Series",
+    power:"1400 W",
+    impedance:"4 Ω",
+    frequency:"37 Hz – 300 Hz",
+    spl:"133 / 136 dB",
+    coverage:"360° × 360°",
+    drivers:'2 × 18"',
+    weight:"69.8 kg",
     specs:{
-        "Rated Power":"1400W",
-        "Maximum Power":"2800W",
+        "Rated Power":"1400 W",
+        "Maximum Power":"2800 W",
         "Impedance":"4 Ω",
-        "Sensitivity":"102dB",
-        "SPL":"133 / 136dB",
-        "Frequency":"37Hz – 300Hz",
-        "Drivers":"2 × 18\" LF",
-        "Weight":"69.8kg"
+        "Sensitivity":"102 dB",
+        "Max SPL":"133 dB @1400W / 136 dB @2800W",
+        "Frequency":"37 Hz – 300 Hz",
+        "Drivers":'2 × 18" LF',
+        "Cabinet":"18 mm plywood",
+        "Dimensions":"980 × 690 × 598 mm",
+        "Weight":"69.8 kg"
     }
 },
 
 {
+    id:"db15m-3g",
     name:"DB15M-3G",
-    category:"Monitors",
-
-    description:
-    "Professional 15-inch monitor loudspeaker.",
-
+    type:"passive",
+    series:"3G Series",
+    power:"500 W",
+    impedance:"8 Ω",
+    frequency:"45 Hz – 18 kHz",
+    spl:"124 / 127 dB",
+    coverage:"50° × 100° × 50°",
+    drivers:'15" + 3" HF',
+    weight:"28.6 kg",
     specs:{
-        "Rated Power":"500W",
-        "Maximum Power":"1000W",
+        "Rated Power":"500 W",
+        "Maximum Power":"1000 W",
         "Impedance":"8 Ω",
-        "Sensitivity":"97dB",
-        "SPL":"124 / 127dB",
-        "Frequency":"45Hz – 18kHz",
-        "Drivers":"15\" LF + 3\" HF",
-        "Weight":"28.6kg"
+        "Sensitivity":"97 dB",
+        "Max SPL":"124 / 127 dB",
+        "Coverage":"50° × 100° H × 50° V",
+        "Frequency":"45 Hz – 18 kHz",
+        "Drivers":'15" LF + 3" HF',
+        "Cabinet":"15 mm plywood",
+        "Weight":"28.6 kg"
     }
 },
 
 {
-    name:"M-12",
-    category:"Line Array",
-
-    description:
-    "Professional multi-frequency line array system.",
-
+    id:"mtl700-3g",
+    name:"MTL700-3G",
+    type:"passive",
+    series:"3G Series",
+    power:"500 W",
+    impedance:"8 Ω",
+    frequency:"46 Hz – 18 kHz",
+    spl:"124 / 127 dB",
+    coverage:"50° × 100° × 50°",
+    drivers:'15" + 2.5" HF',
+    weight:"32.5 kg",
     specs:{
-        "Maximum Power":"1000W",
-        "HF":"100W",
-        "MF":"200W",
-        "LF":"350W",
-        "Frequency":"80Hz – 18kHz",
-        "Drivers":"1 × 12\" LF + 2 × 6.5\" MF + 3 × 1.4\" HF",
-        "Weight":"30kg"
+        "Rated Power":"500 W",
+        "Maximum Power":"1000 W",
+        "Impedance":"8 Ω",
+        "Sensitivity":"97 dB",
+        "Max SPL":"124 / 127 dB",
+        "Coverage":"50° × 100° H × 50° V",
+        "Frequency":"46 Hz – 18 kHz",
+        "Drivers":'15" LF + 2.5" HF',
+        "Cabinet":"18 mm plywood",
+        "Weight":"32.5 kg"
     }
 },
 
 {
-    name:"QX-218",
-    category:"QX Series",
-
-    description:
-    "High-output dual 18-inch subwoofer.",
-
+    id:"mtl152e",
+    name:"MTL-152E",
+    type:"passive",
+    series:"3G Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'15" system',
+    weight:"—",
     specs:{
-        "Rated Power":"1400W",
-        "Maximum Power":"2800W",
-        "Peak":"5600W",
-        "Impedance":"4 Ω",
-        "Sensitivity":"104dB",
-        "SPL":"135 / 138dB",
-        "Frequency":"35Hz – 300Hz",
-        "Drivers":"2 × 18\" LF",
-        "Weight":"95kg"
+        "System":"Professional monitor",
+        "Type":"Passive",
+        "Application":"Professional stage monitoring"
+    }
+},
+
+/* =======================
+   PASSIVE — AT
+======================= */
+
+{
+    id:"at06",
+    name:"AT-06",
+    type:"passive",
+    series:"AT Series",
+    power:"100 W",
+    impedance:"8 Ω",
+    frequency:"80 Hz – 20 kHz",
+    spl:"116 / 119 dB",
+    coverage:"—",
+    drivers:'5" + 1" HF',
+    weight:"5 kg",
+    specs:{
+        "Rated Power":"100 W",
+        "Maximum Power":"200 W",
+        "Peak Power":"400 W",
+        "Sensitivity":"96 dB",
+        "Impedance":"8 Ω",
+        "Max SPL":"116 dB @100W / 119 dB @200W",
+        "Frequency":"80 Hz – 20 kHz",
+        "Drivers":'5" LF + 1" HF',
+        "Dimensions":"190 × 210 × 310 mm",
+        "Weight":"5 kg"
     }
 },
 
 {
+    id:"at08",
+    name:"AT-08",
+    type:"passive",
+    series:"AT Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'8" system',
+    weight:"—",
+    specs:{
+        "Type":"Passive 2-way speaker",
+        "Series":"AT"
+    }
+},
+
+{
+    id:"at12",
     name:"AT-12",
-    category:"AT Series",
-
-    description:
-    "Professional 12-inch 2-way passive loudspeaker.",
-
+    type:"passive",
+    series:"AT Series",
+    power:"450 W",
+    impedance:"8 Ω",
+    frequency:"58 Hz – 20 kHz",
+    spl:"124 / 126 dB",
+    coverage:"90° × 70°",
+    drivers:'12" + 1.7" HF',
+    weight:"22 kg",
     specs:{
-        "Rated Power":"450W",
-        "Maximum Power":"900W",
-        "Peak":"1800W",
+        "Rated Power":"450 W",
+        "Maximum Power":"900 W",
+        "Peak Power":"1800 W",
+        "Sensitivity":"97 dB",
         "Impedance":"8 Ω",
-        "Sensitivity":"97dB",
-        "SPL":"124 / 126dB",
-        "Frequency":"58Hz – 20kHz",
-        "Coverage":"90°H × 70°V",
-        "Drivers":"12\" LF + 1.7\" HF",
-        "Weight":"22kg"
+        "Max SPL":"124 dB @450W / 126 dB @900W",
+        "Coverage":"90° H × 70° V",
+        "Frequency":"58 Hz – 20 kHz",
+        "Drivers":'12" LF + 1.7" HF',
+        "Cabinet":"18 mm plywood",
+        "Weight":"22 kg"
     }
 },
 
-{
-    name:"CS-08",
-    category:"CS Series",
-
-    description:
-    "Compact professional loudspeaker for installed audio.",
-
-    specs:{
-        "Rated Power":"150W",
-        "Maximum Power":"300W",
-        "Peak":"600W",
-        "Impedance":"8 Ω",
-        "Sensitivity":"97dB",
-        "Frequency":"70Hz – 20kHz",
-        "Coverage":"80°H × 80°V",
-        "Drivers":"8\" LF + 3\" HF",
-        "Weight":"8kg"
-    }
-},
+/* =======================
+   PASSIVE — CS
+======================= */
 
 {
+    id:"cs06",
     name:"CS-06",
-    category:"CS Series",
-
-    description:
-    "Compact professional loudspeaker.",
-
+    type:"passive",
+    series:"CS Series",
+    power:"100 W",
+    impedance:"8 Ω",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'6" system',
+    weight:"—",
     specs:{
-        "Rated Power":"100W",
-        "Maximum Power":"200W",
-        "Peak":"400W",
+        "Type":"Passive installation speaker",
+        "Series":"CS"
+    }
+},
+
+{
+    id:"cs08",
+    name:"CS-08",
+    type:"passive",
+    series:"CS Series",
+    power:"150 W",
+    impedance:"8 Ω",
+    frequency:"70 Hz – 20 kHz",
+    spl:"135 / 138 dB",
+    coverage:"80° × 80°",
+    drivers:'8" + 3" HF',
+    weight:"8 kg",
+    specs:{
+        "Rated Power":"150 W",
+        "Maximum Power":"300 W",
+        "Peak Power":"600 W",
+        "Sensitivity":"97 dB",
         "Impedance":"8 Ω",
-        "Sensitivity":"96dB",
-        "Frequency":"85Hz – 20kHz",
-        "Coverage":"80°H × 80°V",
-        "Drivers":"6.5\" LF + 3\" HF",
-        "Weight":"5kg"
+        "Coverage":"80° H × 80° V",
+        "Frequency":"70 Hz – 20 kHz",
+        "Drivers":'8" LF + 3" HF',
+        "Cabinet":"15 mm MDF",
+        "Weight":"8 kg"
     }
 },
 
+/* =======================
+   PASSIVE — QX
+======================= */
+
 {
-    name:"DB-10E",
-    category:"Installation",
-
-    description:
-    "10-inch professional 2-way loudspeaker.",
-
+    id:"qx115",
+    name:"QX-115",
+    type:"passive",
+    series:"QX Series",
+    power:"450 W",
+    impedance:"8 Ω",
+    frequency:"48 Hz – 20 kHz",
+    spl:"126 / 129 dB",
+    coverage:"90° × 50°",
+    drivers:'15" + 2" HF',
+    weight:"35 kg",
     specs:{
-        "Rated Power":"200W",
-        "Maximum Power":"400W",
-        "Peak":"800W",
+        "Rated Power":"450 W",
+        "Maximum Power":"900 W",
+        "Peak Power":"1800 W",
+        "Sensitivity":"99 dB",
         "Impedance":"8 Ω",
-        "Sensitivity":"97dB",
-        "SPL":"123dB",
-        "Frequency":"60Hz – 20kHz",
-        "Coverage":"70°H × 60°V",
-        "Drivers":"10\" LF + HF",
-        "Weight":"20kg"
+        "Max SPL":"126 / 129 dB",
+        "Coverage":"90° H × 50° V",
+        "Frequency":"48 Hz – 20 kHz",
+        "Drivers":'15" LF + 2" HF',
+        "Cabinet":"18 mm MDF",
+        "Weight":"35 kg"
     }
 },
 
 {
-    name:"MTL-700 3G",
-    category:"Monitors",
-
-    description:
-    "Professional monitor loudspeaker.",
-
+    id:"qx118",
+    name:"QX-118",
+    type:"passive",
+    series:"QX Series",
+    power:"700 W",
+    impedance:"8 Ω",
+    frequency:"35 Hz – 300 Hz",
+    spl:"130 / 133 dB",
+    coverage:"—",
+    drivers:'18" LF',
+    weight:"48 kg",
     specs:{
-        "Rated Power":"500W",
-        "Maximum Power":"1000W",
-        "Frequency":"Professional Monitor",
-        "Drivers":"15\" LF + HF"
+        "Rated Power":"700 W",
+        "Maximum Power":"1400 W",
+        "Peak Power":"2800 W",
+        "Sensitivity":"102 dB",
+        "Impedance":"8 Ω",
+        "Max SPL":"130 / 133 dB",
+        "Frequency":"35 Hz – 300 Hz",
+        "Drivers":'18" LF',
+        "Cabinet":"18 mm MDF",
+        "Weight":"48 kg"
     }
 },
 
 {
-    name:"M-10",
-    category:"Line Array",
-
-    description:
-    "High-output line array element.",
-
+    id:"qx218",
+    name:"QX-218",
+    type:"passive",
+    series:"QX Series",
+    power:"1400 W",
+    impedance:"4 Ω",
+    frequency:"35 Hz – 300 Hz",
+    spl:"135 / 138 dB",
+    coverage:"—",
+    drivers:'2 × 18"',
+    weight:"95 kg",
     specs:{
-        "Rated Power":"700W",
-        "Maximum Power":"1400W",
-        "Peak":"2800W",
-        "Impedance":"4 Ω / 16 Ω",
-        "Sensitivity":"107dB",
-        "SPL":"135 / 138dB",
-        "Frequency":"65Hz – 18kHz",
-        "Drivers":"Dual 10\" LF + 3\" HF",
-        "Weight":"30kg"
+        "Rated Power":"1400 W",
+        "Maximum Power":"2800 W",
+        "Peak Power":"5600 W",
+        "Sensitivity":"104 dB",
+        "Impedance":"4 Ω",
+        "Max SPL":"135 / 138 dB",
+        "Frequency":"35 Hz – 300 Hz",
+        "Drivers":'2 × 18" LF',
+        "Cabinet":"18 mm MDF",
+        "Dimensions":"600 × 700 × 1044 mm",
+        "Weight":"95 kg"
     }
 },
 
+/* =======================
+   PASSIVE — M SERIES
+======================= */
+
 {
+    id:"m08",
     name:"M-08",
-    category:"Line Array",
-
-    description:
-    "Compact line array element.",
-
+    type:"passive",
+    series:"M Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'8" system',
+    weight:"—",
     specs:{
-        "Rated Power":"300W",
-        "Maximum Power":"600W",
-        "Peak":"1200W",
-        "Impedance":"4 Ω / 16 Ω",
-        "Sensitivity":"106dB",
-        "SPL":"131 / 134dB",
-        "Frequency":"80Hz – 18.5kHz",
-        "Drivers":"Dual 8\" LF + dual 1.3\" HF",
-        "Weight":"24kg"
+        "Type":"Passive speaker",
+        "Series":"M"
+    }
+},
+
+{
+    id:"m10",
+    name:"M-10",
+    type:"passive",
+    series:"M Series",
+    power:"700 W",
+    impedance:"4 / 16 Ω",
+    frequency:"65 Hz – 18 kHz",
+    spl:"135 / 138 dB",
+    coverage:"—",
+    drivers:'2 × 10" + 3" HF',
+    weight:"30 kg",
+    specs:{
+        "Rated Power":"700 W",
+        "Maximum Power":"1400 W",
+        "Peak Power":"2800 W",
+        "Sensitivity":"107 dB",
+        "Impedance":"4 / 16 Ω switchable",
+        "Max SPL":"135 / 138 dB",
+        "Frequency":"65 Hz – 18 kHz",
+        "Drivers":'2 × 10" LF + 3" HF',
+        "Weight":"30 kg"
+    }
+},
+
+/* =======================
+   PASSIVE — LINE ARRAY
+======================= */
+
+{
+    id:"mla212",
+    name:"MLA212",
+    type:"passive",
+    series:"Line Array",
+    power:"900 W",
+    impedance:"—",
+    frequency:"—",
+    spl:"138 dB",
+    coverage:"90° × 10°",
+    drivers:"2 × 12\"",
+    weight:"—",
+    specs:{
+        "Rated Power":"900 W",
+        "Max SPL":"138 dB",
+        "Coverage":"90° × 10°",
+        "Type":"Line Array"
+    }
+},
+
+{
+    id:"mla210",
+    name:"MLA210",
+    type:"passive",
+    series:"Line Array",
+    power:"700 W",
+    impedance:"—",
+    frequency:"—",
+    spl:"135 dB",
+    coverage:"—",
+    drivers:'2 × 10"',
+    weight:"—",
+    specs:{
+        "Rated Power":"700 W",
+        "Max SPL":"135 dB",
+        "Type":"Line Array"
+    }
+},
+
+{
+    id:"m10la",
+    name:"M10-LA",
+    type:"passive",
+    series:"Line Array",
+    power:"700 W",
+    impedance:"—",
+    frequency:"—",
+    spl:"132 dB",
+    coverage:"—",
+    drivers:'10" system',
+    weight:"—",
+    specs:{
+        "Rated Power":"700 W",
+        "Max SPL":"132 dB",
+        "Type":"Line Array"
+    }
+},
+
+{
+    id:"linearray4",
+    name:"Line Array Series",
+    type:"passive",
+    series:"Line Array",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Professional array",
+    weight:"—",
+    specs:{
+        "Type":"Professional Line Array",
+        "Application":"Large venues and concert systems"
+    }
+},
+
+/* =======================
+   PASSIVE — GALAXY
+======================= */
+
+{
+    id:"galaxy-db25",
+    name:"Galaxy DB-25",
+    type:"passive",
+    series:"Galaxy Series",
+    power:"1000 W",
+    impedance:"4 Ω",
+    frequency:"—",
+    spl:"133 dB",
+    coverage:"100° × 70°",
+    drivers:'15" system',
+    weight:"—",
+    specs:{
+        "Type":"Professional full-range speaker",
+        "Rated Power":"1000 W",
+        "Series":"Galaxy"
+    }
+},
+
+{
+    id:"galaxy-db25nwd",
+    name:"DB-25NWD",
+    type:"passive",
+    series:"Galaxy Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Professional full range",
+    weight:"—",
+    specs:{
+        "Model":"DB-25NWD",
+        "Series":"Galaxy",
+        "Type":"Professional speaker"
+    }
+},
+
+{
+    id:"galaxy-db218",
+    name:"DB-218",
+    type:"passive",
+    series:"Galaxy Series",
+    power:"1400 W",
+    impedance:"4 Ω",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'2 × 18"',
+    weight:"—",
+    specs:{
+        "Model":"DB-218",
+        "Series":"Galaxy",
+        "Type":"Dual 18 inch subwoofer",
+        "Rated Power":"1400 W"
+    }
+},
+
+{
+    id:"galaxy1",
+    name:"Galaxy Series 1",
+    type:"passive",
+    series:"Galaxy Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Professional",
+    weight:"—",
+    specs:{
+        "Series":"Galaxy",
+        "Type":"Professional passive speaker"
+    }
+},
+
+{
+    id:"galaxy2",
+    name:"Galaxy Series 2",
+    type:"passive",
+    series:"Galaxy Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Professional",
+    weight:"—",
+    specs:{
+        "Series":"Galaxy",
+        "Type":"Professional passive speaker"
+    }
+},
+
+{
+    id:"galaxy3",
+    name:"Galaxy Series 3",
+    type:"passive",
+    series:"Galaxy Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Professional",
+    weight:"—",
+    specs:{
+        "Series":"Galaxy",
+        "Type":"Professional passive speaker"
+    }
+},
+
+/* =======================
+   PASSIVE — FLY BAR
+======================= */
+
+{
+    id:"flb8",
+    name:"FLB-8 / FLB-10",
+    type:"passive",
+    series:"FLY BAR",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Mounting hardware",
+    weight:"—",
+    specs:{
+        "Material":"60 × 30 mm strengthened steel",
+        "Standard":"8 × 40 mm pins",
+        "Type":"Fly Bar"
+    }
+},
+
+{
+    id:"flb12",
+    name:"FLB-12",
+    type:"passive",
+    series:"FLY BAR",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Mounting hardware",
+    weight:"25 kg",
+    specs:{
+        "Material":"100 × 100 mm strengthened steel",
+        "Dimensions":"1086 × 800 × 100 mm",
+        "Standard":"12 × 27 mm pins",
+        "Weight":"25 kg"
+    }
+},
+
+{
+    id:"flb25",
+    name:"FLB-25",
+    type:"passive",
+    series:"FLY BAR",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Mounting hardware",
+    weight:"20 kg",
+    specs:{
+        "Material":"60 × 30 mm strengthened steel",
+        "Dimensions":"760 × 905 × 60 mm",
+        "Standard":"8 × 40 mm pins",
+        "Weight":"20 kg"
+    }
+},
+
+/* =======================
+   ACTIVE
+======================= */
+
+{
+    id:"cs150v",
+    name:"CS 150V",
+    type:"active",
+    series:"CS Series",
+    power:"150 W",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Installation system",
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"CS"
+    }
+},
+
+{
+    id:"cs606",
+    name:"CS606",
+    type:"active",
+    series:"CS Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Installation system",
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"CS"
+    }
+},
+
+{
+    id:"cs612",
+    name:"CS612",
+    type:"active",
+    series:"CS Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Installation system",
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"CS"
+    }
+},
+
+{
+    id:"hd312",
+    name:"HD312",
+    type:"active",
+    series:"HD Series",
+    power:"1000 W",
+    impedance:"—",
+    frequency:"—",
+    spl:"131 dB",
+    coverage:"90° × 60°",
+    drivers:'12" system',
+    weight:"18.77 kg",
+    specs:{
+        "Rated Power":"1000 W RMS",
+        "Peak Power":"4000 W",
+        "Max SPL":"131 dB",
+        "Coverage":"90° × 60°",
+        "Weight":"18.77 kg"
+    }
+},
+
+{
+    id:"hd315",
+    name:"HD 315",
+    type:"active",
+    series:"HD Series",
+    power:"1000 W",
+    impedance:"—",
+    frequency:"42 Hz – 20 kHz",
+    spl:"133 dB",
+    coverage:"—",
+    drivers:'15" system',
+    weight:"24.65 kg",
+    specs:{
+        "Rated Power":"1000 W RMS",
+        "Peak Power":"4000 W",
+        "Max SPL":"133 dB",
+        "Frequency":"42 Hz – 20 kHz",
+        "Weight":"24.65 kg"
+    }
+},
+
+{
+    id:"hdsub18a",
+    name:"HD sub 18A",
+    type:"active",
+    series:"HD Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'18" subwoofer',
+    weight:"—",
+    specs:{
+        "Type":"Active Subwoofer",
+        "Driver":'18"'
+    }
+},
+
+{
+    id:"pm10a",
+    name:"PM 10A",
+    type:"active",
+    series:"PM Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'10"',
+    weight:"—",
+    specs:{
+        "Type":"Active monitor",
+        "Series":"PM"
+    }
+},
+
+{
+    id:"pm12a",
+    name:"PM 12A",
+    type:"active",
+    series:"PM Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'12"',
+    weight:"—",
+    specs:{
+        "Type":"Active monitor",
+        "Series":"PM"
+    }
+},
+
+{
+    id:"ps8",
+    name:"PS 8",
+    type:"active",
+    series:"PS Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'8"',
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"PS"
+    }
+},
+
+{
+    id:"ps12",
+    name:"PS 12",
+    type:"active",
+    series:"PS Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'12"',
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"PS"
+    }
+},
+
+{
+    id:"ps15",
+    name:"PS 15",
+    type:"active",
+    series:"PS Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'15"',
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"PS"
+    }
+},
+
+{
+    id:"pspro1",
+    name:"PS PRO 1",
+    type:"active",
+    series:"PS PRO",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:"Professional active",
+    weight:"—",
+    specs:{
+        "Type":"Professional active speaker",
+        "Series":"PS PRO"
+    }
+},
+
+{
+    id:"sm5t",
+    name:"SM-5T",
+    type:"active",
+    series:"SM Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'5"',
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"SM"
+    }
+},
+
+{
+    id:"sm5tw",
+    name:"SM-5TW",
+    type:"active",
+    series:"SM Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'5"',
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"SM"
+    }
+},
+
+{
+    id:"sm8t",
+    name:"SM-8T",
+    type:"active",
+    series:"SM Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'8"',
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"SM"
+    }
+},
+
+{
+    id:"sm8tw",
+    name:"SM-8TW",
+    type:"active",
+    series:"SM Series",
+    power:"—",
+    impedance:"—",
+    frequency:"—",
+    spl:"—",
+    coverage:"—",
+    drivers:'8"',
+    weight:"—",
+    specs:{
+        "Type":"Active speaker",
+        "Series":"SM"
     }
 }
 
 ];
 
+
 /* =========================================================
    STATE
 ========================================================= */
 
-let products = [];
+let currentLang = "ar";
+let currentProducts = [...products];
+let compareList = [];
+let imageCache = {};
 
-let currentCategory = "ALL";
-
-let currentProduct = null;
-
-let compareProducts = [];
-
-let language = "ar";
 
 /* =========================================================
-   HELPERS
+   IMAGE ENGINE
+   يحاول جلب الصورة الرئيسية من WordPress
 ========================================================= */
 
-function escapeHTML(value){
+async function getMotivityImage(product){
 
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-}
-
-function stripHTML(value){
-
-    return String(value || "")
-        .replace(/<[^>]*>/g,"")
-        .trim();
-}
-
-/* =========================================================
-   NORMALIZE API PRODUCTS
-========================================================= */
-
-function normalizeProduct(product){
-
-    let image = "";
-
-    if(
-        product.images &&
-        product.images.length
-    ){
-
-        image =
-            product.images[0].src ||
-            "";
+    if(imageCache[product.id]){
+        return imageCache[product.id];
     }
 
-    return {
+    /*
+       WordPress REST API:
+       نبحث عن المنتج باسمه، ثم نحاول أخذ
+       featured_media.
+    */
 
-        id:
-            product.id,
+    const queries = [
+        product.name,
+        product.name.replace(/-/g," "),
+        product.name.replace(/\s+/g,"-")
+    ];
 
-        name:
-            product.name,
+    for(const query of queries){
 
-        category:
-            product.categories &&
-            product.categories.length
-            ?
-            product.categories[0].name
-            :
-            "MOTIVITY",
+        try{
 
-        image:
+            const api =
+                "https://motivitymiddleeast.com/wp-json/wp/v2/product?search="
+                + encodeURIComponent(query)
+                + "&per_page=10";
 
-            image,
-
-        description:
-
-            stripHTML(
-                product.short_description ||
-                product.description ||
-                ""
-            ).slice(0,220),
-
-        specs:
-            product.specifications ||
-            {}
-
-    };
-
-}
-
-/* =========================================================
-   LOAD PRODUCTS
-========================================================= */
-
-async function loadProducts(){
-
-    try{
-
-        const response =
-            await fetch(
-                MOTIVITY_API,
-                {
-                    headers:{
-                        "Accept":
-                        "application/json"
-                    }
+            const response = await fetch(api,{
+                method:"GET",
+                headers:{
+                    "Accept":"application/json"
                 }
-            );
-
-        if(!response.ok){
-            throw new Error("API unavailable");
-        }
-
-        const data =
-            await response.json();
-
-        if(!Array.isArray(data) || !data.length){
-            throw new Error("No products");
-        }
-
-        products =
-            data.map(
-                normalizeProduct
-            );
-
-        /*
-            Add verified fallback specifications
-            to matching models where API doesn't expose
-            the technical table.
-        */
-
-        products =
-            products.map(product=>{
-
-                const fallback =
-                    FALLBACK_PRODUCTS.find(
-                        item =>
-                        item.name.toLowerCase()
-                        ===
-                        product.name
-                        .toLowerCase()
-                    );
-
-                return {
-
-                    ...fallback,
-
-                    ...product,
-
-                    specs:
-                        Object.keys(
-                            product.specs || {}
-                        ).length
-                        ?
-                        product.specs
-                        :
-                        (
-                            fallback
-                            ?
-                            fallback.specs
-                            :
-                            {}
-                        )
-
-                };
-
             });
 
+            if(!response.ok) continue;
+
+            const data = await response.json();
+
+            if(!Array.isArray(data)) continue;
+
+            const exact =
+                data.find(x =>
+                    String(x.title?.rendered || "")
+                    .toLowerCase()
+                    .includes(product.name.toLowerCase())
+                ) || data[0];
+
+            if(exact && exact.featured_media){
+
+                const mediaResponse =
+                    await fetch(
+                        "https://motivitymiddleeast.com/wp-json/wp/v2/media/"
+                        + exact.featured_media
+                    );
+
+                if(mediaResponse.ok){
+
+                    const media =
+                        await mediaResponse.json();
+
+                    if(media.source_url){
+
+                        imageCache[product.id] =
+                            media.source_url;
+
+                        return media.source_url;
+                    }
+                }
+            }
+
+        }catch(error){
+            console.warn(
+                "Image lookup failed:",
+                product.name,
+                error
+            );
+        }
     }
 
-    catch(error){
-
-        products =
-            FALLBACK_PRODUCTS;
-
-    }
-
-    buildCategories();
-
-    renderProducts();
-
-    loadFeatureImage();
-
+    return null;
 }
 
+
 /* =========================================================
-   FEATURE IMAGE
+   FALLBACK IMAGE
 ========================================================= */
 
-function loadFeatureImage(){
+function fallbackImage(){
 
-    const feature =
-        products.find(
-            product =>
-            product.name
-            .toLowerCase()
-            .includes("m-12")
-        );
-
-    if(
-        feature &&
-        feature.image
-    ){
-
-        document
-            .getElementById(
-                "systemImage"
-            )
-            .src =
-            feature.image;
-
-    }
-
+    return `
+        <div class="image-fallback">
+            <div class="fallback-speaker"></div>
+        </div>
+    `;
 }
 
+
 /* =========================================================
-   CATEGORIES
+   PRODUCT CARD
 ========================================================= */
 
-function buildCategories(){
+function productCard(product){
 
-    const categories = [
+    const typeLabel =
+        product.type === "active"
+        ? "ACTIVE"
+        : "PASSIVE";
 
-        "ALL",
+    return `
+    <article class="product-card"
+             onclick="openProduct('${product.id}')">
 
-        ...new Set(
-            products
-            .map(product=>product.category)
-            .filter(Boolean)
-        )
+        <div class="product-image loading"
+             id="image-${product.id}">
 
-    ];
+            ${fallbackImage()}
+
+            <span class="product-type ${product.type}">
+                ${typeLabel}
+            </span>
+
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-series">
+                ${product.series}
+            </div>
+
+            <div class="product-name">
+                ${product.name}
+            </div>
+
+            <div class="product-summary">
+                ${product.drivers !== "—"
+                    ? product.drivers
+                    : "Professional Audio System"}
+            </div>
+
+            <div class="product-spec-mini">
+
+                ${product.power !== "—"
+                    ? `<span class="spec-pill">${product.power}</span>`
+                    : ""}
+
+                ${product.impedance !== "—"
+                    ? `<span class="spec-pill">${product.impedance}</span>`
+                    : ""}
+
+                ${product.frequency !== "—"
+                    ? `<span class="spec-pill">${product.frequency}</span>`
+                    : ""}
+
+                ${product.spl !== "—"
+                    ? `<span class="spec-pill">${product.spl}</span>`
+                    : ""}
+
+            </div>
+
+            <button class="product-open"
+                    onclick="event.stopPropagation();openProduct('${product.id}')"
+                    data-ar="عرض المواصفات"
+                    data-en="View Specifications">
+                عرض المواصفات
+            </button>
+
+        </div>
+
+    </article>
+    `;
+}
+
+
+/* =========================================================
+   LOAD PRODUCT IMAGE
+========================================================= */
+
+async function loadProductImage(product){
 
     const container =
         document.getElementById(
-            "categories"
+            "image-" + product.id
         );
 
-    container.innerHTML =
-        categories
-        .map(category=>{
+    if(!container) return;
 
-            const title =
-                category === "ALL"
-                ?
-                (
-                    language === "ar"
-                    ?
-                    "الكل"
-                    :
-                    "ALL"
-                )
-                :
-                category;
+    const image =
+        await getMotivityImage(product);
 
-            return `
+    container.classList.remove("loading");
 
-                <button
-                    class="
-                        category
-                        ${
-                            category === currentCategory
-                            ?
-                            "active"
-                            :
-                            ""
-                        }
-                    "
-                    onclick="
-                        setCategory(
-                            '${escapeHTML(category)}'
-                        )
-                    ">
+    if(!image) return;
 
-                    ${escapeHTML(title)}
+    const img =
+        document.createElement("img");
 
-                </button>
+    img.alt = product.name;
+    img.loading = "lazy";
+    img.referrerPolicy = "no-referrer";
 
-            `;
+    img.onload = () => {
 
-        })
-        .join("");
+        container
+        .querySelector(".image-fallback")
+        ?.remove();
 
+        container.appendChild(img);
+    };
+
+    img.onerror = () => {
+        console.warn(
+            "Image blocked:",
+            product.name
+        );
+    };
+
+    img.src = image;
 }
 
-/* =========================================================
-   CATEGORY
-========================================================= */
-
-function setCategory(category){
-
-    currentCategory =
-        category;
-
-    buildCategories();
-
-    renderProducts();
-
-}
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-document
-    .getElementById(
-        "searchInput"
-    )
-    .addEventListener(
-        "input",
-        renderProducts
-    );
 
 /* =========================================================
    RENDER PRODUCTS
@@ -2957,974 +3082,697 @@ document
 
 function renderProducts(){
 
-    const query =
+    const grid =
+        document.getElementById("productGrid");
+
+    if(!currentProducts.length){
+
+        grid.innerHTML = `
+            <div class="empty">
+                لا توجد منتجات مطابقة للبحث.
+            </div>
+        `;
+
+        return;
+    }
+
+    grid.innerHTML =
+        currentProducts
+        .map(productCard)
+        .join("");
+
+    currentProducts.forEach(
+        loadProductImage
+    );
+
+    updateText();
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+function applyFilters(){
+
+    const search =
         document
-        .getElementById(
-            "searchInput"
-        )
+        .getElementById("searchInput")
         .value
         .trim()
         .toLowerCase();
 
-    const filtered =
-        products.filter(
-            product=>{
+    const type =
+        document
+        .getElementById("typeFilter")
+        .value;
 
-                const categoryOK =
-                    currentCategory === "ALL"
-                    ||
-                    product.category
-                    ===
-                    currentCategory;
+    const series =
+        document
+        .getElementById("seriesFilter")
+        .value;
 
-                const searchOK =
-                    !query
-                    ||
-                    product.name
-                    .toLowerCase()
-                    .includes(query)
-                    ||
-                    (
-                        product.description ||
-                        ""
-                    )
-                    .toLowerCase()
-                    .includes(query);
+    currentProducts =
+        products.filter(p => {
 
-                return (
-                    categoryOK &&
-                    searchOK
+            const matchesSearch =
+                !search ||
+                p.name.toLowerCase().includes(search) ||
+                p.series.toLowerCase().includes(search) ||
+                p.drivers.toLowerCase().includes(search);
+
+            const matchesType =
+                type === "all" ||
+                p.type === type;
+
+            const matchesSeries =
+                series === "all" ||
+                p.series === series;
+
+            return (
+                matchesSearch &&
+                matchesType &&
+                matchesSeries
+            );
+        });
+
+    renderProducts();
+}
+
+
+/* =========================================================
+   SERIES FILTER
+========================================================= */
+
+function buildSeriesFilter(){
+
+    const select =
+        document.getElementById(
+            "seriesFilter"
+        );
+
+    const series =
+        [...new Set(
+            products.map(p => p.series)
+        )].sort();
+
+    series.forEach(s => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = s;
+        option.textContent = s;
+
+        select.appendChild(option);
+    });
+}
+
+
+/* =========================================================
+   CATEGORY CARDS
+========================================================= */
+
+function buildCategories(){
+
+    const grid =
+        document.getElementById(
+            "categoryGrid"
+        );
+
+    const groups = {};
+
+    products.forEach(p => {
+
+        if(!groups[p.series]){
+            groups[p.series] = 0;
+        }
+
+        groups[p.series]++;
+    });
+
+    const icons = [
+        "◉","◌","◆","◇","▣","◈","△","⬡","●"
+    ];
+
+    grid.innerHTML =
+        Object.entries(groups)
+        .map(([name,count],index) => {
+
+            return `
+            <div class="category-card"
+                 onclick="filterSeries('${name}')">
+
+                <div class="category-icon">
+                    ${icons[index % icons.length]}
+                </div>
+
+                <h3>${name}</h3>
+
+                <p>
+                    ${count}
+                    ${currentLang === "ar"
+                        ? "منتج"
+                        : "products"}
+                </p>
+
+            </div>
+            `;
+
+        })
+        .join("");
+}
+
+
+/* =========================================================
+   FILTER SERIES
+========================================================= */
+
+function filterSeries(series){
+
+    document.getElementById(
+        "seriesFilter"
+    ).value = series;
+
+    document.getElementById(
+        "catalog"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+    applyFilters();
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openProduct(id){
+
+    const product =
+        products.find(
+            p => p.id === id
+        );
+
+    if(!product) return;
+
+    document.getElementById(
+        "modalSeries"
+    ).textContent = product.series;
+
+    document.getElementById(
+        "modalName"
+    ).textContent = product.name;
+
+    document.getElementById(
+        "modalType"
+    ).textContent =
+        product.type === "active"
+        ? "ACTIVE SPEAKER"
+        : "PASSIVE SPEAKER";
+
+    const specs =
+        document.getElementById(
+            "modalSpecs"
+        );
+
+    specs.innerHTML =
+        Object.entries(product.specs)
+        .map(([key,value]) => `
+            <div class="spec-row">
+
+                <div>${key}</div>
+
+                <div>${value}</div>
+
+            </div>
+        `)
+        .join("");
+
+    const imageBox =
+        document.getElementById(
+            "modalImage"
+        );
+
+    imageBox.innerHTML =
+        fallbackImage();
+
+    getMotivityImage(product)
+    .then(url => {
+
+        if(!url) return;
+
+        imageBox.innerHTML =
+            `<img
+                src="${url}"
+                alt="${product.name}"
+                referrerpolicy="no-referrer"
+            >`;
+    });
+
+    document.getElementById(
+        "productModal"
+    ).classList.add("show");
+
+    document.body.style.overflow="hidden";
+}
+
+
+function closeModal(){
+
+    document.getElementById(
+        "productModal"
+    ).classList.remove("show");
+
+    document.body.style.overflow="";
+}
+
+
+/* =========================================================
+   COMPARE
+========================================================= */
+
+function addCompare(id){
+
+    if(
+        !compareList.includes(id) &&
+        compareList.length < 4
+    ){
+
+        compareList.push(id);
+    }
+
+    updateCompare();
+}
+
+
+function updateCompare(){
+
+    const bar =
+        document.getElementById(
+            "compareBar"
+        );
+
+    const items =
+        document.getElementById(
+            "compareItems"
+        );
+
+    if(!compareList.length){
+
+        bar.classList.remove("show");
+        return;
+    }
+
+    bar.classList.add("show");
+
+    items.innerHTML =
+        compareList
+        .map(id => {
+
+            const p =
+                products.find(
+                    x => x.id === id
                 );
 
-            }
+            return `
+                <div class="compare-item">
+                    ${p?.name || ""}
+                </div>
+            `;
+
+        })
+        .join("");
+}
+
+
+function clearCompare(){
+
+    compareList = [];
+
+    updateCompare();
+}
+
+
+function openCompare(){
+
+    if(compareList.length < 2){
+
+        alert(
+            currentLang === "ar"
+            ? "اختر منتجين على الأقل للمقارنة."
+            : "Select at least two products."
         );
+
+        return;
+    }
+
+    const selected =
+        compareList
+        .map(id =>
+            products.find(
+                p => p.id === id
+            )
+        );
+
+    const keys =
+        [...new Set(
+            selected.flatMap(
+                p => Object.keys(p.specs)
+            )
+        )];
+
+    let html = `
+        <div style="
+            overflow:auto;
+            border:1px solid var(--border);
+            border-radius:15px;
+        ">
+
+        <table style="
+            width:100%;
+            border-collapse:collapse;
+            min-width:700px;
+        ">
+
+        <thead>
+        <tr>
+
+            <th style="padding:15px;text-align:right">
+                SPECIFICATION
+            </th>
+
+            ${selected.map(p => `
+                <th style="padding:15px;text-align:right">
+                    ${p.name}
+                </th>
+            `).join("")}
+
+        </tr>
+        </thead>
+
+        <tbody>
+    `;
+
+    keys.forEach(key => {
+
+        html += `
+        <tr style="
+            border-top:1px solid var(--border)
+        ">
+
+            <td style="
+                padding:12px;
+                color:var(--muted)
+            ">
+                ${key}
+            </td>
+
+            ${selected.map(p => `
+                <td style="padding:12px">
+                    ${p.specs[key] || "—"}
+                </td>
+            `).join("")}
+
+        </tr>
+        `;
+    });
+
+    html += `
+        </tbody>
+        </table>
+        </div>
+    `;
+
+    document.getElementById(
+        "compareContent"
+    ).innerHTML = html;
+
+    document.getElementById(
+        "compareModal"
+    ).classList.add("show");
+
+    document.body.style.overflow="hidden";
+}
+
+
+function closeCompare(){
+
+    document.getElementById(
+        "compareModal"
+    ).classList.remove("show");
+
+    document.body.style.overflow="";
+}
+
+
+/* =========================================================
+   VIEW
+========================================================= */
+
+document.getElementById(
+    "gridBtn"
+).onclick = () => {
 
     const grid =
         document.getElementById(
             "productGrid"
         );
 
-    if(!filtered.length){
+    grid.classList.remove("list");
 
-        grid.innerHTML = `
+    document.getElementById(
+        "gridBtn"
+    ).classList.add("active");
 
-            <div
-                style="
-                    grid-column:1/-1;
-                    padding:100px 20px;
-                    text-align:center;
-                    color:#666;
-                ">
+    document.getElementById(
+        "listBtn"
+    ).classList.remove("active");
+};
 
-                No products found.
 
-            </div>
+document.getElementById(
+    "listBtn"
+).onclick = () => {
 
-        `;
-
-        return;
-
-    }
-
-    grid.innerHTML =
-        filtered
-        .map(
-            product =>
-            createProductCard(
-                product
-            )
-        )
-        .join("");
-
-}
-
-/* =========================================================
-   PRODUCT CARD
-========================================================= */
-
-function createProductCard(product){
-
-    const index =
-        products.indexOf(
-            product
+    const grid =
+        document.getElementById(
+            "productGrid"
         );
 
-    const specs =
-        product.specs || {};
+    grid.classList.add("list");
 
-    const specKeys =
-        Object.keys(
-            specs
-        ).slice(0,3);
+    document.getElementById(
+        "listBtn"
+    ).classList.add("active");
 
-    const image =
-        product.image
-        ?
+    document.getElementById(
+        "gridBtn"
+    ).classList.remove("active");
+};
 
-        `
-
-        <img
-            src="${escapeHTML(product.image)}"
-            alt="${escapeHTML(product.name)}"
-            loading="lazy">
-
-        `
-
-        :
-
-        `
-
-        <div
-            class="product-placeholder">
-
-            ${escapeHTML(
-                product.name
-            )}
-
-        </div>
-
-        `;
-
-    return `
-
-        <article
-            class="product-card">
-
-            <div
-                class="product-image">
-
-                ${image}
-
-                <span
-                    class="product-badge">
-
-                    ${escapeHTML(
-                        product.category
-                    )}
-
-                </span>
-
-            </div>
-
-            <div
-                class="product-info">
-
-                <div
-                    class="product-series">
-
-                    ${escapeHTML(
-                        product.category
-                    )}
-
-                </div>
-
-                <h3
-                    class="product-name">
-
-                    ${escapeHTML(
-                        product.name
-                    )}
-
-                </h3>
-
-                <div
-                    class="product-description">
-
-                    ${escapeHTML(
-                        product.description
-                        ||
-                        "Professional Audio System"
-                    )}
-
-                </div>
-
-                <div
-                    class="mini-specs">
-
-                    ${
-                        specKeys
-                        .map(
-                            key =>
-                            `
-
-                            <div
-                                class="mini-spec">
-
-                                <strong>
-                                    ${escapeHTML(
-                                        specs[key]
-                                    )}
-                                </strong>
-
-                                ${escapeHTML(
-                                    key
-                                )}
-
-                            </div>
-
-                            `
-                        )
-                        .join("")
-                    }
-
-                </div>
-
-                <div
-                    class="product-actions">
-
-                    <button
-                        class="view"
-                        onclick="
-                            openProduct(
-                                ${index}
-                            )
-                        ">
-
-                        ${
-                            language === "ar"
-                            ?
-                            "عرض المنتج"
-                            :
-                            "VIEW PRODUCT"
-                        }
-
-                    </button>
-
-                    <button
-                        onclick="
-                            toggleCompare(
-                                ${index}
-                            )
-                        ">
-
-                        +
-                        Compare
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-    `;
-
-}
 
 /* =========================================================
-   OPEN PRODUCT
+   SEARCH
 ========================================================= */
 
-function openProduct(index){
+document.getElementById(
+    "searchInput"
+).addEventListener(
+    "input",
+    applyFilters
+);
+
+document.getElementById(
+    "typeFilter"
+).addEventListener(
+    "change",
+    applyFilters
+);
+
+document.getElementById(
+    "seriesFilter"
+).addEventListener(
+    "change",
+    applyFilters
+);
 
-    currentProduct =
-        products[index];
-
-    const product =
-        currentProduct;
-
-    document
-        .getElementById(
-            "modalName"
-        )
-        .textContent =
-        product.name;
-
-    document
-        .getElementById(
-            "modalSeries"
-        )
-        .textContent =
-        product.category;
-
-    document
-        .getElementById(
-            "modalDescription"
-        )
-        .textContent =
-        product.description ||
-        "Professional Audio System";
-
-    const image =
-        document
-        .getElementById(
-            "modalImage"
-        );
-
-    image.src =
-        product.image ||
-        "";
-
-    image.alt =
-        product.name;
-
-    const table =
-        document
-        .getElementById(
-            "modalSpecs"
-        );
-
-    table.innerHTML =
-        Object
-        .entries(
-            product.specs || {}
-        )
-        .map(
-            ([key,value]) =>
-            `
-
-                <div
-                    class="spec-row">
-
-                    <div>
-                        ${escapeHTML(key)}
-                    </div>
-
-                    <div>
-                        ${escapeHTML(value)}
-                    </div>
-
-                </div>
-
-            `
-        )
-        .join("");
-
-    const whatsapp =
-        document
-        .getElementById(
-            "whatsappProduct"
-        );
-
-    whatsapp.href =
-        "https://wa.me/"
-        +
-        WHATSAPP
-        +
-        "?text="
-        +
-        encodeURIComponent(
-            "مرحباً، أود الاستفسار عن منتج MOTIVITY: "
-            +
-            product.name
-        );
-
-    document
-        .getElementById(
-            "productModal"
-        )
-        .classList
-        .add("open");
-
-}
-
-/* =========================================================
-   CLOSE PRODUCT
-========================================================= */
-
-document
-    .getElementById(
-        "closeProduct"
-    )
-    .onclick = () => {
-
-        document
-            .getElementById(
-                "productModal"
-            )
-            .classList
-            .remove("open");
-
-    };
-
-/* =========================================================
-   COMPARE
-========================================================= */
-
-function toggleCompare(index){
-
-    const product =
-        products[index];
-
-    const existing =
-        compareProducts.findIndex(
-            item =>
-            item.name ===
-            product.name
-        );
-
-    if(existing >= 0){
-
-        compareProducts
-            .splice(
-                existing,
-                1
-            );
-
-    }
-
-    else{
-
-        if(
-            compareProducts.length
-            >=
-            3
-        ){
-
-            showToast(
-                language === "ar"
-                ?
-                "يمكن مقارنة 3 منتجات فقط"
-                :
-                "Maximum 3 products"
-            );
-
-            return;
-
-        }
-
-        compareProducts
-            .push(product);
-
-    }
-
-    updateCompareBar();
-
-    renderProducts();
-
-}
-
-/* =========================================================
-   COMPARE BAR
-========================================================= */
-
-function updateCompareBar(){
-
-    const bar =
-        document
-        .getElementById(
-            "compareBar"
-        );
-
-    const items =
-        document
-        .getElementById(
-            "compareItems"
-        );
-
-    if(!compareProducts.length){
-
-        bar.classList
-            .remove("show");
-
-        return;
-
-    }
-
-    bar.classList
-        .add("show");
-
-    items.innerHTML =
-        compareProducts
-        .map(
-            product =>
-            `
-
-            <div
-                class="compare-item">
-
-                ${escapeHTML(
-                    product.name
-                )}
-
-            </div>
-
-            `
-        )
-        .join("");
-
-}
-
-/* =========================================================
-   SHOW COMPARE
-========================================================= */
-
-document
-    .getElementById(
-        "compareOpen"
-    )
-    .onclick =
-    openCompare;
-
-function openCompare(){
-
-    if(
-        !compareProducts.length
-    ){
-
-        return;
-
-    }
-
-    const allSpecs =
-        [
-            ...new Set(
-                compareProducts
-                .flatMap(
-                    product =>
-                    Object.keys(
-                        product.specs || {}
-                    )
-                )
-            )
-        ];
-
-    document
-        .getElementById(
-            "compareGrid"
-        )
-        .innerHTML =
-
-        compareProducts
-        .map(
-            product =>
-            `
-
-            <div
-                class="compare-column">
-
-                <div
-                    class="product-series">
-
-                    ${escapeHTML(
-                        product.category
-                    )}
-
-                </div>
-
-                <h3>
-                    ${escapeHTML(
-                        product.name
-                    )}
-                </h3>
-
-                ${
-                    allSpecs
-                    .map(
-                        spec =>
-                        `
-
-                        <div
-                            class="compare-row">
-
-                            <span>
-                                ${escapeHTML(
-                                    spec
-                                )}
-                            </span>
-
-                            <strong>
-
-                                ${escapeHTML(
-                                    product.specs?.[spec]
-                                    ??
-                                    "—"
-                                )}
-
-                            </strong>
-
-                        </div>
-
-                        `
-                    )
-                    .join("")
-                }
-
-            </div>
-
-            `
-        )
-        .join("");
-
-    document
-        .getElementById(
-            "compareModal"
-        )
-        .classList
-        .add("open");
-
-}
-
-/* =========================================================
-   CLOSE COMPARE
-========================================================= */
-
-document
-    .getElementById(
-        "closeCompare"
-    )
-    .onclick = () => {
-
-        document
-            .getElementById(
-                "compareModal"
-            )
-            .classList
-            .remove("open");
-
-    };
-
-/* =========================================================
-   CLEAR COMPARE
-========================================================= */
-
-document
-    .getElementById(
-        "compareClear"
-    )
-    .onclick = () => {
-
-        compareProducts = [];
-
-        updateCompareBar();
-
-        renderProducts();
-
-    };
-
-/* =========================================================
-   MODAL COMPARE
-========================================================= */
-
-document
-    .getElementById(
-        "modalCompare"
-    )
-    .onclick = () => {
-
-        if(!currentProduct){
-            return;
-        }
-
-        const index =
-            products.indexOf(
-                currentProduct
-            );
-
-        toggleCompare(index);
-
-    };
-
-/* =========================================================
-   SYSTEM BUTTON
-========================================================= */
-
-document
-    .getElementById(
-        "systemButton"
-    )
-    .onclick = () => {
-
-        const product =
-            products.find(
-                item =>
-                item.name
-                .toLowerCase()
-                .includes("m-12")
-            );
-
-        if(product){
-
-            openProduct(
-                products.indexOf(
-                    product
-                )
-            );
-
-        }
-
-    };
-
-/* =========================================================
-   RESET
-========================================================= */
-
-document
-    .getElementById(
-        "resetButton"
-    )
-    .onclick = () => {
-
-        document
-            .getElementById(
-                "searchInput"
-            )
-            .value = "";
-
-        currentCategory =
-            "ALL";
-
-        buildCategories();
-
-        renderProducts();
-
-    };
 
 /* =========================================================
    LANGUAGE
 ========================================================= */
 
-document
-    .getElementById(
-        "languageButton"
-    )
-    .onclick = () => {
+function updateText(){
 
-        language =
-            language === "ar"
-            ?
-            "en"
-            :
-            "ar";
+    document.querySelectorAll(
+        "[data-ar]"
+    ).forEach(el => {
 
-        applyLanguage();
-
-    };
-
-function applyLanguage(){
-
-    document
-        .documentElement
-        .lang =
-        language;
-
-    document
-        .documentElement
-        .dir =
-        language === "ar"
-        ?
-        "rtl"
-        :
-        "ltr";
-
-    document
-        .body
-        .classList
-        .toggle(
-            "english",
-            language === "en"
-        );
-
-    document
-        .getElementById(
-            "languageButton"
-        )
-        .textContent =
-        language === "ar"
-        ?
-        "EN"
-        :
-        "عربي";
-
-    document
-        .querySelectorAll(
-            "[data-ar][data-en]"
-        )
-        .forEach(
-            element => {
-
-                element.innerHTML =
-                    element.dataset[
-                        language
-                    ];
-
-            }
-        );
+        el.textContent =
+            currentLang === "ar"
+            ? el.dataset.ar
+            : el.dataset.en;
+    });
 
     const search =
-        document
-        .getElementById(
+        document.getElementById(
             "searchInput"
         );
 
     search.placeholder =
-        language === "ar"
-        ?
-        search.dataset
-            .arPlaceholder
-        :
-        search.dataset
-            .enPlaceholder;
+        currentLang === "ar"
+        ? search.dataset.arPlaceholder
+        : search.dataset.enPlaceholder;
+
+    document.documentElement.lang =
+        currentLang;
+
+    document.documentElement.dir =
+        currentLang === "ar"
+        ? "rtl"
+        : "ltr";
+
+    document.getElementById(
+        "langBtn"
+    ).textContent =
+        currentLang === "ar"
+        ? "EN"
+        : "AR";
+}
+
+
+document.getElementById(
+    "langBtn"
+).onclick = () => {
+
+    currentLang =
+        currentLang === "ar"
+        ? "en"
+        : "ar";
+
+    updateText();
+    buildCategories();
+};
+
+
+/* =========================================================
+   THEME
+========================================================= */
+
+document.getElementById(
+    "themeBtn"
+).onclick = () => {
+
+    document.body.classList.toggle(
+        "light"
+    );
+};
+
+
+/* =========================================================
+   CLOSE MODALS
+========================================================= */
+
+document.getElementById(
+    "productModal"
+).addEventListener(
+    "click",
+    e => {
+
+        if(e.target.id === "productModal"){
+            closeModal();
+        }
+    }
+);
+
+document.getElementById(
+    "compareModal"
+).addEventListener(
+    "click",
+    e => {
+
+        if(e.target.id === "compareModal"){
+            closeCompare();
+        }
+    }
+);
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    e => {
+
+        if(e.key === "Escape"){
+
+            closeModal();
+            closeCompare();
+        }
+    }
+);
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+function scrollToCatalog(){
+
+    document.getElementById(
+        "catalog"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+function init(){
+
+    buildSeriesFilter();
 
     buildCategories();
 
     renderProducts();
 
-}
+    updateText();
 
-/* =========================================================
-   TOAST
-========================================================= */
+    /*
+       تحديث الأرقام تلقائياً من قاعدة البيانات
+    */
 
-function showToast(message){
+    const passive =
+        products.filter(
+            p => p.type === "passive"
+        ).length;
 
-    const toast =
-        document
-        .getElementById(
-            "toast"
-        );
+    const active =
+        products.filter(
+            p => p.type === "active"
+        ).length;
 
-    toast.textContent =
-        message;
-
-    toast.classList
-        .add("show");
-
-    setTimeout(
-        () =>
-        toast.classList
-        .remove("show"),
-        1800
-    );
-
-}
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-window
-.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key ===
-            "Escape"
-        ){
-
-            document
-                .getElementById(
-                    "productModal"
-                )
-                .classList
-                .remove("open");
-
-            document
-                .getElementById(
-                    "compareModal"
-                )
-                .classList
-                .remove("open");
-
-        }
-
-    }
-);
-
-/* =========================================================
-   CLICK OUTSIDE MODAL
-========================================================= */
-
-document
-    .getElementById(
-        "productModal"
-    )
-    .addEventListener(
-        "click",
-        event => {
-
-            if(
-                event.target.id
-                ===
-                "productModal"
-            ){
-
-                event.currentTarget
-                    .classList
-                    .remove("open");
-
-            }
-
-        }
-    );
-
-document
-    .getElementById(
-        "compareModal"
-    )
-    .addEventListener(
-        "click",
-        event => {
-
-            if(
-                event.target.id
-                ===
-                "compareModal"
-            ){
-
-                event.currentTarget
-                    .classList
-                    .remove("open");
-
-            }
-
-        }
-    );
-
-/* =========================================================
-   SOUND WAVE
-========================================================= */
-
-const wave =
     document.getElementById(
-        "wave"
-    );
+        "passiveCount"
+    ).textContent = passive;
 
-for(
-    let i=0;
-    i<65;
-    i++
-){
+    document.getElementById(
+        "activeCount"
+    ).textContent = active;
 
-    const bar =
-        document.createElement(
-            "span"
-        );
-
-    bar.style
-        .setProperty(
-            "--height",
-            (
-                15 +
-                Math.random()*105
-            )
-            +
-            "px"
-        );
-
-    bar.style
-        .animationDelay =
-        (
-            Math.random()*1.3
-        )
-        +
-        "s";
-
-    wave.appendChild(
-        bar
-    );
-
+    document.getElementById(
+        "totalProducts"
+    ).textContent =
+        products.length + "+";
 }
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-applyLanguage();
-
-loadProducts();
+init();
 
 </script>
 
