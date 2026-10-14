@@ -1,9 +1,9 @@
 /* ============================================
  * MUSICTECH — بيانات الموقع
- * يمكن تعديل هذا الملف من admin.html
+ * عدّل من admin.html
  * ============================================ */
 window.MUSICTECH_DATA = {
-  "version": "2.0",
+  "version": "3.0",
   "currency": "USD",
   "currencySymbol": "$",
   "exported": "2025-01-01T00:00:00.000Z",
@@ -16,11 +16,7 @@ window.MUSICTECH_DATA = {
       "price": 1200,
       "desc": "Professional audio system with complete geometric coverage and exceptional clarity.",
       "images": ["https://picsum.photos/seed/p1/400/400"],
-      "specs": [
-        {"k": "System", "v": "3-way"},
-        {"k": "Power", "v": "1000 W"},
-        {"k": "Peak", "v": "4000 W"}
-      ],
+      "specs": [{"k": "System", "v": "3-way"}, {"k": "Power", "v": "1000 W"}, {"k": "Peak", "v": "4000 W"}],
       "created": 1704067200000
     },
     {
@@ -31,11 +27,7 @@ window.MUSICTECH_DATA = {
       "price": 1390,
       "desc": "5-unit three-way speaker system with bass reflex port.",
       "images": ["https://picsum.photos/seed/p2/400/400"],
-      "specs": [
-        {"k": "Speaker", "v": "5× 3-way"},
-        {"k": "Power", "v": "1000 W"},
-        {"k": "Impedance", "v": "4 Ω"}
-      ],
+      "specs": [{"k": "Speaker", "v": "5× 3-way"}, {"k": "Power", "v": "1000 W"}, {"k": "Impedance", "v": "4 Ω"}],
       "created": 1704067200001
     },
     {
@@ -46,11 +38,7 @@ window.MUSICTECH_DATA = {
       "price": 750,
       "desc": "Bass reflex two-way dual-unit system.",
       "images": ["https://picsum.photos/seed/p3/400/400"],
-      "specs": [
-        {"k": "Type", "v": "Bass Reflex"},
-        {"k": "Power", "v": "500 W"},
-        {"k": "Impedance", "v": "8 Ω"}
-      ],
+      "specs": [{"k": "Type", "v": "Bass Reflex"}, {"k": "Power", "v": "500 W"}],
       "created": 1704067200002
     },
     {
@@ -61,11 +49,7 @@ window.MUSICTECH_DATA = {
       "price": 1850,
       "desc": "Subwoofer with 1800W power and deep coverage.",
       "images": ["https://picsum.photos/seed/p4/400/400"],
-      "specs": [
-        {"k": "Category", "v": "Subwoofer"},
-        {"k": "Power", "v": "1800 W"},
-        {"k": "Frequency", "v": "35-250 Hz"}
-      ],
+      "specs": [{"k": "Category", "v": "Subwoofer"}, {"k": "Power", "v": "1800 W"}],
       "created": 1704067200003
     },
     {
@@ -76,11 +60,7 @@ window.MUSICTECH_DATA = {
       "price": 1120,
       "desc": "18-inch subwoofer with outstanding performance.",
       "images": ["https://picsum.photos/seed/p5/400/400"],
-      "specs": [
-        {"k": "Category", "v": "Subwoofer"},
-        {"k": "Power", "v": "1200 W"},
-        {"k": "Size", "v": "18 inch"}
-      ],
+      "specs": [{"k": "Category", "v": "Subwoofer"}, {"k": "Power", "v": "1200 W"}],
       "created": 1704067200004
     },
     {
@@ -91,42 +71,8 @@ window.MUSICTECH_DATA = {
       "price": 4800,
       "desc": "Professional studio mixer with 32 channels.",
       "images": ["https://picsum.photos/seed/p6/400/400"],
-      "specs": [
-        {"k": "Channels", "v": "32"},
-        {"k": "Pre-amps", "v": "16"},
-        {"k": "FX", "v": "Dual"}
-      ],
+      "specs": [{"k": "Channels", "v": "32"}, {"k": "Pre-amps", "v": "16"}],
       "created": 1704067200005
-    },
-    {
-      "id": "p7",
-      "name": "Studio Kit Pro",
-      "brand": "MOTIVE",
-      "tag": "New",
-      "price": 850,
-      "desc": "Complete home studio kit with condenser mic and interface.",
-      "images": ["https://picsum.photos/seed/p7/400/400"],
-      "specs": [
-        {"k": "Microphone", "v": "Condenser"},
-        {"k": "Interface", "v": "2×2"},
-        {"k": "Monitors", "v": "5 inch"}
-      ],
-      "created": 1704067200006
-    },
-    {
-      "id": "p8",
-      "name": "XL Series Cables",
-      "brand": "QUIKLOK",
-      "tag": "",
-      "price": 45,
-      "desc": "Professional Italian cables with superior stability.",
-      "images": ["https://picsum.photos/seed/p8/400/400"],
-      "specs": [
-        {"k": "Length", "v": "10 m"},
-        {"k": "Type", "v": "XLR"},
-        {"k": "Shielding", "v": "Double"}
-      ],
-      "created": 1704067200007
     }
   ],
   "brands": [
@@ -153,8 +99,11 @@ window.MUSICTECH_DATA = {
   ],
   "settings": {
     "company": "MUSICTECH",
-    "whatsapp": "966500000000",
-    "email": "info@musictech.sa",
+    "whatsapp": "249917029008",
+    "whatsapp2": "249912153389",
+    "email": "Mustech321@gmail.com",
+    "phone1": "+249 91 702 9008",
+    "phone2": "+249 91 215 3389",
     "currency": "USD",
     "currencySymbol": "$",
     "dark": true
