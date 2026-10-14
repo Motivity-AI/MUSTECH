@@ -8,18 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-    --red:#e1193a;--orange:#ff6b35;--gold:#f7b801;--violet:#7c3aed;--green:#25D366;
-    --bg:#050509;--bg2:#0a0a14;--panel:#0f0f18;--txt:#fff;--mut:#8b8b9e;
-    --border:rgba(255,255,255,.08);--card:rgba(255,255,255,.03);
-    --grad:linear-gradient(135deg,#e1193a 0%,#ff6b35 50%,#f7b801 100%);
-}
+:root{--red:#e1193a;--orange:#ff6b35;--gold:#f7b801;--violet:#7c3aed;--green:#25D366;--bg:#050509;--bg2:#0a0a14;--panel:#0f0f18;--txt:#fff;--mut:#8b8b9e;--border:rgba(255,255,255,.08);--card:rgba(255,255,255,.03);--grad:linear-gradient(135deg,#e1193a 0%,#ff6b35 50%,#f7b801 100%)}
 body{font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden}
 button,input,textarea,select{font-family:inherit;color:inherit}
 button{cursor:pointer;border:0;background:transparent}
 a{color:inherit;text-decoration:none}
 
-/* ============ LOGIN ============ */
+/* LOGIN */
 .login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(ellipse at top,rgba(225,25,58,.15),var(--bg) 60%)}
 .login-box{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--border);border-radius:24px;padding:40px;box-shadow:0 40px 100px rgba(0,0,0,.6);position:relative;overflow:hidden}
 .login-box::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(225,25,58,.3),transparent 70%);filter:blur(60px);pointer-events:none}
@@ -38,15 +33,15 @@ a{color:inherit;text-decoration:none}
 .btn-g:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
 .btn-danger{background:rgba(225,25,58,.15);color:var(--red);border:1.5px solid rgba(225,25,58,.4)}
 .btn-danger:hover{background:var(--red);color:#fff}
+.btn-success{background:rgba(34,197,94,.15);color:#22c55e;border:1.5px solid rgba(34,197,94,.4)}
+.btn-success:hover{background:#22c55e;color:#fff}
 .btn-sm{padding:8px 16px;font-size:.85rem;border-radius:10px}
 .login-hint{margin-top:20px;text-align:center;font-size:.8rem;color:var(--mut);position:relative}
 .login-hint code{background:rgba(255,255,255,.05);padding:3px 8px;border-radius:6px;color:var(--gold);font-family:'Space Grotesk',monospace}
 
-/* ============ APP LAYOUT ============ */
+/* APP */
 .app{display:none;min-height:100vh;grid-template-columns:260px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main"}
 .app.on{display:grid}
-
-/* TOPBAR */
 .top{grid-area:top;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100}
 .top-title{display:flex;align-items:center;gap:12px;font-weight:700}
 .top-title i{color:var(--red)}
@@ -57,7 +52,7 @@ a{color:inherit;text-decoration:none}
 .top-icon{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--txt);transition:all .3s}
 .top-icon:hover{background:rgba(225,25,58,.15);color:var(--red);border-color:rgba(225,25,58,.4)}
 
-/* SIDEBAR */
+/* SIDE */
 .side{grid-area:side;background:var(--panel);border-left:1px solid var(--border);padding:20px 0;position:sticky;top:0;height:100vh;overflow-y:auto}
 .side-brand{padding:0 20px 24px;border-bottom:1px solid var(--border);margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .side-brand-logo{width:40px;height:40px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff}
@@ -91,7 +86,7 @@ a{color:inherit;text-decoration:none}
 .stat-body span{color:var(--mut);font-size:.8rem;display:block;margin-bottom:6px}
 .stat-body strong{display:block;font-size:2rem;font-weight:900;font-family:'Space Grotesk',sans-serif;line-height:1}
 
-/* PRODUCTS LIST */
+/* PRODUCTS */
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .prod-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s;position:relative}
 .prod-card:hover{border-color:rgba(225,25,58,.5);transform:translateY(-4px);box-shadow:0 20px 40px rgba(225,25,58,.2)}
@@ -106,14 +101,14 @@ a{color:inherit;text-decoration:none}
 .prod-edit:hover{background:#3b82f6;color:#fff}
 .prod-del{background:rgba(225,25,58,.15);color:var(--red);border:1px solid rgba(225,25,58,.3)}
 .prod-del:hover{background:var(--red);color:#fff}
-.prod-tag{position:absolute;top:12px;right:12px;background:var(--grad);color:#fff;padding:4px 12px;border-radius:60px;font-size:.7rem;font-weight:700}
+.prod-tag{position:absolute;top:12px;right:12px;background:var(--grad);color:#fff;padding:4px 12px;border-radius:60px;font-size:.7rem;font-weight:700;z-index:2}
 
 /* FORM */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form-grid.full{grid-template-columns:1fr}
 @media(max-width:768px){.form-grid{grid-template-columns:1fr}}
 
-/* IMAGE UPLOAD */
+/* UPLOAD */
 .upload-zone{grid-column:1/-1;border:2px dashed var(--border);border-radius:16px;padding:32px;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;background:rgba(255,255,255,.02)}
 .upload-zone:hover{border-color:var(--red);background:rgba(225,25,58,.05)}
 .upload-zone.drag{border-color:var(--red);background:rgba(225,25,58,.1);transform:scale(1.01)}
@@ -121,14 +116,16 @@ a{color:inherit;text-decoration:none}
 .upload-zone strong{display:block;margin-bottom:6px}
 .upload-zone small{color:var(--mut);font-size:.8rem}
 .upload-preview{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;grid-column:1/-1}
-.upload-thumb{position:relative;width:100px;height:100px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--border);padding:6px}
+.upload-thumb{position:relative;width:100px;height:100px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--border);padding:6px;transition:transform .2s}
+.upload-thumb:hover{transform:scale(1.05)}
 .upload-thumb img{width:100%;height:100%;object-fit:contain}
-.upload-thumb button{position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.upload-thumb button{position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;box-shadow:0 4px 12px rgba(0,0,0,.4);z-index:2}
 .upload-thumb button:hover{transform:scale(1.15)}
+.upload-thumb .upload-badge{position:absolute;bottom:4px;right:4px;background:rgba(0,0,0,.8);color:#fff;padding:2px 6px;border-radius:6px;font-size:.6rem;font-family:monospace}
 
-/* SPECS EDITOR */
+/* SPECS */
 .specs-editor{grid-column:1/-1;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:16px;padding:20px}
-.specs-editor > label{display:block;font-size:.9rem;font-weight:700;margin-bottom:12px}
+.specs-editor>label{display:block;font-size:.9rem;font-weight:700;margin-bottom:12px}
 .spec-row{display:grid;grid-template-columns:1fr 1fr 40px;gap:10px;margin-bottom:10px;align-items:center}
 .spec-row input{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:.85rem;color:var(--txt);outline:none}
 .spec-row input:focus{border-color:var(--red);background:rgba(225,25,58,.05)}
@@ -137,7 +134,6 @@ a{color:inherit;text-decoration:none}
 .spec-add{background:rgba(34,197,94,.15);color:#22c55e;border:1.5px dashed rgba(34,197,94,.4);border-radius:10px;padding:10px;font-size:.85rem;font-weight:700;width:100%;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .3s}
 .spec-add:hover{background:rgba(34,197,94,.25);border-color:#22c55e}
 
-/* FORM ACTIONS */
 .form-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:20px;grid-column:1/-1;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap}
 
 /* MODAL */
@@ -154,15 +150,17 @@ a{color:inherit;text-decoration:none}
 .modal-foot{padding:20px 24px;border-top:1px solid var(--border);display:flex;gap:12px;justify-content:flex-end;flex-shrink:0;flex-wrap:wrap}
 
 /* TOAST */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:14px 24px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:.9rem;box-shadow:0 20px 60px rgba(0,0,0,.6);z-index:99999;opacity:0;transition:all .4s}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:14px 24px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:.9rem;box-shadow:0 20px 60px rgba(0,0,0,.6);z-index:99999;opacity:0;transition:all .4s;max-width:90%;word-break:break-word}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast i{font-size:1.2rem}
+.toast i{font-size:1.2rem;flex-shrink:0}
 .toast.success{border-color:rgba(34,197,94,.4)}
 .toast.success i{color:#22c55e}
 .toast.error{border-color:rgba(225,25,58,.4)}
 .toast.error i{color:var(--red)}
+.toast.info{border-color:rgba(59,130,246,.4)}
+.toast.info i{color:#3b82f6}
 
-/* EMPTY STATE */
+/* EMPTY */
 .empty{text-align:center;padding:60px 20px;color:var(--mut)}
 .empty i{font-size:4rem;opacity:.3;margin-bottom:16px;display:block;color:var(--red)}
 .empty h3{color:var(--txt);margin-bottom:8px;font-size:1.2rem}
@@ -175,10 +173,12 @@ a{color:inherit;text-decoration:none}
 .search-bar i{position:absolute;top:50%;right:14px;transform:translateY(-50%);color:var(--mut);pointer-events:none}
 
 /* SETTINGS */
-.setting-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border)}
+.setting-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);gap:20px;flex-wrap:wrap}
 .setting-row:last-child{border-bottom:0}
 .setting-row-info strong{display:block;margin-bottom:4px;font-size:.95rem}
 .setting-row-info span{color:var(--mut);font-size:.8rem}
+.setting-row input[type="text"],.setting-row input[type="password"],.setting-row input[type="email"]{width:280px;max-width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--txt);outline:none;font-size:.9rem}
+.setting-row input:focus{border-color:var(--red);background:rgba(225,25,58,.05)}
 
 /* SWITCH */
 .switch{position:relative;width:52px;height:28px;flex-shrink:0}
@@ -193,45 +193,69 @@ a{color:inherit;text-decoration:none}
 .badge-green{background:rgba(34,197,94,.15);color:#22c55e}
 .badge-red{background:rgba(225,25,58,.15);color:var(--red)}
 .badge-gold{background:rgba(247,184,1,.15);color:var(--gold)}
+.badge-blue{background:rgba(59,130,246,.15);color:#3b82f6}
+.badge-cloud{background:linear-gradient(135deg,rgba(52,144,220,.2),rgba(52,144,220,.1));color:#3490dc;border:1px solid rgba(52,144,220,.3)}
+
+/* PROGRESS UPLOAD */
+.upload-progress{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);width:90%;max-width:400px;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px;z-index:99998;display:none;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.upload-progress.on{display:block;animation:fade .3s}
+.upload-progress-head{display:flex;justify-content:space-between;margin-bottom:10px;font-size:.85rem;font-weight:700}
+.upload-progress-bar{height:6px;background:rgba(255,255,255,.1);border-radius:60px;overflow:hidden}
+.upload-progress-fill{height:100%;background:var(--grad);width:0;transition:width .3s;border-radius:60px}
+.upload-progress-count{font-size:.75rem;color:var(--mut);margin-top:8px;text-align:center}
+
+/* GITHUB PANEL */
+.gh-panel{background:linear-gradient(135deg,rgba(36,41,47,.4),rgba(36,41,47,.2));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;margin-bottom:20px}
+.gh-panel-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.gh-panel-head i{color:#fff;font-size:1.3rem}
+.gh-panel-head strong{font-size:1rem}
+.gh-status{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:60px;font-size:.7rem;font-weight:700;margin-right:auto}
+.gh-status.ok{background:rgba(34,197,94,.15);color:#22c55e}
+.gh-status.no{background:rgba(139,139,158,.15);color:var(--mut)}
+.gh-status.err{background:rgba(225,25,58,.15);color:var(--red)}
+
+/* CODE BLOCK */
+.code-block{background:#0a0a14;border:1px solid var(--border);border-radius:12px;padding:16px;font-family:'Space Grotesk',monospace;font-size:.8rem;color:#a1a1aa;line-height:1.7;overflow-x:auto;position:relative}
+.code-block pre{margin:0;white-space:pre-wrap;word-break:break-all}
+
+/* INFO BOX */
+.info-box{background:rgba(59,130,246,.05);border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:16px;margin-top:12px;font-size:.85rem;line-height:1.8}
+.info-box i{color:#3b82f6;margin-left:6px}
 
 /* MOBILE */
+.menu-btn{display:none;background:transparent;color:var(--txt);font-size:1.2rem}
 @media(max-width:900px){
     .app{grid-template-columns:1fr;grid-template-areas:"top" "main"}
     .side{position:fixed;top:0;right:0;bottom:0;width:280px;z-index:200;transform:translateX(100%);transition:transform .3s;box-shadow:-20px 0 60px rgba(0,0,0,.6)}
     .side.on{transform:translateX(0)}
     .main{padding:20px}
     .top{padding:0 16px}
+    .menu-btn{display:flex}
 }
-.menu-btn{display:none;background:transparent;color:var(--txt);font-size:1.2rem}
-@media(max-width:900px){.menu-btn{display:flex}}
+
+/* SPINNER */
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:inline-block;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 
-<!-- ============ LOGIN ============ -->
+<!-- LOGIN -->
 <div class="login-wrap" id="loginWrap">
     <div class="login-box">
         <div class="login-logo"><i class="fa fa-shield-halved"></i></div>
         <h1>لوحة إدارة MUSICTECH</h1>
-        <p>أدخل كلمة المرور للوصول إلى لوحة التحكم</p>
+        <p>أدخل كلمة المرور للدخول</p>
         <form id="loginForm">
-            <div class="field">
-                <label>كلمة المرور</label>
-                <input type="password" id="loginPass" placeholder="••••••••" autofocus/>
-            </div>
+            <div class="field"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="••••••••" autofocus/></div>
             <button type="submit" class="btn btn-p"><i class="fa fa-sign-in-alt"></i> دخول</button>
         </form>
-        <div class="login-hint">
-            كلمة المرور الافتراضية: <code>admin123</code><br/>
-            <small style="font-size:.7rem;display:block;margin-top:6px">يمكنك تغييرها من الإعدادات</small>
-        </div>
+        <div class="login-hint">كلمة المرور الافتراضية: <code>admin123</code></div>
     </div>
 </div>
 
-<!-- ============ APP ============ -->
+<!-- APP -->
 <div class="app" id="app">
-
-    <!-- TOPBAR -->
     <header class="top">
         <div class="top-title">
             <button class="menu-btn" id="menuBtn"><i class="fa fa-bars"></i></button>
@@ -241,89 +265,52 @@ a{color:inherit;text-decoration:none}
         <div class="top-actions">
             <span class="top-badge">متصل</span>
             <button class="top-icon" id="viewSite" title="عرض الموقع"><i class="fa fa-external-link-alt"></i></button>
-            <button class="top-icon" id="logoutBtn" title="تسجيل الخروج"><i class="fa fa-sign-out-alt"></i></button>
+            <button class="top-icon" id="logoutBtn" title="خروج"><i class="fa fa-sign-out-alt"></i></button>
         </div>
     </header>
 
-    <!-- SIDEBAR -->
     <aside class="side" id="side">
         <div class="side-brand">
             <div class="side-brand-logo"><i class="fa fa-bolt"></i></div>
-            <div><strong>MUSICTECH</strong><span>Admin Panel v1.0</span></div>
+            <div><strong>MUSICTECH</strong><span>Admin Panel v2.0</span></div>
         </div>
         <nav class="side-nav">
-            <button class="side-item active" data-page="dashboard">
-                <i class="fa fa-gauge-high"></i><span>نظرة عامة</span>
-            </button>
-            <button class="side-item" data-page="products">
-                <i class="fa fa-cubes"></i><span>المنتجات</span>
-                <span class="count" id="countProducts">0</span>
-            </button>
-            <button class="side-item" data-page="brands">
-                <i class="fa fa-tags"></i><span>العلامات التجارية</span>
-                <span class="count" id="countBrands">0</span>
-            </button>
-            <button class="side-item" data-page="videos">
-                <i class="fa fa-video"></i><span>الفيديوهات</span>
-                <span class="count" id="countVideos">0</span>
-            </button>
-            <button class="side-item" data-page="gallery">
-                <i class="fa fa-images"></i><span>معرض الصور</span>
-                <span class="count" id="countGallery">0</span>
-            </button>
-
+            <button class="side-item active" data-page="dashboard"><i class="fa fa-gauge-high"></i><span>نظرة عامة</span></button>
+            <button class="side-item" data-page="products"><i class="fa fa-cubes"></i><span>المنتجات</span><span class="count" id="countProducts">0</span></button>
+            <button class="side-item" data-page="brands"><i class="fa fa-tags"></i><span>العلامات</span><span class="count" id="countBrands">0</span></button>
+            <button class="side-item" data-page="videos"><i class="fa fa-video"></i><span>الفيديوهات</span><span class="count" id="countVideos">0</span></button>
+            <button class="side-item" data-page="gallery"><i class="fa fa-images"></i><span>المعرض</span><span class="count" id="countGallery">0</span></button>
+            <div class="side-section">النشر</div>
+            <button class="side-item" data-page="github"><i class="fa fa-github"></i><span>رفع إلى GitHub</span></button>
+            <button class="side-item" data-page="cloudinary"><i class="fa fa-cloud"></i><span>إعدادات Cloudinary</span></button>
             <div class="side-section">البيانات</div>
-            <button class="side-item" data-page="backup">
-                <i class="fa fa-database"></i><span>نسخ احتياطي</span>
-            </button>
-            <button class="side-item" data-page="settings">
-                <i class="fa fa-gear"></i><span>الإعدادات</span>
-            </button>
+            <button class="side-item" data-page="backup"><i class="fa fa-database"></i><span>نسخ احتياطي</span></button>
+            <button class="side-item" data-page="settings"><i class="fa fa-gear"></i><span>الإعدادات</span></button>
         </nav>
     </aside>
 
-    <!-- MAIN -->
     <main class="main">
 
         <!-- DASHBOARD -->
         <div class="page on" data-page="dashboard">
             <div class="stats">
-                <div class="stat">
-                    <div class="stat-icon" style="background:var(--grad)"><i class="fa fa-cubes"></i></div>
-                    <div class="stat-body"><span>المنتجات</span><strong id="dashProducts">0</strong></div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon" style="background:linear-gradient(135deg,#7c3aed,#e1193a)"><i class="fa fa-tags"></i></div>
-                    <div class="stat-body"><span>العلامات</span><strong id="dashBrands">0</strong></div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon" style="background:linear-gradient(135deg,#f7b801,#ff6b35)"><i class="fa fa-video"></i></div>
-                    <div class="stat-body"><span>الفيديوهات</span><strong id="dashVideos">0</strong></div>
-                </div>
-                <div class="stat">
-                    <div class="stat-icon" style="background:linear-gradient(135deg,#25D366,#128C7E)"><i class="fa fa-images"></i></div>
-                    <div class="stat-body"><span>صور المعرض</span><strong id="dashGallery">0</strong></div>
-                </div>
+                <div class="stat"><div class="stat-icon" style="background:var(--grad)"><i class="fa fa-cubes"></i></div><div class="stat-body"><span>المنتجات</span><strong id="dashProducts">0</strong></div></div>
+                <div class="stat"><div class="stat-icon" style="background:linear-gradient(135deg,#7c3aed,#e1193a)"><i class="fa fa-tags"></i></div><div class="stat-body"><span>العلامات</span><strong id="dashBrands">0</strong></div></div>
+                <div class="stat"><div class="stat-icon" style="background:linear-gradient(135deg,#f7b801,#ff6b35)"><i class="fa fa-video"></i></div><div class="stat-body"><span>الفيديوهات</span><strong id="dashVideos">0</strong></div></div>
+                <div class="stat"><div class="stat-icon" style="background:linear-gradient(135deg,#25D366,#128C7E)"><i class="fa fa-images"></i></div><div class="stat-body"><span>المعرض</span><strong id="dashGallery">0</strong></div></div>
             </div>
 
             <div class="card">
-                <div class="card-head">
-                    <h2><i class="fa fa-rocket"></i> بدء سريع</h2>
-                </div>
-                <p style="color:var(--mut);line-height:1.9;margin-bottom:20px">
-                    مرحباً بك في لوحة الإدارة! من هنا يمكنك إدارة جميع محتويات موقعك بسهولة.
-                    ابدأ بإضافة منتجاتك، ثم قم بتصدير البيانات (JSON) ورفعها إلى GitHub لتصبح التغييرات دائمة.
-                </p>
+                <div class="card-head"><h2><i class="fa fa-rocket"></i> الحالة</h2></div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px" id="statusChips"></div>
                 <div style="display:flex;gap:12px;flex-wrap:wrap">
-                    <button class="btn btn-p" id="quickAddProduct" style="width:auto"><i class="fa fa-plus"></i> إضافة منتج جديد</button>
-                    <button class="btn btn-g" id="quickExport" style="width:auto"><i class="fa fa-download"></i> تصدير البيانات</button>
+                    <button class="btn btn-p" id="quickAddProduct" style="width:auto"><i class="fa fa-plus"></i> منتج جديد</button>
+                    <button class="btn btn-success" id="quickPush" style="width:auto"><i class="fa fa-github"></i> رفع إلى GitHub</button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-head">
-                    <h2><i class="fa fa-history"></i> آخر التعديلات</h2>
-                </div>
+                <div class="card-head"><h2><i class="fa fa-history"></i> آخر التعديلات</h2></div>
                 <div id="recentLogs" style="color:var(--mut);font-size:.9rem">لا يوجد نشاط بعد</div>
             </div>
         </div>
@@ -334,11 +321,8 @@ a{color:inherit;text-decoration:none}
                 <div class="card-head">
                     <h2><i class="fa fa-cubes"></i> المنتجات</h2>
                     <div style="display:flex;gap:12px;flex-wrap:wrap">
-                        <div class="search-bar">
-                            <input type="text" id="searchProducts" placeholder="ابحث عن منتج..."/>
-                            <i class="fa fa-search"></i>
-                        </div>
-                        <button class="btn btn-p" id="addProductBtn" style="width:auto"><i class="fa fa-plus"></i> منتج جديد</button>
+                        <div class="search-bar"><input type="text" id="searchProducts" placeholder="ابحث..."/><i class="fa fa-search"></i></div>
+                        <button class="btn btn-p" id="addProductBtn" style="width:auto"><i class="fa fa-plus"></i> جديد</button>
                     </div>
                 </div>
                 <div class="products-grid" id="productsGrid"></div>
@@ -348,10 +332,7 @@ a{color:inherit;text-decoration:none}
         <!-- BRANDS -->
         <div class="page" data-page="brands">
             <div class="card">
-                <div class="card-head">
-                    <h2><i class="fa fa-tags"></i> العلامات التجارية</h2>
-                    <button class="btn btn-p" id="addBrandBtn" style="width:auto"><i class="fa fa-plus"></i> علامة جديدة</button>
-                </div>
+                <div class="card-head"><h2><i class="fa fa-tags"></i> العلامات</h2><button class="btn btn-p" id="addBrandBtn" style="width:auto"><i class="fa fa-plus"></i> جديدة</button></div>
                 <div class="products-grid" id="brandsGrid"></div>
             </div>
         </div>
@@ -359,10 +340,7 @@ a{color:inherit;text-decoration:none}
         <!-- VIDEOS -->
         <div class="page" data-page="videos">
             <div class="card">
-                <div class="card-head">
-                    <h2><i class="fa fa-video"></i> مكتبة الفيديو</h2>
-                    <button class="btn btn-p" id="addVideoBtn" style="width:auto"><i class="fa fa-plus"></i> فيديو جديد</button>
-                </div>
+                <div class="card-head"><h2><i class="fa fa-video"></i> الفيديوهات</h2><button class="btn btn-p" id="addVideoBtn" style="width:auto"><i class="fa fa-plus"></i> جديد</button></div>
                 <div class="products-grid" id="videosGrid"></div>
             </div>
         </div>
@@ -370,45 +348,112 @@ a{color:inherit;text-decoration:none}
         <!-- GALLERY -->
         <div class="page" data-page="gallery">
             <div class="card">
-                <div class="card-head">
-                    <h2><i class="fa fa-images"></i> معرض الصور</h2>
-                    <button class="btn btn-p" id="addGalleryBtn" style="width:auto"><i class="fa fa-plus"></i> صورة جديدة</button>
-                </div>
+                <div class="card-head"><h2><i class="fa fa-images"></i> المعرض</h2><button class="btn btn-p" id="addGalleryBtn" style="width:auto"><i class="fa fa-plus"></i> جديد</button></div>
                 <div class="upload-zone" id="galleryUpload">
                     <i class="fa fa-cloud-arrow-up"></i>
-                    <strong>اسحب الصور هنا أو اضغط للرفع</strong>
-                    <small>يدعم JPG, PNG, WebP — يمكنك رفع عدة صور معاً</small>
+                    <strong>اسحب الصور هنا أو اضغط</strong>
+                    <small>JPG, PNG, WebP — يمكن رفع عدة صور معاً</small>
                 </div>
                 <div class="products-grid" id="galleryGrid" style="margin-top:24px"></div>
+            </div>
+        </div>
+
+        <!-- GITHUB -->
+        <div class="page" data-page="github">
+            <div class="card">
+                <div class="card-head"><h2><i class="fa fa-github"></i> رفع مباشر إلى GitHub</h2></div>
+
+                <div class="gh-panel">
+                    <div class="gh-panel-head">
+                        <i class="fa fa-key"></i>
+                        <strong>إعدادات GitHub</strong>
+                        <span class="gh-status no" id="ghStatus">غير مهيأ</span>
+                    </div>
+                    <div class="field"><label>Personal Access Token <small style="color:var(--mut)">(يبدأ بـ ghp_ أو github_pat_)</small></label><input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/></div>
+                    <div class="field"><label>اسم المستخدم / المنظمة</label><input type="text" id="ghOwner" placeholder="username"/></div>
+                    <div class="field"><label>اسم المستودع</label><input type="text" id="ghRepo" placeholder="my-repo"/></div>
+                    <div class="field"><label>الفرع (Branch)</label><input type="text" id="ghBranch" value="main" placeholder="main"/></div>
+                    <button class="btn btn-p" id="ghSave" style="width:auto"><i class="fa fa-save"></i> حفظ الإعدادات</button>
+                </div>
+
+                <div class="info-box">
+                    <i class="fa fa-info-circle"></i>
+                    <b>كيف تحصل على Personal Access Token؟</b><br/>
+                    1. اذهب إلى <a href="https://github.com/settings/tokens" target="_blank" style="color:#3b82f6;text-decoration:underline">GitHub Settings → Tokens</a><br/>
+                    2. اضغط <b>"Generate new token (classic)"</b><br/>
+                    3. اختر صلاحية <b>repo</b> (كاملة)<br/>
+                    4. انسخ الـ Token والصقه أعلاه<br/>
+                    <span style="color:var(--red)"><b>⚠️ ملاحظة أمنية:</b> الـ Token محفوظ في <b>جهازك فقط</b> (localStorage) ولا يُرسل لأي طرف.</span>
+                </div>
+
+                <div class="card-head" style="margin-top:24px">
+                    <h2><i class="fa fa-cloud-upload-alt"></i> النشر</h2>
+                </div>
+                <p style="color:var(--mut);line-height:1.9;margin-bottom:20px">
+                    عند الضغط على "نشر الآن"، سيتم رفع ملف <code style="background:rgba(255,255,255,.05);padding:2px 8px;border-radius:6px;color:var(--gold)">data.js</code> تلقائياً إلى مستودعك، وسيظهر التحديث على الموقع خلال ثوانٍ.
+                </p>
+                <div style="display:flex;gap:12px;flex-wrap:wrap">
+                    <button class="btn btn-success" id="ghPush" style="width:auto"><i class="fa fa-rocket"></i> 🚀 نشر الآن</button>
+                    <button class="btn btn-g" id="ghTest" style="width:auto"><i class="fa fa-plug"></i> اختبار الاتصال</button>
+                    <button class="btn btn-g" id="ghPreview" style="width:auto"><i class="fa fa-eye"></i> معاينة data.js</button>
+                </div>
+
+                <div class="code-block" id="ghOutput" style="margin-top:20px;display:none">
+                    <pre id="ghOutputContent"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLOUDINARY -->
+        <div class="page" data-page="cloudinary">
+            <div class="card">
+                <div class="card-head"><h2><i class="fa fa-cloud"></i> إعدادات Cloudinary</h2></div>
+
+                <div class="info-box">
+                    <i class="fa fa-lightbulb"></i>
+                    <b>لماذا Cloudinary؟</b><br/>
+                    ✅ رفع الصور إلى السحابة بدل تخزينها في `data.js`<br/>
+                    ✅ روابط صغيرة (فقط ~100 حرف لكل صورة)<br/>
+                    ✅ ضغط وتحويل تلقائي إلى WebP<br/>
+                    ✅ CDN عالمي سريع<br/>
+                    ✅ <b>مجاني</b> حتى 25 GB
+                </div>
+
+                <div class="gh-panel" style="margin-top:20px">
+                    <div class="gh-panel-head">
+                        <i class="fa fa-cloud-arrow-up"></i>
+                        <strong>إعداد Cloudinary</strong>
+                        <span class="gh-status no" id="cloudStatus">غير مهيأ</span>
+                    </div>
+                    <div class="field"><label>Cloud Name</label><input type="text" id="cloudName" placeholder="my-cloud-name"/></div>
+                    <div class="field"><label>Upload Preset (unsigned)</label><input type="text" id="cloudPreset" placeholder="my_unsigned_preset"/></div>
+                    <button class="btn btn-p" id="cloudSave" style="width:auto"><i class="fa fa-save"></i> حفظ الإعدادات</button>
+                    <button class="btn btn-g" id="cloudTest" style="width:auto"><i class="fa fa-plug"></i> اختبار</button>
+                </div>
+
+                <div class="info-box">
+                    <i class="fa fa-info-circle"></i>
+                    <b>كيف تنشئ حساب Cloudinary مجاناً؟</b><br/>
+                    1. سجّل في <a href="https://cloudinary.com/users/register/free" target="_blank" style="color:#3b82f6;text-decoration:underline">cloudinary.com</a><br/>
+                    2. من لوحة التحكم → انسخ <b>Cloud Name</b><br/>
+                    3. اذهب إلى <b>Settings → Upload → Add upload preset</b><br/>
+                    4. اختر <b>Signing Mode: Unsigned</b><br/>
+                    5. انسخ اسم الـ Preset والصقه أعلاه
+                </div>
             </div>
         </div>
 
         <!-- BACKUP -->
         <div class="page" data-page="backup">
             <div class="card">
-                <div class="card-head"><h2><i class="fa fa-database"></i> النسخ الاحتياطي والاستعادة</h2></div>
-                <p style="color:var(--mut);line-height:1.9;margin-bottom:20px">
-                    البيانات محفوظة حالياً في <b>localStorage</b> على هذا الجهاز.
-                    لنشر التغييرات على GitHub، صدّر البيانات كملف JSON وارفعه إلى المستودع.
-                </p>
-
+                <div class="card-head"><h2><i class="fa fa-database"></i> النسخ الاحتياطي</h2></div>
+                <p style="color:var(--mut);line-height:1.9;margin-bottom:20px">البيانات محفوظة في <b>localStorage</b> على هذا الجهاز. صدّرها كملف JSON للأمان.</p>
                 <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
                     <button class="btn btn-p" id="exportBtn" style="width:auto"><i class="fa fa-download"></i> تصدير JSON</button>
-                    <button class="btn btn-g" id="exportJsBtn" style="width:auto"><i class="fa fa-file-code"></i> تصدير كملف JS</button>
+                    <button class="btn btn-g" id="exportJsBtn" style="width:auto"><i class="fa fa-file-code"></i> تصدير data.js</button>
                     <button class="btn btn-g" id="importBtn" style="width:auto"><i class="fa fa-upload"></i> استيراد JSON</button>
-                    <button class="btn btn-danger" id="clearAllBtn" style="width:auto"><i class="fa fa-trash"></i> حذف كل البيانات</button>
+                    <button class="btn btn-danger" id="clearAllBtn" style="width:auto"><i class="fa fa-trash"></i> حذف الكل</button>
                     <input type="file" id="importFile" accept=".json" style="display:none"/>
-                </div>
-
-                <div class="card" style="background:rgba(225,25,58,.05);border-color:rgba(225,25,58,.2);margin:0">
-                    <h3 style="font-size:.95rem;margin-bottom:12px;display:flex;align-items:center;gap:8px"><i class="fa fa-info-circle" style="color:var(--red)"></i> كيف أنشر التغييرات على GitHub؟</h3>
-                    <ol style="color:var(--mut);font-size:.85rem;line-height:2;padding-right:20px">
-                        <li>أضف/عدّل المنتجات من هذه اللوحة</li>
-                        <li>اضغط <b>"تصدير كملف JS"</b></li>
-                        <li>افتح <code style="background:rgba(255,255,255,.05);padding:2px 6px;border-radius:4px">data.js</code> في المستودع على GitHub</li>
-                        <li>الصق محتوى الملف واحفظ (Commit)</li>
-                        <li>سيظهر التحديث فوراً على الموقع ✅</li>
-                    </ol>
                 </div>
             </div>
         </div>
@@ -417,56 +462,62 @@ a{color:inherit;text-decoration:none}
         <div class="page" data-page="settings">
             <div class="card">
                 <div class="card-head"><h2><i class="fa fa-gear"></i> الإعدادات العامة</h2></div>
-
                 <div class="setting-row">
-                    <div class="setting-row-info">
-                        <strong>اسم الشركة</strong>
-                        <span>يظهر في Top Bar</span>
-                    </div>
-                    <input type="text" id="settingCompany" value="MUSICTECH" style="width:200px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:8px 14px;color:var(--txt);outline:none"/>
+                    <div class="setting-row-info"><strong>اسم الشركة</strong><span>يظهر في Top Bar</span></div>
+                    <input type="text" id="settingCompany" value="MUSICTECH"/>
                 </div>
-
                 <div class="setting-row">
-                    <div class="setting-row-info">
-                        <strong>رقم واتساب</strong>
-                        <span>بصيغة دولية بدون + أو مسافات</span>
-                    </div>
-                    <input type="text" id="settingWhatsapp" value="966500000000" style="width:200px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:8px 14px;color:var(--txt);outline:none"/>
+                    <div class="setting-row-info"><strong>رقم واتساب</strong><span>بصيغة دولية بدون + أو مسافات</span></div>
+                    <input type="text" id="settingWhatsapp" value="966500000000"/>
                 </div>
-
                 <div class="setting-row">
-                    <div class="setting-row-info">
-                        <strong>البريد الإلكتروني</strong>
-                        <span>للاستفسارات العامة</span>
-                    </div>
-                    <input type="email" id="settingEmail" value="info@musictech.sa" style="width:200px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:8px 14px;color:var(--txt);outline:none"/>
+                    <div class="setting-row-info"><strong>البريد الإلكتروني</strong><span>للاستفسارات</span></div>
+                    <input type="email" id="settingEmail" value="info@musictech.sa"/>
                 </div>
-
                 <div class="setting-row">
-                    <div class="setting-row-info">
-                        <strong>الوضع الليلي في الموقع</strong>
-                        <span>تفعيل الوضع الداكن افتراضياً</span>
-                    </div>
+                    <div class="setting-row-info"><strong>العملة</strong><span>رمز العملة (USD $ / SAR / EUR €)</span></div>
+                    <input type="text" id="settingCurrency" value="USD"/>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-row-info"><strong>الوضع الليلي</strong><span>افتراضي للموقع</span></div>
                     <label class="switch"><input type="checkbox" id="settingDark" checked/><span class="switch-slider"></span></label>
                 </div>
+                <div class="form-actions" style="border-top:0">
+                    <button class="btn btn-p" id="saveSettings" style="width:auto"><i class="fa fa-check"></i> حفظ</button>
+                </div>
+            </div>
 
-                <div class="form-actions" style="border-top:0;padding-top:20px">
-                    <button class="btn btn-p" id="saveSettings" style="width:auto"><i class="fa fa-check"></i> حفظ الإعدادات</button>
+            <div class="card">
+                <div class="card-head"><h2><i class="fa fa-image"></i> إعدادات الضغط</h2></div>
+                <div class="setting-row">
+                    <div class="setting-row-info"><strong>جودة الصور</strong><span>أقل = أصغر حجماً، أكثر = أوضح</span></div>
+                    <select id="settingQuality" style="width:200px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--txt);outline:none">
+                        <option value="0.95">عالية جداً (95%)</option>
+                        <option value="0.85" selected>عالية (85%)</option>
+                        <option value="0.75">متوسطة (75%)</option>
+                        <option value="0.6">منخفضة (60%)</option>
+                    </select>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-row-info"><strong>الحد الأقصى للعرض</strong><span>سيتم تصغير الصور الأكبر من ذلك</span></div>
+                    <select id="settingMaxWidth" style="width:200px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--txt);outline:none">
+                        <option value="600">600 بكسل</option>
+                        <option value="800" selected>800 بكسل</option>
+                        <option value="1200">1200 بكسل</option>
+                        <option value="1600">1600 بكسل</option>
+                    </select>
+                </div>
+                <div class="form-actions" style="border-top:0">
+                    <button class="btn btn-p" id="saveCompress" style="width:auto"><i class="fa fa-check"></i> حفظ</button>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-head"><h2><i class="fa fa-lock"></i> الأمان</h2></div>
-                <div class="field">
-                    <label>كلمة مرور جديدة</label>
-                    <input type="password" id="newPass" placeholder="اتركها فارغة لعدم التغيير"/>
-                </div>
-                <div class="field">
-                    <label>تأكيد كلمة المرور</label>
-                    <input type="password" id="confirmPass" placeholder="أعد كتابة كلمة المرور"/>
-                </div>
+                <div class="field"><label>كلمة مرور جديدة</label><input type="password" id="newPass" placeholder="اتركها فارغة لعدم التغيير"/></div>
+                <div class="field"><label>تأكيد كلمة المرور</label><input type="password" id="confirmPass" placeholder="أعد الكتابة"/></div>
                 <div class="form-actions" style="border-top:0">
-                    <button class="btn btn-p" id="changePass" style="width:auto"><i class="fa fa-key"></i> تغيير كلمة المرور</button>
+                    <button class="btn btn-p" id="changePass" style="width:auto"><i class="fa fa-key"></i> تغيير</button>
                 </div>
             </div>
         </div>
@@ -474,13 +525,10 @@ a{color:inherit;text-decoration:none}
     </main>
 </div>
 
-<!-- ============ MODAL ============ -->
+<!-- MODAL -->
 <div class="modal" id="modal">
     <div class="modal-box">
-        <div class="modal-head">
-            <h3 id="modalTitle"><i class="fa fa-plus"></i> <span>جديد</span></h3>
-            <button class="modal-close" id="modalClose"><i class="fa fa-times"></i></button>
-        </div>
+        <div class="modal-head"><h3 id="modalTitle"><i class="fa fa-plus"></i> <span>جديد</span></h3><button class="modal-close" id="modalClose"><i class="fa fa-times"></i></button></div>
         <div class="modal-body" id="modalBody"></div>
         <div class="modal-foot">
             <button class="btn btn-g" id="modalCancel" style="width:auto">إلغاء</button>
@@ -489,20 +537,22 @@ a{color:inherit;text-decoration:none}
     </div>
 </div>
 
-<!-- ============ TOAST ============ -->
+<!-- UPLOAD PROGRESS -->
+<div class="upload-progress" id="uploadProgress">
+    <div class="upload-progress-head"><span id="uploadProgressLabel">جاري الرفع...</span><span id="uploadProgressPercent">0%</span></div>
+    <div class="upload-progress-bar"><div class="upload-progress-fill" id="uploadProgressFill"></div></div>
+    <div class="upload-progress-count" id="uploadProgressCount">0 / 0</div>
+</div>
+
+<!-- TOAST -->
 <div class="toast" id="toast"><i class="fa fa-check-circle"></i><span>تم</span></div>
 
 <script>
-/* ============================================================ */
-/* ==================== ADMIN PANEL JS ======================== */
-/* ============================================================ */
 (function(){
 'use strict';
-
 const $=(s,c=document)=>c.querySelector(s);
 const $$=(s,c=document)=>Array.from(c.querySelectorAll(s));
 
-/* ============ STORAGE KEYS ============ */
 const KEYS={
     auth:'mzx_admin_pass',
     products:'mzx_admin_products',
@@ -510,66 +560,66 @@ const KEYS={
     videos:'mzx_admin_videos',
     gallery:'mzx_admin_gallery',
     settings:'mzx_admin_settings',
+    compress:'mzx_admin_compress',
+    cloudinary:'mzx_admin_cloudinary',
+    github:'mzx_admin_github',
     logs:'mzx_admin_logs'
 };
 
-/* ============ HELPERS ============ */
-function load(key,def=[]){
-    try{const v=localStorage.getItem(key);return v?JSON.parse(v):def}catch(e){return def}
-}
+function load(key,def=[]){try{const v=localStorage.getItem(key);return v?JSON.parse(v):def}catch(e){return def}}
 function save(key,val){localStorage.setItem(key,JSON.stringify(val))}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 
-/* ============ SEED DEFAULT DATA ============ */
+/* ========== SEED ========== */
 function seedDefaults(){
     if(!localStorage.getItem(KEYS.products)){
-        const products=[
-            {id:uid(),name:'DB-25NW',brand:'MOTIVITY',tag:'جديد',price:4500,desc:'نظام صوتي احترافي بتغطية هندسية متكاملة',images:['https://picsum.photos/seed/p1/400/400'],specs:[{k:'النظام',v:'3-way'},{k:'الطاقة',v:'1000 W'},{k:'الذروة',v:'4000 W'}],created:Date.now()},
-            {id:uid(),name:'DB-25 3G',brand:'MOTIVITY',tag:'الأكثر طلباً',price:5200,desc:'5 وحدات ثلاثية الاتجاهات بأداء عالٍ',images:['https://picsum.photos/seed/p2/400/400'],specs:[{k:'السماعة',v:'5× 3-way'},{k:'الطاقة',v:'1000 W'},{k:'الممانعة',v:'4 Ω'}],created:Date.now()},
-            {id:uid(),name:'MTL-700 3G',brand:'MOTIVE',tag:'',price:2800,desc:'نظام بيس ريفلكس ثنائي الوحدة',images:['https://picsum.photos/seed/p3/400/400'],specs:[{k:'النوع',v:'Bass Reflex'},{k:'الطاقة',v:'500 W'},{k:'الممانعة',v:'8 Ω'}],created:Date.now()},
-            {id:uid(),name:'QX-218',brand:'MOTIVITY',tag:'',price:6800,desc:'Subwoofer بقوة 1800 واط',images:['https://picsum.photos/seed/p4/400/400'],specs:[{k:'الفئة',v:'Subwoofer'},{k:'الطاقة',v:'1800 W'},{k:'التردد',v:'35-250 Hz'}],created:Date.now()}
-        ];
-        save(KEYS.products,products);
+        save:'المنتجات',brand(KEYS.products,[
+            {id:uid(),name:'DB-25NW',brand:'MOTIVITY',tag:'New',price:1200,desc:'Professional audio system with complete geometric coverage.',images:['https://picsum.photos/seed/p1/400/400'],specs:[{k:'System',v:'3-way'},{k:'Power',v:'1000 W'},{k:'Peak',v:'4000 W'}],created:Date.now()},
+            {id:uid(),name:'DB-25 3G',brand:'MOTIVITY',tag:'Best Seller',price:1390,desc:'5-unit three-way speaker system.',images:['https://picsum.photos/seed/p2/400/400'],specs:[{k:'Speaker',v:'5× 3-way'},{k:'Power',v:'1000 W'},{k:'Impedance',v:'4 Ω'}],created:Date.now()},
+            {id:uid(),name:'MTL-700 3G',brand:'MOTIVE',tag:'',price:750,desc:'Bass reflex two-way dual-unit system.',images:['https://picsum.photos/seed/p3/400/400'],specs:[{k:'Type',v:'Bass Reflex'},{k:'Power',v:'500 W'}],created:Date.now()},
+            {id:uid(),name:'QX-218',brand:'MOTIVITY',tag:'',price:1850,desc:'Subwoofer with 1800W power.',images:['https://picsum.photos/seed/p4/400/400'],specs:[{k:'Category',v:'Subwoofer'},{k:'Power',v:'1800 W'}],created:Date.now()}
+        ]);
     }
     if(!localStorage.getItem(KEYS.brands)){
-        const brands=[
-            {id:uid(),name:'MOTIVITY',desc:'أنظمة صوتية احترافية بتغطية هندسية متكاملة',logo:'https://picsum.photos/seed/motivity/400/300',created:Date.now()},
-            {id:uid(),name:'DYNACORD',desc:'مكسرات ألمانية احترافية بتقنيات متقدمة',logo:'https://picsum.photos/seed/dynacord/400/300',created:Date.now()},
-            {id:uid(),name:'MOTIVE',desc:'مايكرفونات وإكسسوارات وكابلات عالية الجودة',logo:'https://picsum.photos/seed/motive/400/300',created:Date.now()},
-            {id:uid(),name:'QUIKLOK',desc:'كوابل واستاندات إيطالية بثبات عالٍ',logo:'https://picsum.photos/seed/quiklok/400/300',created:Date.now()}
-        ];
-        save(KEYS.brands,brands);
+        save(KEYS.brands,[
+            {id:uid(),name:'MOTIVITY',desc:'Professional audio systems.',logo:'https://picsum.photos/seed/motivity/400/300',created:Date.now()},
+            {id:uid(),name:'DYNACORD',desc:'German professional mixers.',logo:'https://picsum.photos/seed/dynacord/400/300',created:Date.now()},
+            {id:uid(),name:'MOTIVE',desc:'Microphones and cables.',logo:'https://picsum.photos/seed/motive/400/300',created:Date.now()},
+            {id:uid(),name:'QUIKLOK',desc:'Italian cables and stands.',logo:'https://picsum.photos/seed/quiklok/400/300',created:Date.now()}
+        ]);
     }
     if(!localStorage.getItem(KEYS.videos)){
-        const videos=[
-            {id:uid(),title:'MOTIVITY DB-25NW — نظرة شاملة',cat:'demo',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid1/800/450',dur:'4:32',desc:'اختبار ميداني كامل للنظام الصوتي',created:Date.now()},
-            {id:uid(),title:'تركيب نظام QX Series في قاعة',cat:'install',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid2/800/450',dur:'8:15',desc:'توثيق كامل لعملية التركيب',created:Date.now()},
-            {id:uid(),title:'أحمد المنصوري — قاعة الأندلس',cat:'test',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid3/800/450',dur:'2:48',desc:'تجربة غيّرت مفهومنا للصوت',created:Date.now()}
-        ];
-        save(KEYS.videos,videos);
+        save(KEYS.videos,[
+            {id:uid(),title:'MOTIVITY DB-25NW — Full Review',cat:'demo',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid1/800/450',dur:'4:32',desc:'Complete field test',created:Date.now()},
+            {id:uid(),title:'QX Series Installation',cat:'install',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid2/800/450',dur:'8:15',desc:'Full documentation',created:Date.now()},
+            {id:uid(),title:'Ahmed — Al-Andalus Hall',cat:'test',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid3/800/450',dur:'2:48',desc:'Experience that changed everything',created:Date.now()}
+        ]);
     }
     if(!localStorage.getItem(KEYS.gallery)){
-        const gallery=[1,2,3,4,5,6].map(i=>({id:uid(),url:`https://picsum.photos/seed/g${i}/600/800`,caption:'',created:Date.now()}));
-        save(KEYS.gallery,gallery);
+        save(KEYS.gallery,[1,2,3,4,5,6].map(i=>({id:uid(),url:`https://picsum.photos/seed/g${i}/600/800`,caption:'',created:Date.now()})));
     }
     if(!localStorage.getItem(KEYS.settings)){
-        save(KEYS.settings,{company:'MUSICTECH',whatsapp:'966500000000',email:'info@musictech.sa',dark:true});
+        save(KEYS.settings,{company:'MUSICTECH',whatsapp:'966500000000',email:'info@musictech.sa',currency:'USD',dark:true});
+    }
+    if(!localStorage.getItem(KEYS.compress)){
+        save(KEYS.compress,{quality:0.85,maxWidth:800});
     }
 }
 seedDefaults();
 
-/* ============ TOAST ============ */
+/* ========== TOAST ========== */
 let toastTimer;
 function toast(msg,type='success'){
     const t=$('#toast');
     t.className='toast on '+type;
-    t.querySelector('i').className = type==='error'?'fa fa-exclamation-circle':'fa fa-check-circle';
+    const icons={success:'fa-circle-check',error:'fa-exclamation-circle',info:'fa-circle-info'};
+    t.querySelector('i').className='fa '+icons[type];
     t.querySelector('span').textContent=msg;
     clearTimeout(toastTimer);
-    toastTimer=setTimeout(()=>t.classList.remove('on'),3000);
+    toastTimer=setTimeout(()=>t.classList.remove('on'),type==='error'?5000:3000);
 }
 
-/* ============ LOG ============ */
+/* ========== LOG ========== */
 function addLog(action,detail){
     const logs=load(KEYS.logs);
     logs.unshift({action,detail,time:Date.now()});
@@ -579,62 +629,41 @@ function addLog(action,detail){
 function renderRecentLogs(){
     const el=$('#recentLogs');
     const logs=load(KEYS.logs);
-    if(!logs.length){el.innerHTML='<div style="text-align:center;padding:20px">لا يوجد نشاط بعد</div>';return}
+    if(!logs.length){el.innerHTML='<div style="text-align:center;padding:20px">لا يوجد نشاط</div>';return}
     el.innerHTML=logs.slice(0,5).map(l=>`
         <div style="padding:12px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-            <div>
-                <strong style="color:var(--txt);display:block;margin-bottom:4px">${l.action}</strong>
-                <span style="font-size:.8rem">${l.detail||''}</span>
-            </div>
-            <span style="font-size:.75rem;font-family:'Space Grotesk',monospace">${new Date(l.time).toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'})}</span>
-        </div>
-    `).join('');
+            <div><strong style="color:var(--txt);display:block;margin-bottom:4px">${l.action}</strong><span style="font-size:.8rem">${l.detail||''}</span></div>
+            <span style="font-size:.75rem;font-family:monospace">${new Date(l.time).toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'})}</span>
+        </div>`).join('');
 }
 
-/* ============ AUTH ============ */
-const DEFAULT_PASS='admin123';
-if(!localStorage.getItem(KEYS.auth)) localStorage.setItem(KEYS.auth,DEFAULT_PASS);
-
+/* ========== AUTH ========== */
+if(!localStorage.getItem(KEYS.auth)) localStorage.setItem(KEYS.auth,'admin123');
 $('#loginForm')?.addEventListener('submit',e=>{
     e.preventDefault();
-    const pass=$('#loginPass').value;
-    if(pass===localStorage.getItem(KEYS.auth)){
-        sessionStorage.setItem('mzx_auth','1');
-        showApp();
-        toast('مرحباً بك! 👋');
-    } else {
-        toast('كلمة المرور غير صحيحة','error');
-        $('#loginPass').value='';
-    }
+    if($('#loginPass').value===localStorage.getItem(KEYS.auth)){
+        sessionStorage.setItem('mzx_auth','1');showApp();toast('مرحباً بك!');
+    } else { toast('كلمة المرور غير صحيحة','error'); $('#loginPass').value=''; }
 });
-
-function showApp(){
-    $('#loginWrap').style.display='none';
-    $('#app').classList.add('on');
-    renderAll();
-}
-function logout(){
-    sessionStorage.removeItem('mzx_auth');
-    location.reload();
-}
-
+function showApp(){$('#loginWrap').style.display='none';$('#app').classList.add('on');renderAll()}
+$('#logoutBtn')?.addEventListener('click',()=>{sessionStorage.removeItem('mzx_auth');location.reload()});
 if(sessionStorage.getItem('mzx_auth')==='1') showApp();
 
-/* ============ NAV ============ */
+/* ========== NAV ========== */
 $$('.side-item').forEach(item=>{
     item.addEventListener('click',()=>{
         const page=item.dataset.page;
-        $$('.side-item').forEach(x=>x.classList.remove('active'));
-        item.classList.add('active');
+        $$('.side-item').forEach(x=>x.classList.remove('active'));item.classList.add('active');
         $$('.page').forEach(p=>p.classList.remove('on'));
         $(`.page[data-page="${page}"]`)?.classList.add('on');
-        const titles={dashboard:'نظرة عامة',products:'المنتجات',brands:'العلامات التجارية',videos:'الفيديوهات',gallery:'معرض الصور',backup:'النسخ الاحتياطي',settings:'الإعدادات'};
+        const titles={dashboard:'نظرة عامة',productss:'العلامات',videos:'الفيديوهات',gallery:'المعرض',github:'رفع إلى GitHub',cloudinary:'Cloudinary',backup:'النسخ الاحتياطي',settings:'الإعدادات'};
         $('#pageTitle').textContent=titles[page]||page;
         if(window.innerWidth<900) $('#side').classList.remove('on');
+        if(page==='github') loadGitHubSettings();
+        if(page==='cloudinary') loadCloudSettings();
     });
 });
 $('#menuBtn')?.addEventListener('click',()=>$('#side').classList.toggle('on'));
-$('#logoutBtn')?.addEventListener('click',logout);
 $('#viewSite')?.addEventListener('click',()=>window.open('index.html','_blank'));
 $('#quickAddProduct')?.addEventListener('click',()=>openProductModal());
 $('#addProductBtn')?.addEventListener('click',()=>openProductModal());
@@ -642,81 +671,172 @@ $('#addBrandBtn')?.addEventListener('click',()=>openBrandModal());
 $('#addVideoBtn')?.addEventListener('click',()=>openVideoModal());
 $('#addGalleryBtn')?.addEventListener('click',()=>$('#galleryUpload').click());
 $('#quickExport')?.addEventListener('click',exportJSON);
+$('#quickPush')?.addEventListener('click',()=>pushToGitHub());
 
-/* ============ MODAL ============ */
-function openModal(title,icon='fa-plus'){
-    $('#modalTitle').innerHTML=`<i class="fa ${icon}"></i> <span>${title}</span>`;
-    $('#modal').classList.add('on');
-}
-function closeModal(){
-    $('#modal').classList.remove('on');
-    $('#modalBody').innerHTML='';
-    currentEdit=null;
-    currentType=null;
-}
+/* ========== MODAL ========== */
+function openModal(title,icon='fa-plus'){$('#modalTitle').innerHTML=`<i class="fa ${icon}"></i> <span>${title}</span>`;$('#modal').classList.add('on')}
+function closeModal(){$('#modal').classList.remove('on');$('#modalBody').innerHTML='';currentEdit=null;currentType=null}
 $('#modalClose')?.addEventListener('click',closeModal);
 $('#modalCancel')?.addEventListener('click',closeModal);
 $('#modal')?.addEventListener('click',e=>{if(e.target===$('#modal'))closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-
 let currentEdit=null,currentType=null;
 
-/* ============ IMAGE HANDLER ============ */
+/* ============================================================ */
+/* ============ IMAGE PROCESSING ============================== */
+/* ============================================================ */
+
+const compressSettings = load(KEYS.compress,{quality:.85,maxWidth:800});
+const cloudSettings = load(KEYS.cloudinary,{cloudName:'',preset:''});
+
 function fileToBase64(file){
     return new Promise((res,rej)=>{
+        const r=new FileReader();
+        r.onload=()=>res(r.result);
+        r.onerror=rej;
+        r.readAsDataURL(file);
+    });
+}
+
+/* Advanced compression using Canvas + WebP */
+async function compressImage(file,opts={}){
+    const quality = opts.quality ?? compressSettings.quality ?? .85;
+    const maxWidth = opts.maxWidth ?? compressSettings.maxWidth ?? 800;
+
+    return new Promise((resolve)=>{
         const reader=new FileReader();
-        reader.onload=()=>res(reader.result);
-        reader.onerror=rej;
+        reader.onload=e=>{
+            const img=new Image();
+            img.onload=()=>{
+                const canvas=document.createElement('canvas');
+                let w=img.width,h=img.height;
+                if(w>maxWidth){h=Math.round((maxWidth/w)*h);w=maxWidth}
+                canvas.width=w;canvas.height=h;
+                const ctx=canvas.getContext('2d');
+                ctx.imageSmoothingEnabled=true;
+                ctx.imageSmoothingQuality='high';
+                ctx.drawImage(img,0,0,w,h);
+
+                // Try WebP first, fallback to JPEG
+                let dataUrl=canvas.toDataURL('image/webp',quality);
+                let type='webp';
+                if(dataUrl.indexOf('image/webp')===-1){
+                    dataUrl=canvas.toDataURL('image/jpeg',quality);
+                    type='jpeg';
+                }
+                resolve({dataUrl,type,width:w,height:h,size:Math.round(dataUrl.length*.75)});
+            };
+            img.onerror=()=>resolve(null);
+            img.src=e.target.result;
+        };
+        reader.onerror=()=>resolve(null);
         reader.readAsDataURL(file);
     });
 }
-function compressImage(base64,maxW=800,quality=0.85){
-    return new Promise(res=>{
-        const img=new Image();
-        img.onload=()=>{
-            const canvas=document.createElement('canvas');
-            let w=img.width,h=img.height;
-            if(w>maxW){h=(maxW/w)*h;w=maxW}
-            canvas.width=w;canvas.height=h;
-            const ctx=canvas.getContext('2d');
-            ctx.drawImage(img,0,0,w,h);
-            res(canvas.toDataURL('image/jpeg',quality));
+
+/* Upload to Cloudinary */
+async function uploadToCloudinary(file,onProgress){
+    if(!cloudSettings.cloudName || !cloudSettings.preset){
+        return null; // Fallback to base64
+    }
+    const url = `https://api.cloudinary.com/v1_1/${cloudSettings.cloudName}/image/upload`;
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('upload_preset', cloudSettings.preset);
+    fd.append('folder', 'musictech');
+
+    try{
+        const res = await fetch(url,{method:'POST',body:fd});
+        if(!res.ok) throw new Error('Cloudinary upload failed');
+        const data = await res.json();
+        if(onProgress) onProgress(100);
+        return {
+            url: data.secure_url,
+            publicId: data.public_id,
+            width: data.width,
+            height: data.height,
+            bytes: data.bytes,
+            format: data.format
         };
-        img.onerror=()=>res(base64);
-        img.src=base64;
+    }catch(err){
+        console.error('Cloudinary error:',err);
+        return null;
+    }
+}
+
+/* Smart upload: Cloudinary if configured, else compressed base64 */
+async function smartUpload(file){
+    // Try Cloudinary first
+    if(cloudSettings.cloudName && cloudSettings.preset){
+        const result = await uploadToCloudinary(file);
+        if(result){
+            return {url:result.url, source:'cloudinary', meta:result};
+        }
+    }
+    // Fallback to base64 compression
+    const compressed = await compressImage(file);
+    if(compressed){
+        return {url:compressed.dataUrl, source:'base64', meta:compressed};
+    }
+    return null;
+}
+
+/* ========== UPLOAD ZONE HELPER ========== */
+function setupUploadZone(zoneId,onFiles){
+    const zone = $('#'+zoneId);
+    if(!zone) return;
+    const fileInput = zone.querySelector('input[type="file"]');
+    zone.addEventListener('click',()=>fileInput.click());
+    fileInput.addEventListener('change',e=>{
+        onFiles(Array.from(e.target.files));
+        e.target.value='';
+    });
+    ['dragenter','dragover'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.add('drag')}));
+    ['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.remove('drag')}));
+    zone.addEventListener('drop',e=>{
+        const files = Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'));
+        if(files.length) onFiles(files);
     });
 }
 
-/* ============ PRODUCTS ============ */
+/* Show upload progress */
+function showUploadProgress(total){
+    const p=$('#uploadProgress');p.classList.add('on');
+    $('#uploadProgressCount').textContent=`0 / ${total}`;
+    $('#uploadProgressPercent').textContent='0%';
+    $('#uploadProgressFill').style.width='0%';
+    $('#uploadProgressLabel').textContent = cloudSettings.cloudName?'جاري الرفع إلى Cloudinary...':'جاري ضغط الصور...';
+    return (done)=>{
+        const pct = Math.round((done/total)*100);
+        $('#uploadProgressFill').style.width=pct+'%';
+        $('#uploadProgressPercent').textContent=pct+'%';
+        $('#uploadProgressCount').textContent=`${done} / ${total}`;
+        if(done>=total) setTimeout(()=>p.classList.remove('on'),600);
+    };
+}
+
+/* ============================================================ */
+/* ============ PRODUCTS ====================================== */
+/* ============================================================ */
 function openProductModal(product=null){
-    currentEdit=product;
-    currentType='product';
+    currentEdit=product;currentType='product';
     const isEdit=!!product;
     openModal(isEdit?'تعديل المنتج':'منتج جديد',isEdit?'fa-edit':'fa-plus');
 
     const p=product||{name:'',brand:'',tag:'',price:0,desc:'',images:[],specs:[{k:'',v:''}]};
+    const cloudReady = cloudSettings.cloudName && cloudSettings.preset;
 
     $('#modalBody').innerHTML=`
         <div class="form-grid">
-            <div class="field">
-                <label>اسم المنتج *</label>
-                <input type="text" id="pName" value="${p.name}" placeholder="مثال: DB-25NW" required/>
-            </div>
-            <div class="field">
-                <label>العلامة التجارية</label>
-                <input type="text" id="pBrand" value="${p.brand}" placeholder="مثال: MOTIVITY"/>
-            </div>
-            <div class="field">
-                <label>شارة (اختياري)</label>
-                <input type="text" id="pTag" value="${p.tag}" placeholder="جديد، الأكثر طلباً..."/>
-            </div>
-            <div class="field">
-                <label>السعر (ريال)</label>
-                <input type="number" id="pPrice" value="${p.price}" placeholder="4500"/>
-            </div>
-            <div class="field" style="grid-column:1/-1">
-                <label>الوصف</label>
-                <textarea id="pDesc" placeholder="وصف قصير للمنتج...">${p.desc}</textarea>
+            <div class="field"><label>اسم المنتج *</label><input type="text" id="pName" value="${p.name}" placeholder="DB-25NW"/></div>
+            <div class="field"><label>العلامة التجارية</label><input type="text" id="pBrand" value="${p.brand}" placeholder="MOTIVITY"/></div>
+            <div class="field"><label>شارة (اختياري)</label><input type="text" id="pTag" value="${p.tag}" placeholder="New / Best Seller"/></div>
+            <div class="field"><label>السعر (USD)</label><input type="number" id="pPrice" value="${p.price}" placeholder="1200" step="0.01"/></div>
+            <div class="field" style="grid-column:1/-1"><label>الوصف</label><textarea id="pDesc" placeholder="وصف قصير...">${p.desc}</textarea></div>
+
+            <div style="grid-column:1/-1;background:${cloudReady?'rgba(52,144,220,.05)':'rgba(247,184,1,.05)'};border:1px solid ${cloudReady?'rgba(52,144,220,.3)':'rgba(247,184,1,.3)'};border-radius:12px;padding:12px;display:flex;align-items:center;gap:10px;font-size:.85rem">
+                <i class="fa ${cloudReady?'fa-cloud':'fa-triangle-exclamation'}" style="color:${cloudReady?'#3490dc':'#f7b801'};font-size:1.2rem"></i>
+                <span>${cloudReady?'✅ Cloudinary مفعّل — الصور ستُرفع للسحابة':'⚠️ Cloudinary غير مهيأ — الصور ستُخزَّن كـBase64 (حجم أكبر)'}</span>
             </div>
 
             <div class="upload-zone" id="uploadZone">
@@ -735,38 +855,8 @@ function openProductModal(product=null){
         </div>
     `;
 
-    // Images
     let images=[...(p.images||[])];
     renderImages();
-
-    const fileInput=$('#fileInput');
-    const uploadZone=$('#uploadZone');
-
-    uploadZone?.addEventListener('click',()=>fileInput.click());
-    fileInput?.addEventListener('change',async e=>{
-        const files=Array.from(e.target.files).slice(0,5-images.length);
-        for(const f of files){
-            const b64=await fileToBase64(f);
-            const compressed=await compressImage(b64,800,0.85);
-            images.push(compressed);
-        }
-        renderImages();
-        toast(`${files.length} صورة تم رفعها`);
-    });
-
-    // Drag & Drop
-    ['dragenter','dragover'].forEach(ev=>uploadZone?.addEventListener(ev,e=>{e.preventDefault();uploadZone.classList.add('drag')}));
-    ['dragleave','drop'].forEach(ev=>uploadZone?.addEventListener(ev,e=>{e.preventDefault();uploadZone.classList.remove('drag')}));
-    uploadZone?.addEventListener('drop',async e=>{
-        const files=Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/')).slice(0,5-images.length);
-        for(const f of files){
-            const b64=await fileToBase64(f);
-            const compressed=await compressImage(b64,800,0.85);
-            images.push(compressed);
-        }
-        renderImages();
-        toast(`${files.length} صورة تم رفعها`);
-    });
 
     function renderImages(){
         const prev=$('#uploadPreview');
@@ -774,125 +864,106 @@ function openProductModal(product=null){
             <div class="upload-thumb">
                 <img src="${src}" alt=""/>
                 <button type="button" data-i="${i}"><i class="fa fa-times"></i></button>
-            </div>
-        `).join('');
-        prev.querySelectorAll('button').forEach(b=>{
-            b.addEventListener('click',()=>{
-                images.splice(parseInt(b.dataset.i),1);
-                renderImages();
-            });
-        });
+                ${src.startsWith('data:')?'<span class="upload-badge">Base64</span>':src.includes('cloudinary')?'<span class="upload-badge">☁️</span>':''}
+            </div>`).join('');
+        prev.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+            images.splice(parseInt(b.dataset.i),1);renderImages();
+        }));
     }
 
-    // Specs
+    setupUploadZone('uploadZone',async (files)=>{
+        const toUpload = files.slice(0,5-images.length);
+        if(!toUpload.length){toast('الحد الأقصى 5 صور','error');return}
+        const updater = showUploadProgress(toUpload.length);
+        for(let i=0;i<toUpload.length;i++){
+            const result = await smartUpload(toUpload[i]);
+            if(result) images.push(result.url);
+            updater(i+1);
+        }
+        renderImages();
+        toast(`${toUpload.length} صورة تم رفعها`);
+    });
+
     let specs=[...(p.specs||[{k:'',v:''}])];
     function renderSpecs(){
         const list=$('#specsList');
         list.innerHTML=specs.map((s,i)=>`
             <div class="spec-row">
-                <input type="text" placeholder="الاسم (الطاقة)" value="${s.k}" data-i="${i}" data-f="k"/>
+                <input type="text" placeholder="الاسم (Power)" value="${s.k}" data-i="${i}" data-f="k"/>
                 <input type="text" placeholder="القيمة (1000 W)" value="${s.v}" data-i="${i}" data-f="v"/>
                 <button type="button" data-i="${i}"><i class="fa fa-trash"></i></button>
-            </div>
-        `).join('');
-        list.querySelectorAll('input').forEach(inp=>{
-            inp.addEventListener('input',e=>{
-                const i=parseInt(e.target.dataset.i);
-                const f=e.target.dataset.f;
-                specs[i][f]=e.target.value;
-            });
-        });
-        list.querySelectorAll('button').forEach(b=>{
-            b.addEventListener('click',()=>{
-                specs.splice(parseInt(b.dataset.i),1);
-                if(!specs.length)specs.push({k:'',v:''});
-                renderSpecs();
-            });
-        });
+            </div>`).join('');
+        list.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{
+            specs[parseInt(e.target.dataset.i)][e.target.dataset.f]=e.target.value;
+        }));
+        list.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+            specs.splice(parseInt(b.dataset.i),1);
+            if(!specs.length)specs.push({k:'',v:''});
+            renderSpecs();
+        }));
     }
     renderSpecs();
     $('#addSpecBtn')?.addEventListener('click',()=>{specs.push({k:'',v:''});renderSpecs()});
 
-    // Save
     $('#modalSave').onclick=()=>{
         const name=$('#pName').value.trim();
         if(!name){toast('اسم المنتج مطلوب','error');return}
         const data={
-            id:p.id||uid(),
-            name,
+            id:p.id||uid(),name,
             brand:$('#pBrand').value.trim(),
             tag:$('#pTag').value.trim(),
             price:parseFloat($('#pPrice').value)||0,
             desc:$('#pDesc').value.trim(),
-            images,
-            specs:specs.filter(s=>s.k||s.v),
+            images,specs:specs.filter(s=>s.k||s.v),
             created:p.created||Date.now()
         };
         const products=load(KEYS.products);
         if(isEdit){
             const idx=products.findIndex(x=>x.id===p.id);
             if(idx>-1)products[idx]=data;
-            addLog('تعديل منتج',name);
-            toast('تم التعديل بنجاح');
+            addLog('تعديل منتج',name);toast('تم التعديل');
         } else {
             products.unshift(data);
-            addLog('إضافة منتج',name);
-            toast('تمت الإضافة بنجاح');
+            addLog('إضافة منتج',name);toast('تمت الإضافة');
         }
-        save(KEYS.products,products);
-        renderProducts();
-        renderCounts();
-        closeModal();
+        save(KEYS.products,products);renderProducts();renderCounts();closeModal();
     };
 }
 
-/* ============ BRANDS ============ */
+/* ========== BRANDS ========== */
 function openBrandModal(brand=null){
-    currentEdit=brand;
-    currentType='brand';
+    currentEdit=brand;currentType='brand';
     const isEdit=!!brand;
     openModal(isEdit?'تعديل العلامة':'علامة جديدة',isEdit?'fa-edit':'fa-plus');
-
     const b=brand||{name:'',desc:'',logo:''};
+    const cloudReady = cloudSettings.cloudName && cloudSettings.preset;
 
     $('#modalBody').innerHTML=`
         <div class="form-grid">
-            <div class="field">
-                <label>اسم العلامة *</label>
-                <input type="text" id="bName" value="${b.name}" placeholder="MOTIVITY"/>
-            </div>
-            <div class="field">
-                <label>الوصف</label>
-                <input type="text" id="bDesc" value="${b.desc}" placeholder="وصف قصير..."/>
-            </div>
+            <div class="field"><label>اسم العلامة *</label><input type="text" id="bName" value="${b.name}" placeholder="MOTIVITY"/></div>
+            <div class="field"><label>الوصف</label><input type="text" id="bDesc" value="${b.desc}" placeholder="وصف قصير..."/></div>
             <div class="upload-zone" id="uploadZone">
                 <i class="fa fa-cloud-arrow-up"></i>
                 <strong>شعار العلامة</strong>
-                <small>اضغط لاختيار صورة</small>
+                <small>${cloudReady?'☁️ سيُرفع إلى Cloudinary':'ستُخزَّن كـBase64'}</small>
                 <input type="file" id="fileInput" accept="image/*" style="display:none"/>
             </div>
             <div class="upload-preview" id="uploadPreview"></div>
-        </div>
-    `;
+        </div>`;
 
     let logo=b.logo||'';
     renderLogo();
-
     function renderLogo(){
         const prev=$('#uploadPreview');
         if(!logo){prev.innerHTML='';return}
-        prev.innerHTML=`<div class="upload-thumb"><img src="${logo}"/><button type="button"><i class="fa fa-times"></i></button></div>`;
+        prev.innerHTML=`<div class="upload-thumb"><img src="${logo}"/><button type="button"><i class="fa fa-times"></i></button>${logo.startsWith('data:')?'<span class="upload-badge">Base64</span>':logo.includes('cloudinary')?'<span class="upload-badge">☁️</span>':''}</div>`;
         prev.querySelector('button')?.addEventListener('click',()=>{logo='';renderLogo()});
     }
-
-    const fileInput=$('#fileInput');
-    $('#uploadZone')?.addEventListener('click',()=>fileInput.click());
-    fileInput?.addEventListener('change',async e=>{
-        const f=e.target.files[0];
-        if(!f)return;
-        const b64=await fileToBase64(f);
-        logo=await compressImage(b64,400,0.9);
-        renderLogo();
+    setupUploadZone('uploadZone',async(files)=>{
+        const f=files[0];if(!f)return;
+        const updater=showUploadProgress(1);
+        const result=await smartUpload(f);
+        if(result){logo=result.url;renderLogo();updater(1);toast('تم رفع الشعار')}
     });
 
     $('#modalSave').onclick=()=>{
@@ -900,159 +971,93 @@ function openBrandModal(brand=null){
         if(!name){toast('اسم العلامة مطلوب','error');return}
         const data={id:b.id||uid(),name,desc:$('#bDesc').value.trim(),logo,created:b.created||Date.now()};
         const brands=load(KEYS.brands);
-        if(isEdit){
-            const idx=brands.findIndex(x=>x.id===b.id);
-            if(idx>-1)brands[idx]=data;
-            addLog('تعديل علامة',name);
-            toast('تم التعديل');
-        } else {
-            brands.unshift(data);
-            addLog('إضافة علامة',name);
-            toast('تمت الإضافة');
-        }
-        save(KEYS.brands,brands);
-        renderBrands();
-        renderCounts();
-        closeModal();
+        if(isEdit){const idx=brands.findIndex(x=>x.id===b.id);if(idx>-1)brands[idx]=data;addLog('تعديل علامة',name);toast('تم التعديل')}
+        else{brands.unshift(data);addLog('إضافة علامة',name);toast('تمت الإضافة')}
+        save(KEYS.brands,brands);renderBrands();renderCounts();closeModal();
     };
 }
 
-/* ============ VIDEOS ============ */
+/* ========== VIDEOS ========== */
 function openVideoModal(video=null){
-    currentEdit=video;
-    currentType='video';
+    currentEdit=video;currentType='video';
     const isEdit=!!video;
     openModal(isEdit?'تعديل الفيديو':'فيديو جديد',isEdit?'fa-edit':'fa-plus');
-
     const v=video||{title:'',cat:'demo',vid:'',thumb:'',dur:'',desc:''};
 
     $('#modalBody').innerHTML=`
         <div class="form-grid">
-            <div class="field">
-                <label>عنوان الفيديو *</label>
-                <input type="text" id="vTitle" value="${v.title}" placeholder="اسم الفيديو"/>
-            </div>
-            <div class="field">
-                <label>الفئة</label>
-                <select id="vCat">
-                    <option value="demo" ${v.cat==='demo'?'selected':''}>Demo — عرض المنتج</option>
-                    <option value="install" ${v.cat==='install'?'selected':''}>تركيب</option>
-                    <option value="test" ${v.cat==='test'?'selected':''}>شهادة عميل</option>
-                </select>
-            </div>
-            <div class="field">
-                <label>معرف YouTube *</label>
-                <input type="text" id="vVid" value="${v.vid}" placeholder="dQw4w9WgXcQ"/>
-            </div>
-            <div class="field">
-                <label>المدة</label>
-                <input type="text" id="vDur" value="${v.dur}" placeholder="4:32"/>
-            </div>
-            <div class="field" style="grid-column:1/-1">
-                <label>الوصف</label>
-                <textarea id="vDesc" placeholder="وصف الفيديو...">${v.desc}</textarea>
-            </div>
-
+            <div class="field"><label>العنوان *</label><input type="text" id="vTitle" value="${v.title}"/></div>
+            <div class="field"><label>الفئة</label><select id="vCat">
+                <option value="demo" ${v.cat==='demo'?'selected':''}>Demo</option>
+                <option value="install" ${v.cat==='install'?'selected':''}>تركيب</option>
+                <option value="test" ${v.cat==='test'?'selected':''}>شهادة</option>
+            </select></div>
+            <div class="field"><label>معرف YouTube *</label><input type="text" id="vVid" value="${v.vid}" placeholder="dQw4w9WgXcQ"/></div>
+            <div class="field"><label>المدة</label><input type="text" id="vDur" value="${v.dur}" placeholder="4:32"/></div>
+            <div class="field" style="grid-column:1/-1"><label>الوصف</label><textarea id="vDesc">${v.desc}</textarea></div>
             <div class="upload-zone" id="uploadZone">
-                <i class="fa fa-cloud-arrow-up"></i>
-                <strong>صورة الفيديو المصغرة</strong>
-                <small>اختر صورة (يُفضّل 16:9)</small>
+                <i class="fa fa-cloud-arrow-up"></i><strong>صورة مصغّرة (اختياري)</strong><small>سيُستخدم تلقائياً من YouTube إن لم ترفع</small>
                 <input type="file" id="fileInput" accept="image/*" style="display:none"/>
             </div>
             <div class="upload-preview" id="uploadPreview"></div>
-        </div>
-    `;
+        </div>`;
 
     let thumb=v.thumb||'';
     renderThumb();
     function renderThumb(){
         const prev=$('#uploadPreview');
         if(!thumb){prev.innerHTML='';return}
-        prev.innerHTML=`<div class="upload-thumb" style="width:160px;height:90px"><img src="${thumb}"/><button type="button"><i class="fa fa-times"></i></button></div>`;
+        prev.innerHTML=`<div class="upload-thumb" style="width:160px;height:90px"><img src="${thumb}" style="object-fit:cover"/><button type="button"><i class="fa fa-times"></i></button></div>`;
         prev.querySelector('button')?.addEventListener('click',()=>{thumb='';renderThumb()});
     }
-    const fileInput=$('#fileInput');
-    $('#uploadZone')?.addEventListener('click',()=>fileInput.click());
-    fileInput?.addEventListener('change',async e=>{
-        const f=e.target.files[0];
-        if(!f)return;
-        const b64=await fileToBase64(f);
-        thumb=await compressImage(b64,600,0.85);
-        renderThumb();
+    setupUploadZone('uploadZone',async(files)=>{
+        const f=files[0];if(!f)return;
+        const updater=showUploadProgress(1);
+        const result=await smartUpload(f);
+        if(result){thumb=result.url;renderThumb();updater(1);toast('تم رفع الصورة')}
     });
 
     $('#modalSave').onclick=()=>{
-        const title=$('#vTitle').value.trim();
-        const vid=$('#vVid').value.trim();
+        const title=$('#vTitle').value.trim(),vid=$('#vVid').value.trim();
         if(!title||!vid){toast('العنوان ومعرف YouTube مطلوبان','error');return}
         const data={id:v.id||uid(),title,cat:$('#vCat').value,vid,dur:$('#vDur').value.trim(),desc:$('#vDesc').value.trim(),thumb:thumb||`https://img.youtube.com/vi/${vid}/maxresdefault.jpg`,created:v.created||Date.now()};
         const videos=load(KEYS.videos);
-        if(isEdit){
-            const idx=videos.findIndex(x=>x.id===v.id);
-            if(idx>-1)videos[idx]=data;
-            addLog('تعديل فيديو',title);
-            toast('تم التعديل');
-        } else {
-            videos.unshift(data);
-            addLog('إضافة فيديو',title);
-            toast('تمت الإضافة');
-        }
-        save(KEYS.videos,videos);
-        renderVideos();
-        renderCounts();
-        closeModal();
+        if(isEdit){const idx=videos.findIndex(x=>x.id===v.id);if(idx>-1)videos[idx]=data;addLog('تعديل فيديو',title);toast('تم التعديل')}
+        else{videos.unshift(data);addLog('إضافة فيديو',title);toast('تمت الإضافة')}
+        save(KEYS.videos,videos);renderVideos();renderCounts();closeModal();
     };
 }
 
-/* ============ GALLERY ============ */
+/* ========== GALLERY ========== */
 $('#galleryUpload')?.addEventListener('click',()=>{
     const input=document.createElement('input');
     input.type='file';input.accept='image/*';input.multiple=true;
-    input.onchange=async e=>{
-        const files=Array.from(e.target.files);
-        const gallery=load(KEYS.gallery);
-        for(const f of files){
-            const b64=await fileToBase64(f);
-            const compressed=await compressImage(b64,900,0.85);
-            gallery.unshift({id:uid(),url:compressed,caption:'',created:Date.now()});
-        }
-        save(KEYS.gallery,gallery);
-        renderGallery();
-        renderCounts();
-        addLog('إضافة صور',`${files.length} صورة`);
-        toast(`${files.length} صورة تم رفعها`);
-    };
+    input.onchange=async e=>handleGalleryFiles(Array.from(e.target.files));
     input.click();
 });
-
-/* Drag & Drop gallery */
 const galleryZone=$('#galleryUpload');
 ['dragenter','dragover'].forEach(ev=>galleryZone?.addEventListener(ev,e=>{e.preventDefault();galleryZone.classList.add('drag')}));
 ['dragleave','drop'].forEach(ev=>galleryZone?.addEventListener(ev,e=>{e.preventDefault();galleryZone.classList.remove('drag')}));
-galleryZone?.addEventListener('drop',async e=>{
-    const files=Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'));
+galleryZone?.addEventListener('drop',e=>handleGalleryFiles(Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'))));
+
+async function handleGalleryFiles(files){
     if(!files.length)return;
+    const updater=showUploadProgress(files.length);
     const gallery=load(KEYS.gallery);
-    for(const f of files){
-        const b64=await fileToBase64(f);
-        const compressed=await compressImage(b64,900,0.85);
-        gallery.unshift({id:uid(),url:compressed,caption:'',created:Date.now()});
+    for(let i=0;i<files.length;i++){
+        const result=await smartUpload(files[i]);
+        if(result) gallery.unshift({id:uid(),url:result.url,caption:'',created:Date.now()});
+        updater(i+1);
     }
     save(KEYS.gallery,gallery);
-    renderGallery();
-    renderCounts();
+    renderGallery();renderCounts();addLog('إضافة صور',`${files.length} صورة`);
     toast(`${files.length} صورة تم رفعها`);
-});
+}
 
-/* ============ RENDER ============ */
+/* ========== RENDER ========== */
 function renderAll(){
-    renderProducts();
-    renderBrands();
-    renderVideos();
-    renderGallery();
-    renderCounts();
-    renderRecentLogs();
-    renderSettings();
+    renderProducts();renderBrands();renderVideos();renderGallery();
+    renderCounts();renderRecentLogs();renderSettings();renderStatusChips();
 }
 function renderCounts(){
     $('#countProducts').textContent=load(KEYS.products).length;
@@ -1064,6 +1069,18 @@ function renderCounts(){
     $('#dashVideos').textContent=load(KEYS.videos).length;
     $('#dashGallery').textContent=load(KEYS.gallery).length;
 }
+function renderStatusChips(){
+    const el=$('#statusChips');if(!el)return;
+    const gh=load(KEYS.github,{});
+    const cloud=load(KEYS.cloudinary,{});
+    const ghOk = gh.token && gh.owner && gh.repo;
+    const cloudOk = cloud.cloudName && cloud.preset;
+    el.innerHTML=`
+        <span class="badge ${ghOk?'badge-green':'badge-red'}"><i class="fa fa-github"></i> GitHub ${ghOk?'مفعّل':'غير مهيأ'}</span>
+        <span class="badge ${cloudOk?'badge-cloud':'badge-gold'}"><i class="fa fa-cloud"></i> Cloudinary ${cloudOk?'مفعّل':'غير مهيأ'}</span>
+        <span class="badge badge-blue"><i class="fa fa-database"></i> ${load(KEYS.products).length} منتج</span>
+    `;
+}
 
 function renderProducts(){
     const grid=$('#productsGrid');
@@ -1071,12 +1088,7 @@ function renderProducts(){
     const q=($('#searchProducts')?.value||'').toLowerCase();
     const filtered=products.filter(p=>!q||p.name.toLowerCase().includes(q)||(p.brand||'').toLowerCase().includes(q));
     if(!filtered.length){
-        grid.innerHTML=`<div class="empty" style="grid-column:1/-1">
-            <i class="fa fa-box-open"></i>
-            <h3>${q?'لا توجد نتائج':'لا توجد منتجات'}</h3>
-            <p>${q?'جرّب كلمة بحث أخرى':'ابدأ بإضافة منتجك الأول'}</p>
-            ${!q?'<button class="btn btn-p" onclick="document.getElementById(\'addProductBtn\').click()" style="width:auto"><i class="fa fa-plus"></i> إضافة منتج</button>':''}
-        </div>`;
+        grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-box-open"></i><h3>${q?'لا توجد نتائج':'لا توجد منتجات'}</h3><p>${q?'جرّب كلمة أخرى':'ابدأ بإضافة منتج'}</p>${!q?'<button class="btn btn-p" onclick="document.getElementById(\'addProductBtn\').click()" style="width:auto"><i class="fa fa-plus"></i> إضافة</button>':''}</div>`;
         return;
     }
     grid.innerHTML=filtered.map(p=>{
@@ -1088,9 +1100,9 @@ function renderProducts(){
                 <h3>${p.name}</h3>
                 <p>${p.desc||'—'}</p>
                 ${p.brand?`<span class="badge badge-red" style="margin-bottom:10px">${p.brand}</span>`:''}
-                <div style="display:flex;gap:6px;margin-top:8px">
+                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
                     <span class="badge badge-gold">${p.specs?.length||0} مواصفة</span>
-                    <span class="badge badge-green">${(p.price||0).toLocaleString()} SAR</span>
+                    <span class="badge badge-green">$${(p.price||0).toLocaleString()}</span>
                 </div>
                 <div class="prod-actions" style="margin-top:14px">
                     <button class="prod-edit" data-id="${p.id}"><i class="fa fa-edit"></i> تعديل</button>
@@ -1099,107 +1111,70 @@ function renderProducts(){
             </div>
         </div>`;
     }).join('');
-
-    $$('.prod-edit',grid).forEach(b=>{
-        b.addEventListener('click',()=>{
-            const p=products.find(x=>x.id===b.dataset.id);
-            if(p)openProductModal(p);
-        });
-    });
-    $$('.prod-del',grid).forEach(b=>{
-        b.addEventListener('click',()=>{
-            if(!confirm('هل تريد حذف هذا المنتج؟'))return;
-            const p=products.find(x=>x.id===b.dataset.id);
-            const updated=products.filter(x=>x.id!==b.dataset.id);
-            save(KEYS.products,updated);
-            addLog('حذف منتج',p?.name||'');
-            renderProducts();renderCounts();
-            toast('تم الحذف');
-        });
-    });
+    $$('.prod-edit',grid).forEach(b=>b.addEventListener('click',()=>{
+        const p=products.find(x=>x.id===b.dataset.id);if(p)openProductModal(p);
+    }));
+    $$('.prod-del',grid).forEach(b=>b.addEventListener('click',()=>{
+        if(!confirm('حذف المنتج؟'))return;
+        save(KEYS.products,products.filter(x=>x.id!==b.dataset.id));
+        addLog('حذف منتج');renderProducts();renderCounts();toast('تم الحذف');
+    }));
 }
 $('#searchProducts')?.addEventListener('input',renderProducts);
 
 function renderBrands(){
-    const grid=$('#brandsGrid');
-    const brands=load(KEYS.brands);
-    if(!brands.length){
-        grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-tags"></i><h3>لا توجد علامات</h3></div>`;
-        return;
-    }
+    const grid=$('#brandsGrid');const brands=load(KEYS.brands);
+    if(!brands.length){grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-tags"></i><h3>لا توجد علامات</h3></div>`;return}
     grid.innerHTML=brands.map(b=>`
         <div class="prod-card">
             <div class="prod-img"><img src="${b.logo||''}" alt="${b.name}"/></div>
             <div class="prod-body">
-                <h3>${b.name}</h3>
-                <p>${b.desc||'—'}</p>
+                <h3>${b.name}</h3><p>${b.desc||'—'}</p>
                 <div class="prod-actions">
                     <button class="prod-edit" data-id="${b.id}"><i class="fa fa-edit"></i> تعديل</button>
                     <button class="prod-del" data-id="${b.id}"><i class="fa fa-trash"></i> حذف</button>
                 </div>
             </div>
-        </div>
-    `).join('');
+        </div>`).join('');
     $$('.prod-edit',grid).forEach(btn=>btn.addEventListener('click',()=>{
-        const b=brands.find(x=>x.id===btn.dataset.id);
-        if(b)openBrandModal(b);
+        const b=brands.find(x=>x.id===btn.dataset.id);if(b)openBrandModal(b);
     }));
     $$('.prod-del',grid).forEach(btn=>btn.addEventListener('click',()=>{
         if(!confirm('حذف العلامة؟'))return;
         save(KEYS.brands,brands.filter(x=>x.id!==btn.dataset.id));
-        addLog('حذف علامة');
-        renderBrands();renderCounts();
-        toast('تم الحذف');
+        addLog('حذف علامة');renderBrands();renderCounts();toast('تم الحذف');
     }));
 }
 
 function renderVideos(){
-    const grid=$('#videosGrid');
-    const videos=load(KEYS.videos);
-    if(!videos.length){
-        grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-video"></i><h3>لا توجد فيديوهات</h3></div>`;
-        return;
-    }
+    const grid=$('#videosGrid');const videos=load(KEYS.videos);
+    if(!videos.length){grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-video"></i><h3>لا توجد فيديوهات</h3></div>`;return}
     const cats={demo:'Demo',install:'تركيب',test:'شهادة'};
     grid.innerHTML=videos.map(v=>`
         <div class="prod-card">
-            <div class="prod-img" style="height:140px;padding:0">
-                <img src="${v.thumb||''}" style="object-fit:cover;width:100%;height:100%"/>
-            </div>
+            <div class="prod-img" style="height:140px;padding:0"><img src="${v.thumb||''}" style="object-fit:cover;width:100%;height:100%"/></div>
             <div class="prod-body">
-                <h3>${v.title}</h3>
-                <p>${v.desc||'—'}</p>
-                <div style="display:flex;gap:6px;margin-top:8px">
-                    <span class="badge badge-red">${cats[v.cat]||v.cat}</span>
-                    <span class="badge badge-gold">${v.dur||'--:--'}</span>
-                </div>
+                <h3>${v.title}</h3><p>${v.desc||'—'}</p>
+                <div style="display:flex;gap:6px;margin-top:8px"><span class="badge badge-red">${cats[v.cat]||v.cat}</span><span class="badge badge-gold">${v.dur||'--:--'}</span></div>
                 <div class="prod-actions" style="margin-top:14px">
                     <button class="prod-edit" data-id="${v.id}"><i class="fa fa-edit"></i> تعديل</button>
                     <button class="prod-del" data-id="${v.id}"><i class="fa fa-trash"></i> حذف</button>
                 </div>
             </div>
-        </div>
-    `).join('');
+        </div>`).join('');
     $$('.prod-edit',grid).forEach(btn=>btn.addEventListener('click',()=>{
-        const v=videos.find(x=>x.id===btn.dataset.id);
-        if(v)openVideoModal(v);
+        const v=videos.find(x=>x.id===btn.dataset.id);if(v)openVideoModal(v);
     }));
     $$('.prod-del',grid).forEach(btn=>btn.addEventListener('click',()=>{
         if(!confirm('حذف الفيديو؟'))return;
         save(KEYS.videos,videos.filter(x=>x.id!==btn.dataset.id));
-        addLog('حذف فيديو');
-        renderVideos();renderCounts();
-        toast('تم الحذف');
+        addLog('حذف فيديو');renderVideos();renderCounts();toast('تم الحذف');
     }));
 }
 
 function renderGallery(){
-    const grid=$('#galleryGrid');
-    const gallery=load(KEYS.gallery);
-    if(!gallery.length){
-        grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-images"></i><h3>لا توجد صور</h3><p>اسحب الصور في المنطقة أعلاه</p></div>`;
-        return;
-    }
+    const grid=$('#galleryGrid');const gallery=load(KEYS.gallery);
+    if(!gallery.length){grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-images"></i><h3>لا توجد صور</h3></div>`;return}
     grid.innerHTML=gallery.map(g=>`
         <div class="prod-card">
             <div class="prod-img" style="height:180px;padding:0"><img src="${g.url}" style="object-fit:cover;width:100%;height:100%"/></div>
@@ -1207,34 +1182,135 @@ function renderGallery(){
                 <input type="text" value="${g.caption||''}" placeholder="التعليق..." data-id="${g.id}" class="gal-cap" style="width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--txt);outline:none;font-size:.85rem;margin-bottom:10px"/>
                 <button class="prod-del" data-id="${g.id}" style="width:100%"><i class="fa fa-trash"></i> حذف</button>
             </div>
-        </div>
-    `).join('');
+        </div>`).join('');
     $$('.gal-cap',grid).forEach(inp=>inp.addEventListener('change',e=>{
-        const gallery=load(KEYS.gallery);
-        const item=gallery.find(x=>x.id===e.target.dataset.id);
+        const gallery=load(KEYS.gallery);const item=gallery.find(x=>x.id===e.target.dataset.id);
         if(item){item.caption=e.target.value;save(KEYS.gallery,gallery)}
     }));
     $$('.prod-del',grid).forEach(btn=>btn.addEventListener('click',()=>{
         if(!confirm('حذف الصورة؟'))return;
         save(KEYS.gallery,gallery.filter(x=>x.id!==btn.dataset.id));
-        renderGallery();renderCounts();
-        toast('تم الحذف');
+        renderGallery();renderCounts();toast('تم الحذف');
     }));
 }
 
-/* ============ BACKUP ============ */
-function download(filename,content,type='application/json'){
-    const blob=new Blob([content],{type});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');
-    a.href=url;a.download=filename;
-    document.body.appendChild(a);a.click();a.remove();
-    URL.revokeObjectURL(url);
+/* ============================================================ */
+/* ============ CLOUDINARY SETTINGS =========================== */
+/* ============================================================ */
+function loadCloudSettings(){
+    const s=load(KEYS.cloudinary,{cloudName:'',preset:''});
+    if($('#cloudName')) $('#cloudName').value=s.cloudName||'';
+    if($('#cloudPreset')) $('#cloudPreset').value=s.preset||'';
+    updateCloudStatus();
+}
+function updateCloudStatus(){
+    const s=load(KEYS.cloudinary,{});
+    const el=$('#cloudStatus');if(!el)return;
+    if(s.cloudName&&s.preset){el.className='gh-status ok';el.textContent='مهيأ ✓'}
+    else{el.className='gh-status no';el.textContent='غير مهيأ'}
+}
+$('#cloudSave')?.addEventListener('click',()=>{
+    const s={cloudName:$('#cloudName').value.trim(),preset:$('#cloudPreset').value.trim()};
+    save(KEYS.cloudinary,s);
+    Object.assign(cloudSettings,s);
+    updateCloudStatus();renderStatusChips();
+    toast('تم حفظ إعدادات Cloudinary');
+    addLog('حفظ Cloudinary');
+});
+$('#cloudTest')?.addEventListener('click',async()=>{
+    const cn=$('#cloudName').value.trim(),pr=$('#cloudPreset').value.trim();
+    if(!cn||!pr){toast('أدخل Cloud Name و Preset','error');return}
+    toast('جاري الاختبار...','info');
+    // Test with a tiny 1x1 pixel
+    const blob=await fetch('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==').then(r=>r.blob());
+    const file=new File([blob],'test.png',{type:'image/png'});
+    const tempSettings=cloudSettings;
+    cloudSettings.cloudName=cn;cloudSettings.preset=pr;
+    const result=await uploadToCloudinary(file);
+    cloudSettings.cloudName=tempSettings.cloudName;cloudSettings.preset=tempSettings.preset;
+    if(result){toast('✅ اتصال ناجح! Cloudinary يعمل','success');console.log('Test upload:',result)}
+    else toast('❌ فشل الاتصال — تحقق من الإعدادات','error');
+});
+
+/* ============================================================ */
+/* ============ GITHUB INTEGRATION ============================ */
+/* ============================================================ */
+function loadGitHubSettings(){
+    const s=load(KEYS.github,{token:'',owner:'',repo:'',branch:'main'});
+    if($('#ghToken')) $('#ghToken').value=s.token||'';
+    if($('#ghOwner')) $('#ghOwner').value=s.owner||'';
+    if($('#ghRepo')) $('#ghRepo').value=s.repo||'';
+    if($('#ghBranch')) $('#ghBranch').value=s.branch||'main';
+    updateGHStatus();
+}
+function updateGHStatus(){
+    const s=load(KEYS.github,{});
+    const el=$('#ghStatus');if(!el)return;
+    if(s.token&&s.owner&&s.repo){el.className='gh-status ok';el.textContent='مهيأ ✓'}
+    else{el.className='gh-status no';el.textContent='غير مهيأ'}
+}
+$('#ghSave')?.addEventListener('click',()=>{
+    const s={
+        token:$('#ghToken').value.trim(),
+        owner:$('#ghOwner').value.trim(),
+        repo:$('#ghRepo').value.trim(),
+        branch:$('#ghBranch').value.trim()||'main'
+    };
+    save(KEYS.github,s);
+    updateGHStatus();renderStatusChips();
+    toast('تم حفظ إعدادات GitHub');
+    addLog('حفظ GitHub');
+});
+
+/* Get file SHA (needed for updates) */
+async function getFileSHA(owner,repo,path,branch,token){
+    try{
+        const res=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`,{
+            headers:{'Authorization':`Bearer ${token}`,'Accept':'application/vnd.github+json'}
+        });
+        if(res.status===404) return null;
+        if(!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data=await res.json();
+        return data.sha;
+    }catch(e){return null}
 }
 
-function getFullData(){
-    return {
-        version:'1.0',
+/* Push file to GitHub */
+async function pushFileToGitHub(path,content,message){
+    const s=load(KEYS.github,{});
+    if(!s.token||!s.owner||!s.repo) throw new Error('GitHub غير مهيأ — أضف الإعدادات أولاً');
+
+    const sha=await getFileSHA(s.owner,s.repo,path,s.branch,s.token);
+
+    const body={
+        message,
+        content:btoa(unescape(encodeURIComponent(content))),
+        branch:s.branch
+    };
+    if(sha) body.sha=sha;
+
+    const res=await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/${path}`,{
+        method:'PUT',
+        headers:{
+            'Authorization':`Bearer ${s.token}`,
+            'Accept':'application/vnd.github+json',
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(body)
+    });
+
+    if(!res.ok){
+        const err=await res.json().catch(()=>({}));
+        throw new Error(err.message||`HTTP ${res.status}`);
+    }
+    return await res.json();
+}
+
+function generateDataJS(){
+    const data = {
+        version:'2.0',
+        currency:load(KEYS.settings,{}).currency||'USD',
+        currencySymbol:'$',
         exported:new Date().toISOString(),
         products:load(KEYS.products),
         brands:load(KEYS.brands),
@@ -1242,102 +1318,174 @@ function getFullData(){
         gallery:load(KEYS.gallery),
         settings:load(KEYS.settings,{})
     };
-}
-
-function exportJSON(){
-    const data=getFullData();
-    download(`musictech-data-${Date.now()}.json`,JSON.stringify(data,null,2));
-    toast('تم تصدير JSON');
-    addLog('تصدير JSON');
-}
-
-function exportJs(){
-    const data=getFullData();
-    const content=`/* ============================================
- * MUSICTECH — بيانات الموقع
- * تم التوليد: ${new Date().toLocaleString('ar-EG')}
- * ⚠️ لا تعدّل هذا الملف يدوياً — استخدم admin.html
+    return `/* ============================================
+ * MUSICTECH — Auto-generated by admin.html
+ * Generated: ${new Date().toLocaleString('ar-EG')}
+ * DO NOT edit manually — use admin.html
  * ============================================ */
 window.MUSICTECH_DATA = ${JSON.stringify(data,null,2)};
 `;
-    download('data.js',content,'text/javascript');
-    toast('تم تصدير data.js');
-    addLog('تصدير data.js');
 }
 
+$('#ghPreview')?.addEventListener('click',()=>{
+    const content=generateDataJS();
+    $('#ghOutput').style.display='block';
+    $('#ghOutputContent').textContent=content.slice(0,2000)+'\n\n... (تم اختصار المعاينة)';
+});
+
+$('#ghTest')?.addEventListener('click',async()=>{
+    const s=load(KEYS.github,{});
+    if(!s.token||!s.owner||!s.repo){toast('أكمل إعدادات GitHub أولاً','error');return}
+    toast('جاري الاختبار...','info');
+    try{
+        const res=await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}`,{
+            headers:{'Authorization':`Bearer ${s.token}`,'Accept':'application/vnd.github+json'}
+        });
+        if(res.ok){
+            const data=await res.json();
+            toast(`✅ متصل بـ ${data.full_name}`,'success');
+        } else {
+            toast(`❌ فشل — تحقق من Token والمستودع`,'error');
+        }
+    }catch(e){toast('❌ خطأ في الاتصال','error')}
+});
+
+async function pushToGitHub(){
+    const s=load(KEYS.github,{});
+    if(!s.token||!s.owner||!s.repo){toast('أكمل إعدادات GitHub أولاً','error');document.querySelector('[data-page="github"]')?.click();return}
+
+    const btn=$('#ghPush');
+    const originalHTML=btn.innerHTML;
+    btn.innerHTML='<span class="spinner"></span> جاري النشر...';
+    btn.disabled=true;
+
+    try{
+        const content=generateDataJS();
+        const message=`Update data.js — ${new Date().toLocaleString('ar-EG')}`;
+        const result=await pushFileToGitHub('data.js',content,message);
+
+        toast('✅ تم النشر بنجاح! التحديث سيظهر خلال 30 ثانية','success');
+        addLog('نشر إلى GitHub','data.js تم رفعه');
+
+        $('#ghOutput').style.display='block';
+        $('#ghOutputContent').textContent=JSON.stringify({
+            status:'success',
+            commit:result.commit?.html_url||'',
+            sha:result.content?.sha||'',
+            time:new Date().toISOString()
+        },null,2);
+    }catch(err){
+        console.error(err);
+        toast('❌ فشل النشر: '+err.message,'error');
+        $('#ghOutput').style.display='block';
+        $('#ghOutputContent').textContent='Error: '+err.message;
+    }finally{
+        btn.innerHTML=originalHTML;
+        btn.disabled=false;
+    }
+}
+
+$('#ghPush')?.addEventListener('click',pushToGitHub);
+
+/* ============================================================ */
+/* ============ BACKUP ======================================== */
+/* ============================================================ */
+function download(filename,content,type='application/json'){
+    const blob=new Blob([content],{type});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=url;a.download=filename;
+    document.body.appendChild(a);a.click();a.remove();
+    URL.revokeObjectURL(url);
+}
+function getFullData(){
+    return {
+        version:'2.0',exported:new Date().toISOString(),
+        products:load(KEYS.products),brands:load(KEYS.brands),
+        videos:load(KEYS.videos),gallery:load(KEYS.gallery),
+        settings:load(KEYS.settings,{})
+    };
+}
+function exportJSON(){
+    download(`musictech-backup-${Date.now()}.json`,JSON.stringify(getFullData(),null,2));
+    toast('تم تصدير JSON');addLog('تصدير JSON');
+}
+function exportJs(){
+    download('data.js',generateDataJS(),'text/javascript');
+    toast('تم تصدير data.js');addLog('تصدير data.js');
+}
 $('#exportBtn')?.addEventListener('click',exportJSON);
 $('#exportJsBtn')?.addEventListener('click',exportJs);
 $('#importBtn')?.addEventListener('click',()=>$('#importFile').click());
 $('#importFile')?.addEventListener('change',async e=>{
-    const f=e.target.files[0];
-    if(!f)return;
+    const f=e.target.files[0];if(!f)return;
     try{
-        const text=await f.text();
-        const data=JSON.parse(text);
-        if(!confirm('سيتم استبدال جميع البيانات الحالية. متابعة؟'))return;
+        const data=JSON.parse(await f.text());
+        if(!confirm('سيتم استبدال البيانات. متابعة؟'))return;
         if(data.products)save(KEYS.products,data.products);
         if(data.brands)save(KEYS.brands,data.brands);
         if(data.videos)save(KEYS.videos,data.videos);
         if(data.gallery)save(KEYS.gallery,data.gallery);
         if(data.settings)save(KEYS.settings,data.settings);
-        renderAll();
-        toast('تم الاستيراد بنجاح');
-        addLog('استيراد JSON');
-    }catch(err){
-        toast('ملف غير صالح','error');
-    }
+        renderAll();toast('تم الاستيراد');addLog('استيراد JSON');
+    }catch(err){toast('ملف غير صالح','error')}
     e.target.value='';
 });
-
 $('#clearAllBtn')?.addEventListener('click',()=>{
-    if(!confirm('⚠️ سيتم حذف جميع البيانات نهائياً! متأكد؟'))return;
+    if(!confirm('⚠️ حذف كل البيانات؟'))return;
     if(!confirm('تأكيد أخير — لا يمكن التراجع!'))return;
-    Object.values(KEYS).forEach(k=>{
-        if(k!==KEYS.auth)localStorage.removeItem(k);
-    });
-    seedDefaults();
-    renderAll();
-    toast('تم حذف كل البيانات');
+    Object.values(KEYS).forEach(k=>{if(k!==KEYS.auth)localStorage.removeItem(k)});
+    seedDefaults();renderAll();toast('تم الحذف');
 });
 
-/* ============ SETTINGS ============ */
+/* ============================================================ */
+/* ============ SETTINGS ====================================== */
+/* ============================================================ */
 function renderSettings(){
     const s=load(KEYS.settings,{});
-    if($('#settingCompany'))$('#settingCompany').value=s.company||'MUSICTECH';
-    if($('#settingWhatsapp'))$('#settingWhatsapp').value=s.whatsapp||'966500000000';
-    if($('#settingEmail'))$('#settingEmail').value=s.email||'info@musictech.sa';
-    if($('#settingDark'))$('#settingDark').checked=s.dark!==false;
+    if($('#settingCompany')) $('#settingCompany').value=s.company||'MUSICTECH';
+    if($('#settingWhatsapp')) $('#settingWhatsapp').value=s.whatsapp||'966500000000';
+    if($('#settingEmail')) $('#settingEmail').value=s.email||'info@musictech.sa';
+    if($('#settingCurrency')) $('#settingCurrency').value=s.currency||'USD';
+    if($('#settingDark')) $('#settingDark').checked=s.dark!==false;
+    const c=load(KEYS.compress,{});
+    if($('#settingQuality')) $('#settingQuality').value=String(c.quality||.85);
+    if($('#settingMaxWidth')) $('#settingMaxWidth').value=String(c.maxWidth||800);
 }
 $('#saveSettings')?.addEventListener('click',()=>{
-    const s={
+    save(KEYS.settings,{
         company:$('#settingCompany').value,
         whatsapp:$('#settingWhatsapp').value,
         email:$('#settingEmail').value,
+        currency:$('#settingCurrency').value,
         dark:$('#settingDark').checked
-    };
-    save(KEYS.settings,s);
-    toast('تم حفظ الإعدادات');
-    addLog('حفظ الإعدادات');
+    });
+    toast('تم حفظ الإعدادات');addLog('حفظ الإعدادات');
 });
-
+$('#saveCompress')?.addEventListener('click',()=>{
+    const c={quality:parseFloat($('#settingQuality').value),maxWidth:parseInt($('#settingMaxWidth').value)};
+    save(KEYS.compress,c);
+    Object.assign(compressSettings,c);
+    toast('تم حفظ إعدادات الضغط');addLog('حفظ الضغط');
+});
 $('#changePass')?.addEventListener('click',()=>{
-    const n=$('#newPass').value;
-    const c=$('#confirmPass').value;
+    const n=$('#newPass').value,c=$('#confirmPass').value;
     if(!n){toast('أدخل كلمة مرور','error');return}
-    if(n!==c){toast('كلمتا المرور غير متطابقتين','error');return}
-    if(n.length<4){toast('كلمة المرور قصيرة جداً','error');return}
+    if(n!==c){toast('غير متطابقتين','error');return}
+    if(n.length<4){toast('قصيرة جداً','error');return}
     localStorage.setItem(KEYS.auth,n);
     $('#newPass').value='';$('#confirmPass').value='';
-    toast('تم تغيير كلمة المرور');
-    addLog('تغيير كلمة المرور');
+    toast('تم تغيير كلمة المرور');addLog('تغيير كلمة المرور');
 });
 
-/* ============ SIGNATURE ============ */
-console.log('%c🎛️ MUSICTECH Admin','color:#e1193a;font-size:20px;font-weight:900');
-console.log('%cكلمة المرور الافتراضية: admin123','color:#f7b801;font-weight:700');
+/* ========== INIT ========== */
+loadGitHubSettings();
+loadCloudSettings();
+
+console.log('%c🎛️ MUSICTECH Admin v2.0','color:#e1193a;font-size:20px;font-weight:900');
+console.log('%c☁️ Cloudinary + GitHub + Advanced Compression','color:#3490dc;font-weight:700');
+console.log('%cكلمة المرور: admin123','color:#f7b801;font-weight:700');
 
 })();
 </script>
-
 </body>
 </html>
