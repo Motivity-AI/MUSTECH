@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>لوحة الإدارة — MUSICTECH</title>
+<title>لوحة الإدارة — MUSTECH </title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -13,6 +13,8 @@ body{font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(-
 button,input,textarea,select{font-family:inherit;color:inherit}
 button{cursor:pointer;border:0;background:transparent}
 a{color:inherit;text-decoration:none}
+
+/* ===== LOGIN ===== */
 .login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(ellipse at top,rgba(225,25,58,.15),var(--bg) 60%)}
 .login-box{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--border);border-radius:24px;padding:40px;box-shadow:0 40px 100px rgba(0,0,0,.6);position:relative;overflow:hidden}
 .login-box::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(225,25,58,.3),transparent 70%);filter:blur(60px);pointer-events:none}
@@ -33,8 +35,12 @@ a{color:inherit;text-decoration:none}
 .btn-danger:hover{background:var(--red);color:#fff}
 .btn-success{background:rgba(34,197,94,.15);color:#22c55e;border:1.5px solid rgba(34,197,94,.4)}
 .btn-success:hover{background:#22c55e;color:#fff}
+.btn-wa{background:rgba(37,211,102,.15);color:#25D366;border:1.5px solid rgba(37,211,102,.4)}
+.btn-wa:hover{background:#25D366;color:#fff}
 .login-hint{margin-top:20px;text-align:center;font-size:.8rem;color:var(--mut);position:relative}
 .login-hint code{background:rgba(255,255,255,.05);padding:3px 8px;border-radius:6px;color:var(--gold);font-family:'Space Grotesk',monospace}
+
+/* ===== APP ===== */
 .app{display:none;min-height:100vh;grid-template-columns:260px 1fr;grid-template-rows:64px 1fr;grid-template-areas:"side top" "side main"}
 .app.on{display:grid}
 .top{grid-area:top;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:100}
@@ -46,6 +52,8 @@ a{color:inherit;text-decoration:none}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .top-icon{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--txt);transition:all .3s}
 .top-icon:hover{background:rgba(225,25,58,.15);color:var(--red);border-color:rgba(225,25,58,.4)}
+
+/* ===== SIDEBAR ===== */
 .side{grid-area:side;background:var(--panel);border-left:1px solid var(--border);padding:20px 0;position:sticky;top:0;height:100vh;overflow-y:auto}
 .side-brand{padding:0 20px 24px;border-bottom:1px solid var(--border);margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .side-brand-logo{width:40px;height:40px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff}
@@ -58,6 +66,8 @@ a{color:inherit;text-decoration:none}
 .side-item i{width:20px;text-align:center}
 .side-item .count{margin-right:auto;background:rgba(255,255,255,.05);padding:2px 8px;border-radius:60px;font-size:.7rem;font-family:'Space Grotesk',monospace}
 .side-section{padding:16px 16px 8px;font-size:.7rem;color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-weight:700;opacity:.6}
+
+/* ===== MAIN ===== */
 .main{grid-area:main;padding:32px;overflow-y:auto;max-height:calc(100vh - 64px)}
 .page{display:none}
 .page.on{display:block;animation:fade .3s ease}
@@ -184,6 +194,7 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
+<!-- LOGIN -->
 <div class="login-wrap" id="loginWrap">
     <div class="login-box">
         <div class="login-logo"><i class="fa fa-shield-halved"></i></div>
@@ -197,6 +208,7 @@ a{color:inherit;text-decoration:none}
     </div>
 </div>
 
+<!-- APP -->
 <div class="app" id="app">
     <header class="top">
         <div class="top-title">
@@ -214,7 +226,7 @@ a{color:inherit;text-decoration:none}
     <aside class="side" id="side">
         <div class="side-brand">
             <div class="side-brand-logo"><i class="fa fa-bolt"></i></div>
-            <div><strong>MUSICTECH</strong><span>Admin Panel v2.0</span></div>
+            <div><strong>MUSICTECH</strong><span>Admin Panel v3.0</span></div>
         </div>
         <nav class="side-nav">
             <button class="side-item active" data-page="dashboard"><i class="fa fa-gauge-high"></i><span>نظرة عامة</span></button>
@@ -223,10 +235,9 @@ a{color:inherit;text-decoration:none}
             <button class="side-item" data-page="videos"><i class="fa fa-video"></i><span>الفيديوهات</span><span class="count" id="countVideos">0</span></button>
             <button class="side-item" data-page="gallery"><i class="fa fa-images"></i><span>المعرض</span><span class="count" id="countGallery">0</span></button>
             <div class="side-section">الأدوات</div>
-            <button class="side-item" data-page="scraper"><i class="fa fa-spider"></i><span>🕷️ استيراد من موقع</span></button>
+            <button class="side-item" data-page="scraper"><i class="fa fa-spider"></i><span>استيراد من موقع</span></button>
             <div class="side-section">النشر</div>
             <button class="side-item" data-page="github"><i class="fa fa-github"></i><span>رفع إلى GitHub</span></button>
-            <button class="side-item" data-page="cloudinary"><i class="fa fa-cloud"></i><span>إعدادات Cloudinary</span></button>
             <div class="side-section">البيانات</div>
             <button class="side-item" data-page="backup"><i class="fa fa-database"></i><span>نسخ احتياطي</span></button>
             <button class="side-item" data-page="settings"><i class="fa fa-gear"></i><span>الإعدادات</span></button>
@@ -235,6 +246,7 @@ a{color:inherit;text-decoration:none}
 
     <main class="main">
 
+        <!-- DASHBOARD -->
         <div class="page on" data-page="dashboard">
             <div class="stats">
                 <div class="stat"><div class="stat-icon" style="background:var(--grad)"><i class="fa fa-cubes"></i></div><div class="stat-body"><span>المنتجات</span><strong id="dashProducts">0</strong></div></div>
@@ -256,6 +268,7 @@ a{color:inherit;text-decoration:none}
             </div>
         </div>
 
+        <!-- PRODUCTS -->
         <div class="page" data-page="products">
             <div class="card">
                 <div class="card-head">
@@ -269,6 +282,7 @@ a{color:inherit;text-decoration:none}
             </div>
         </div>
 
+        <!-- BRANDS -->
         <div class="page" data-page="brands">
             <div class="card">
                 <div class="card-head"><h2><i class="fa fa-tags"></i> العلامات</h2><button class="btn btn-p" id="addBrandBtn" style="width:auto"><i class="fa fa-plus"></i> جديدة</button></div>
@@ -276,6 +290,7 @@ a{color:inherit;text-decoration:none}
             </div>
         </div>
 
+        <!-- VIDEOS -->
         <div class="page" data-page="videos">
             <div class="card">
                 <div class="card-head"><h2><i class="fa fa-video"></i> الفيديوهات</h2><button class="btn btn-p" id="addVideoBtn" style="width:auto"><i class="fa fa-plus"></i> جديد</button></div>
@@ -283,6 +298,7 @@ a{color:inherit;text-decoration:none}
             </div>
         </div>
 
+        <!-- GALLERY -->
         <div class="page" data-page="gallery">
             <div class="card">
                 <div class="card-head"><h2><i class="fa fa-images"></i> المعرض</h2><button class="btn btn-p" id="addGalleryBtn" style="width:auto"><i class="fa fa-plus"></i> جديد</button></div>
@@ -295,15 +311,16 @@ a{color:inherit;text-decoration:none}
             </div>
         </div>
 
+        <!-- SCRAPER -->
         <div class="page" data-page="scraper">
             <div class="card">
                 <div class="card-head">
-                    <h2><i class="fa fa-spider"></i> مستورد المنتجات</h2>
+                    <h2><i class="fa fa-spider"></i> استيراد من موقع</h2>
                     <span class="badge badge-blue"><i class="fa fa-bolt"></i> CORS Proxy</span>
                 </div>
                 <div class="info-box" style="background:rgba(247,184,1,.05);border-color:rgba(247,184,1,.3)">
                     <i class="fa fa-triangle-exclamation" style="color:#f7b801"></i>
-                    <b>تنبيه:</b> تأكد من حصولك على إذن لاستخدام صور ومنتجات الموقع المصدر.
+                    <b>تنبيه:</b> تأكد من إذن استخدام صور ومنتجات الموقع المصدر.
                 </div>
                 <div class="field" style="margin-top:20px">
                     <label>رابط صفحة المنتجات</label>
@@ -311,34 +328,35 @@ a{color:inherit;text-decoration:none}
                 </div>
                 <div class="form-grid" style="margin-bottom:20px">
                     <div class="field"><label>عدد الصفحات</label><input type="number" id="scrapePages" value="1" min="1" max="10"/></div>
-                    <div class="field"><label>الحد الأقصى للمنتجات</label><input type="number" id="scrapeLimit" value="50" min="1" max="500"/></div>
+                    <div class="field"><label>الحد الأقصى</label><input type="number" id="scrapeLimit" value="50" min="1" max="500"/></div>
                 </div>
                 <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
-                    <button class="btn btn-p" id="scrapeStart" style="width:auto"><i class="fa fa-magnifying-glass"></i> ابدأ الفحص</button>
-                    <button class="btn btn-g" id="scrapeTest" style="width:auto"><i class="fa fa-plug"></i> اختبار الاتصال</button>
+                    <button class="btn btn-p" id="scrapeStart" style="width:auto"><i class="fa fa-magnifying-glass"></i> ابدأ</button>
+                    <button class="btn btn-g" id="scrapeTest" style="width:auto"><i class="fa fa-plug"></i> اختبار</button>
                     <button class="btn btn-g" id="scrapeClear" style="width:auto"><i class="fa fa-eraser"></i> مسح</button>
                 </div>
                 <div id="scrapeStatus" style="display:none;margin-bottom:20px;padding:16px;background:rgba(52,144,220,.08);border:1px solid rgba(52,144,220,.3);border-radius:12px;font-size:.9rem">
-                    <div style="display:flex;align-items:center;gap:10px"><span class="spinner"></span><span id="scrapeStatusText">جاري العمل...</span></div>
+                    <div style="display:flex;align-items:center;gap:10px"><span class="spinner"></span><span id="scrapeStatusText">جاري...</span></div>
                 </div>
             </div>
             <div class="card" id="scrapeResultsCard" style="display:none">
                 <div class="card-head">
                     <h2><i class="fa fa-list-check"></i> النتائج (<span id="scrapeCount">0</span>)</h2>
                     <div style="display:flex;gap:12px;flex-wrap:wrap">
-                        <button class="btn btn-g" id="scrapeSelectAll" style="width:auto"><i class="fa fa-check-double"></i> تحديد الكل</button>
-                        <button class="btn btn-g" id="scrapeDeselectAll" style="width:auto"><i class="fa fa-xmark"></i> إلغاء الكل</button>
-                        <button class="btn btn-success" id="scrapeImport" style="width:auto"><i class="fa fa-download"></i> استيراد المحدد</button>
+                        <button class="btn btn-g" id="scrapeSelectAll" style="width:auto"><i class="fa fa-check-double"></i></button>
+                        <button class="btn btn-g" id="scrapeDeselectAll" style="width:auto"><i class="fa fa-xmark"></i></button>
+                        <button class="btn btn-success" id="scrapeImport" style="width:auto"><i class="fa fa-download"></i> استيراد</button>
                     </div>
                 </div>
                 <div class="form-grid" style="margin-bottom:20px">
-                    <div class="field"><label>العلامة التجارية الافتراضية</label><input type="text" id="scrapeBrandDefault" placeholder="MOTIVITY"/></div>
-                    <div class="field"><label>هامش الربح %</label><input type="number" id="scrapeMarkup" value="0" placeholder="0"/></div>
+                    <div class="field"><label>العلامة الافتراضية</label><input type="text" id="scrapeBrandDefault" placeholder="MOTIVITY"/></div>
+                    <div class="field"><label>هامش الربح %</label><input type="number" id="scrapeMarkup" value="0"/></div>
                 </div>
                 <div id="scrapeResults" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;max-height:600px;overflow-y:auto;padding:4px"></div>
             </div>
         </div>
 
+        <!-- GITHUB -->
         <div class="page" data-page="github">
             <div class="card">
                 <div class="card-head"><h2><i class="fa fa-github"></i> رفع إلى GitHub</h2></div>
@@ -362,7 +380,7 @@ a{color:inherit;text-decoration:none}
                 </div>
                 <div class="card-head" style="margin-top:24px"><h2><i class="fa fa-cloud-upload-alt"></i> النشر</h2></div>
                 <div style="display:flex;gap:12px;flex-wrap:wrap">
-                    <button class="btn btn-success" id="ghPush" style="width:auto"><i class="fa fa-rocket"></i> 🚀 نشر الآن</button>
+                    <button class="btn btn-success" id="ghPush" style="width:auto"><i class="fa fa-rocket"></i> نشر الآن</button>
                     <button class="btn btn-g" id="ghTest" style="width:auto"><i class="fa fa-plug"></i> اختبار</button>
                     <button class="btn btn-g" id="ghPreview" style="width:auto"><i class="fa fa-eye"></i> معاينة</button>
                 </div>
@@ -370,26 +388,7 @@ a{color:inherit;text-decoration:none}
             </div>
         </div>
 
-        <div class="page" data-page="cloudinary">
-            <div class="card">
-                <div class="card-head"><h2><i class="fa fa-cloud"></i> إعدادات Cloudinary (اختياري)</h2></div>
-                <div class="info-box">
-                    <i class="fa fa-lightbulb"></i>
-                    <b>ملاحظة:</b> GitHub Images يعمل تلقائياً! هذا الخيار للاحتياط فقط.
-                </div>
-                <div class="gh-panel" style="margin-top:20px">
-                    <div class="gh-panel-head">
-                        <i class="fa fa-cloud-arrow-up"></i><strong>إعداد Cloudinary</strong>
-                        <span class="gh-status no" id="cloudStatus">غير مهيأ</span>
-                    </div>
-                    <div class="field"><label>Cloud Name</label><input type="text" id="cloudName" placeholder="dynw1r49v" value="dynw1r49v"/></div>
-                    <div class="field"><label>Upload Preset (unsigned)</label><input type="text" id="cloudPreset" placeholder="musictech_unsigned"/></div>
-                    <button class="btn btn-p" id="cloudSave" style="width:auto"><i class="fa fa-save"></i> حفظ</button>
-                    <button class="btn btn-g" id="cloudTest" style="width:auto"><i class="fa fa-plug"></i> اختبار</button>
-                </div>
-            </div>
-        </div>
-
+        <!-- BACKUP -->
         <div class="page" data-page="backup">
             <div class="card">
                 <div class="card-head"><h2><i class="fa fa-database"></i> النسخ الاحتياطي</h2></div>
@@ -403,13 +402,18 @@ a{color:inherit;text-decoration:none}
             </div>
         </div>
 
+        <!-- SETTINGS -->
         <div class="page" data-page="settings">
             <div class="card">
                 <div class="card-head"><h2><i class="fa fa-gear"></i> الإعدادات العامة</h2></div>
                 <div class="setting-row"><div class="setting-row-info"><strong>اسم الشركة</strong></div><input type="text" id="settingCompany" value="MUSICTECH"/></div>
-                <div class="setting-row"><div class="setting-row-info"><strong>رقم واتساب</strong></div><input type="text" id="settingWhatsapp" value="966500000000"/></div>
-                <div class="setting-row"><div class="setting-row-info"><strong>البريد الإلكتروني</strong></div><input type="email" id="settingEmail" value="info@musictech.sa"/></div>
+                <div class="setting-row"><div class="setting-row-info"><strong>رقم واتساب 1</strong><span>بصيغة دولية بدون +</span></div><input type="text" id="settingWhatsapp" value="249917029008"/></div>
+                <div class="setting-row"><div class="setting-row-info"><strong>رقم واتساب 2</strong><span>رقم بديل</span></div><input type="text" id="settingWhatsapp2" value="249912153389"/></div>
+                <div class="setting-row"><div class="setting-row-info"><strong>هاتف 1</strong><span>للعرض</span></div><input type="text" id="settingPhone1" value="+249 91 702 9008"/></div>
+                <div class="setting-row"><div class="setting-row-info"><strong>هاتف 2</strong><span>للعرض</span></div><input type="text" id="settingPhone2" value="+249 91 215 3389"/></div>
+                <div class="setting-row"><div class="setting-row-info"><strong>البريد الإلكتروني</strong></div><input type="email" id="settingEmail" value="Mustech321@gmail.com"/></div>
                 <div class="setting-row"><div class="setting-row-info"><strong>العملة</strong></div><input type="text" id="settingCurrency" value="USD"/></div>
+                <div class="setting-row"><div class="setting-row-info"><strong>رمز العملة</strong></div><input type="text" id="settingCurrencySymbol" value="$"/></div>
                 <div class="setting-row"><div class="setting-row-info"><strong>الوضع الليلي</strong></div><label class="switch"><input type="checkbox" id="settingDark" checked/><span class="switch-slider"></span></label></div>
                 <div style="padding-top:20px"><button class="btn btn-p" id="saveSettings" style="width:auto"><i class="fa fa-check"></i> حفظ</button></div>
             </div>
@@ -444,23 +448,26 @@ a{color:inherit;text-decoration:none}
     </main>
 </div>
 
+<!-- MODAL -->
 <div class="modal" id="modal">
     <div class="modal-box">
-        <div class="modal-head"><h3 id="modalTitle"><i class="fa fa-plus"></i> <span>جديد</span></h3><button class="modal-close" id="modalClose"><i class="fa fa-times"></i></button></div>
+        <div class="modal-head"><h3 id="modalTitle"><i class="fa fa-plus"></i> <span>جديد</span></h3><button class="modal-close" id="modalClose" type="button"><i class="fa fa-times"></i></button></div>
         <div class="modal-body" id="modalBody"></div>
         <div class="modal-foot">
-            <button class="btn btn-g" id="modalCancel" style="width:auto">إلغاء</button>
-            <button class="btn btn-p" id="modalSave" style="width:auto"><i class="fa fa-check"></i> حفظ</button>
+            <button class="btn btn-g" id="modalCancel" type="button" style="width:auto">إلغاء</button>
+            <button class="btn btn-p" id="modalSave" type="button" style="width:auto"><i class="fa fa-check"></i> حفظ</button>
         </div>
     </div>
 </div>
 
+<!-- UPLOAD PROGRESS -->
 <div class="upload-progress" id="uploadProgress">
     <div class="upload-progress-head"><span id="uploadProgressLabel">جاري الرفع...</span><span id="uploadProgressPercent">0%</span></div>
     <div class="upload-progress-bar"><div class="upload-progress-fill" id="uploadProgressFill"></div></div>
     <div class="upload-progress-count" id="uploadProgressCount">0 / 0</div>
 </div>
 
+<!-- TOAST -->
 <div class="toast" id="toast"><i class="fa fa-check-circle"></i><span>تم</span></div>
 
 <script>
@@ -468,18 +475,30 @@ a{color:inherit;text-decoration:none}
 'use strict';
 const $=(s,c=document)=>c.querySelector(s);
 const $$=(s,c=document)=>Array.from(c.querySelectorAll(s));
-const KEYS={auth:'mzx_admin_pass',products:'mzx_admin_products',brands:'mzx_admin_brands',videos:'mzx_admin_videos',gallery:'mzx_admin_gallery',settings:'mzx_admin_settings',compress:'mzx_admin_compress',cloudinary:'mzx_admin_cloudinary',github:'mzx_admin_github',logs:'mzx_admin_logs'};
 
-function load(key,def=[]){try{const v=localStorage.getItem(key);return v?JSON.parse(v):def}catch(e){return def}}
-function save(key,val){localStorage.setItem(key,JSON.stringify(val))}
+const KEYS={
+    auth:'mzx_admin_pass',
+    products:'mzx_admin_products',
+    brands:'mzx_admin_brands',
+    videos:'mzx_admin_videos',
+    gallery:'mzx_admin_gallery',
+    settings:'mzx_admin_settings',
+    compress:'mzx_admin_compress',
+    github:'mzx_admin_github',
+    logs:'mzx_admin_logs'
+};
+
+function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):(d||[])}catch(e){return d||[]}}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 
+/* ===== SEED ===== */
 function seedDefaults(){
     if(!localStorage.getItem(KEYS.products)){
         save(KEYS.products,[
             {id:uid(),name:'DB-25NW',brand:'MOTIVITY',tag:'New',price:1200,desc:'Professional audio system with complete geometric coverage.',images:['https://picsum.photos/seed/p1/400/400'],specs:[{k:'System',v:'3-way'},{k:'Power',v:'1000 W'}],created:Date.now()},
-            {id:uid(),name:'DB-25 3G',brand:'MOTIVITY',tag:'Best Seller',price:1390,desc:'5-unit three-way speaker system.',images:['https://picsum.photos/seed/p2/400/400'],specs:[{k:'Speaker',v:'5× 3-way'},{k:'Power',v:'1000 W'}],created:Date.now()},
-            {id:uid(),name:'QX-218',brand:'MOTIVITY',tag:'',price:1850,desc:'Subwoofer with 1800W power.',images:['https://picsum.photos/seed/p4/400/400'],specs:[{k:'Category',v:'Subwoofer'},{k:'Power',v:'1800 W'}],created:Date.now()}
+            {id:uid(),name:'DB-25 3G',brand:'MOTIVITY',tag:'Best Seller',price:1390,desc:'5-unit three-way speaker system.',images:['https://picsum.photos/seed/p2/400/400'],specs:[{k:'Speaker',v:'5× 3-way'}],created:Date.now()},
+            {id:uid(),name:'QX-218',brand:'MOTIVITY',tag:'',price:1850,desc:'Subwoofer with 1800W power.',images:['https://picsum.photos/seed/p4/400/400'],specs:[{k:'Power',v:'1800 W'}],created:Date.now()}
         ]);
     }
     if(!localStorage.getItem(KEYS.brands)){
@@ -493,20 +512,25 @@ function seedDefaults(){
     if(!localStorage.getItem(KEYS.videos)){
         save(KEYS.videos,[
             {id:uid(),title:'MOTIVITY DB-25NW — Full Review',cat:'demo',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid1/800/450',dur:'4:32',desc:'Complete field test',created:Date.now()},
-            {id:uid(),title:'QX Series Installation',cat:'install',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid2/800/450',dur:'8:15',desc:'Full documentation',created:Date.now()},
-            {id:uid(),title:'Ahmed — Al-Andalus Hall',cat:'test',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid3/800/450',dur:'2:48',desc:'Experience that changed everything',created:Date.now()}
+            {id:uid(),title:'QX Series Installation',cat:'install',vid:'dQw4w9WgXcQ',thumb:'https://picsum.photos/seed/vid2/800/450',dur:'8:15',desc:'Full documentation',created:Date.now()}
         ]);
     }
     if(!localStorage.getItem(KEYS.gallery)){
-        save(KEYS.gallery,[1,2,3,4,5,6].map(i=>({id:uid(),url:`https://picsum.photos/seed/g${i}/600/800`,caption:'',created:Date.now()})));
+        save(KEYS.gallery,[1,2,3,4,5,6].map(i=>({id:uid(),url:'https://picsum.photos/seed/g'+i+'/600/800',caption:'',created:Date.now()})));
     }
-    if(!localStorage.getItem(KEYS.settings))save(KEYS.settings,{company:'MUSICTECH',whatsapp:'966500000000',email:'info@musictech.sa',currency:'USD',dark:true});
-    if(!localStorage.getItem(KEYS.compress))save(KEYS.compress,{quality:.85,maxWidth:800});
+    if(!localStorage.getItem(KEYS.settings)){
+        save(KEYS.settings,{company:'MUSICTECH',whatsapp:'249917029008',whatsapp2:'249912153389',phone1:'+249 91 702 9008',phone2:'+249 91 215 3389',email:'Mustech321@gmail.com',currency:'USD',currencySymbol:'$',dark:true});
+    }
+    if(!localStorage.getItem(KEYS.compress)){
+        save(KEYS.compress,{quality:.85,maxWidth:800});
+    }
 }
 seedDefaults();
 
+/* ===== TOAST ===== */
 let toastTimer;
-function toast(msg,type='success'){
+function toast(msg,type){
+    type=type||'success';
     const t=$('#toast');
     t.className='toast on '+type;
     const icons={success:'fa-circle-check',error:'fa-exclamation-circle',info:'fa-circle-info'};
@@ -516,75 +540,73 @@ function toast(msg,type='success'){
     toastTimer=setTimeout(()=>t.classList.remove('on'),type==='error'?5000:3000);
 }
 
-function addLog(action,detail){
-    const logs=load(KEYS.logs);
-    logs.unshift({action,detail,time:Date.now()});
-    save(KEYS.logs,logs.slice(0,20));
+/* ===== LOG ===== */
+function addLog(a,d){
+    const l=load(KEYS.logs);
+    l.unshift({action:a,detail:d||'',time:Date.now()});
+    save(KEYS.logs,l.slice(0,20));
     renderRecentLogs();
 }
 function renderRecentLogs(){
     const el=$('#recentLogs');
-    const logs=load(KEYS.logs);
-    if(!logs.length){el.innerHTML='<div style="text-align:center;padding:20px">لا يوجد نشاط</div>';return}
-    el.innerHTML=logs.slice(0,5).map(l=>`
-        <div style="padding:12px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-            <div><strong style="color:var(--txt);display:block;margin-bottom:4px">${l.action}</strong><span style="font-size:.8rem">${l.detail||''}</span></div>
-            <span style="font-size:.75rem;font-family:monospace">${new Date(l.time).toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'})}</span>
-        </div>`).join('');
+    const l=load(KEYS.logs);
+    if(!l.length){el.innerHTML='<div style="text-align:center;padding:20px">لا يوجد نشاط</div>';return}
+    el.innerHTML=l.slice(0,5).map(x=>'<div style="padding:12px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><strong style="color:var(--txt);display:block;margin-bottom:4px">'+x.action+'</strong><span style="font-size:.8rem">'+(x.detail||'')+'</span></div><span style="font-size:.75rem;font-family:monospace">'+new Date(x.time).toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'})+'</span></div>').join('');
 }
 
+/* ===== AUTH ===== */
 if(!localStorage.getItem(KEYS.auth)) localStorage.setItem(KEYS.auth,'admin123');
-$('#loginForm')?.addEventListener('submit',e=>{
+$('#loginForm').addEventListener('submit',e=>{
     e.preventDefault();
     if($('#loginPass').value===localStorage.getItem(KEYS.auth)){
         sessionStorage.setItem('mzx_auth','1');showApp();toast('مرحباً بك!');
     } else { toast('كلمة المرور غير صحيحة','error'); $('#loginPass').value=''; }
 });
 function showApp(){$('#loginWrap').style.display='none';$('#app').classList.add('on');renderAll()}
-$('#logoutBtn')?.addEventListener('click',()=>{sessionStorage.removeItem('mzx_auth');location.reload()});
+$('#logoutBtn').addEventListener('click',()=>{sessionStorage.removeItem('mzx_auth');location.reload()});
 if(sessionStorage.getItem('mzx_auth')==='1') showApp();
 
+/* ===== NAV ===== */
 $$('.side-item').forEach(item=>{
     item.addEventListener('click',()=>{
         const page=item.dataset.page;
         $$('.side-item').forEach(x=>x.classList.remove('active'));item.classList.add('active');
         $$('.page').forEach(p=>p.classList.remove('on'));
-        $(`.page[data-page="${page}"]`)?.classList.add('on');
-        const titles={dashboard:'نظرة عامة',products:'المنتجات',brands:'العلامات',videos:'الفيديوهات',gallery:'المعرض',scraper:'🕷️ استيراد',github:'رفع إلى GitHub',cloudinary:'Cloudinary',backup:'نسخ احتياطي',settings:'الإعدادات'};
+        const target=$('.page[data-page="'+page+'"]');
+        if(target) target.classList.add('on');
+        const titles={dashboard:'نظرة عامة',products:'المنتجات',brands:'العلامات',videos:'الفيديوهات',gallery:'المعرض',scraper:'استيراد',github:'GitHub',backup:'نسخ احتياطي',settings:'الإعدادات'};
         $('#pageTitle').textContent=titles[page]||page;
         if(window.innerWidth<900) $('#side').classList.remove('on');
         if(page==='github') loadGitHubSettings();
-        if(page==='cloudinary') loadCloudSettings();
     });
 });
-$('#menuBtn')?.addEventListener('click',()=>$('#side').classList.toggle('on'));
-$('#viewSite')?.addEventListener('click',()=>window.open('index.html','_blank'));
-$('#quickAddProduct')?.addEventListener('click',()=>openProductModal());
-$('#addProductBtn')?.addEventListener('click',()=>openProductModal());
-$('#addBrandBtn')?.addEventListener('click',()=>openBrandModal());
-$('#addVideoBtn')?.addEventListener('click',()=>openVideoModal());
-$('#addGalleryBtn')?.addEventListener('click',()=>$('#galleryUpload').click());
-$('#quickPush')?.addEventListener('click',()=>pushToGitHub());
+$('#menuBtn').addEventListener('click',()=>$('#side').classList.toggle('on'));
+$('#viewSite').addEventListener('click',()=>window.open('index.html','_blank'));
+$('#quickAddProduct').addEventListener('click',()=>openProductModal());
+$('#addProductBtn').addEventListener('click',()=>openProductModal());
+$('#addBrandBtn').addEventListener('click',()=>openBrandModal());
+$('#addVideoBtn').addEventListener('click',()=>openVideoModal());
+$('#addGalleryBtn').addEventListener('click',()=>$('#galleryUpload').click());
+$('#quickPush').addEventListener('click',()=>pushToGitHub());
 
-function openModal(title,icon='fa-plus'){$('#modalTitle').innerHTML=`<i class="fa ${icon}"></i> <span>${title}</span>`;$('#modal').classList.add('on')}
-function closeModal(){$('#modal').classList.remove('on');$('#modalBody').innerHTML='';currentEdit=null;currentType=null}
-$('#modalClose')?.addEventListener('click',closeModal);
-$('#modalCancel')?.addEventListener('click',closeModal);
-$('#modal')?.addEventListener('click',e=>{if(e.target===$('#modal'))closeModal()});
+/* ===== MODAL ===== */
+function openModal(t,i){i=i||'fa-plus';$('#modalTitle').innerHTML='<i class="fa '+i+'"></i> <span>'+t+'</span>';$('#modal').classList.add('on')}
+function closeModal(){$('#modal').classList.remove('on');$('#modalBody').innerHTML=''}
+$('#modalClose').addEventListener('click',closeModal);
+$('#modalCancel').addEventListener('click',closeModal);
+$('#modal').addEventListener('click',e=>{if(e.target===$('#modal'))closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-let currentEdit=null,currentType=null;
 
-const compressSettings = load(KEYS.compress,{quality:.85,maxWidth:800});
-const cloudSettings = load(KEYS.cloudinary,{cloudName:'',preset:''});
+/* ===== IMAGE PROCESSING ===== */
+const compressSettings=load(KEYS.compress,{quality:.85,maxWidth:800});
 
-function fileToBase64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)})}
-
-async function compressImage(file,opts={}){
-    const quality = opts.quality ?? compressSettings.quality ?? .85;
-    const maxWidth = opts.maxWidth ?? compressSettings.maxWidth ?? 800;
-    return new Promise((resolve)=>{
-        const reader=new FileReader();
-        reader.onload=e=>{
+async function compressImage(file,opts){
+    opts=opts||{};
+    const quality=opts.quality||compressSettings.quality||.85;
+    const maxWidth=opts.maxWidth||compressSettings.maxWidth||800;
+    return new Promise(resolve=>{
+        const r=new FileReader();
+        r.onload=e=>{
             const img=new Image();
             img.onload=()=>{
                 const canvas=document.createElement('canvas');
@@ -594,218 +616,191 @@ async function compressImage(file,opts={}){
                 const ctx=canvas.getContext('2d');
                 ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
                 ctx.drawImage(img,0,0,w,h);
-                let dataUrl=canvas.toDataURL('image/webp',quality);
-                let type='webp';
+                let dataUrl=canvas.toDataURL('image/webp',quality),type='webp';
                 if(dataUrl.indexOf('image/webp')===-1){dataUrl=canvas.toDataURL('image/jpeg',quality);type='jpeg'}
-                resolve({dataUrl,type,width:w,height:h,size:Math.round(dataUrl.length*.75)});
+                resolve({dataUrl:dataUrl,type:type,width:w,height:h});
             };
             img.onerror=()=>resolve(null);
             img.src=e.target.result;
         };
-        reader.onerror=()=>resolve(null);
-        reader.readAsDataURL(file);
+        r.onerror=()=>resolve(null);
+        r.readAsDataURL(file);
     });
 }
 
-async function uploadToCloudinary(file){
-    if(!cloudSettings.cloudName || !cloudSettings.preset) return null;
-    try{
-        const url = `https://api.cloudinary.com/v1_1/${cloudSettings.cloudName}/image/upload`;
-        const fd = new FormData();
-        fd.append('file', file);
-        fd.append('upload_preset', cloudSettings.preset);
-        fd.append('folder', 'musictech');
-        const res = await fetch(url,{method:'POST',body:fd});
-        if(!res.ok) throw new Error('Cloudinary failed');
-        const data = await res.json();
-        return {url:data.secure_url,publicId:data.public_id,width:data.width,height:data.height,bytes:data.bytes,format:data.format};
-    }catch(err){console.error('Cloudinary error:',err);return null}
-}
-
 async function uploadToGitHub(file){
-    const s = load(KEYS.github,{});
-    if(!s.token || !s.owner || !s.repo) return null;
+    const s=load(KEYS.github,{});
+    if(!s.token||!s.owner||!s.repo) return null;
     try{
-        const compressed = await compressImage(file);
-        if(!compressed) return null;
-        const base64Data = compressed.dataUrl.split(',')[1];
-        const ext = compressed.type === 'webp' ? 'webp' : 'jpg';
-        const hash = Date.now().toString(36) + Math.random().toString(36).slice(2,8);
-        const filename = `images/${hash}.${ext}`;
-        const body = {message:`Add image: ${filename}`,content:base64Data,branch:s.branch||'main'};
-        const res = await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/${filename}`,{
+        const c=await compressImage(file);
+        if(!c) return null;
+        const b64=c.dataUrl.split(',')[1];
+        const ext=c.type==='webp'?'webp':'jpg';
+        const hash=Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+        const filename='images/'+hash+'.'+ext;
+        const body={message:'Add image: '+filename,content:b64,branch:s.branch||'main'};
+        const res=await fetch('https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/'+filename,{
             method:'PUT',
-            headers:{'Authorization':`Bearer ${s.token}`,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
+            headers:{'Authorization':'Bearer '+s.token,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
             body:JSON.stringify(body)
         });
-        if(!res.ok){const err=await res.json().catch(()=>({}));throw new Error(err.message||`HTTP ${res.status}`)}
-        const data = await res.json();
-        const cdnUrl = `https://cdn.jsdelivr.net/gh/${s.owner}/${s.repo}@${s.branch}/${filename}`;
-        return {url:cdnUrl,source:'github',sha:data.content?.sha,path:filename};
-    }catch(err){console.error('GitHub image upload failed:',err);return null}
+        if(!res.ok) throw new Error('Upload failed');
+        const data=await res.json();
+        const url='https://cdn.jsdelivr.net/gh/'+s.owner+'/'+s.repo+'@'+(s.branch||'main')+'/'+filename;
+        return {url:url,source:'github',sha:data.content&&data.content.sha};
+    }catch(err){console.error(err);return null}
 }
 
 async function smartUpload(file){
-    const gh = await uploadToGitHub(file);
+    const gh=await uploadToGitHub(file);
     if(gh) return gh;
-    if(cloudSettings.cloudName && cloudSettings.preset){
-        const result = await uploadToCloudinary(file);
-        if(result) return {url:result.url, source:'cloudinary', meta:result};
-    }
-    const compressed = await compressImage(file);
-    if(compressed) return {url:compressed.dataUrl, source:'base64', meta:compressed};
+    const c=await compressImage(file);
+    if(c) return {url:c.dataUrl,source:'base64'};
     return null;
 }
 
-function setupUploadZone(zoneId,onFiles){
-    const zone = $('#'+zoneId);
-    if(!zone) return;
-    const fileInput = zone.querySelector('input[type="file"]');
-    zone.addEventListener('click',()=>fileInput.click());
-    fileInput.addEventListener('change',e=>{onFiles(Array.from(e.target.files));e.target.value=''});
-    ['dragenter','dragover'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.add('drag')}));
-    ['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.remove('drag')}));
-    zone.addEventListener('drop',e=>{const files=Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'));if(files.length)onFiles(files)});
+function setupUploadZone(id,onFiles){
+    const z=$('#'+id);if(!z) return;
+    const fi=z.querySelector('input[type="file"]');
+    z.addEventListener('click',()=>fi.click());
+    fi.addEventListener('change',e=>{onFiles(Array.from(e.target.files));e.target.value=''});
+    ['dragenter','dragover'].forEach(ev=>z.addEventListener(ev,e=>{e.preventDefault();z.classList.add('drag')}));
+    ['dragleave','drop'].forEach(ev=>z.addEventListener(ev,e=>{e.preventDefault();z.classList.remove('drag')}));
+    z.addEventListener('drop',e=>{const f=Array.from(e.dataTransfer.files).filter(x=>x.type.indexOf('image/')===0);if(f.length) onFiles(f)});
 }
 
 function showUploadProgress(total){
     const p=$('#uploadProgress');p.classList.add('on');
-    $('#uploadProgressCount').textContent=`0 / ${total}`;
+    $('#uploadProgressCount').textContent='0 / '+total;
     $('#uploadProgressPercent').textContent='0%';
     $('#uploadProgressFill').style.width='0%';
-    $('#uploadProgressLabel').textContent = cloudSettings.cloudName?'جاري الرفع...':'جاري ضغط الصور...';
-    return (done)=>{
-        const pct = Math.round((done/total)*100);
+    return function(done){
+        const pct=Math.round((done/total)*100);
         $('#uploadProgressFill').style.width=pct+'%';
         $('#uploadProgressPercent').textContent=pct+'%';
-        $('#uploadProgressCount').textContent=`${done} / ${total}`;
+        $('#uploadProgressCount').textContent=done+' / '+total;
         if(done>=total) setTimeout(()=>p.classList.remove('on'),600);
     };
 }
 
-function openProductModal(product=null){
-    currentEdit=product;currentType='product';
+/* ===== PRODUCTS ===== */
+function openProductModal(product){
     const isEdit=!!product;
     openModal(isEdit?'تعديل المنتج':'منتج جديد',isEdit?'fa-edit':'fa-plus');
     const p=product||{name:'',brand:'',tag:'',price:0,desc:'',images:[],specs:[{k:'',v:''}]};
-    const cloudReady = cloudSettings.cloudName && cloudSettings.preset;
-    const ghReady = (()=>{const s=load(KEYS.github,{});return s.token&&s.owner&&s.repo})();
+    const ghReady=(function(){const s=load(KEYS.github,{});return s.token&&s.owner&&s.repo})();
 
-    $('#modalBody').innerHTML=`
-        <div class="form-grid">
-            <div class="field"><label>اسم المنتج *</label><input type="text" id="pName" value="${p.name}" placeholder="DB-25NW"/></div>
-            <div class="field"><label>العلامة التجارية</label><input type="text" id="pBrand" value="${p.brand}" placeholder="MOTIVITY"/></div>
-            <div class="field"><label>شارة</label><input type="text" id="pTag" value="${p.tag}" placeholder="New"/></div>
-            <div class="field"><label>السعر (USD)</label><input type="number" id="pPrice" value="${p.price}" placeholder="1200" step="0.01"/></div>
-            <div class="field" style="grid-column:1/-1"><label>الوصف</label><textarea id="pDesc">${p.desc}</textarea></div>
-            <div style="grid-column:1/-1;background:${ghReady?'rgba(34,197,94,.05)':cloudReady?'rgba(52,144,220,.05)':'rgba(247,184,1,.05)'};border:1px solid ${ghReady?'rgba(34,197,94,.3)':cloudReady?'rgba(52,144,220,.3)':'rgba(247,184,1,.3)'};border-radius:12px;padding:12px;display:flex;align-items:center;gap:10px;font-size:.85rem">
-                <i class="fa ${ghReady?'fa-github':cloudReady?'fa-cloud':'fa-triangle-exclamation'}" style="color:${ghReady?'#22c55e':cloudReady?'#3490dc':'#f7b801'};font-size:1.2rem"></i>
-                <span>${ghReady?'✅ GitHub مهيأ — الصور ستُرفع إلى GitHub':cloudReady?'✅ Cloudinary مهيأ':'⚠️ لا يوجد خادم رفع — الصور كـBase64'}</span>
-            </div>
-            <div class="upload-zone" id="uploadZone">
-                <i class="fa fa-cloud-arrow-up"></i>
-                <strong>اسحب الصور هنا أو اضغط</strong>
-                <small>PNG, JPG, WebP — حتى 5 صور</small>
-                <input type="file" id="fileInput" accept="image/*" multiple style="display:none"/>
-            </div>
-            <div class="upload-preview" id="uploadPreview"></div>
-            <div class="specs-editor">
-                <label><i class="fa fa-list-check"></i> المواصفات</label>
-                <div id="specsList"></div>
-                <button type="button" class="spec-add" id="addSpecBtn"><i class="fa fa-plus"></i> إضافة مواصفة</button>
-            </div>
-        </div>
-    `;
+    $('#modalBody').innerHTML='<div class="form-grid">'+
+        '<div class="field"><label>اسم المنتج *</label><input type="text" id="pName" value="'+(p.name||'')+'" placeholder="DB-25NW"/></div>'+
+        '<div class="field"><label>العلامة التجارية</label><input type="text" id="pBrand" value="'+(p.brand||'')+'" placeholder="MOTIVITY"/></div>'+
+        '<div class="field"><label>شارة</label><input type="text" id="pTag" value="'+(p.tag||'')+'" placeholder="New"/></div>'+
+        '<div class="field"><label>السعر (USD)</label><input type="number" id="pPrice" value="'+(p.price||0)+'" step="0.01"/></div>'+
+        '<div class="field" style="grid-column:1/-1"><label>الوصف</label><textarea id="pDesc">'+(p.desc||'')+'</textarea></div>'+
+        '<div style="grid-column:1/-1;background:'+(ghReady?'rgba(34,197,94,.05)':'rgba(247,184,1,.05)')+';border:1px solid '+(ghReady?'rgba(34,197,94,.3)':'rgba(247,184,1,.3)')+';border-radius:12px;padding:12px;display:flex;align-items:center;gap:10px;font-size:.85rem">'+
+            '<i class="fa '+(ghReady?'fa-github':'fa-triangle-exclamation')+'" style="color:'+(ghReady?'#22c55e':'#f7b801')+';font-size:1.2rem"></i>'+
+            '<span>'+(ghReady?'✅ GitHub مهيأ — الصور ستُرفع تلقائياً':'⚠️ GitHub غير مهيأ — الصور كـBase64')+'</span>'+
+        '</div>'+
+        '<div class="upload-zone" id="uploadZone"><i class="fa fa-cloud-arrow-up"></i><strong>اسحب الصور هنا أو اضغط</strong><small>PNG, JPG, WebP — حتى 5 صور</small><input type="file" id="fileInput" accept="image/*" multiple style="display:none"/></div>'+
+        '<div class="upload-preview" id="uploadPreview"></div>'+
+        '<div class="specs-editor"><label><i class="fa fa-list-check"></i> المواصفات</label><div id="specsList"></div><button type="button" class="spec-add" id="addSpecBtn"><i class="fa fa-plus"></i> إضافة مواصفة</button></div>'+
+    '</div>';
 
-    let images=[...(p.images||[])];
-    renderImages();
+    let images=(p.images||[]).slice();
+    let specs=(p.specs||[{k:'',v:''}]).slice();
+
     function renderImages(){
         const prev=$('#uploadPreview');
         prev.innerHTML=images.map((src,i)=>{
-            let badge = '';
-            if(src.startsWith('data:')) badge = '<span class="upload-badge">Base64</span>';
-            else if(src.includes('cdn.jsdelivr.net')) badge = '<span class="upload-badge" style="background:rgba(34,197,94,.8)">🐙</span>';
-            else if(src.includes('cloudinary')) badge = '<span class="upload-badge" style="background:rgba(52,144,220,.8)">☁️</span>';
-            return `<div class="upload-thumb"><img src="${src}"/><button type="button" data-i="${i}"><i class="fa fa-times"></i></button>${badge}</div>`;
+            let badge='';
+            if(src.indexOf('data:')===0) badge='<span class="upload-badge">Base64</span>';
+            else if(src.indexOf('cdn.jsdelivr.net')!==-1) badge='<span class="upload-badge" style="background:rgba(34,197,94,.8)">🐙</span>';
+            return '<div class="upload-thumb"><img src="'+src+'"/><button type="button" data-i="'+i+'"><i class="fa fa-times"></i></button>'+badge+'</div>';
         }).join('');
         prev.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{images.splice(parseInt(b.dataset.i),1);renderImages()}));
     }
-    setupUploadZone('uploadZone',async (files)=>{
-        const toUpload = files.slice(0,5-images.length);
+    renderImages();
+
+    setupUploadZone('uploadZone',async(files)=>{
+        const toUpload=files.slice(0,5-images.length);
         if(!toUpload.length){toast('الحد 5 صور','error');return}
-        const updater = showUploadProgress(toUpload.length);
+        const upd=showUploadProgress(toUpload.length);
         for(let i=0;i<toUpload.length;i++){
-            const result = await smartUpload(toUpload[i]);
-            if(result) images.push(result.url);
-            updater(i+1);
+            const r=await smartUpload(toUpload[i]);
+            if(r) images.push(r.url);
+            upd(i+1);
         }
         renderImages();
-        toast(`${toUpload.length} صورة تم رفعها`);
+        toast(toUpload.length+' صورة تم رفعها');
     });
 
-    let specs=[...(p.specs||[{k:'',v:''}])];
     function renderSpecs(){
         const list=$('#specsList');
-        list.innerHTML=specs.map((s,i)=>`
-            <div class="spec-row">
-                <input type="text" placeholder="الاسم" value="${s.k}" data-i="${i}" data-f="k"/>
-                <input type="text" placeholder="القيمة" value="${s.v}" data-i="${i}" data-f="v"/>
-                <button type="button" data-i="${i}"><i class="fa fa-trash"></i></button>
-            </div>`).join('');
+        list.innerHTML=specs.map((s,i)=>'<div class="spec-row"><input type="text" placeholder="الاسم" value="'+(s.k||'')+'" data-i="'+i+'" data-f="k"/><input type="text" placeholder="القيمة" value="'+(s.v||'')+'" data-i="'+i+'" data-f="v"/><button type="button" data-i="'+i+'"><i class="fa fa-trash"></i></button></div>').join('');
         list.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',e=>{specs[parseInt(e.target.dataset.i)][e.target.dataset.f]=e.target.value}));
         list.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{specs.splice(parseInt(b.dataset.i),1);if(!specs.length)specs.push({k:'',v:''});renderSpecs()}));
     }
     renderSpecs();
-    $('#addSpecBtn')?.addEventListener('click',()=>{specs.push({k:'',v:''});renderSpecs()});
+    $('#addSpecBtn').addEventListener('click',()=>{specs.push({k:'',v:''});renderSpecs()});
 
-    $('#modalSave').onclick=()=>{
+    $('#modalSave').onclick=function(){
         const name=$('#pName').value.trim();
         if(!name){toast('الاسم مطلوب','error');return}
-        const data={id:p.id||uid(),name,brand:$('#pBrand').value.trim(),tag:$('#pTag').value.trim(),price:parseFloat($('#pPrice').value)||0,desc:$('#pDesc').value.trim(),images,specs:specs.filter(s=>s.k||s.v),created:p.created||Date.now()};
+        const data={
+            id:p.id||uid(),name:name,
+            brand:$('#pBrand').value.trim(),
+            tag:$('#pTag').value.trim(),
+            price:parseFloat($('#pPrice').value)||0,
+            desc:$('#pDesc').value.trim(),
+            images:images,
+            specs:specs.filter(s=>s.k||s.v),
+            created:p.created||Date.now()
+        };
         const products=load(KEYS.products);
-        if(isEdit){const idx=products.findIndex(x=>x.id===p.id);if(idx>-1)products[idx]=data;addLog('تعديل منتج',name);toast('تم التعديل')}
-        else{products.unshift(data);addLog('إضافة منتج',name);toast('تمت الإضافة')}
+        if(isEdit){
+            const idx=products.findIndex(x=>x.id===p.id);
+            if(idx>-1) products[idx]=data;
+            addLog('تعديل منتج',name);toast('تم التعديل');
+        } else {
+            products.unshift(data);
+            addLog('إضافة منتج',name);toast('تمت الإضافة');
+        }
         save(KEYS.products,products);renderProducts();renderCounts();closeModal();
     };
 }
 
-function openBrandModal(brand=null){
-    currentEdit=brand;currentType='brand';
+/* ===== BRANDS ===== */
+function openBrandModal(brand){
     const isEdit=!!brand;
     openModal(isEdit?'تعديل العلامة':'علامة جديدة',isEdit?'fa-edit':'fa-plus');
     const b=brand||{name:'',desc:'',logo:''};
-    const ghReady = (()=>{const s=load(KEYS.github,{});return s.token&&s.owner&&s.repo})();
+    const ghReady=(function(){const s=load(KEYS.github,{});return s.token&&s.owner&&s.repo})();
 
-    $('#modalBody').innerHTML=`
-        <div class="form-grid">
-            <div class="field"><label>اسم العلامة *</label><input type="text" id="bName" value="${b.name}" placeholder="MOTIVITY"/></div>
-            <div class="field"><label>الوصف</label><input type="text" id="bDesc" value="${b.desc}"/></div>
-            <div class="upload-zone" id="uploadZone">
-                <i class="fa fa-cloud-arrow-up"></i><strong>شعار العلامة</strong>
-                <small>${ghReady?'سيُرفع إلى GitHub':'ستُخزَّن كـBase64'}</small>
-                <input type="file" id="fileInput" accept="image/*" style="display:none"/>
-            </div>
-            <div class="upload-preview" id="uploadPreview"></div>
-        </div>`;
+    $('#modalBody').innerHTML='<div class="form-grid">'+
+        '<div class="field"><label>اسم العلامة *</label><input type="text" id="bName" value="'+(b.name||'')+'"/></div>'+
+        '<div class="field"><label>الوصف</label><input type="text" id="bDesc" value="'+(b.desc||'')+'"/></div>'+
+        '<div class="upload-zone" id="uploadZone"><i class="fa fa-cloud-arrow-up"></i><strong>شعار العلامة</strong><small>'+(ghReady?'سيُرفع إلى GitHub':'ستُخزَّن كـBase64')+'</small><input type="file" id="fileInput" accept="image/*" style="display:none"/></div>'+
+        '<div class="upload-preview" id="uploadPreview"></div>'+
+    '</div>';
+
     let logo=b.logo||'';
-    renderLogo();
     function renderLogo(){
         const prev=$('#uploadPreview');
         if(!logo){prev.innerHTML='';return}
-        let badge = logo.includes('cdn.jsdelivr.net') ? '<span class="upload-badge" style="background:rgba(34,197,94,.8)">🐙</span>' : logo.startsWith('data:')?'<span class="upload-badge">Base64</span>':'';
-        prev.innerHTML=`<div class="upload-thumb"><img src="${logo}"/><button type="button"><i class="fa fa-times"></i></button>${badge}</div>`;
-        prev.querySelector('button')?.addEventListener('click',()=>{logo='';renderLogo()});
+        let badge=logo.indexOf('cdn.jsdelivr.net')!==-1?'<span class="upload-badge" style="background:rgba(34,197,94,.8)">🐙</span>':'';
+        prev.innerHTML='<div class="upload-thumb"><img src="'+logo+'"/><button type="button"><i class="fa fa-times"></i></button>'+badge+'</div>';
+        prev.querySelector('button').addEventListener('click',()=>{logo='';renderLogo()});
     }
+    renderLogo();
     setupUploadZone('uploadZone',async(files)=>{
         const f=files[0];if(!f)return;
-        const updater=showUploadProgress(1);
-        const result=await smartUpload(f);
-        if(result){logo=result.url;renderLogo();updater(1);toast('تم رفع الشعار')}
+        const upd=showUploadProgress(1);
+        const r=await smartUpload(f);
+        if(r){logo=r.url;renderLogo();upd(1);toast('تم رفع الشعار')}
     });
-    $('#modalSave').onclick=()=>{
+    $('#modalSave').onclick=function(){
         const name=$('#bName').value.trim();
         if(!name){toast('الاسم مطلوب','error');return}
-        const data={id:b.id||uid(),name,desc:$('#bDesc').value.trim(),logo,created:b.created||Date.now()};
+        const data={id:b.id||uid(),name:name,desc:$('#bDesc').value.trim(),logo:logo,created:b.created||Date.now()};
         const brands=load(KEYS.brands);
         if(isEdit){const idx=brands.findIndex(x=>x.id===b.id);if(idx>-1)brands[idx]=data;addLog('تعديل علامة',name);toast('تم التعديل')}
         else{brands.unshift(data);addLog('إضافة علامة',name);toast('تمت الإضافة')}
@@ -813,47 +808,40 @@ function openBrandModal(brand=null){
     };
 }
 
-function openVideoModal(video=null){
-    currentEdit=video;currentType='video';
+/* ===== VIDEOS ===== */
+function openVideoModal(video){
     const isEdit=!!video;
     openModal(isEdit?'تعديل الفيديو':'فيديو جديد',isEdit?'fa-edit':'fa-plus');
     const v=video||{title:'',cat:'demo',vid:'',thumb:'',dur:'',desc:''};
 
-    $('#modalBody').innerHTML=`
-        <div class="form-grid">
-            <div class="field"><label>العنوان *</label><input type="text" id="vTitle" value="${v.title}"/></div>
-            <div class="field"><label>الفئة</label><select id="vCat">
-                <option value="demo" ${v.cat==='demo'?'selected':''}>Demo</option>
-                <option value="install" ${v.cat==='install'?'selected':''}>تركيب</option>
-                <option value="test" ${v.cat==='test'?'selected':''}>شهادة</option>
-            </select></div>
-            <div class="field"><label>معرف YouTube *</label><input type="text" id="vVid" value="${v.vid}" placeholder="dQw4w9WgXcQ"/></div>
-            <div class="field"><label>المدة</label><input type="text" id="vDur" value="${v.dur}" placeholder="4:32"/></div>
-            <div class="field" style="grid-column:1/-1"><label>الوصف</label><textarea id="vDesc">${v.desc}</textarea></div>
-            <div class="upload-zone" id="uploadZone">
-                <i class="fa fa-cloud-arrow-up"></i><strong>صورة مصغّرة</strong><small>اختياري</small>
-                <input type="file" id="fileInput" accept="image/*" style="display:none"/>
-            </div>
-            <div class="upload-preview" id="uploadPreview"></div>
-        </div>`;
+    $('#modalBody').innerHTML='<div class="form-grid">'+
+        '<div class="field"><label>العنوان *</label><input type="text" id="vTitle" value="'+(v.title||'')+'"/></div>'+
+        '<div class="field"><label>الفئة</label><select id="vCat"><option value="demo"'+(v.cat==='demo'?' selected':'')+'>Demo</option><option value="install"'+(v.cat==='install'?' selected':'')+'>تركيب</option><option value="test"'+(v.cat==='test'?' selected':'')+'>شهادة</option></select></div>'+
+        '<div class="field"><label>معرف YouTube *</label><input type="text" id="vVid" value="'+(v.vid||'')+'" placeholder="dQw4w9WgXcQ"/></div>'+
+        '<div class="field"><label>المدة</label><input type="text" id="vDur" value="'+(v.dur||'')+'" placeholder="4:32"/></div>'+
+        '<div class="field" style="grid-column:1/-1"><label>الوصف</label><textarea id="vDesc">'+(v.desc||'')+'</textarea></div>'+
+        '<div class="upload-zone" id="uploadZone"><i class="fa fa-cloud-arrow-up"></i><strong>صورة مصغّرة</strong><small>اختياري</small><input type="file" id="fileInput" accept="image/*" style="display:none"/></div>'+
+        '<div class="upload-preview" id="uploadPreview"></div>'+
+    '</div>';
+
     let thumb=v.thumb||'';
-    renderThumb();
     function renderThumb(){
         const prev=$('#uploadPreview');
         if(!thumb){prev.innerHTML='';return}
-        prev.innerHTML=`<div class="upload-thumb" style="width:160px;height:90px"><img src="${thumb}" style="object-fit:cover"/><button type="button"><i class="fa fa-times"></i></button></div>`;
-        prev.querySelector('button')?.addEventListener('click',()=>{thumb='';renderThumb()});
+        prev.innerHTML='<div class="upload-thumb" style="width:160px;height:90px"><img src="'+thumb+'" style="object-fit:cover"/><button type="button"><i class="fa fa-times"></i></button></div>';
+        prev.querySelector('button').addEventListener('click',()=>{thumb='';renderThumb()});
     }
+    renderThumb();
     setupUploadZone('uploadZone',async(files)=>{
         const f=files[0];if(!f)return;
-        const updater=showUploadProgress(1);
-        const result=await smartUpload(f);
-        if(result){thumb=result.url;renderThumb();updater(1)}
+        const upd=showUploadProgress(1);
+        const r=await smartUpload(f);
+        if(r){thumb=r.url;renderThumb();upd(1)}
     });
-    $('#modalSave').onclick=()=>{
+    $('#modalSave').onclick=function(){
         const title=$('#vTitle').value.trim(),vid=$('#vVid').value.trim();
         if(!title||!vid){toast('العنوان والمعرف مطلوبان','error');return}
-        const data={id:v.id||uid(),title,cat:$('#vCat').value,vid,dur:$('#vDur').value.trim(),desc:$('#vDesc').value.trim(),thumb:thumb||`https://img.youtube.com/vi/${vid}/maxresdefault.jpg`,created:v.created||Date.now()};
+        const data={id:v.id||uid(),title:title,cat:$('#vCat').value,vid:vid,dur:$('#vDur').value.trim(),desc:$('#vDesc').value.trim(),thumb:thumb||('https://img.youtube.com/vi/'+vid+'/maxresdefault.jpg'),created:v.created||Date.now()};
         const videos=load(KEYS.videos);
         if(isEdit){const idx=videos.findIndex(x=>x.id===v.id);if(idx>-1)videos[idx]=data;addLog('تعديل فيديو',title);toast('تم التعديل')}
         else{videos.unshift(data);addLog('إضافة فيديو',title);toast('تمت الإضافة')}
@@ -861,81 +849,85 @@ function openVideoModal(video=null){
     };
 }
 
-$('#galleryUpload')?.addEventListener('click',()=>{
-    const input=document.createElement('input');input.type='file';input.accept='image/*';input.multiple=true;
-    input.onchange=async e=>handleGalleryFiles(Array.from(e.target.files));input.click();
+/* ===== GALLERY ===== */
+$('#galleryUpload').addEventListener('click',()=>{
+    const input=document.createElement('input');
+    input.type='file';input.accept='image/*';input.multiple=true;
+    input.onchange=async e=>{await handleGalleryFiles(Array.from(e.target.files))};
+    input.click();
 });
-const galleryZone=$('#galleryUpload');
-['dragenter','dragover'].forEach(ev=>galleryZone?.addEventListener(ev,e=>{e.preventDefault();galleryZone.classList.add('drag')}));
-['dragleave','drop'].forEach(ev=>galleryZone?.addEventListener(ev,e=>{e.preventDefault();galleryZone.classList.remove('drag')}));
-galleryZone?.addEventListener('drop',e=>handleGalleryFiles(Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'))));
+const gz=$('#galleryUpload');
+['dragenter','dragover'].forEach(ev=>gz.addEventListener(ev,e=>{e.preventDefault();gz.classList.add('drag')}));
+['dragleave','drop'].forEach(ev=>gz.addEventListener(ev,e=>{e.preventDefault();gz.classList.remove('drag')}));
+gz.addEventListener('drop',e=>handleGalleryFiles(Array.from(e.dataTransfer.files).filter(f=>f.type.indexOf('image/')===0)));
 
 async function handleGalleryFiles(files){
-    if(!files.length)return;
-    const updater=showUploadProgress(files.length);
+    if(!files.length) return;
+    const upd=showUploadProgress(files.length);
     const gallery=load(KEYS.gallery);
     for(let i=0;i<files.length;i++){
-        const result=await smartUpload(files[i]);
-        if(result) gallery.unshift({id:uid(),url:result.url,caption:'',created:Date.now()});
-        updater(i+1);
+        const r=await smartUpload(files[i]);
+        if(r) gallery.unshift({id:uid(),url:r.url,caption:'',created:Date.now()});
+        upd(i+1);
     }
-    save(KEYS.gallery,gallery);renderGallery();renderCounts();
-    addLog('إضافة صور',`${files.length}`);toast(`${files.length} صورة تم رفعها`);
+    save(KEYS.gallery,gallery);
+    renderGallery();renderCounts();
+    addLog('إضافة صور',files.length+' صورة');
+    toast(files.length+' صورة تم رفعها');
 }
 
-function renderAll(){
-    renderProducts();renderBrands();renderVideos();renderGallery();
-    renderCounts();renderRecentLogs();renderSettings();renderStatusChips();
-}
+/* ===== RENDER ===== */
+function renderAll(){renderProducts();renderBrands();renderVideos();renderGallery();renderCounts();renderRecentLogs();renderSettings();renderStatusChips()}
+
 function renderCounts(){
-    $('#countProducts').textContent=load(KEYS.products).length;
-    $('#countBrands').textContent=load(KEYS.brands).length;
-    $('#countVideos').textContent=load(KEYS.videos).length;
-    $('#countGallery').textContent=load(KEYS.gallery).length;
-    $('#dashProducts').textContent=load(KEYS.products).length;
-    $('#dashBrands').textContent=load(KEYS.brands).length;
-    $('#dashVideos').textContent=load(KEYS.videos).length;
-    $('#dashGallery').textContent=load(KEYS.gallery).length;
+    const c=function(id,n){const el=$('#'+id);if(el)el.textContent=n};
+    c('countProducts',load(KEYS.products).length);
+    c('countBrands',load(KEYS.brands).length);
+    c('countVideos',load(KEYS.videos).length);
+    c('countGallery',load(KEYS.gallery).length);
+    c('dashProducts',load(KEYS.products).length);
+    c('dashBrands',load(KEYS.brands).length);
+    c('dashVideos',load(KEYS.videos).length);
+    c('dashGallery',load(KEYS.gallery).length);
 }
+
 function renderStatusChips(){
     const el=$('#statusChips');if(!el)return;
-    const gh=load(KEYS.github,{}),cloud=load(KEYS.cloudinary,{});
+    const gh=load(KEYS.github,{});
     const ghOk=gh.token&&gh.owner&&gh.repo;
-    const cloudOk=cloud.cloudName&&cloud.preset;
-    el.innerHTML=`
-        <span class="badge ${ghOk?'badge-green':'badge-red'}"><i class="fa fa-github"></i> GitHub ${ghOk?'مفعّل':'غير مهيأ'}</span>
-        <span class="badge ${cloudOk?'badge-cloud':'badge-gold'}"><i class="fa fa-cloud"></i> Cloudinary ${cloudOk?'مفعّل':'غير مهيأ'}</span>
-        <span class="badge badge-blue"><i class="fa fa-database"></i> ${load(KEYS.products).length} منتج</span>
-    `;
+    el.innerHTML=
+        '<span class="badge '+(ghOk?'badge-green':'badge-red')+'"><i class="fa fa-github"></i> GitHub '+(ghOk?'مفعّل':'غير مهيأ')+'</span>'+
+        '<span class="badge badge-blue"><i class="fa fa-database"></i> '+load(KEYS.products).length+' منتج</span>';
 }
 
 function renderProducts(){
-    const grid=$('#productsGrid');
+    const grid=$('#productsGrid');if(!grid)return;
     const products=load(KEYS.products);
-    const q=($('#searchProducts')?.value||'').toLowerCase();
-    const filtered=products.filter(p=>!q||p.name.toLowerCase().includes(q)||(p.brand||'').toLowerCase().includes(q));
+    const q=($('#searchProducts')&&$('#searchProducts').value||'').toLowerCase();
+    const filtered=products.filter(p=>!q||(p.name||'').toLowerCase().indexOf(q)!==-1||(p.brand||'').toLowerCase().indexOf(q)!==-1);
     if(!filtered.length){
-        grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-box-open"></i><h3>${q?'لا نتائج':'لا منتجات'}</h3><p>${q?'جرّب كلمة أخرى':'ابدأ بإضافة منتج'}</p></div>`;
+        grid.innerHTML='<div class="empty" style="grid-column:1/-1"><i class="fa fa-box-open"></i><h3>'+(q?'لا نتائج':'لا منتجات')+'</h3><p>'+(q?'جرّب كلمة أخرى':'ابدأ بإضافة منتج')+'</p></div>';
         return;
     }
     grid.innerHTML=filtered.map(p=>{
-        const img=p.images?.[0]||'';
-        return `<div class="prod-card">
-            ${p.tag?`<div class="prod-tag">${p.tag}</div>`:''}
-            <div class="prod-img">${img?`<img src="${img}"/>`:`<i class="fa fa-image" style="font-size:3rem;color:#ccc"></i>`}</div>
-            <div class="prod-body">
-                <h3>${p.name}</h3><p>${p.desc||'—'}</p>
-                ${p.brand?`<span class="badge badge-red">${p.brand}</span>`:''}
-                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
-                    <span class="badge badge-gold">${p.specs?.length||0} مواصفة</span>
-                    <span class="badge badge-green">$${(p.price||0).toLocaleString()}</span>
-                </div>
-                <div class="prod-actions" style="margin-top:14px">
-                    <button class="prod-edit" data-id="${p.id}"><i class="fa fa-edit"></i> تعديل</button>
-                    <button class="prod-del" data-id="${p.id}"><i class="fa fa-trash"></i> حذف</button>
-                </div>
-            </div>
-        </div>`;
+        const img=p.images&&p.images[0]||'';
+        return '<div class="prod-card">'+
+            (p.tag?'<div class="prod-tag">'+p.tag+'</div>':'')+
+            '<div class="prod-img">'+(img?'<img src="'+img+'" alt=""/>':'<i class="fa fa-image" style="font-size:3rem;color:#ccc"></i>')+'</div>'+
+            '<div class="prod-body">'+
+                '<h3>'+p.name+'</h3>'+
+                '<p>'+(p.desc||'—')+'</p>'+
+                (p.brand?'<span class="badge badge-red" style="margin-bottom:8px">'+p.brand+'</span>':'')+
+                '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">'+
+                    '<span class="badge badge-gold">'+(p.specs?p.specs.length:0)+' مواصفة</span>'+
+                    '<span class="badge badge-green">$'+(p.price||0).toLocaleString()+'</span>'+
+                '</div>'+
+                '<div class="prod-actions" style="margin-top:14px">'+
+                    '<button class="prod-edit" data-id="'+p.id+'"><i class="fa fa-edit"></i> تعديل</button>'+
+                    '<button class="prod-del" data-id="'+p.id+'"><i class="fa fa-trash"></i> حذف</button>'+
+                '</div>'+
+            '</div>'+
+        '</div>';
     }).join('');
     $$('.prod-edit',grid).forEach(b=>b.addEventListener('click',()=>{const p=products.find(x=>x.id===b.dataset.id);if(p)openProductModal(p)}));
     $$('.prod-del',grid).forEach(b=>b.addEventListener('click',()=>{
@@ -944,21 +936,13 @@ function renderProducts(){
         addLog('حذف منتج');renderProducts();renderCounts();toast('تم الحذف');
     }));
 }
-$('#searchProducts')?.addEventListener('input',renderProducts);
+$('#searchProducts').addEventListener('input',renderProducts);
 
 function renderBrands(){
-    const grid=$('#brandsGrid');const brands=load(KEYS.brands);
-    if(!brands.length){grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-tags"></i><h3>لا علامات</h3></div>`;return}
-    grid.innerHTML=brands.map(b=>`
-        <div class="prod-card">
-            <div class="prod-img"><img src="${b.logo||''}"/></div>
-            <div class="prod-body"><h3>${b.name}</h3><p>${b.desc||'—'}</p>
-                <div class="prod-actions">
-                    <button class="prod-edit" data-id="${b.id}"><i class="fa fa-edit"></i> تعديل</button>
-                    <button class="prod-del" data-id="${b.id}"><i class="fa fa-trash"></i> حذف</button>
-                </div>
-            </div>
-        </div>`).join('');
+    const grid=$('#brandsGrid');if(!grid)return;
+    const brands=load(KEYS.brands);
+    if(!brands.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1"><i class="fa fa-tags"></i><h3>لا علامات</h3></div>';return}
+    grid.innerHTML=brands.map(b=>'<div class="prod-card"><div class="prod-img"><img src="'+(b.logo||'')+'" alt=""/></div><div class="prod-body"><h3>'+b.name+'</h3><p>'+(b.desc||'—')+'</p><div class="prod-actions"><button class="prod-edit" data-id="'+b.id+'"><i class="fa fa-edit"></i> تعديل</button><button class="prod-del" data-id="'+b.id+'"><i class="fa fa-trash"></i> حذف</button></div></div></div>').join('');
     $$('.prod-edit',grid).forEach(btn=>btn.addEventListener('click',()=>{const b=brands.find(x=>x.id===btn.dataset.id);if(b)openBrandModal(b)}));
     $$('.prod-del',grid).forEach(btn=>btn.addEventListener('click',()=>{
         if(!confirm('حذف العلامة؟'))return;
@@ -968,21 +952,11 @@ function renderBrands(){
 }
 
 function renderVideos(){
-    const grid=$('#videosGrid');const videos=load(KEYS.videos);
-    if(!videos.length){grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-video"></i><h3>لا فيديوهات</h3></div>`;return}
+    const grid=$('#videosGrid');if(!grid)return;
+    const videos=load(KEYS.videos);
+    if(!videos.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1"><i class="fa fa-video"></i><h3>لا فيديوهات</h3></div>';return}
     const cats={demo:'Demo',install:'تركيب',test:'شهادة'};
-    grid.innerHTML=videos.map(v=>`
-        <div class="prod-card">
-            <div class="prod-img" style="height:140px;padding:0"><img src="${v.thumb||''}" style="object-fit:cover;width:100%;height:100%"/></div>
-            <div class="prod-body">
-                <h3>${v.title}</h3><p>${v.desc||'—'}</p>
-                <div style="display:flex;gap:6px;margin-top:8px"><span class="badge badge-red">${cats[v.cat]||v.cat}</span><span class="badge badge-gold">${v.dur||'--:--'}</span></div>
-                <div class="prod-actions" style="margin-top:14px">
-                    <button class="prod-edit" data-id="${v.id}"><i class="fa fa-edit"></i></button>
-                    <button class="prod-del" data-id="${v.id}"><i class="fa fa-trash"></i></button>
-                </div>
-            </div>
-        </div>`).join('');
+    grid.innerHTML=videos.map(v=>'<div class="prod-card"><div class="prod-img" style="height:140px;padding:0"><img src="'+(v.thumb||'')+'" style="object-fit:cover;width:100%;height:100%"/></div><div class="prod-body"><h3>'+v.title+'</h3><p>'+(v.desc||'—')+'</p><div style="display:flex;gap:6px;margin-top:8px"><span class="badge badge-red">'+(cats[v.cat]||v.cat)+'</span><span class="badge badge-gold">'+(v.dur||'--:--')+'</span></div><div class="prod-actions" style="margin-top:14px"><button class="prod-edit" data-id="'+v.id+'"><i class="fa fa-edit"></i></button><button class="prod-del" data-id="'+v.id+'"><i class="fa fa-trash"></i></button></div></div></div>').join('');
     $$('.prod-edit',grid).forEach(btn=>btn.addEventListener('click',()=>{const v=videos.find(x=>x.id===btn.dataset.id);if(v)openVideoModal(v)}));
     $$('.prod-del',grid).forEach(btn=>btn.addEventListener('click',()=>{
         if(!confirm('حذف الفيديو؟'))return;
@@ -992,343 +966,166 @@ function renderVideos(){
 }
 
 function renderGallery(){
-    const grid=$('#galleryGrid');const gallery=load(KEYS.gallery);
-    if(!gallery.length){grid.innerHTML=`<div class="empty" style="grid-column:1/-1"><i class="fa fa-images"></i><h3>لا صور</h3></div>`;return}
-    grid.innerHTML=gallery.map(g=>`
-        <div class="prod-card">
-            <div class="prod-img" style="height:180px;padding:0"><img src="${g.url}" style="object-fit:cover;width:100%;height:100%"/></div>
-            <div class="prod-body">
-                <input type="text" value="${g.caption||''}" placeholder="التعليق..." data-id="${g.id}" class="gal-cap" style="width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--txt);outline:none;font-size:.85rem;margin-bottom:10px"/>
-                <button class="prod-del" data-id="${g.id}" style="width:100%"><i class="fa fa-trash"></i> حذف</button>
-            </div>
-        </div>`).join('');
+    const grid=$('#galleryGrid');if(!grid)return;
+    const g=load(KEYS.gallery);
+    if(!g.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1"><i class="fa fa-images"></i><h3>لا صور</h3></div>';return}
+    grid.innerHTML=g.map(x=>'<div class="prod-card"><div class="prod-img" style="height:180px;padding:0"><img src="'+x.url+'" style="object-fit:cover;width:100%;height:100%"/></div><div class="prod-body"><input type="text" value="'+(x.caption||'')+'" placeholder="التعليق..." data-id="'+x.id+'" class="gal-cap" style="width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--txt);outline:none;font-size:.85rem;margin-bottom:10px"/><button class="prod-del" data-id="'+x.id+'" style="width:100%"><i class="fa fa-trash"></i> حذف</button></div></div>').join('');
     $$('.gal-cap',grid).forEach(inp=>inp.addEventListener('change',e=>{
-        const gallery=load(KEYS.gallery);const item=gallery.find(x=>x.id===e.target.dataset.id);
-        if(item){item.caption=e.target.value;save(KEYS.gallery,gallery)}
+        const g=load(KEYS.gallery);const it=g.find(x=>x.id===e.target.dataset.id);
+        if(it){it.caption=e.target.value;save(KEYS.gallery,g)}
     }));
     $$('.prod-del',grid).forEach(btn=>btn.addEventListener('click',()=>{
         if(!confirm('حذف الصورة؟'))return;
-        save(KEYS.gallery,gallery.filter(x=>x.id!==btn.dataset.id));
+        save(KEYS.gallery,g.filter(x=>x.id!==btn.dataset.id));
         renderGallery();renderCounts();toast('تم الحذف');
     }));
 }
 
-/* ============ SCRAPER ============ */
-let scrapedProducts = [];
-const CORS_PROXIES = [
-    url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-    url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-    url => `https://thingproxy.freeboard.io/fetch/${url}`,
-    url => `https://cors.isomorphic-git.org/${url}`
+/* ===== SCRAPER ===== */
+let scrapedProducts=[];
+const CORS_PROXIES=[
+    function(u){return 'https://api.allorigins.win/raw?url='+encodeURIComponent(u)},
+    function(u){return 'https://corsproxy.io/?'+encodeURIComponent(u)},
+    function(u){return 'https://thingproxy.freeboard.io/fetch/'+u}
 ];
-
 async function fetchViaProxy(url){
-    for(let i=0; i<CORS_PROXIES.length; i++){
+    for(let i=0;i<CORS_PROXIES.length;i++){
         try{
-            console.log(`Trying proxy ${i+1}...`);
-            const res = await fetch(CORS_PROXIES[i](url));
+            const res=await fetch(CORS_PROXIES[i](url));
             if(res.ok){
-                const text = await res.text();
-                if(text && text.length > 200){
-                    console.log(`✓ Proxy ${i+1} worked`);
-                    return text;
-                }
-            }
-        }catch(e){console.log(`Proxy ${i+1} failed:`, e.message)}
-    }
-    throw new Error('فشلت جميع خدمات Proxy');
-}
-
-$('#scrapeTest')?.addEventListener('click', async ()=>{
-    const url = $('#scrapeUrl').value.trim();
-    if(!url){ toast('أدخل رابطاً','error'); return; }
-    $('#scrapeStatus').style.display='block';
-    $('#scrapeStatusText').textContent = 'جاري الاختبار...';
-    try{
-        const html = await fetchViaProxy(url);
-        toast('✅ نجح! حجم: ' + Math.round(html.length/1024) + ' KB','success');
-        $('#scrapeStatusText').textContent = '✅ الاتصال يعمل';
-        setTimeout(()=>$('#scrapeStatus').style.display='none', 2000);
-    }catch(err){
-        toast('❌ ' + err.message, 'error');
-        $('#scrapeStatus').style.display='none';
-    }
-});
-
-function extractProducts(html, baseUrl){
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    const base = new URL(baseUrl);
-    const products = [];
-    const selectors = ['.product','.product-item','.product-card','[class*="product-item"]','[class*="product-card"]','li.product','article.product'];
-    
-    for(const sel of selectors){
-        const items = doc.querySelectorAll(sel);
-        if(items.length > 0){
-            items.forEach(item => {
-                const product = parseProductElement(item, base);
-                if(product && product.name && product.image) products.push(product);
-            });
-            if(products.length > 0) break;
-        }
-    }
-    
-    if(products.length === 0){
-        const allLinks = doc.querySelectorAll('a[href]');
-        const productLinks = new Set();
-        allLinks.forEach(link => {
-            const href = link.href || link.getAttribute('href');
-            if(!href) return;
-            if(href.includes('/product/') || href.includes('/shop/') || href.includes('/products/') || href.includes('/item/')){
-                try{productLinks.add(new URL(href, base).href)}catch(e){}
-            }
-        });
-        productLinks.forEach(url => {
-            const anchor = Array.from(doc.querySelectorAll('a')).find(a => {
-                try{ return new URL(a.getAttribute('href'), base).href === url; }catch(e){ return false; }
-            });
-            if(!anchor) return;
-            const card = anchor.closest('li, article, div[class*="product"], div[class*="item"]');
-            if(card){
-                const p = parseProductElement(card, base);
-                if(p && p.name && p.image) products.push(p);
-            }
-        });
-    }
-    
-    const unique = [];
-    const seen = new Set();
-    products.forEach(p => {
-        const key = p.name.toLowerCase().trim();
-        if(!seen.has(key)){seen.add(key); unique.push(p)}
-    });
-    return unique;
-}
-
-function parseProductElement(el, base){
-    const product = {name:'',price:0,image:'',images:[],desc:'',url:'',specs:[]};
-    const nameSelectors = ['h2','h3','h4','.product-title','.product-name','.woocommerce-loop-product__title','.title','[class*="product-name"]'];
-    for(const sel of nameSelectors){
-        const nameEl = el.querySelector(sel);
-        if(nameEl && nameEl.textContent.trim().length > 2){product.name = nameEl.textContent.trim(); break}
-    }
-    const linkEl = el.querySelector('a[href]');
-    if(linkEl){try{product.url = new URL(linkEl.getAttribute('href'), base).href}catch(e){}}
-    const imgEl = el.querySelector('img');
-    if(imgEl){
-        let src = imgEl.getAttribute('src') || imgEl.getAttribute('data-src') || imgEl.getAttribute('data-lazy-src') || imgEl.getAttribute('data-original');
-        if(src && !src.startsWith('data:')){try{product.image = new URL(src, base).href}catch(e){}}
-        const srcset = imgEl.getAttribute('srcset') || imgEl.getAttribute('data-srcset');
-        if(srcset){
-            const parts = srcset.split(',').map(s => {const [url, w] = s.trim().split(' '); return {url, w:parseInt(w)||0}});
-            parts.sort((a,b) => b.w - a.w);
-            if(parts[0]?.url){try{product.image = new URL(parts[0].url, base).href}catch(e){}}
-        }
-    }
-    const priceSelectors = ['.price','.product-price','[class*="price"]','.woocommerce-Price-amount','bdi'];
-    for(const sel of priceSelectors){
-        const priceEl = el.querySelector(sel);
-        if(priceEl){
-            const match = priceEl.textContent.match(/[\d,]+\.?\d*/);
-            if(match){
-                const price = parseFloat(match[0].replace(/,/g,''));
-                if(price > 0){product.price = price; break}
-            }
-        }
-    }
-    const descEl = el.querySelector('p, .description, [class*="desc"]');
-    if(descEl && descEl.textContent.trim() !== product.name){product.desc = descEl.textContent.trim().slice(0,200)}
-    return product;
-}
-
-$('#scrapeClear')?.addEventListener('click', ()=>{
-    scrapedProducts = [];
-    $('#scrapeResultsCard').style.display = 'none';
-    $('#scrapeResults').innerHTML = '';
-    $('#scrapeCount').textContent = '0';
-    toast('تم المسح');
-});
-
-$('#scrapeStart')?.addEventListener('click', async ()=>{
-    const url = $('#scrapeUrl').value.trim();
-    if(!url){ toast('أدخل الرابط','error'); return; }
-    const pages = parseInt($('#scrapePages').value) || 1;
-    const limit = parseInt($('#scrapeLimit').value) || 50;
-    $('#scrapeStatus').style.display = 'block';
-    $('#scrapeStatusText').textContent = 'جاري جلب الصفحة...';
-    try{
-        scrapedProducts = [];
-        for(let p = 1; p <= pages; p++){
-            let pageUrl = url;
-            if(p > 1){
-                if(url.includes('?')) pageUrl = `${url}&page=${p}`;
-                else pageUrl = `${url}/page/${p}/`;
-            }
-            $('#scrapeStatusText').textContent = `جاري جلب الصفحة ${p}...`;
-            try{
-                const html = await fetchViaProxy(pageUrl);
-                const products = extractProducts(html, pageUrl);
-                console.log(`Page ${p}: ${products.length} products`);
-                scrapedProducts.push(...products);
-                if(scrapedProducts.length >= limit) break;
-                if(products.length === 0) break;
-            }catch(e){if(p === 1) throw e}
-        }
-        const unique = [];
-        const seen = new Set();
-        scrapedProducts.forEach(p => {
-            const key = p.name.toLowerCase().trim();
-            if(!seen.has(key) && key.length > 2){seen.add(key); unique.push(p)}
-        });
-        scrapedProducts = unique.slice(0, limit);
-        renderScrapeResults();
-        if(scrapedProducts.length === 0){
-            toast('لم يتم العثور على منتجات','error');
-            $('#scrapeStatus').style.display = 'none';
-        } else {
-            toast(`تم العثور على ${scrapedProducts.length} منتج`,'success');
-            $('#scrapeStatus').style.display = 'none';
-            $('#scrapeResultsCard').style.display = 'block';
-        }
-    }catch(err){
-        console.error(err);
-        toast('❌ ' + err.message,'error');
-        $('#scrapeStatus').style.display = 'none';
-    }
-});
-
-function renderScrapeResults(){
-    const el = $('#scrapeResults');
-    $('#scrapeCount').textContent = scrapedProducts.length;
-    el.innerHTML = scrapedProducts.map((p, i) => `
-        <div class="prod-card" style="position:relative">
-            <div style="position:absolute;top:12px;left:12px;z-index:5">
-                <input type="checkbox" class="scrape-check" data-i="${i}" checked style="width:22px;height:22px;cursor:pointer;accent-color:#e1193a"/>
-            </div>
-            <div class="prod-img" style="height:160px;background:#fff;padding:8px">
-                ${p.image ? `<img src="${p.image}" loading="lazy"/>` : `<div style="color:#ccc;font-size:3rem">🖼️</div>`}
-            </div>
-            <div class="prod-body">
-                <h3 style="font-size:.9rem;line-height:1.3;margin-bottom:6px">${p.name}</h3>
-                ${p.price ? `<div style="color:#22c55e;font-weight:700;font-size:.9rem">$${p.price.toLocaleString()}</div>` : '<div style="color:var(--mut);font-size:.8rem">السعر غير متاح</div>'}
-            </div>
-        </div>
-    `).join('');
-}
-
-$('#scrapeSelectAll')?.addEventListener('click', () => {$$('.scrape-check').forEach(c => c.checked = true)});
-$('#scrapeDeselectAll')?.addEventListener('click', () => {$$('.scrape-check').forEach(c => c.checked = false)});
-
-$('#scrapeImport')?.addEventListener('click', async () => {
-    const selected = $$('.scrape-check').filter(c => c.checked).map(c => scrapedProducts[parseInt(c.dataset.i)]);
-    if(!selected.length){ toast('اختر منتجاً','error'); return; }
-    const defaultBrand = $('#scrapeBrandDefault').value.trim();
-    const markup = parseFloat($('#scrapeMarkup').value) || 0;
-    const btn = $('#scrapeImport');
-    const origHTML = btn.innerHTML;
-    btn.disabled = true;
-    let successCount = 0, failCount = 0;
-    const products = load(KEYS.products);
-    try{
-        for(let i = 0; i < selected.length; i++){
-            const p = selected[i];
-            btn.innerHTML = `<span class="spinner"></span> ${i+1}/${selected.length}...`;
-            try{
-                let imageUrl = p.image;
-                if(p.image){
-                    const imgBlob = await fetchImageAsBlob(p.image);
-                    if(imgBlob){
-                        const fileName = `${Date.now()}-${i}.jpg`;
-                        const file = new File([imgBlob], fileName, {type: imgBlob.type});
-                        const uploadResult = await smartUpload(file);
-                        if(uploadResult && uploadResult.url) imageUrl = uploadResult.url;
-                    }
-                }
-                const finalPrice = markup > 0 ? Math.round(p.price * (1 + markup/100) * 100) / 100 : p.price;
-                const product = {
-                    id: uid(), name: p.name, brand: defaultBrand || '', tag: '',
-                    price: finalPrice, desc: p.desc || '',
-                    images: imageUrl ? [imageUrl] : [],
-                    specs: p.specs || [], sourceUrl: p.url || '', created: Date.now()
-                };
-                const exists = products.find(x => x.name.toLowerCase().trim() === product.name.toLowerCase().trim());
-                if(exists){ failCount++; }
-                else { products.unshift(product); successCount++; }
-            }catch(err){console.error(err); failCount++;}
-        }
-        save(KEYS.products, products);
-        renderProducts(); renderCounts();
-        addLog('استيراد من موقع', `${successCount} نجح، ${failCount} فشل`);
-        $('#scrapeStatus').style.display = 'none';
-        if(successCount > 0){
-            toast(`✅ تم استيراد ${successCount} منتج${failCount ? ` (${failCount} فشل)` : ''}`,'success');
-            $('#scrapeResultsCard').style.display = 'none';
-            scrapedProducts = [];
-            document.querySelector('[data-page="products"]')?.click();
-        } else toast(`❌ فشل الاستيراد`, 'error');
-    }catch(err){
-        console.error(err);
-        toast('❌ ' + err.message,'error');
-        $('#scrapeStatus').style.display = 'none';
-    } finally {
-        btn.innerHTML = origHTML;
-        btn.disabled = false;
-    }
-});
-
-async function fetchImageAsBlob(imageUrl){
-    const proxies = [
-        url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-        url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-        url => url
-    ];
-    for(const proxy of proxies){
-        try{
-            const res = await fetch(proxy(imageUrl));
-            if(res.ok){
-                const blob = await res.blob();
-                if(blob.size > 100) return blob;
+                const t=await res.text();
+                if(t&&t.length>200) return t;
             }
         }catch(e){}
     }
-    return null;
+    throw new Error('فشلت جميع خدمات Proxy');
 }
-
-/* ============ CLOUDINARY ============ */
-function loadCloudSettings(){
-    const s=load(KEYS.cloudinary,{cloudName:'',preset:''});
-    if($('#cloudName')) $('#cloudName').value=s.cloudName||'';
-    if($('#cloudPreset')) $('#cloudPreset').value=s.preset||'';
-    updateCloudStatus();
-}
-function updateCloudStatus(){
-    const s=load(KEYS.cloudinary,{});
-    const el=$('#cloudStatus');if(!el)return;
-    if(s.cloudName&&s.preset){el.className='gh-status ok';el.textContent='مهيأ ✓'}
-    else{el.className='gh-status no';el.textContent='غير مهيأ'}
-}
-$('#cloudSave')?.addEventListener('click',()=>{
-    const s={cloudName:$('#cloudName').value.trim(),preset:$('#cloudPreset').value.trim()};
-    save(KEYS.cloudinary,s);
-    Object.assign(cloudSettings,s);
-    updateCloudStatus();renderStatusChips();toast('تم الحفظ');
+$('#scrapeTest').addEventListener('click',async()=>{
+    const u=$('#scrapeUrl').value.trim();
+    if(!u){toast('أدخل رابطاً','error');return}
+    $('#scrapeStatus').style.display='block';
+    $('#scrapeStatusText').textContent='جاري الاختبار...';
+    try{
+        const h=await fetchViaProxy(u);
+        toast('✅ نجح! حجم: '+Math.round(h.length/1024)+' KB','success');
+        $('#scrapeStatusText').textContent='✅ الاتصال يعمل';
+        setTimeout(()=>$('#scrapeStatus').style.display='none',2000);
+    }catch(err){toast('❌ '+err.message,'error');$('#scrapeStatus').style.display='none'}
 });
-$('#cloudTest')?.addEventListener('click',async()=>{
-    const cn=$('#cloudName').value.trim(),pr=$('#cloudPreset').value.trim();
-    if(!cn||!pr){toast('أدخل القيم','error');return}
-    toast('جاري الاختبار...','info');
-    const blob=await fetch('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==').then(r=>r.blob());
-    const file=new File([blob],'test.png',{type:'image/png'});
-    const temp=cloudSettings;cloudSettings.cloudName=cn;cloudSettings.preset=pr;
-    const result=await uploadToCloudinary(file);
-    cloudSettings.cloudName=temp.cloudName;cloudSettings.preset=temp.preset;
-    if(result) toast('✅ نجح!','success');
+$('#scrapeClear').addEventListener('click',()=>{
+    scrapedProducts=[];
+    $('#scrapeResultsCard').style.display='none';
+    $('#scrapeResults').innerHTML='';
+    $('#scrapeCount').textContent='0';
+    toast('تم المسح');
+});
+
+function parseProductElement(el,base){
+    const p={name:'',price:0,image:'',desc:'',url:'',specs:[]};
+    const nameSels=['h2','h3','h4','.product-title','.product-name','.title'];
+    for(const sel of nameSels){
+        const n=el.querySelector(sel);
+        if(n&&n.textContent.trim().length>2){p.name=n.textContent.trim();break}
+    }
+    const link=el.querySelector('a[href]');
+    if(link){try{p.url=new URL(link.getAttribute('href'),base).href}catch(e){}}
+    const img=el.querySelector('img');
+    if(img){
+        let s=img.getAttribute('src')||img.getAttribute('data-src')||img.getAttribute('data-lazy-src');
+        if(s&&s.indexOf('data:')!==0){try{p.image=new URL(s,base).href}catch(e){}}
+        const ss=img.getAttribute('srcset')||img.getAttribute('data-srcset');
+        if(ss){
+            const parts=ss.split(',').map(x=>{const a=x.trim().split(' ');return {url:a[0],w:parseInt(a[1])||0}});
+            parts.sort((a,b)=>b.w-a.w);
+            if(parts[0]&&parts[0].url){try{p.image=new URL(parts[0].url,base).href}catch(e){}}
+        }
+    }
+    const priceSels=['.price','.product-price','[class*="price"]','bdi'];
+    for(const sel of priceSels){
+        const pr=el.querySelector(sel);
+        if(pr){
+            const m=pr.textContent.match(/[\d,]+\.?\d*/);
+            if(m){const v=parseFloat(m[0].replace(/,/g,''));if(v>0){p.price=v;break}}
+        }
+    }
+    const d=el.querySelector('p, .description');
+    if(d&&d.textContent.trim()!==p.name) p.desc=d.textContent.trim().slice(0,200);
+    return p;
+}
+function extractProducts(html,baseUrl){
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const base=new URL(baseUrl);
+    const products=[];
+    const sels=['.product','.product-item','.product-card','li.product','article.product'];
+    for(const sel of sels){
+        const items=doc.querySelectorAll(sel);
+        if(items.length){
+            items.forEach(it=>{const p=parseProductElement(it,base);if(p&&p.name&&p.image)products.push(p)});
+            if(products.length) break;
+        }
+    }
+    const uniq=[],seen={};
+    products.forEach(p=>{const k=p.name.toLowerCase().trim();if(!seen[k]){seen[k]=1;uniq.push(p)}});
+    return uniq;
+}
+$('#scrapeStart').addEventListener('click',async()=>{
+    const u=$('#scrapeUrl').value.trim();
+    if(!u){toast('أدخل رابطاً','error');return}
+    const limit=parseInt($('#scrapeLimit').value)||50;
+    $('#scrapeStatus').style.display='block';
+    $('#scrapeStatusText').textContent='جاري الجلب...';
+    try{
+        scrapedProducts=[];
+        const h=await fetchViaProxy(u);
+        scrapedProducts=extractProducts(h,u).slice(0,limit);
+        if(!scrapedProducts.length){toast('لم يتم العثور على منتجات','error');$('#scrapeStatus').style.display='none';return}
+        $('#scrapeCount').textContent=scrapedProducts.length;
+        $('#scrapeResults').innerHTML=scrapedProducts.map((p,i)=>'<div class="prod-card" style="position:relative"><div style="position:absolute;top:12px;left:12px;z-index:5"><input type="checkbox" class="scrape-check" data-i="'+i+'" checked style="width:22px;height:22px;cursor:pointer;accent-color:#e1193a"/></div><div class="prod-img" style="height:160px"><img src="'+(p.image||'')+'" loading="lazy"/></div><div class="prod-body"><h3 style="font-size:.9rem">'+(p.name||'')+'</h3>'+(p.price?'<div style="color:#22c55e;font-weight:700">$'+p.price.toLocaleString()+'</div>':'')+'</div></div>').join('');
+        $('#scrapeResultsCard').style.display='block';
+        $('#scrapeStatus').style.display='none';
+        toast('تم العثور على '+scrapedProducts.length+' منتج','success');
+    }catch(err){toast('❌ '+err.message,'error');$('#scrapeStatus').style.display='none'}
+});
+$('#scrapeSelectAll').addEventListener('click',()=>{$$('.scrape-check').forEach(c=>c.checked=true)});
+$('#scrapeDeselectAll').addEventListener('click',()=>{$$('.scrape-check').forEach(c=>c.checked=false)});
+$('#scrapeImport').addEventListener('click',async()=>{
+    const sel=$$('.scrape-check').filter(c=>c.checked).map(c=>scrapedProducts[parseInt(c.dataset.i)]);
+    if(!sel.length){toast('اختر منتجاً','error');return}
+    const brand=$('#scrapeBrandDefault').value.trim();
+    const markup=parseFloat($('#scrapeMarkup').value)||0;
+    const products=load(KEYS.products);
+    let ok=0,fail=0;
+    for(let i=0;i<sel.length;i++){
+        const p=sel[i];
+        try{
+            let url=p.image;
+            if(p.image){
+                try{
+                    const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(p.image));
+                    const b=await r.blob();
+                    if(b.size>100){
+                        const f=new File([b],'img-'+i+'.jpg',{type:b.type});
+                        const up=await smartUpload(f);
+                        if(up&&up.url) url=up.url;
+                    }
+                }catch(e){}
+            }
+            const price=markup>0?Math.round(p.price*(1+markup/100)*100)/100:p.price;
+            const prod={id:uid(),name:p.name,brand:brand||'',tag:'',price:price,desc:p.desc||'',images:url?[url]:[],specs:p.specs||[],created:Date.now()};
+            const exists=products.find(x=>(x.name||'').toLowerCase().trim()===prod.name.toLowerCase().trim());
+            if(exists) fail++; else {products.unshift(prod);ok++}
+        }catch(e){fail++}
+    }
+    save(KEYS.products,products);
+    renderProducts();renderCounts();
+    addLog('استيراد',ok+' نجح');
+    if(ok>0){toast('✅ تم استيراد '+ok+' منتج','success');$('#scrapeResultsCard').style.display='none';scrapedProducts=[]}
     else toast('❌ فشل','error');
 });
 
-/* ============ GITHUB ============ */
+/* ===== GITHUB ===== */
 function loadGitHubSettings(){
-    const s=load(KEYS.github,{token:'',owner:'',repo:'',branch:'main'});
+    const s=load(KEYS.github,{});
     if($('#ghToken')) $('#ghToken').value=s.token||'';
     if($('#ghOwner')) $('#ghOwner').value=s.owner||'';
     if($('#ghRepo')) $('#ghRepo').value=s.repo||'';
@@ -1341,165 +1138,171 @@ function updateGHStatus(){
     if(s.token&&s.owner&&s.repo){el.className='gh-status ok';el.textContent='مهيأ ✓'}
     else{el.className='gh-status no';el.textContent='غير مهيأ'}
 }
-$('#ghSave')?.addEventListener('click',()=>{
+$('#ghSave').addEventListener('click',()=>{
     const s={token:$('#ghToken').value.trim(),owner:$('#ghOwner').value.trim(),repo:$('#ghRepo').value.trim(),branch:$('#ghBranch').value.trim()||'main'};
     save(KEYS.github,s);
-    updateGHStatus();renderStatusChips();toast('تم الحفظ');
+    updateGHStatus();renderStatusChips();
+    toast('تم الحفظ');
 });
 
 async function getFileSHA(owner,repo,path,branch,token){
     try{
-        const res=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`,{
-            headers:{'Authorization':`Bearer ${token}`,'Accept':'application/vnd.github+json'}
+        const res=await fetch('https://api.github.com/repos/'+owner+'/'+repo+'/contents/'+path+'?ref='+branch,{
+            headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}
         });
         if(res.status===404) return null;
-        if(!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data=await res.json();
-        return data.sha;
+        if(!res.ok) return null;
+        const d=await res.json();
+        return d.sha;
     }catch(e){return null}
 }
-
 async function pushFileToGitHub(path,content,message){
     const s=load(KEYS.github,{});
     if(!s.token||!s.owner||!s.repo) throw new Error('GitHub غير مهيأ');
     const sha=await getFileSHA(s.owner,s.repo,path,s.branch,s.token);
-    const body={message,content:btoa(unescape(encodeURIComponent(content))),branch:s.branch};
+    const body={message:message,content:btoa(unescape(encodeURIComponent(content))),branch:s.branch};
     if(sha) body.sha=sha;
-    const res=await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}/contents/${path}`,{
+    const res=await fetch('https://api.github.com/repos/'+s.owner+'/'+s.repo+'/contents/'+path,{
         method:'PUT',
-        headers:{'Authorization':`Bearer ${s.token}`,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
+        headers:{'Authorization':'Bearer '+s.token,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
         body:JSON.stringify(body)
     });
-    if(!res.ok){const err=await res.json().catch(()=>({}));throw new Error(err.message||`HTTP ${res.status}`)}
+    if(!res.ok){const err=await res.json().catch(()=>({}));throw new Error(err.message||'HTTP '+res.status)}
     return await res.json();
 }
-
 function generateDataJS(){
-    const data = {
-        version:'2.0',currency:load(KEYS.settings,{}).currency||'USD',currencySymbol:'$',
+    const s=load(KEYS.settings,{});
+    const data={
+        version:'3.0',
+        currency:s.currency||'USD',
+        currencySymbol:s.currencySymbol||'$',
         exported:new Date().toISOString(),
-        products:load(KEYS.products),brands:load(KEYS.brands),
-        videos:load(KEYS.videos),gallery:load(KEYS.gallery),
-        settings:load(KEYS.settings,{})
+        products:load(KEYS.products),
+        brands:load(KEYS.brands),
+        videos:load(KEYS.videos),
+        gallery:load(KEYS.gallery),
+        settings:s
     };
-    return `/* ============================================
- * MUSICTECH — Auto-generated by admin.html
- * Generated: ${new Date().toLocaleString('ar-EG')}
- * ============================================ */
-window.MUSICTECH_DATA = ${JSON.stringify(data,null,2)};
-`;
+    return '/* ============================================\n * MUSICTECH — Auto-generated by admin.html\n * Generated: '+new Date().toLocaleString('ar-EG')+'\n * ============================================ */\nwindow.MUSICTECH_DATA = '+JSON.stringify(data,null,2)+';\n';
 }
-
-$('#ghPreview')?.addEventListener('click',()=>{
-    const content=generateDataJS();
+$('#ghPreview').addEventListener('click',()=>{
+    const c=generateDataJS();
     $('#ghOutput').style.display='block';
-    $('#ghOutputContent').textContent=content.slice(0,2000)+'\n\n... (مختصر)';
+    $('#ghOutputContent').textContent=c.slice(0,2000)+'\n\n...(مختصر)';
 });
-
-$('#ghTest')?.addEventListener('click',async()=>{
+$('#ghTest').addEventListener('click',async()=>{
     const s=load(KEYS.github,{});
     if(!s.token||!s.owner||!s.repo){toast('أكمل الإعدادات','error');return}
     toast('جاري الاختبار...','info');
     try{
-        const res=await fetch(`https://api.github.com/repos/${s.owner}/${s.repo}`,{
-            headers:{'Authorization':`Bearer ${s.token}`,'Accept':'application/vnd.github+json'}
+        const res=await fetch('https://api.github.com/repos/'+s.owner+'/'+s.repo,{
+            headers:{'Authorization':'Bearer '+s.token,'Accept':'application/vnd.github+json'}
         });
-        if(res.ok){const data=await res.json();toast(`✅ متصل بـ ${data.full_name}`,'success')}
-        else toast(`❌ فشل — تحقق`,'error');
+        if(res.ok){const d=await res.json();toast('✅ متصل بـ '+d.full_name,'success')}
+        else toast('❌ فشل','error');
     }catch(e){toast('❌ خطأ','error')}
 });
-
 async function pushToGitHub(){
     const s=load(KEYS.github,{});
-    if(!s.token||!s.owner||!s.repo){toast('أكمل الإعدادات','error');document.querySelector('[data-page="github"]')?.click();return}
-    const btn=$('#ghPush');
-    const orig=btn.innerHTML;
+    if(!s.token||!s.owner||!s.repo){toast('أكمل الإعدادات','error');return}
+    const btn=$('#ghPush'),orig=btn.innerHTML;
     btn.innerHTML='<span class="spinner"></span> جاري النشر...';
     btn.disabled=true;
     try{
         const content=generateDataJS();
-        const message=`Update data.js — ${new Date().toLocaleString('ar-EG')}`;
-        const result=await pushFileToGitHub('data.js',content,message);
-        toast('✅ تم النشر! سيظهر خلال 30 ثانية','success');
-        addLog('نشر إلى GitHub','data.js تم رفعه');
+        const msg='Update data.js — '+new Date().toLocaleString('ar-EG');
+        const r=await pushFileToGitHub('data.js',content,msg);
+        toast('✅ تم النشر! التحديث سيظهر خلال 30 ثانية','success');
+        addLog('نشر GitHub','data.js');
         $('#ghOutput').style.display='block';
-        $('#ghOutputContent').textContent=JSON.stringify({status:'success',commit:result.commit?.html_url||'',sha:result.content?.sha||''},null,2);
+        $('#ghOutputContent').textContent='✅ Success\nSHA: '+(r.content&&r.content.sha||'')+'\nCommit: '+(r.commit&&r.commit.html_url||'');
     }catch(err){
-        toast('❌ فشل: '+err.message,'error');
+        toast('❌ '+err.message,'error');
         $('#ghOutput').style.display='block';
         $('#ghOutputContent').textContent='Error: '+err.message;
     }finally{btn.innerHTML=orig;btn.disabled=false}
 }
-$('#ghPush')?.addEventListener('click',pushToGitHub);
+$('#ghPush').addEventListener('click',pushToGitHub);
 
-/* ============ BACKUP ============ */
-function download(filename,content,type='application/json'){
-    const blob=new Blob([content],{type});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');a.href=url;a.download=filename;
+/* ===== BACKUP ===== */
+function download(fn,content,type){
+    type=type||'application/json';
+    const b=new Blob([content],{type:type});
+    const u=URL.createObjectURL(b);
+    const a=document.createElement('a');a.href=u;a.download=fn;
     document.body.appendChild(a);a.click();a.remove();
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(u);
 }
-function getFullData(){
-    return {version:'2.0',exported:new Date().toISOString(),products:load(KEYS.products),brands:load(KEYS.brands),videos:load(KEYS.videos),gallery:load(KEYS.gallery),settings:load(KEYS.settings,{})};
-}
-$('#exportBtn')?.addEventListener('click',()=>{
-    download(`musictech-backup-${Date.now()}.json`,JSON.stringify(getFullData(),null,2));
-    toast('تم تصدير JSON');addLog('تصدير JSON');
+$('#exportBtn').addEventListener('click',()=>{
+    const d={version:'3.0',exported:new Date().toISOString(),products:load(KEYS.products),brands:load(KEYS.brands),videos:load(KEYS.videos),gallery:load(KEYS.gallery),settings:load(KEYS.settings,{})};
+    download('musictech-backup-'+Date.now()+'.json',JSON.stringify(d,null,2));
+    toast('تم التصدير');addLog('تصدير JSON');
 });
-$('#exportJsBtn')?.addEventListener('click',()=>{
+$('#exportJsBtn').addEventListener('click',()=>{
     download('data.js',generateDataJS(),'text/javascript');
-    toast('تم تصدير data.js');addLog('تصدير data.js');
+    toast('تم التصدير');addLog('تصدير data.js');
 });
-$('#importBtn')?.addEventListener('click',()=>$('#importFile').click());
-$('#importFile')?.addEventListener('change',async e=>{
+$('#importBtn').addEventListener('click',()=>$('#importFile').click());
+$('#importFile').addEventListener('change',async e=>{
     const f=e.target.files[0];if(!f)return;
     try{
-        const data=JSON.parse(await f.text());
+        const t=await f.text();
+        const d=JSON.parse(t);
         if(!confirm('سيتم استبدال البيانات. متابعة؟'))return;
-        if(data.products)save(KEYS.products,data.products);
-        if(data.brands)save(KEYS.brands,data.brands);
-        if(data.videos)save(KEYS.videos,data.videos);
-        if(data.gallery)save(KEYS.gallery,data.gallery);
-        if(data.settings)save(KEYS.settings,data.settings);
+        if(d.products) save(KEYS.products,d.products);
+        if(d.brands) save(KEYS.brands,d.brands);
+        if(d.videos) save(KEYS.videos,d.videos);
+        if(d.gallery) save(KEYS.gallery,d.gallery);
+        if(d.settings) save(KEYS.settings,d.settings);
         renderAll();toast('تم الاستيراد');addLog('استيراد');
     }catch(err){toast('ملف غير صالح','error')}
     e.target.value='';
 });
-$('#clearAllBtn')?.addEventListener('click',()=>{
+$('#clearAllBtn').addEventListener('click',()=>{
     if(!confirm('⚠️ حذف كل البيانات؟'))return;
     if(!confirm('تأكيد أخير؟'))return;
-    Object.values(KEYS).forEach(k=>{if(k!==KEYS.auth)localStorage.removeItem(k)});
+    Object.keys(KEYS).forEach(k=>{if(k!==KEYS.auth) localStorage.removeItem(KEYS[k])});
     seedDefaults();renderAll();toast('تم الحذف');
 });
 
-/* ============ SETTINGS ============ */
+/* ===== SETTINGS ===== */
 function renderSettings(){
     const s=load(KEYS.settings,{});
-    if($('#settingCompany')) $('#settingCompany').value=s.company||'MUSICTECH';
-    if($('#settingWhatsapp')) $('#settingWhatsapp').value=s.whatsapp||'966500000000';
-    if($('#settingEmail')) $('#settingEmail').value=s.email||'info@musictech.sa';
-    if($('#settingCurrency')) $('#settingCurrency').value=s.currency||'USD';
+    const set=function(id,v){if($('#'+id)) $('#'+id).value=v||''};
+    set('settingCompany',s.company||'MUSICTECH');
+    set('settingWhatsapp',s.whatsapp||'249917029008');
+    set('settingWhatsapp2',s.whatsapp2||'249912153389');
+    set('settingPhone1',s.phone1||'+249 91 702 9008');
+    set('settingPhone2',s.phone2||'+249 91 215 3389');
+    set('settingEmail',s.email||'Mustech321@gmail.com');
+    set('settingCurrency',s.currency||'USD');
+    set('settingCurrencySymbol',s.currencySymbol||'$');
     if($('#settingDark')) $('#settingDark').checked=s.dark!==false;
     const c=load(KEYS.compress,{});
     if($('#settingQuality')) $('#settingQuality').value=String(c.quality||.85);
     if($('#settingMaxWidth')) $('#settingMaxWidth').value=String(c.maxWidth||800);
 }
-$('#saveSettings')?.addEventListener('click',()=>{
+$('#saveSettings').addEventListener('click',()=>{
     save(KEYS.settings,{
-        company:$('#settingCompany').value,whatsapp:$('#settingWhatsapp').value,
-        email:$('#settingEmail').value,currency:$('#settingCurrency').value,
+        company:$('#settingCompany').value,
+        whatsapp:$('#settingWhatsapp').value,
+        whatsapp2:$('#settingWhatsapp2').value,
+        phone1:$('#settingPhone1').value,
+        phone2:$('#settingPhone2').value,
+        email:$('#settingEmail').value,
+        currency:$('#settingCurrency').value,
+        currencySymbol:$('#settingCurrencySymbol').value,
         dark:$('#settingDark').checked
     });
     toast('تم الحفظ');addLog('حفظ الإعدادات');
 });
-$('#saveCompress')?.addEventListener('click',()=>{
+$('#saveCompress').addEventListener('click',()=>{
     const c={quality:parseFloat($('#settingQuality').value),maxWidth:parseInt($('#settingMaxWidth').value)};
     save(KEYS.compress,c);
     Object.assign(compressSettings,c);
     toast('تم حفظ الضغط');
 });
-$('#changePass')?.addEventListener('click',()=>{
+$('#changePass').addEventListener('click',()=>{
     const n=$('#newPass').value,c=$('#confirmPass').value;
     if(!n){toast('أدخل كلمة مرور','error');return}
     if(n!==c){toast('غير متطابقتين','error');return}
@@ -1510,11 +1313,11 @@ $('#changePass')?.addEventListener('click',()=>{
 });
 
 loadGitHubSettings();
-loadCloudSettings();
 
-console.log('%c🎛️ MUSICTECH Admin v2.0','color:#e1193a;font-size:20px;font-weight:900');
-console.log('%c🐙 GitHub Images + 🕷️ Scraper + ☁️ Cloudinary','color:#3490dc;font-weight:700');
-console.log('%cكلمة المرور: admin123','color:#f7b801;font-weight:700');
+console.log('%c🎛️ MUSTECH Admin v3.0','color:#e1193a;font-size:20px;font-weight:900');
+console.log('%c🐙 GitHub Images + 🕷️ Scraper','color:#3490dc;font-weight:700');
+console.log('%c📞 249917029008 | 📧 Mustech321@gmail.com','color:#f7b801;font-weight:700');
+console.log('%cكلمة المرور: admin123','color:#22c55e;font-weight:700');
 
 })();
 </script>
