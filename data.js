@@ -1,6 +1,6 @@
 /* ============================================
  * MUSICTECH — بيانات الموقع
- * الأسعار بالدولار الأمريكي (USD)
+ * يمكن تعديل هذا الملف من admin.html
  * ============================================ */
 window.MUSICTECH_DATA = {
   "version": "2.0",
@@ -130,96 +130,18 @@ window.MUSICTECH_DATA = {
     }
   ],
   "brands": [
-    {
-      "id": "b1",
-      "name": "MOTIVITY",
-      "desc": "Professional audio systems with complete geometric coverage.",
-      "logo": "https://picsum.photos/seed/motivity/400/300",
-      "created": 1704067200000
-    },
-    {
-      "id": "b2",
-      "name": "DYNACORD",
-      "desc": "German professional mixers with advanced audio technology.",
-      "logo": "https://picsum.photos/seed/dynacord/400/300",
-      "created": 1704067200001
-    },
-    {
-      "id": "b3",
-      "name": "MOTIVE",
-      "desc": "Microphones, accessories and cables to the highest standards.",
-      "logo": "https://picsum.photos/seed/motive/400/300",
-      "created": 1704067200002
-    },
-    {
-      "id": "b4",
-      "name": "QUIKLOK",
-      "desc": "Italian-made cables and stands with superior stability.",
-      "logo": "https://picsum.photos/seed/quiklok/400/300",
-      "created": 1704067200003
-    }
+    {"id": "b1", "name": "MOTIVITY", "desc": "Professional audio systems with complete geometric coverage.", "logo": "https://picsum.photos/seed/motivity/400/300", "created": 1704067200000},
+    {"id": "b2", "name": "DYNACORD", "desc": "German professional mixers with advanced audio technology.", "logo": "https://picsum.photos/seed/dynacord/400/300", "created": 1704067200001},
+    {"id": "b3", "name": "MOTIVE", "desc": "Microphones, accessories and cables to the highest standards.", "logo": "https://picsum.photos/seed/motive/400/300", "created": 1704067200002},
+    {"id": "b4", "name": "QUIKLOK", "desc": "Italian-made cables and stands with superior stability.", "logo": "https://picsum.photos/seed/quiklok/400/300", "created": 1704067200003}
   ],
   "videos": [
-    {
-      "id": "v1",
-      "title": "MOTIVITY DB-25NW — Full Review",
-      "cat": "demo",
-      "vid": "dQw4w9WgXcQ",
-      "thumb": "https://picsum.photos/seed/vid1/800/450",
-      "dur": "4:32",
-      "desc": "Complete field test in a 500 m² venue",
-      "created": 1704067200000
-    },
-    {
-      "id": "v2",
-      "title": "QX Series Installation at Concert Hall",
-      "cat": "install",
-      "vid": "dQw4w9WgXcQ",
-      "thumb": "https://picsum.photos/seed/vid2/800/450",
-      "dur": "8:15",
-      "desc": "Full documentation of installation and tuning",
-      "created": 1704067200001
-    },
-    {
-      "id": "v3",
-      "title": "Ahmed Al-Mansouri — Al-Andalus Hall",
-      "cat": "test",
-      "vid": "dQw4w9WgXcQ",
-      "thumb": "https://picsum.photos/seed/vid3/800/450",
-      "dur": "2:48",
-      "desc": "An experience that changed our concept of professional audio",
-      "created": 1704067200002
-    },
-    {
-      "id": "v4",
-      "title": "QX-218 Subwoofer — 1800W Power Test",
-      "cat": "demo",
-      "vid": "dQw4w9WgXcQ",
-      "thumb": "https://picsum.photos/seed/vid4/800/450",
-      "dur": "6:02",
-      "desc": "Real performance test for low frequencies",
-      "created": 1704067200003
-    },
-    {
-      "id": "v5",
-      "title": "Complete System for Grand Mosque",
-      "cat": "install",
-      "vid": "dQw4w9WgXcQ",
-      "thumb": "https://picsum.photos/seed/vid5/800/450",
-      "dur": "5:20",
-      "desc": "Equal coverage in every corner without echo",
-      "created": 1704067200004
-    },
-    {
-      "id": "v6",
-      "title": "Mohammed Al-Qahtani — Audio Studio",
-      "cat": "test",
-      "vid": "dQw4w9WgXcQ",
-      "thumb": "https://picsum.photos/seed/vid6/800/450",
-      "dur": "3:45",
-      "desc": "My production quality reached world-class standards",
-      "created": 1704067200005
-    }
+    {"id": "v1", "title": "MOTIVITY DB-25NW — Full Review", "cat": "demo", "vid": "dQw4w9WgXcQ", "thumb": "https://picsum.photos/seed/vid1/800/450", "dur": "4:32", "desc": "Complete field test in a 500 m² venue", "created": 1704067200000},
+    {"id": "v2", "title": "QX Series Installation at Concert Hall", "cat": "install", "vid": "dQw4w9WgXcQ", "thumb": "https://picsum.photos/seed/vid2/800/450", "dur": "8:15", "desc": "Full documentation of installation and tuning", "created": 1704067200001},
+    {"id": "v3", "title": "Ahmed Al-Mansouri — Al-Andalus Hall", "cat": "test", "vid": "dQw4w9WgXcQ", "thumb": "https://picsum.photos/seed/vid3/800/450", "dur": "2:48", "desc": "An experience that changed our concept of professional audio", "created": 1704067200002},
+    {"id": "v4", "title": "QX-218 Subwoofer — 1800W Power Test", "cat": "demo", "vid": "dQw4w9WgXcQ", "thumb": "https://picsum.photos/seed/vid4/800/450", "dur": "6:02", "desc": "Real performance test for low frequencies", "created": 1704067200003},
+    {"id": "v5", "title": "Complete System for Grand Mosque", "cat": "install", "vid": "dQw4w9WgXcQ", "thumb": "https://picsum.photos/seed/vid5/800/450", "dur": "5:20", "desc": "Equal coverage in every corner without echo", "created": 1704067200004},
+    {"id": "v6", "title": "Mohammed Al-Qahtani — Audio Studio", "cat": "test", "vid": "dQw4w9WgXcQ", "thumb": "https://picsum.photos/seed/vid6/800/450", "dur": "3:45", "desc": "My production quality reached world-class standards", "created": 1704067200005}
   ],
   "gallery": [
     {"id": "g1", "url": "https://picsum.photos/seed/g1/600/800", "caption": "Grand Concert Hall", "created": 1704067200000},
